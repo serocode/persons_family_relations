@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statutory Construction — Situational MCQ Practice | Chapters 1–5 (Agpalo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE8DC; --card:#F8F5EC; --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA;
+    --charcoal:#23282A; --charcoal-hi:#33393B;
+    --yellow:#B4922B; --yellow-tint:#F3EBD3;
+    --green:#3F7D5C;  --green-tint:#E1EEE5;
+    --blue:#35688F;   --blue-tint:#DEE9F1;
+    --purple:#6B4F9E; --purple-tint:#E7E1F2;
+    --red:#AA4A3B;    --red-tint:#F3E1DD;
+    --timerok:#3F7D5C; --timerwarn:#AA4A3B;
+    --orange:#C1662E; --orange-tint:#F6E4D3;
+    --fs: 1.15;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4', Georgia, serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px 64px;
+    background-image:radial-gradient(circle at 15% 8%, rgba(35,40,42,0.035), transparent 40%), radial-gradient(circle at 85% 92%, rgba(35,40,42,0.035), transparent 40%);}
+  .sheet{width:100%;max-width:720px;background:var(--card);border:1px solid var(--rule);box-shadow:0 1px 0 var(--rule), 0 18px 40px -24px rgba(32,36,31,0.35);}
+  @media (min-width:1000px){ .sheet{width:66.666vw;max-width:1200px;} }
+  .fs-control{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:12px;color:var(--ink-soft);}
+  .fs-control button{width:28px;height:28px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;line-height:1;}
+  .fs-control button:hover{border-color:var(--ink-soft);}
+  .fs-control .fs-reset{width:auto;padding:0 10px;font-size:11px;font-weight:600;}
+  .masthead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+  .masthead{padding:28px 32px 20px;border-bottom:1px solid var(--rule);}
+  .masthead .eyebrow{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));letter-spacing:0.03em;color:var(--ink-soft);margin:0 0 6px;}
+  .masthead h1{font-family:'Fraunces', serif;font-weight:600;font-size:calc(29px * var(--fs));margin:0 0 6px;line-height:1.15;}
+  .masthead p.sub{font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));color:var(--ink-soft);margin:0;}
+  .content{padding:28px 32px 32px;}
+
+  /* ---- topic picker ---- */
+  .topic-eyebrow{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));letter-spacing:0.03em;color:var(--ink-soft);margin:0 0 4px;}
+  .topic-h{font-family:'Fraunces',serif;font-weight:600;font-size:calc(22px * var(--fs));margin:0 0 18px;}
+  .tcards{display:grid;gap:14px;margin-bottom:6px;}
+  .tcard{border:1px solid var(--rule);background:var(--paper);padding:18px 20px;cursor:pointer;border-radius:3px;transition:border-color .12s, background .12s;}
+  .tcard:hover{border-color:var(--ink-soft);background:#fff;}
+  .tcard .tname{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:0 0 4px;}
+  .tcard .tdesc{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 8px;}
+  .tcard .tcount{font-family:'Inter',sans-serif;font-size:calc(11.5px * var(--fs));color:var(--ink-soft);}
+  .tcard.combo{background:var(--charcoal);border-color:var(--charcoal);}
+  .tcard.combo .tname, .tcard.combo .tdesc, .tcard.combo .tcount{color:var(--paper);}
+  .backlink{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0;margin-bottom:16px;display:inline-block;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:18px 0 26px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .watchfor{border-left:3px solid var(--yellow);background:var(--yellow-tint);padding:12px 16px;margin:0 0 22px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.55;color:#4a3f18;}
+  .watchfor strong{display:block;font-size:calc(12.5px * var(--fs));margin-bottom:4px;color:#4a3f18;}
+  .watchfor ul{margin:6px 0 0;padding-left:18px;}
+  .watchfor li{margin-bottom:4px;}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;}
+  .filter-pill{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));font-weight:500;padding:7px 13px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;user-select:none;}
+  .filter-pill.active{background:var(--charcoal);color:var(--paper);border-color:var(--charcoal);}
+  .count-line{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:8px;}
+  .timer-note{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:22px;}
+  .timer-toggle{display:flex;align-items:center;gap:9px;font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));color:var(--ink);margin-bottom:10px;cursor:pointer;user-select:none;}
+  .speed-choice{display:flex;gap:18px;margin:0 0 10px 25px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);}
+  .speed-choice.hide{display:none;}
+  .speed-opt{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;}
+  .speed-opt input{accent-color:var(--charcoal);cursor:pointer;}
+  .timer-toggle input{width:16px;height:16px;accent-color:var(--charcoal);cursor:pointer;}
+  #timer-display.timer-off{color:var(--ink-soft);font-weight:500;}
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(14px * var(--fs));padding:12px 22px;background:var(--charcoal);color:var(--paper);border:none;cursor:pointer;letter-spacing:0.01em;}
+  .btn:hover{background:var(--charcoal-hi);}
+  .btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--rule);}
+  .btn.secondary:hover{border-color:var(--ink);}
+  .btn:disabled{opacity:0.4;cursor:not-allowed;}
+  .btn-row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;}
+  .ledger{display:flex;align-items:baseline;justify-content:space-between;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:10px;gap:10px;}
+  .ledger-right{display:flex;align-items:baseline;gap:14px;}
+  #timer-display{font-weight:700;color:var(--timerok);}
+  #timer-display.timer-warn{color:var(--timerwarn);}
+  .track{height:1px;background:var(--rule);position:relative;margin-bottom:26px;}
+  .track .fill{position:absolute;top:-1.5px;left:0;height:4px;background:var(--charcoal);transition:width .25s ease;}
+  .tag{display:inline-block;font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));font-weight:600;letter-spacing:0.02em;padding:3px 9px;border-radius:2px;margin-bottom:14px;}
+  .tag.memorization{background:var(--yellow-tint);color:#7A6320;}
+  .tag.requisites{background:var(--green-tint);color:#2A5A40;}
+  .tag.exceptions{background:var(--blue-tint);color:#254B68;}
+  .tag.effects{background:var(--purple-tint);color:#4E3A78;}
+  .tag.jurisprudence{background:var(--red-tint);color:#7E362A;}
+  .tag.topicbadge{background:var(--charcoal);color:var(--paper);margin-left:8px;}
+  .cite-line{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));font-style:italic;color:var(--ink-soft);margin:-8px 0 14px;}
+  .qtext{font-size:calc(18px * var(--fs));line-height:1.6;margin:0 0 20px;white-space:pre-line;}
+  .options{list-style:none;margin:0 0 6px;padding:0;}
+  .opt{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1px solid var(--rule);margin-bottom:9px;cursor:pointer;background:var(--paper);font-size:calc(15.5px * var(--fs));line-height:1.45;}
+  .opt:hover{border-color:var(--ink-soft);}
+  .opt .letter{font-family:'Inter',sans-serif;font-weight:700;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);border:1px solid var(--rule);width:22px;height:22px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .opt.selected{border-color:var(--ink);}
+  .opt.correct{background:var(--green-tint);border-color:var(--green);}
+  .opt.correct .letter{border-color:var(--green);color:var(--green);}
+  .opt.incorrect{background:var(--red-tint);border-color:var(--red);}
+  .opt.incorrect .letter{border-color:var(--red);color:var(--red);}
+  .opt.disabled{cursor:default;}
+  .opt.disabled:hover{border-color:var(--rule);}
+  .hint-toggle{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0;margin:2px 0 18px;}
+  .hint-box{font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);background:var(--paper);border-left:2px solid var(--rule);padding:9px 13px;margin:0 0 18px;}
+  .explain{font-size:calc(15.5px * var(--fs));line-height:1.6;color:var(--ink);background:var(--paper);border-left:3px solid var(--charcoal);padding:14px 16px;margin:0 0 22px;}
+  .hero-num{font-family:'Fraunces', serif;font-weight:700;font-size:calc(52px * var(--fs));line-height:1;margin:18px 0 4px;}
+  .hero-cap{font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);margin:0 0 22px;}
+  .score-row{display:flex;align-items:baseline;gap:14px;margin-bottom:4px;}
+  .score-big{font-family:'Fraunces',serif;font-weight:700;font-size:calc(48px * var(--fs));}
+  .score-label{font-family:'Inter',sans-serif;color:var(--ink-soft);font-size:calc(14px * var(--fs));}
+  .breakdown{margin:26px 0;}
+  .bd-row{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));margin-bottom:9px;}
+  .bd-row .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .bd-row .label{width:150px;flex:none;color:var(--ink-soft);}
+  .bd-row .bar{flex:1;height:6px;background:var(--rule);position:relative;}
+  .bd-row .bar span{position:absolute;top:0;left:0;height:100%;background:var(--charcoal);}
+  .bd-row .num{width:44px;text-align:right;flex:none;color:var(--ink-soft);}
+  .review-item{border-top:1px solid var(--rule);padding:18px 0;}
+  .review-item:first-child{border-top:none;}
+  .review-q{font-size:calc(16px * var(--fs));line-height:1.5;margin:0 0 8px;white-space:pre-line;}
+  .review-meta{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:10px;}
+  .review-meta .wrong{color:var(--red);}
+  .review-meta .right{color:var(--green);}
+  details summary{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);cursor:pointer;margin-top:4px;}
+  details .explain{margin-top:10px;}
+  .hide{display:none !important;}
+  .palette{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px;}
+  .pnum{position:relative;width:32px;height:32px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-soft);font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:3px;}
+  .pnum:hover{border-color:var(--ink-soft);}
+  .pnum.answered{background:var(--charcoal);color:var(--paper);border-color:var(--charcoal);}
+  .pnum.current{outline:2px solid var(--ink);outline-offset:1px;}
+  .pnum.flagged::after{content:'';position:absolute;top:-3px;right:-3px;width:9px;height:9px;border-radius:50%;background:var(--yellow);border:1px solid var(--paper);}
+  .history-row{display:flex;justify-content:space-between;align-items:baseline;font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);padding:8px 0;border-bottom:1px solid var(--rule);}
+  .history-row:last-child{border-bottom:none;}
+  .history-row .hscore{color:var(--ink);font-weight:600;}
+  .filter-label{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 8px;}
+  .alac-intro{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 20px;}
+  .alac-topic-h{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:28px 0 6px;}
+  .alac-topic-h:first-child{margin-top:6px;}
+  .alac-card{border:1px solid var(--rule);background:var(--paper);padding:16px 18px;margin-bottom:14px;border-radius:3px;}
+  .alac-fact{font-size:calc(15.5px * var(--fs));line-height:1.55;margin:0 0 10px;}
+  .alac-q{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(13.5px * var(--fs));margin:0 0 10px;}
+  .alac-card details summary{font-weight:600;color:var(--ink);font-size:calc(12.5px * var(--fs));}
+  .alac-ans{font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));line-height:1.6;background:var(--card);border-left:3px solid var(--charcoal);padding:12px 15px;margin-top:10px;}
+  .alac-ans p{margin:0 0 8px;}
+  .alac-ans b{color:var(--ink);}
+
+  /* ---- study guide ---- */
+  .sg-intro{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 16px;}
+  .sg-h2{font-family:'Fraunces',serif;font-weight:600;font-size:calc(20px * var(--fs));margin:30px 0 4px;}
+  .sg-h2:first-child{margin-top:6px;}
+  .sg-h3{font-family:'Fraunces',serif;font-weight:600;font-size:calc(15.5px * var(--fs));margin:22px 0 6px;}
+  .sg-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:10px 0 20px;font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));color:var(--ink-soft);}
+  .sg-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .sg-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  table.sg-table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:calc(14px * var(--fs));}
+  table.sg-table th{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-align:left;padding:6px 10px 6px 0;border-bottom:1px solid var(--rule);}
+  table.sg-table td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5;}
+  table.sg-table td.art{font-family:'Inter',sans-serif;font-weight:700;font-size:calc(12.5px * var(--fs));white-space:nowrap;width:88px;}
+  .sg-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;flex:none;}
+  .sg-row-exoex{background:var(--orange-tint);}
+  .case-card{border-left:3px solid var(--red);padding:8px 14px;margin:0 0 10px;}
+  .case-card .cname{font-weight:600;font-size:calc(14.5px * var(--fs));}
+  .case-card .cdoc{font-size:calc(13px * var(--fs));line-height:1.5;font-family:'Inter',sans-serif;color:var(--ink-soft);}
+  .exoex-box{border-left:4px solid var(--orange);background:var(--orange-tint);padding:12px 16px;margin:10px 0 18px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.55;color:#5c3418;}
+  .exoex-box .exoex-label{display:block;font-weight:700;font-size:calc(11px * var(--fs));text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;color:#8a4a1f;}
+  .cmp-table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:calc(13px * var(--fs));table-layout:fixed;}
+  .cmp-table th{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-align:left;padding:8px 10px;border-bottom:2px solid var(--rule);vertical-align:bottom;}
+  .cmp-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5;}
+  .cmp-table td.aspect{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(12px * var(--fs));color:var(--ink-soft);width:120px;}
+</style>
+</head>
+<body>
+<div>
+<div class="sheet">
+  <div class="masthead">
+    <a href="index.html" class="backlink" style="margin-bottom:10px;display:inline-block;font-size:12.5px;">← All subjects</a>
+    <div class="masthead-top">
+      <div>
+        <p class="eyebrow" id="mast-eyebrow">STATUTORY CONSTRUCTION · CHAPTERS 1–5 (AGPALO)</p>
+        <h1 id="mast-title">Situational MCQ Practice</h1>
+      </div>
+      <div class="fs-control">
+        <span>Text size</span>
+        <button onclick="adjustFontScale(-0.1)" title="Smaller text">A−</button>
+        <button class="fs-reset" onclick="resetFontScale()" title="Reset text size">Reset</button>
+        <button onclick="adjustFontScale(0.1)" title="Larger text">A+</button>
+      </div>
+    </div>
+    <p class="sub" id="mast-sub">Pick a topic below to begin.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- ===================== TOPIC PICKER ===================== -->
+    <div id="view-picker">
+      <p class="topic-eyebrow">CHOOSE A TOPIC</p>
+      <p class="topic-h">What are you reviewing today?</p>
+      <div class="tcards" id="topic-cards"></div>
+      <button class="backlink" style="margin-top:18px;" onclick="showAlac()">Prefer essay-style ALAC problems instead? &rarr;</button>
+      <button class="backlink" style="margin-top:8px;display:block;" onclick="showStudyGuide()">View the color-coded study guide &rarr;</button>
+    </div>
+
+    <!-- ===================== STUDY GUIDE ===================== -->
+    <div id="view-studyguide" class="hide">
+      <button class="backlink" onclick="backToPicker()">&larr; Back to topics</button>
+      <p class="topic-eyebrow">QUICK REFERENCE</p>
+      <p class="topic-h">Color-Coded Study Guide</p>
+      <p class="sg-intro">Chapter 1 — Statutes · Chapter 2 — Construction &amp; Interpretation · Chapter 3 — Aids to Construction · Chapter 4 — Adherence to/Departure from Literal Language · Chapter 5 — Interpretation of Words &amp; Phrases (Agpalo, <em>Statutory Construction</em>). Not a substitute for the full text — use it to review before recitation.</p>
+      <div class="sg-legend">
+        <span><i style="background:var(--yellow)"></i>Key provision / memorize</span>
+        <span><i style="background:var(--green)"></i>Requisite</span>
+        <span><i style="background:var(--blue)"></i>Exception</span>
+        <span><i style="background:var(--orange)"></i>Exception of the exception</span>
+        <span><i style="background:var(--red)"></i>Jurisprudence / doctrine</span>
+        <span><i style="background:var(--purple)"></i>Classification / comparison</span>
+      </div>
+      <div id="sg-content"></div>
+    </div>
+
+    <!-- ===================== ALAC ESSAY SECTION ===================== -->
+    <div id="view-alac" class="hide">
+      <button class="backlink" onclick="backToPicker()">&larr; Back to topics</button>
+      <p class="topic-eyebrow">ALAC METHOD — ANSWER · LEGAL BASIS · APPLICATION · CONCLUSION</p>
+      <p class="topic-h">Essay-style bar problems</p>
+      <p class="alac-intro">Work out your own Answer, Legal Basis, Application, and Conclusion for each problem, then reveal the model answer to check your reasoning against it.</p>
+      <div id="alac-list"></div>
+    </div>
+
+    <!-- ===================== QUIZ VIEW ===================== -->
+    <div id="view-quiz" class="hide">
+
+      <div id="start-screen">
+        <button class="backlink" onclick="backToPicker()">&larr; Change topic</button>
+        <p class="hero-num" id="total-count">0</p>
+        <p class="hero-cap" id="hero-cap-text">fact-pattern questions available — pick a category or run the full set</p>
+        <div class="legend">
+          <span><i style="background:var(--yellow)"></i>Memorization</span>
+          <span><i style="background:var(--green)"></i>Requisites</span>
+          <span><i style="background:var(--blue)"></i>Exceptions</span>
+          <span><i style="background:var(--purple)"></i>Effects / consequences</span>
+          <span><i style="background:var(--red)"></i>Jurisprudence</span>
+        </div>
+        <div class="watchfor" id="watchfor-box"></div>
+        <div class="filters" id="filter-pills"></div>
+        <p class="count-line" id="filtered-count-line"></p>
+        <label class="timer-toggle" for="timer-toggle-input">
+          <input type="checkbox" id="timer-toggle-input" checked onchange="onTimerToggleChange()">
+          <span id="timer-toggle-label">Enable timer</span>
+        </label>
+        <div class="speed-choice" id="speed-choice">
+          <label class="speed-opt">
+            <input type="radio" name="secPerQ" value="60" checked onchange="onSpeedChange()"> 60s per question
+          </label>
+          <label class="speed-opt">
+            <input type="radio" name="secPerQ" value="30" onchange="onSpeedChange()"> 30s per question
+          </label>
+        </div>
+        <p class="timer-note" id="timer-note-text"></p>
+        <div class="btn-row"><button class="btn" onclick="startQuiz()">Start practice</button></div>
+
+        <div id="history-block" class="hide">
+          <p class="filter-label" style="margin-top:26px;">Past attempts on this topic (saved on this device)</p>
+          <div id="history-list"></div>
+          <button class="hint-toggle" onclick="clearHistory()" style="margin-top:6px;">Clear history</button>
+        </div>
+      </div>
+
+      <div id="quiz-screen" class="hide">
+        <div class="ledger">
+          <span id="ledger-pos">Item 1 of 1</span>
+          <span class="ledger-right"><span id="timer-display">⏱ 10:00</span><span id="ledger-score">Answered: 0</span></span>
+        </div>
+        <div class="track"><div class="fill" id="track-fill" style="width:0%"></div></div>
+
+        <div id="palette" class="palette"></div>
+
+        <div id="tag-chip"></div>
+        <p class="cite-line" id="cite-line"></p>
+        <p class="qtext" id="q-text"></p>
+        <button class="hint-toggle" id="hint-btn" onclick="toggleHint()">Show hint</button>
+        <div class="hint-box hide" id="hint-box"></div>
+        <ul class="options" id="options-list"></ul>
+
+        <div class="btn-row">
+          <button class="btn secondary" id="prev-btn" onclick="goPrev()">Previous</button>
+          <button class="btn secondary" id="flag-btn" onclick="toggleFlag()">Flag this question</button>
+          <button class="btn secondary" id="skip-btn" onclick="goNext()">Skip / Next</button>
+          <button class="btn" id="submit-btn" onclick="requestSubmit()">Submit Quiz</button>
+        </div>
+      </div>
+
+      <div id="review-screen" class="hide">
+        <p class="hero-cap" style="margin-top:18px;">Before you submit — review your progress</p>
+        <div id="review-palette" class="palette"></div>
+        <p class="count-line" id="review-summary"></p>
+        <div class="btn-row">
+          <button class="btn secondary" onclick="backToQuiz()">Continue reviewing</button>
+          <button class="btn" onclick="finalizeSubmit()">Submit Quiz</button>
+        </div>
+      </div>
+
+      <div id="results-screen" class="hide">
+        <div class="score-row">
+          <span class="score-big" id="final-score">0/0</span>
+          <span class="score-label">correct</span>
+        </div>
+        <p class="hero-cap" id="final-pct"></p>
+        <div class="breakdown" id="breakdown"></div>
+        <div class="btn-row">
+          <button class="btn" onclick="restart(false)">Retake this set</button>
+          <button class="btn secondary" onclick="restart(true)" id="retake-missed-btn">Retake missed only</button>
+          <button class="btn secondary" onclick="backToPicker()">Choose another topic</button>
+        </div>
+        <div id="review-list" style="margin-top:30px;"></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<footer style="font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);text-align:center;max-width:720px;margin:18px auto 0;">Study aid only — always verify against Agpalo's <em>Statutory Construction</em> treatise text and current jurisprudence. Save this file to reopen anytime; per-topic history is saved on this device/browser only.</footer>
+</div>
+
+<script>
+/* ======================================================================
+   QUESTION BANKS — Statutory Construction, Chapters 1-5 (Agpalo)
+   Each question's options[0] is not necessarily the correct answer —
+   the "correct" field gives the index of the right option, deliberately
+   rotated across A/B/C/D so the correct choice isn't predictably in the
+   same slot. The app additionally shuffles the displayed order at render
+   time. All four options in a given question are written to a comparable
+   length/style so that position, length, or hedging language cannot be
+   used as a shortcut; every distractor is a real, separate doctrine from
+   this same material, not a strawman.
+   ====================================================================== */
+
+const BANK_CH1 = [
+{tag:"memorization", prompt:`A law imposes a special assessment on all landowners within Barangay San Isidro alone, to fund a specific drainage project confined to that barangay. How should this statute be classified as to its scope of application?`, options:[
+  `As a local statute, since its operation is confined to a specific place or locality named in the enactment itself`,
+  `As a general statute, since it applies uniformly to every person who happens to own land anywhere within the barangay`,
+  `As a private statute, since it grants a right or imposes a burden on a single, specifically named individual only`,
+  `As a temporary statute, since drainage projects are, by their nature, always completed within a fixed period`
+], correct:0, cite:`Kinds of statutes — public/general, special, local, private (Agpalo, Ch. 1)`, explain:`A local law is one whose operation is confined to a specific place or locality, such as a barangay-wide assessment. It is still a public statute (affecting a defined community), but its geographic confinement — not merely the class of persons covered — is what makes it "local" rather than "general" or merely "special."`},
+
+{tag:"memorization", prompt:`A statute is enacted and formally cited in 1938, during the period when the Philippines operated under the 1935 Constitution's Commonwealth government. By what designation would this law properly be cited?`, options:[
+  `As a Public Act, following the citation convention used for laws passed between 1901 and 1935`,
+  `As a Commonwealth Act, following the citation convention used for laws passed between 1936 and 1946`,
+  `As a Republic Act, following the citation convention used for laws passed from 1946 to the present`,
+  `As a Presidential Decree, following the citation convention used during the 1972–1986 martial-law period`
+], correct:1, cite:`Manner of referring to statutes by era (Agpalo, Ch. 1)`, explain:`Laws enacted between 1936 and 1946, during the Commonwealth government, are cited as Commonwealth Acts. Public Acts predate 1936 (Philippine Commission/Legislature era), Republic Acts begin only in 1946, and Presidential Decrees are exclusive to the 1972–1986 martial-law period.`},
+
+{tag:"requisites", prompt:`A statute broadly declares a policy of "protecting the environment" and delegates to the DENR the power to issue implementing rules, without fixing any concrete standard — express or implied — to guide how that discretion is to be exercised. The DENR then issues rules imposing emission limits it alone considers appropriate.`, options:[
+  `The delegation is valid, since a statute need only declare a general policy and may leave all further details entirely to the agency's unguided discretion`,
+  `The delegation is valid, since administrative agencies possess inherent police power to issue any rule reasonably related to their general subject matter`,
+  `The delegation is invalid, since the statute fails to fix a sufficient standard, express or implied, to guide the agency's exercise of the delegated power`,
+  `The delegation is invalid, since rule-making authority may never, under any circumstance, be delegated from the legislature to an administrative agency`
+], correct:2, cite:`Requisites for valid delegation — complete in itself + sufficient standard (Agpalo, Ch. 1)`, explain:`A valid delegation requires the law to be complete in itself and to fix a sufficient standard, express or implied (e.g., "public interest," "public welfare"), to guide the delegate. A bare policy declaration with no guiding standard at all amounts to an undue delegation, since the agency is left to legislate the substantive limits itself.`},
+
+{tag:"effects", prompt:`A bill titled "An Act Regulating the Sale of Agricultural Fertilizers" contains, in a buried section, an entirely unrelated provision creating a new criminal offense for illegal possession of firearms — a subject with no germane connection to fertilizer regulation. The rest of the statute is properly related to its title.`, options:[
+  `The entire statute is void, because any rider unrelated to the title violates the one-subject-one-title rule and taints the whole enactment`,
+  `The firearms provision remains valid, because the one-subject-one-title rule applies only to appropriation and revenue measures`,
+  `The firearms provision remains valid, because Congress may embrace any number of unrelated subjects so long as a single title covers the bill`,
+  `Only the firearms provision is void for lack of a germane title, while the properly related fertilizer provisions remain in force`
+], correct:3, cite:`Effect of insufficiency of title (Agpalo, Ch. 1)`, explain:`Where a provision is simply not germane to a statute's title, only that non-germane provision is void; the rest of the statute, being properly covered by the title, remains in force — unless the invalid part is so interwoven with the rest that the whole cannot stand without it.`},
+
+{tag:"jurisprudence", prompt:`A presidential decree states, "This Decree shall take effect immediately." It is signed on January 2 but is published in full in the Official Gazette only on June 1 of the same year. An accused is charged for an act done on February 1, prohibited by the decree, before its actual publication.`, options:[
+  `The decree governs the February 1 act, because "immediately" expressly dispenses with the Civil Code's fifteen-day publication requirement`,
+  `The decree does not govern the February 1 act, because publication in the Official Gazette is indispensable to due process, notwithstanding the immediate-effectivity clause`,
+  `The decree governs the February 1 act, because publication is merely directory and its absence does not affect a law's binding force on the public`,
+  `The decree does not govern the February 1 act, because presidential decrees always require separate legislative ratification before taking legal effect`
+], correct:1, cite:`Tañada v. Tuvera, 136 SCRA 27 (1985)`, explain:`Tañada v. Tuvera holds that publication is an indispensable requirement of due process that no legislative or executive clause can waive; an "immediate effectivity" clause fixes only the reference point once publication occurs, it never dispenses with publication itself. Since the decree was unpublished on February 1, it had not yet taken effect.`},
+
+{tag:"requisites", prompt:`A bill authorizing an increase in the national public debt limit is filed and first passed by the Senate, which then transmits it to the House of Representatives, where it is approved without any amendment.`, options:[
+  `The process is valid, since only appropriation and revenue bills — not public-debt bills — are constitutionally required to originate in the House`,
+  `The process is valid, since either chamber may originate any type of bill so long as both chambers eventually concur in identical language`,
+  `The process is invalid, since every bill without exception must first be filed and read in the House before the Senate may take any action on it`,
+  `The process is invalid, since bills authorizing an increase of the public debt must originate exclusively in the House of Representatives, though the Senate may still propose amendments`
+], correct:3, cite:`Art. VI, Sec. 24, 1987 Constitution`, explain:`Bills authorizing an increase of the public debt, like appropriation, revenue, tariff, local-application, and private bills, must originate exclusively in the House of Representatives. The Senate may still propose or concur with amendments, but it may not be the chamber of origin for this class of bill.`},
+
+{tag:"exceptions", prompt:`The duly authenticated enrolled copy of a statute — signed by the Senate President and the Speaker, and approved by the President — differs slightly from the legislative journal on a minor punctuation detail changed during floor deliberations. No fraud in the authentication process is alleged by either party.`, options:[
+  `The enrolled bill prevails, being accorded conclusive verity except as to the narrow class of matters the Constitution requires the journal itself to record`,
+  `The legislative journal prevails, since journals are the sole official record required to be kept of everything transpiring in each house`,
+  `Neither document controls; the discrepancy renders the entire statute void for uncertainty, requiring re-enactment by both houses`,
+  `The journal automatically prevails whenever any discrepancy exists, regardless of what specific matter that discrepancy happens to concern`
+], correct:0, cite:`Enrolled bill doctrine; Mabanag v. Lopez Vito, 78 Phil. 1 (1947)`, explain:`Under the enrolled bill doctrine, the duly authenticated enrolled bill is conclusive upon the courts as to its contents and due enactment, and generally prevails over the journal — except as to those specific matters (e.g., yeas and nays on final passage) the Constitution itself requires the journal to record, none of which is at issue here.`},
+
+{tag:"memorization", prompt:`A statute requires that a particular application be filed within ten days from receipt of notice. The applicant received the notice on March 1. Applying Article 13 of the Civil Code's rule on computing periods, what is the last day the applicant may validly file?`, options:[
+  `March 10, since the day of receipt itself is included, and the tenth day counted from receipt is also included`,
+  `March 12, since both the first day and the last day of the reglementary period are excluded from the computation entirely`,
+  `March 11, since the day of receipt is excluded from the count while the final day of the ten-day period is included`,
+  `March 9, since both the first day and the last day of the reglementary period are included in the computation entirely`
+], correct:2, cite:`Art. 13, Civil Code`, explain:`Under the "exclude the first, include the last" rule, March 1 (the day of receipt) is excluded, and counting begins on March 2 as day one; the tenth day thereafter falls on March 11, which is the last valid day to file.`},
+
+{tag:"exceptions", prompt:`The reglementary period for the prescription of a light criminal offense expires on a Sunday. The prosecutor did not file the information on or before that Sunday, intending instead to file it the following Monday, a regular working day.`, options:[
+  `The information may still be validly filed on Monday, applying the ordinary civil rule that acts falling due on a non-working day may be performed the next business day`,
+  `The information may be filed at any point within the following calendar month, since criminal prescriptive periods are treated as merely directory rather than jurisdictional`,
+  `The information can no longer be validly filed, since the exclude-first-include-last computation rule does not extend the last day of a criminal prescriptive period falling on a Sunday`,
+  `The information must instead have been filed on the preceding Friday, since prosecutors must always anticipate weekends by filing at least one working day ahead`
+], correct:2, cite:`Rule on prescription of offenses distinguished from ordinary Art. 13 computation (Agpalo, Ch. 1)`, explain:`Unlike ordinary civil computations, the rule allowing performance on the next working day when the last day falls on a Sunday or holiday does NOT apply to the prescription of crimes. If the last day of the prescriptive period falls on a Sunday, the offense is already deemed prescribed, and filing the next working day is too late.`},
+
+{tag:"memorization", prompt:`The President issues a directive fixing the specific date on which a newly enacted special economic zone law's operation is to formally commence — an act of public moment upon which the law's actual operation is made to depend.`, options:[
+  `A proclamation, being an act fixing a date or condition of public moment upon which a law's operation is made to depend`,
+  `An executive order, being a rule of general or permanent character implementing a constitutional or statutory power`,
+  `An administrative order, being an act relating to a particular aspect of governmental operations undertaken as administrative head`,
+  `A memorandum circular, being an act on internal administrative matters the President wishes to bring to an agency's attention`
+], correct:0, cite:`Presidential issuances distinguished (Agpalo, Ch. 1)`, explain:`A proclamation is precisely the presidential issuance used to fix a date or declare a condition of public moment upon which the operation of a specific law is made to depend — distinct from executive orders (implementing general policy), administrative orders (particular operational matters), and memorandum circulars (internal administrative matters).`},
+
+{tag:"effects", prompt:`A statute contains a separability clause. The Supreme Court later declares one section unconstitutional. However, the remaining sections are shown to be so mutually dependent on that particular section — as conditions and inducements for one another — that, without it, the rest can no longer function as the legislature originally intended.`, options:[
+  `The whole statute remains valid regardless of interdependence, since a separability clause conclusively binds courts to sever only the unconstitutional provision in every case`,
+  `Only the sections preceding the void provision survive, while every section that follows it is automatically void as a matter of sequence`,
+  `The entire statute must first be resubmitted to Congress for re-enactment before any of its remaining provisions may take further legal effect`,
+  `The whole statute is invalidated despite the separability clause, since the presumption of separability yields where the valid and invalid parts are shown to be so interdependent they cannot be presumed to stand alone`
+], correct:3, cite:`Separability clause and its limits (Agpalo, Ch. 1)`, explain:`A separability clause creates only a presumption that the legislature intended the valid and invalid parts to be severable. That presumption is overcome where the parts are shown to be so mutually dependent that the legislature could not have intended the remainder to survive without the invalidated portion — in which case the entire statute falls.`},
+
+{tag:"memorization", prompt:`A special law grants emergency price controls "for the duration of the state of calamity declared over Province X, and no longer," expressly tying its operation to a specified, temporary event.`, options:[
+  `It is a permanent statute, since price-control measures address matters of continuing public interest regardless of any particular calamity`,
+  `It is a temporary statute, since its operation is expressly tied to the happening and cessation of a specified event`,
+  `Its classification as to duration is irrelevant, since duration has no bearing on this particular branch of statutory classification`,
+  `It is a local statute only, since calamities are, by their nature, always confined to the particular locality where declared`
+], correct:1, cite:`Permanent vs. temporary statutes (Agpalo, Ch. 1)`, explain:`A temporary statute is one whose duration is fixed by the statute itself or whose life ceases upon the happening of a specified event — precisely the case here, where the law's operation is expressly tied to the calamity's declared duration.`},
+
+{tag:"exceptions", prompt:`The President formally certifies to Congress the necessity of a bill's immediate enactment to address an active, declared public health emergency. Both houses thereafter pass the bill on the very same day, dispensing with the usual three-readings-on-separate-days requirement.`, options:[
+  `The process is invalid, since the three-readings-on-separate-days requirement is absolute and admits of no exception under any circumstance whatsoever`,
+  `The process is valid, since Congress may freely waive its own internal procedural rules on readings by a simple majority vote of either chamber alone`,
+  `The process is invalid, since only the Senate President, and never the President of the Republic, may certify a bill's necessity for immediate enactment`,
+  `The process is valid, since a certified bill of this kind is expressly exempted from the requirement that a bill pass three readings on separate days`
+], correct:3, cite:`Art. VI, Sec. 26(2), 1987 Constitution`, explain:`The constitutional requirement of three readings on separate days, with printed copies distributed beforehand, expressly yields where the President certifies the necessity of a bill's immediate enactment to meet a public calamity or emergency — precisely the situation presented.`},
+
+{tag:"requisites", prompt:`A citizen challenges a validly enacted ordinance solely on the ground that a wiser, more efficient policy alternative was available to the local council, without alleging any defect in the council's actual legislative authority to pass the measure.`, options:[
+  `The court should strike down the ordinance, since courts possess inherent authority to substitute a demonstrably superior policy whenever one is clearly shown to exist`,
+  `The court should sustain the ordinance only if the council affirmatively proves its own chosen policy was, in fact, the objectively wisest one available`,
+  `The court should sustain the ordinance, since courts test only whether the enactment was within the legislative power to pass, not the wisdom of the policy actually chosen`,
+  `The court should strike down the ordinance, since every enactment carries a rebuttable presumption of unconstitutionality the enacting body must first overcome`
+], correct:2, cite:`Presumption of constitutionality; test of constitutionality (Agpalo, Ch. 1)`, explain:`Every statute or ordinance is presumed constitutional, and the test of validity is whether the enactment was within the legislative power to pass — not whether a court considers the policy chosen to be the wisest available. Courts do not sit to weigh the relative wisdom of legislative choices.`},
+
+{tag:"effects", prompt:`The President vetoes a bill in its entirety and returns it, with objections, to the House of origin. The House overrides the veto by a vote of two-thirds of all its members, then transmits the bill to the Senate, which likewise overrides it by a vote of two-thirds of all its own members.`, options:[
+  `The bill does not become law, since a presidential veto is final and Congress possesses no constitutional power to override it afterward`,
+  `The bill becomes law, since both houses overrode the veto by the constitutionally required two-thirds vote of all their respective members`,
+  `The bill becomes law only if the President subsequently re-signs it after being formally informed of the congressional override`,
+  `The bill does not become law, since a valid override instead requires the unanimous vote of all members present and voting in joint session`
+], correct:1, cite:`Art. VI, Sec. 27(1), 1987 Constitution`, explain:`A presidential veto may be overridden if two-thirds of all the members of each house, voting separately, agree to pass the bill notwithstanding the veto. Once both houses do so by the required vote, the bill becomes law without need of any further presidential action.`},
+
+{tag:"jurisprudence", prompt:`A bicameral conference committee, tasked with reconciling differing House and Senate versions of a revenue bill, inserts a new provision that is germane to the bill's general subject matter, even though that exact provision appeared in neither chamber's original version.`, options:[
+  `The insertion is valid, since a conference committee may include provisions germane to the bill's general subject even if absent from either chamber's original version`,
+  `The insertion is invalid, since a conference committee may only choose between the existing House version and the existing Senate version, never insert anything new`,
+  `The insertion is valid without limitation, since a conference committee possesses unlimited power to insert any provision whatsoever once both chambers later ratify the final text`,
+  `The insertion is invalid, since any new provision added at the conference-committee stage requires the entire bill to restart the three-readings process from the beginning`
+], correct:0, cite:`Tolentino v. Secretary of Finance, 235 SCRA 630 (1994)`, explain:`A bicameral conference committee may include in its consolidated bill provisions germane to the subject of the measure it was reconciling, even if such provisions did not appear in either chamber's original version, as recognized in Tolentino v. Secretary of Finance.`},
+
+{tag:"memorization", prompt:`A statute's final section simply states: "All laws or parts thereof inconsistent herewith are repealed or modified accordingly," without naming any specific prior law by title.`, options:[
+  `It functions as a general repealing declaration only; whether a particular prior law is actually repealed still depends on courts finding a genuine, irreconcilable inconsistency`,
+  `It operates as an express repeal of every single law enacted before it, regardless of whether any actual inconsistency with the new statute can be shown`,
+  `It has no legal effect whatsoever, since a valid repealing clause must always specifically name, by title, each prior statute it intends to repeal`,
+  `It automatically repeals only local ordinances, since a national statute's general repealing clause can never validly extend to another national statute`
+], correct:0, cite:`Repealing clause (Agpalo, Ch. 1)`, explain:`A general repealing clause of this kind is a declaration of intent, not an automatic, blanket repeal of every prior law. Whether any specific earlier statute is actually repealed still requires a court to find a genuine, irreconcilable inconsistency between that statute and the new one.`},
+
+{tag:"requisites", prompt:`A newly signed statute contains no effectivity clause of any kind and is entirely silent as to when it shall take effect. It is published in full in a newspaper of general circulation on June 1.`, options:[
+  `It takes effect immediately upon the President's signature, since publication affects only a law's enforceability, never the date its legal effectivity actually begins`,
+  `It takes effect only on the first day of the following calendar year, applying the default rule for statutes silent as to their own effectivity`,
+  `It takes effect fifteen days after the completion of its publication, applying the Civil Code's default rule where the statute itself specifies no other date`,
+  `It never takes legal effect at all, since a statute entirely silent as to its own effectivity date is treated as void ab initio for that reason alone`
+], correct:2, cite:`Art. 2, Civil Code, as amended by E.O. No. 200`, explain:`Absent an express effectivity clause providing otherwise, the default rule under the Civil Code, as amended, is that a law takes effect fifteen days after the completion of its publication in the Official Gazette or a newspaper of general circulation.`}
+];
+
+const BANK_CH2 = [
+{tag:"memorization", prompt:`A decades-old statute uses the undefined term "vehicle." A court must decide whether an electric bicycle, a technology unforeseen at the time of enactment, falls within that term — a situation the text itself does not directly address one way or the other.`, options:[
+  `This is interpretation, since the court is confined to finding the meaning of the actual words the legislature used in the enacted text`,
+  `This is construction, since the court draws a conclusion on a matter the text does not directly cover, guided by the statute's evident spirit and purpose`,
+  `This is judicial legislation, since applying an old statute to any technology unforeseen at enactment is constitutionally impermissible in every instance`,
+  `This is neither construction nor interpretation, since courts lack authority to apply a statute to circumstances not expressly contemplated at its passage`
+], correct:1, cite:`Construction vs. interpretation distinguished (Agpalo, Ch. 2)`, explain:`Construction is the process of drawing warranted conclusions on matters not directly covered by a statute's text, guided by its spirit, as opposed to interpretation, which finds the meaning of words actually used. Applying an old, general term to a new but analogous circumstance is a classic exercise of construction.`},
+
+{tag:"requisites", prompt:`A statute clearly and unambiguously defines "immediate family" to include only a spouse, children, and parents. A litigant asks the court to "construe" the term liberally to also include a live-in partner of twenty years, arguing fairness requires it.`, options:[
+  `The court should grant the request, since construction is always available to promote fairness regardless of how clearly a statutory term has been defined`,
+  `The court should grant the request, since any statutory definition may be judicially expanded so long as the added class shares some traits with the named class`,
+  `The court should deny the request, since courts may never depart from a statute's letter even upon a clear showing of genuine ambiguity or doubt`,
+  `The court should deny the request, since construction is proper only where statutory language is ambiguous, and a clear provision must be applied as written`
+], correct:3, cite:`When courts may construe — only where ambiguity exists (Agpalo, Ch. 2)`, explain:`Construction presupposes ambiguity or doubt in the statute's language. Where a term is clearly and unambiguously defined by the statute itself, courts have no occasion to "construe" it into something broader, however sympathetic the equities may be.`},
+
+{tag:"jurisprudence", prompt:`A court construes an ambiguous provision of a special law to exclude a particular class of workers from mandatory coverage. Congress, disagreeing, passes a joint resolution "declaring" that the Court's construction was erroneous and directing all agencies to henceforth include that class — without amending the special law's actual text in any way.`, options:[
+  `The resolution is not effective, since construing an ambiguous statute is a judicial function, and Congress may change the result only by validly amending or repealing the statute itself`,
+  `The resolution is effective, since Congress, having enacted the law, possesses final authority to declare what its own enactments mean at any time`,
+  `The resolution is effective, since a joint resolution carries the same legal force as a statute and may therefore freely supersede any prior judicial construction`,
+  `The resolution is not effective, since once the Supreme Court construes a statute, no subsequent Congress may ever alter that construction by any means whatsoever`
+], correct:0, cite:`Endencia v. David, 93 Phil. 696 (1953); Perfecto v. Meer, 85 Phil. 552 (1950)`, explain:`Construing a statute is fundamentally a judicial function. Congress cannot simply declare a judicial construction erroneous by resolution; the only avenue to change the result is to validly amend or repeal the statute itself — a path option D wrongly forecloses altogether, since amendment remains available.`},
+
+{tag:"memorization", prompt:`A three-member Division of the Supreme Court, believing an earlier en banc ruling to be wrong, renders a decision that squarely departs from that established precedent.`, options:[
+  `The departure is valid, since any division of the Supreme Court holds co-equal authority with the en banc to modify or abandon existing doctrine`,
+  `The departure is valid, since stare decisis binds only lower courts and never binds any division or the en banc of the Supreme Court itself`,
+  `The departure is invalid, since only the Supreme Court sitting en banc may modify, reverse, or abandon a doctrine it has previously laid down`,
+  `The departure is invalid, since no Supreme Court doctrine, whether laid down en banc or by division, may ever be reversed or abandoned by anyone`
+], correct:2, cite:`Art. VIII, Sec. 4(3), 1987 Constitution`, explain:`The Constitution vests exclusively in the Supreme Court en banc the power to modify or reverse a doctrine or principle of law previously laid down, whether by the en banc or by a division. A division alone has no authority to depart from established doctrine.`},
+
+{tag:"effects", prompt:`In 1965, prevailing Supreme Court doctrine holds that a person deputized as a secret agent is exempt from prosecution for illegal possession of firearms. Relying on this doctrine in good faith, a person deputized in 1966 carries an unlicensed firearm. In 1967, the Court abandons that doctrine. He is prosecuted in 1968 for his 1966 act.`, options:[
+  `He should be convicted, since a judicial abandonment of doctrine always applies retroactively to every act committed while the abandoned doctrine was in force`,
+  `He should be acquitted, since firearms statutes are always strictly construed against the State, independently of any doctrine on stare decisis or its effect`,
+  `He should be convicted, since ignorance of a subsequent change in judicial doctrine is never an excuse once the new controlling ruling has been promulgated`,
+  `He should be acquitted, since the doctrine prevailing when he acted in good faith governs his case, and the 1967 abandonment applies only prospectively`
+], correct:3, cite:`People v. Jabinal, 55 SCRA 607 (1974)`, explain:`Jabinal held that a person who relies in good faith on a judicial doctrine prevailing at the time of his act may not be prejudiced by a later abandonment of that doctrine, since the abandonment operates prospectively. His act, judged under the rule then in force, was lawful.`},
+
+{tag:"exceptions", prompt:`A penal ordinance punishes "any conduct deemed by any barangay official to be improper," without any further definition or standard. A defendant argues the ordinance is void for vagueness; the prosecution urges the court to simply "construe" it narrowly to save it.`, options:[
+  `The court may not cure the defect, since a statute utterly vague on its face fails to give fair notice and cannot be rescued through construction or a saving clause`,
+  `The court may cure the defect, since it may always narrow an overly broad penal provision through construction so long as a reasonable result is reached`,
+  `The court may cure the defect, since vagueness challenges apply only to statutes regulating protected speech, never to ordinary regulatory or penal ordinances`,
+  `The court may not cure the defect, since construction is available only to expand, and never to narrow, the coverage of an ambiguous penal provision`
+], correct:0, cite:`Limitations on the power to construe — void-for-vagueness (Agpalo, Ch. 2)`, explain:`A statute so vague that it gives no fair notice of what conduct is prohibited, and leaves enforcement to unbridled official discretion, cannot be saved by judicial construction or a saving clause; the vice is one of complete absence of a discernible standard, which construction cannot supply.`},
+
+{tag:"requisites", prompt:`A litigant asks a court to strike down a validly enacted tax statute solely because a flat tax, rather than the graduated tax the statute actually imposes, would in his view have been fairer and more efficient policy.`, options:[
+  `The court should grant the petition, since courts possess inherent power to replace any statutory policy with a more efficient alternative once unfairness is shown`,
+  `The court should grant the petition, since a graduated tax scheme is presumptively unconstitutional unless the State proves it is in fact the more efficient option`,
+  `The court should deny the petition, since courts do not sit to pass upon the wisdom, justice, or expediency of legislation, only upon its constitutionality`,
+  `The court should deny the petition, since tax statutes are wholly exempt from judicial review of any kind under the political question doctrine`
+], correct:2, cite:`Limitations on the power to construe — courts do not judge wisdom of legislation (Agpalo, Ch. 2)`, explain:`Courts do not sit to weigh whether a different policy choice would have been wiser or more efficient than the one the legislature actually made; their role is confined to determining whether the enactment lies within legislative power and is otherwise constitutional.`},
+
+{tag:"memorization", prompt:`A challenge to a specific election regulation becomes technically moot because the election in question has already concluded. The regulation, however, is of a kind that will predictably recur in every future election cycle, and its validity is a matter of significant, continuing public interest.`, options:[
+  `The court should dismiss the case outright, since a moot case must always be dismissed regardless of any public interest or likelihood of future recurrence`,
+  `The court may still resolve the case, since it falls within the recognized exception for issues capable of repetition yet evading review, and public interest calls for resolution`,
+  `Only the Commission on Elections, never the courts, may resolve any question concerning the validity of a regulation once its underlying election has concluded`,
+  `The court must resolve the case, since every election-related controversy is automatically exempt from the general requirement of an actual, live case or controversy`
+], correct:1, cite:`Mootness — exceptions to dismissal (Agpalo, Ch. 2)`, explain:`Though the general rule is to dismiss moot cases, courts recognize exceptions where the issue is capable of repetition yet evading review, where public interest requires resolution, or where a ruling would still have practical value — squarely the situation presented here.`},
+
+{tag:"jurisprudence", prompt:`A litigant claims that a particular controversy, though not strictly justiciable under the traditional case-or-controversy doctrine, nonetheless alleges that a government instrumentality gravely abused its discretion amounting to lack or excess of jurisdiction.`, options:[
+  `The courts may take cognizance, since judicial power expressly includes the duty to determine whether any branch or instrumentality gravely abused its discretion amounting to lack or excess of jurisdiction`,
+  `The courts may not take cognizance, since the expanded concept of judicial power applies exclusively to controversies involving the Commission on Elections`,
+  `The courts may not take cognizance, since grave abuse of discretion may be raised only in a criminal proceeding, never as an independent basis for review`,
+  `The courts may take cognizance, but only where the instrumentality in question belongs to the executive branch, since the expanded concept excludes the other two branches`
+], correct:0, cite:`Art. VIII, Sec. 1, par. 2, 1987 Constitution`, explain:`The 1987 Constitution expressly expanded judicial power to include the duty to settle actual controversies and to determine whether there has been grave abuse of discretion amounting to lack or excess of jurisdiction on the part of any branch or instrumentality of government — with no such branch-specific carve-out as suggested by option D.`},
+
+{tag:"requisites", prompt:`A precedent case held that a class of government employees enjoys security of tenure, based on facts showing they were appointed through a competitive examination. A new case involves employees of the same agency who were instead hired without any examination, under an entirely different appointment process.`, options:[
+  `The precedent automatically controls, since stare decisis applies to every employee of the same agency regardless of the manner of appointment`,
+  `The precedent automatically controls, since any prior ruling on security of tenure necessarily governs every subsequent case touching that same general legal concept`,
+  `The precedent does not automatically control, since stare decisis applies only where the facts of the precedent and the present case are substantially the same, which is absent here`,
+  `The precedent does not automatically control, since stare decisis has been entirely abolished in Philippine jurisdiction in favor of a civil-law approach`
+], correct:2, cite:`Stare decisis — requisite of substantially similar facts (Agpalo, Ch. 2)`, explain:`Stare decisis presupposes that the facts of the precedent and the case to which it is sought to be applied are substantially the same. Where the manner of appointment — the very basis of the earlier ruling — differs materially, the precedent does not automatically control.`},
+
+{tag:"memorization", prompt:`In deciding a labor dispute, the Supreme Court remarks, in passing, that a related but entirely unlitigated provision of a different law "would probably" apply to a hypothetical scenario the parties never actually raised or argued before it.`, options:[
+  `The remark binds future courts, since any statement made by the Supreme Court, in any context, automatically becomes binding precedent going forward`,
+  `The remark does not bind future courts, since it is merely obiter dictum — not a direct ruling on an issue actually raised, argued, and passed upon by the Court`,
+  `The remark binds future courts, since obiter dictum carries equal force to the actual ratio decidendi once later cited approvingly by the Court itself`,
+  `The remark does not bind future courts, since any statement made in a labor dispute is categorically excluded from forming part of binding Philippine jurisprudence`
+], correct:1, cite:`Obiter dictum distinguished from binding ruling (Agpalo, Ch. 2)`, explain:`Only a categorical ruling on an issue actually raised and squarely passed upon becomes part of binding jurisprudence under stare decisis. A passing remark on a hypothetical never actually litigated is obiter dictum and does not bind future courts.`},
+
+{tag:"exceptions", prompt:`A long-standing Supreme Court doctrine is later shown to rest on a misreading of a statute's plain and clear text, having nonetheless been applied consistently by the Court for a substantial number of years.`, options:[
+  `The Court en banc may not depart from the doctrine, since stare decisis is absolute and no doctrine may ever be abandoned once applied consistently over years`,
+  `Only Congress, through amendatory legislation, may correct a doctrine that is shown to misread a statute's clear and unambiguous text, never the Court itself`,
+  `The Court en banc may depart from the doctrine, but only after first submitting the question of abandonment to a national plebiscite for ratification`,
+  `The Court en banc may depart from the doctrine, since its duty is to forsake and abandon any doctrine found to be in conflict with the law actually in force`
+], correct:3, cite:`Stare decisis is not absolute (Agpalo, Ch. 2)`, explain:`Stare decisis yields where the precedent is shown to conflict with the law actually in force; the Court's duty is to forsake an erroneous doctrine rather than perpetuate it, and the en banc retains full authority to do so directly, without needing legislative correction or a plebiscite.`},
+
+{tag:"jurisprudence", prompt:`Two plausible readings of an ambiguous statute exist. Reading A better serves the statute's evident remedial purpose, though it is a slightly less exact fit with an isolated phrase; Reading B fits that isolated phrase marginally more closely but would substantially frustrate the statute's evident overall purpose.`, options:[
+  `The court must always adopt Reading B, since the most literal available reading of ambiguous language automatically controls over purpose in every case`,
+  `The court must submit both readings to Congress and decline to choose between them until the ambiguity is resolved through legislative amendment`,
+  `The court should generally favor Reading A, since construction properly involves choosing the interpretation that best serves the statute's ascertainable purpose once genuine ambiguity exists`,
+  `The court should adopt whichever reading happens to have been argued for by the government party, since ambiguous statutes are always construed in the State's favor`
+], correct:2, cite:`Legislative intent as the leading star of construction (Agpalo, Ch. 2)`, explain:`Once genuine ambiguity is established, construction is properly guided by the statute's ascertainable purpose and intent — the "leading star" of construction — rather than by a marginally closer literal fit with an isolated phrase that would frustrate that purpose.`},
+
+{tag:"requisites", prompt:`A private citizen, asserting no personal or direct injury of any kind, files suit questioning the wisdom of a duly enacted revenue measure, seeking a judicial construction that would narrow the measure's coverage.`, options:[
+  `Nothing further is required, since any citizen may challenge a statute's wisdom or coverage in court without any showing of personal stake in the outcome`,
+  `The petitioner must generally show a personal and substantial interest, such as a direct injury sustained or threatened, before a court will resolve the question on the merits`,
+  `The petitioner must first secure the written endorsement of the Solicitor General, without which no court may take cognizance of a statutory challenge`,
+  `The petitioner must be a sitting member of Congress, since only legislators possess standing to question the coverage of a revenue measure`
+], correct:1, cite:`Requisites for exercise of judicial power — legal standing (Agpalo, Ch. 2)`, explain:`Among the requisites for the exercise of judicial power is that the party raising the constitutional or statutory question have a personal and substantial interest in the case, such that he has sustained or will sustain direct injury from the challenged act — a requisite this citizen has not met.`},
+
+{tag:"effects", prompt:`Extensive legislative records clearly show that the drafters privately intended a provision to cover a particular class of workers, yet the provision's actual enacted text, as literally worded, plainly does not extend to that class in any way.`, options:[
+  `The privately intended coverage controls, since legislative intent alone is always sufficient to give a provision legal effect regardless of how the text is worded`,
+  `The privately intended coverage controls, but only where the legislative records were publicly available before the statute's actual passage into law`,
+  `Neither controls; the provision automatically becomes void whenever any gap between an unexpressed intention and the enacted text is shown to exist`,
+  `The enacted text controls, since a legal act requires both an internal intention and its external expression, and a failure of expression may defeat an otherwise clear intention`
+], correct:3, cite:`Matters inquired into in construing a statute — intention and expression (Agpalo, Ch. 2)`, explain:`A statute's legal effect requires both the legislature's internal intention and its adequate external expression in the enacted text; a private intention that never made its way into the statute's actual words cannot override text that plainly does not carry that coverage.`},
+
+{tag:"jurisprudence", prompt:`A court is asked to construe a term that, on close reading of the statute's own text and structure, is actually clear and unambiguous. A party nonetheless urges the court to instead adopt a different meaning drawn solely from one individual legislator's personal floor speech delivered during debate.`, options:[
+  `The court should apply the meaning found in the statute's own clear text, since the primary source of legislative intent is the statute itself, resorted to extrinsic aids only where genuine ambiguity exists`,
+  `The court should apply the meaning found in the floor speech, since any statement made during floor debate always controls over the statute's own enacted text`,
+  `The court should apply neither meaning, adopting instead whichever construction the executive department has publicly announced that it personally prefers`,
+  `The court should apply the floor-speech meaning, but only if that particular legislator happened to be the bill's principal author or sponsor`
+], correct:0, cite:`Where legislative intent is ascertained — the statute itself is primary (Agpalo, Ch. 2)`, explain:`The primary source of legislative intent is the statute itself. Courts resort to extrinsic aids like individual floor speeches only where the statute's own text, read as a whole, fails to indicate the intent due to genuine ambiguity — which is not the case where the text is already clear.`}
+];
+
+const BANK_CH3 = [
+{tag:"memorization", prompt:`In construing an ambiguous provision, a court examines both the statute's own title and, separately, the sponsorship speech delivered on the Senate floor when the bill was originally debated.`, options:[
+  `Both are intrinsic aids, since the title and any floor speech are both, in a broad sense, physically connected to the statute's own passage`,
+  `The title is an extrinsic aid, while the sponsorship speech is an intrinsic aid, since only the latter reflects the framers' actual, subjective intent`,
+  `The title is an intrinsic aid, while the sponsorship speech is an extrinsic aid, since only the former is found within the statute's own printed text`,
+  `Both are extrinsic aids, since neither the title nor a floor speech carries any independent legal force under the statute as finally enacted`
+], correct:2, cite:`Intrinsic vs. extrinsic aids to construction (Agpalo, Ch. 3)`, explain:`Intrinsic aids are found within the printed page of the statute itself — such as its title, preamble, and context — while extrinsic aids, like a sponsorship speech or floor debate, are found outside the statute's text, in its legislative history.`},
+
+{tag:"exceptions", prompt:`A statute's operative body, in its clear and unambiguous section, covers "all motor vehicles." A litigant argues this coverage should nonetheless be narrowed because the statute's title mentions only "trucks and buses."`, options:[
+  `The title may not narrow the otherwise clear and unambiguous body, since a title is resorted to only to remove existing doubt, never to create doubt where none exists`,
+  `The title controls over the body whenever any discrepancy exists between the two, regardless of how clear the body's own language may be`,
+  `The one-subject-one-title rule requires that the narrower title wording always be read into and control the entire body of the statute`,
+  `Titles are never considered by courts for any purpose once a statute has been duly signed into law by the President`
+], correct:0, cite:`When resort to title is not authorized (Agpalo, Ch. 3)`, explain:`A title is an aid used to remove doubt in construction, not to create doubt in an otherwise clear and unambiguous body. Where the body's language is already plain, the title cannot be invoked to cut down its coverage.`},
+
+{tag:"jurisprudence", prompt:`A decree's preamble recites that it was issued to address a surge of individuals carrying bladed weapons in furtherance of violence and public disorder. Its operative provision literally penalizes "any person who carries a bladed weapon outside his residence," without qualification. A defendant is charged for carrying his ordinary kitchen knife, used solely in his catering business, with no evidence of any violent purpose.`, options:[
+  `Apply the provision exactly as literally worded, since a decree's operative text always controls absolutely over anything merely stated in its preamble`,
+  `Declare the entire decree void for vagueness, since the preamble and the operative provision can never be reconciled under any accepted method of construction`,
+  `Apply the provision literally but treat the preamble as grounds for a lighter penalty rather than as a basis for negating criminal liability altogether`,
+  `Read the operative provision in light of the preamble, limiting liability to carrying attended by some nexus to the violence the decree was meant to suppress`
+], correct:3, cite:`People v. Purisima, 86 SCRA 542 (1978)`, explain:`Purisima construed a materially similar provision by resorting to its preamble to limit an otherwise unqualified operative text, holding that liability required some nexus to the violence or disorder the decree was designed to suppress — not mere, innocent possession in daily life.`},
+
+{tag:"memorization", prompt:`A litigant argues that the precise placement of a single comma in a lengthy statutory sentence must be treated as conclusive, overriding the statute's otherwise evident overall meaning and purpose.`, options:[
+  `The argument is correct, since punctuation marks are always given controlling weight over every other aid to statutory construction whenever placement is shown`,
+  `The argument is incorrect, since punctuation is merely a low-degree aid that cannot control against the intelligible meaning otherwise conveyed by the statute's words`,
+  `The argument is correct, since the Civil Code expressly requires punctuation marks to be treated as an intrinsic aid superior to context or purpose`,
+  `The argument is incorrect, since punctuation marks inserted by the Official Gazette's printer are never treated as part of the duly enacted statute at all`
+], correct:1, cite:`Punctuation as a low-degree aid (Agpalo, Ch. 3)`, explain:`Punctuation marks are rules of legal hermeneutics considered aids of low degree; they can never control against the intelligible meaning conveyed by the statute's words as a whole, and an argument based on punctuation alone is not persuasive.`},
+
+{tag:"requisites", prompt:`For fifteen years, the Bureau of Internal Revenue has consistently construed an ambiguous exemption provision in a narrow way, and Congress, aware of this consistent interpretation, later reenacts the same provision verbatim in a subsequent tax code revision without any change.`, options:[
+  `Great weight, since a long-standing, consistent administrative construction — especially one impliedly ratified through reenactment — is entitled to great respect unless clearly erroneous`,
+  `No weight at all, since administrative interpretations are purely advisory, and courts must always determine a statute's meaning entirely independently of them`,
+  `Great weight, but only if the interpretation was first submitted to and expressly approved by the Supreme Court before the Bureau applied it`,
+  `No weight at all, since only interpretations issued by the Secretary of Justice, never those of an implementing agency, carry any persuasive value`
+], correct:0, cite:`Nestle Philippines, Inc. v. CA, 216 SCRA 17 (1992)`, explain:`A contemporaneous administrative construction, consistently applied over a substantial period, is entitled to great weight, particularly where it is impliedly ratified through legislative reenactment of the same language — unless the construction is shown to be clearly erroneous.`},
+
+{tag:"exceptions", prompt:`An agency has, for years, consistently construed a statutory term in a manner that plainly contradicts the statute's own clear and unambiguous text.`, options:[
+  `Yes, since any interpretation consistently applied by an agency for a substantial period automatically becomes binding on the courts regardless of accuracy`,
+  `Yes, since courts are bound to defer entirely to an implementing agency's technical expertise on any question touching its area of specialization`,
+  `No, but only because administrative constructions are entitled to weight solely during the first year following a statute's original effectivity date`,
+  `No, since a clearly erroneous administrative construction, however long-standing, must give way to the statute's own clear and unambiguous text`
+], correct:3, cite:`When contemporaneous construction is disregarded (Agpalo, Ch. 3)`, explain:`Contemporaneous construction is disregarded where it is clearly erroneous or where the statute itself is unambiguous. No amount of consistent, long-standing administrative practice can validate an interpretation that plainly conflicts with clear statutory text.`},
+
+{tag:"memorization", prompt:`In construing an ambiguous provision, a court reviews the bill's explanatory note, the transcript of floor deliberations, and the fact that an earlier draft of the bill contained a clause that was deleted before final passage.`, options:[
+  `Controlling and conclusive, since legislative-history materials override the statute's actual enacted text whenever any conflict between the two appears`,
+  `Persuasive but not controlling, since these materials may illuminate but can never substitute for the meaning of the statute's own actual enacted text`,
+  `Entirely irrelevant, since courts are constitutionally forbidden from ever consulting materials extrinsic to a statute's own four corners`,
+  `Binding only upon the specific legislators who personally participated in drafting or debating that particular provision`
+], correct:1, cite:`Legislative history as an aid to construction (Agpalo, Ch. 3)`, explain:`Explanatory notes, deliberations, and drafting history are persuasive extrinsic aids that help illuminate a genuinely ambiguous provision, but they are not controlling and can never substitute for the statute's own actual enacted text.`},
+
+{tag:"effects", prompt:`An original statute expressly stated that an employee under preventive suspension "shall continue to receive his salary." A later amendment reenacts the entire section but conspicuously omits that particular clause.`, options:[
+  `No inference may be drawn, since deletions occurring during amendment are always treated as pure surplusage without any legal significance whatsoever`,
+  `The deleted clause remains implicitly part of the law, since amendments are presumed never to alter any substantive entitlement already previously granted`,
+  `The legislature intended to change the law's meaning, since a deliberate deletion during reenactment signals an intent to withdraw the entitlement previously granted`,
+  `The entire amended section becomes void, since deleting a beneficial clause during reenactment is deemed to violate the constitutional guarantee of due process`
+], correct:2, cite:`Amendment by deletion; Gloria v. Court of Appeals, 306 SCRA 287 (1999)`, explain:`A deliberate deletion of a clause during reenactment is generally read as signaling the legislature's intent to change the statute's meaning — here, to withdraw the entitlement to salary during preventive suspension that the original text had expressly granted.`},
+
+{tag:"requisites", prompt:`A statute was enacted specifically to curb a practice of importers under-declaring the value of goods to evade customs duties. A later case involves a domestic manufacturer who over-declares — not under-declares — the value of locally produced goods, for an entirely unrelated reason.`, options:[
+  `Yes, since the mischief rule requires courts to apply a remedial statute to any act loosely resembling the general conduct the statute happens to regulate`,
+  `Yes, since any statute addressing valuation, regardless of its stated purpose, must be read to cover both under- and over-declaration equally`,
+  `No, since the mischief rule applies exclusively to penal statutes and has no application whatsoever to statutes governing customs valuation`,
+  `No, since the manufacturer's conduct does not fall within the mischief — under-declaration to evade customs duties — that the statute was actually enacted to suppress`
+], correct:3, cite:`Purpose of the law / mischief rule (Agpalo, Ch. 3)`, explain:`The mischief rule confines a statute to redressing the specific evil it was enacted to suppress. Since the manufacturer's over-declaration for an unrelated purpose bears no relation to the under-declaration-to-evade-duties mischief the statute targeted, the statute should not be extended to cover it.`},
+
+{tag:"jurisprudence", prompt:`The Civil Service Commission has, for a decade, interpreted a civil-service statute to exclude coterminous employees from a certain benefit. Congress reenacts the identical provision word-for-word in a later general revision, with full knowledge of the Commission's settled construction.`, options:[
+  `It has no legal significance whatsoever, since reenactment can never be treated as evidence of legislative agreement with a prior administrative construction`,
+  `It operates as an implied legislative ratification of the Commission's settled construction, strengthening the weight that construction is entitled to receive`,
+  `It automatically overrules the Commission's prior construction, since reenactment is presumed to signal legislative disagreement with existing administrative practice`,
+  `It transforms the Commission's construction into a constitutional rule that no subsequent Congress may ever thereafter revisit or change`
+], correct:1, cite:`Legislative approval by reenactment (Agpalo, Ch. 3)`, explain:`Where the legislature reenacts, with knowledge of a settled contemporaneous construction, the identical language previously so construed, the reenactment is treated as an implied legislative ratification of that construction, strengthening the weight it is entitled to receive.`},
+
+{tag:"memorization", prompt:`A statute is officially promulgated in both English and Filipino texts. A discrepancy later arises between the two versions on a technical point, and the statute itself is silent as to which version should control.`, options:[
+  `The Filipino text controls exclusively, since the national language always takes precedence over any other language version of a duly enacted statute`,
+  `Neither text controls; the statute becomes void for ambiguity the moment any discrepancy between the two official versions is shown to exist`,
+  `The English text generally controls, following the traditional rule absent a statutory provision expressly designating a different controlling text`,
+  `Whichever text happens to have been physically signed first by the President controls, regardless of the language of that particular signed copy`
+], correct:2, cite:`Lingual text (Agpalo, Ch. 3)`, explain:`Where a statute is promulgated in more than one official language and is silent on which controls, the traditional Philippine rule is that the English text generally governs, absent an express statutory designation of a different controlling version.`},
+
+{tag:"exceptions", prompt:`A section of a code is prefixed with the heading "Penalties for Minor Infractions." The section's actual operative text, however, clearly and unambiguously imposes a substantial term of imprisonment for what the text itself defines as a serious offense.`, options:[
+  `No, since headnotes and epigraphs are mere secondary aids that cannot control the plain terms of a clear and unambiguous enacting text`,
+  `Yes, since a section's heading is a primary aid entitled to equal interpretive weight with the operative text it introduces`,
+  `Yes, since headings placed by the legislature itself are treated as an integral, controlling part of the statute's enacting clause`,
+  `No, since any discrepancy between a heading and its operative text automatically renders the entire section null and unenforceable`
+], correct:0, cite:`Headnotes and epigraphs as secondary aids (Agpalo, Ch. 3)`, explain:`Headnotes and epigraphs are secondary aids of little independent weight; they can never control the plain terms of a clear and unambiguous operative text, especially where, as here, the heading and the text merely reflect an apparent drafting inconsistency rather than genuine ambiguity in the operative provision.`},
+
+{tag:"requisites", prompt:`A statute uses the undefined term "vessel" in a provision regulating maritime commerce, without providing any statutory definition, technical qualification, or contextual clue narrowing its scope.`, options:[
+  `By automatically adopting the narrowest possible meaning available, since regulatory or penal ambiguity must invariably be resolved against the State`,
+  `By adopting the term's plain, ordinary dictionary meaning, since undefined words are generally understood according to their natural and common signification`,
+  `By automatically adopting the broadest possible meaning available, since remedial statutes must invariably be given the widest construction the words can bear`,
+  `By certifying the question to Congress for a formal legislative definition, since courts have no authority to assign meaning to an undefined term`
+], correct:1, cite:`Dictionaries as an extrinsic aid (Agpalo, Ch. 3)`, explain:`In the absence of a statutory definition or a special context narrowing an undefined term, courts generally resort to the term's plain, ordinary, and commonly accepted dictionary meaning, rather than automatically construing it narrowly or broadly.`},
+
+{tag:"jurisprudence", prompt:`Two available readings of an ambiguous provision are proposed: Reading X would render an entire companion section of the same statute utterly meaningless and inoperative, while Reading Y allows every section of the statute to function together sensibly.`, options:[
+  `Reading X, because courts must always adopt whichever reading was most recently proposed by the party bearing the burden of proof in the case`,
+  `Reading X, because the presumption of constitutionality automatically favors whichever reading imposes the heavier burden or restriction on private parties`,
+  `Reading Y, because of the presumption favoring an effective, sensible, and reasonable operation of the statute as a whole, over one that nullifies a provision`,
+  `Reading Y, but only after first securing the written concurrence of the agency primarily tasked with implementing the statute in question`
+], correct:2, cite:`Presumption favoring sensible, harmonious operation of a statute (Agpalo, Ch. 3)`, explain:`Courts presume the legislature intended every part of a statute to have effect and to operate together sensibly; a construction that renders a companion provision meaningless is disfavored in favor of one, like Reading Y, that lets the entire statute function as an integrated whole.`},
+
+{tag:"memorization", prompt:`A 1935-era constitutional provision capitalizes the phrase "Civil Service," while a related implementing statute on the same subject instead uses lower-case "civil service" throughout its text. A litigant argues this capitalization difference conclusively shows an intent to limit constitutional protection to only the classified civil service.`, options:[
+  `As an aid of low degree only, insufficient by itself to justify excluding a class of employees from a benefit or protection otherwise available under the provision`,
+  `As conclusive and controlling, since any capitalization difference between a constitutional provision and its implementing statute is always given decisive interpretive weight`,
+  `As grounds to declare the implementing statute unconstitutional outright, since any capitalization mismatch automatically voids the statute entirely`,
+  `As irrelevant only in penal statutes, though fully controlling and decisive in every other type of statute regardless of surrounding context`
+], correct:0, cite:`Unabia v. City Mayor, 99 Phil. 253 (1956)`, explain:`Capitalization is treated as an aid of low degree in construction. A mere difference in capitalization between a constitutional term and a statute using the same term in lower case is, by itself, insufficient to support excluding a class of persons from an otherwise available protection.`}
+];
+
+const BANK_CH4 = [
+{tag:"memorization", prompt:`A statute clearly and unambiguously requires that a particular application "must" be filed within thirty days, with no exception stated anywhere in the text. An applicant files on the thirty-first day due to a family emergency and asks the court to equitably excuse the one-day delay.`, options:[
+  `The court should grant the extension, since equity always prevails over a clear statutory deadline whenever a sufficiently sympathetic justification is shown`,
+  `The court should grant the extension, since thirty-day filing deadlines are, as a matter of law, always treated as merely directory rather than mandatory`,
+  `The court should deny the extension, but only because family emergencies are categorically excluded from any equitable consideration under Philippine law`,
+  `The court should deny the extension, since a clear and unambiguous statute must be applied according to its plain terms, however harsh the result in a given case`
+], correct:3, cite:`Dura lex sed lex; verba legis non est recedendum (Agpalo, Ch. 4)`, explain:`Where a statute is clear and unambiguous, it must be applied literally, however harsh the result — "dura lex sed lex." Equity operates only where the law is silent or genuinely doubtful, not to override a plain and unambiguous statutory deadline.`},
+
+{tag:"requisites", prompt:`A statute, if applied exactly as literally worded, would require a government agency to destroy public records the very moment it receives them — an outcome that would make the recordkeeping statute entirely self-defeating and plainly frustrate the legislature's evident purpose in enacting it.`, options:[
+  `No, since courts may never depart from a statute's literal wording under any circumstance, regardless of how absurd the resulting application may be`,
+  `Yes, since any statute a court merely finds inconvenient in practice may always be freely rewritten to suit administrative convenience`,
+  `Yes, since departure from literal wording is proper where a literal reading would produce an absurd result that defeats the statute's evident purpose`,
+  `No, since departure from literal wording is permitted only in penal statutes, never in statutes governing purely administrative recordkeeping functions`
+], correct:2, cite:`Departure from literal interpretation — requisites (Agpalo, Ch. 4)`, explain:`Departure from a statute's literal wording is justified where strict literal application would produce an absurd, self-defeating result plainly at odds with the statute's evident purpose — precisely the scenario presented, where literal compliance would nullify the very recordkeeping the statute exists to accomplish.`},
+
+{tag:"jurisprudence", prompt:`A law intended to implement the people's constitutional right of initiative addresses initiative on statutes and on local legislation, but is silent as to several essential procedural details needed specifically for an initiative to amend the Constitution itself.`, options:[
+  `The court should itself supply the missing procedural details, since any statutory gap touching a constitutional right must always be filled through liberal construction`,
+  `The court should hold the law inadequate as to that specific mode of initiative, since it may not judicially supply an essential procedural framework the statute never provided`,
+  `The court should presume the missing details are identical to those for initiative on statutes, since silence is deemed legislative approval of borrowing existing procedures`,
+  `The court should refer the question to a constitutional convention, since only such a body may cure a gap touching constitutional amendment procedures`
+], correct:1, cite:`Santiago v. COMELEC, 270 SCRA 106 (1997)`, explain:`Santiago v. COMELEC held that a law's silence on essential procedural details for constitutional-amendment initiative could not be judicially supplied through construction; where the statute simply fails to provide a workable framework for that specific mode, courts must decline to fill so substantial a gap themselves.`},
+
+{tag:"effects", prompt:`A special wartime law was enacted solely to prevent hoarding of rice during a declared national food-supply crisis. Years after the crisis and its underlying emergency have both fully ended, a merchant is charged under this still-technically-unrepealed law for storing rice for entirely ordinary commercial purposes.`, options:[
+  `The merchant should not be convicted, since the very reason that gave rise to the law has ceased to exist, so the law itself should be treated as having ceased to operate`,
+  `The merchant should be convicted, since a statute remains fully enforceable according to its letter until formally repealed by Congress, regardless of changed conditions`,
+  `The merchant should be convicted, since emergency measures against hoarding are, by their nature, presumed permanent unless the statute itself states an expiration date`,
+  `The merchant should not be convicted, but only because hoarding offenses under Philippine law always carry an automatic five-year prescriptive period that has since lapsed`
+], correct:0, cite:`People v. Almuete, 69 SCRA 410 (1976)`, explain:`Cessante ratione legis, cessat et ipsa lex — when the reason for a law ceases, the law itself ceases. Almuete applied this maxim where the underlying rationale for a provision had disappeared; the same logic governs here, where the crisis the law addressed has ended entirely.`},
+
+{tag:"memorization", prompt:`A statute expressly grants a regulatory board the power "to issue licenses to operate," without expressly mentioning any power to suspend or revoke a license already issued for cause.`, options:[
+  `No, since every power exercised by an administrative board must be expressly and specifically enumerated in the statute, with no implied powers recognized`,
+  `Yes, since any regulatory board automatically possesses every power reasonably useful to the general subject matter it was created to oversee`,
+  `Yes, since the power to revoke is a necessary incident of, and impliedly included within, the express power to grant and administer licenses`,
+  `No, since the power to revoke a license is inherently greater than, and therefore never implied from, a mere power to issue one`
+], correct:2, cite:`Doctrine of necessary implication (Agpalo, Ch. 4)`, explain:`Under the doctrine of necessary implication, what is implied in a statute is as much a part of it as what is expressed; the power to revoke a license for cause is a reasonable incident to, and impliedly included in, the express power to issue and administer licenses.`},
+
+{tag:"exceptions", prompt:`A statute grants an agency head "supervisory power" over subordinate regional offices. Invoking this grant, the agency head suspends a regional director for alleged misconduct.`, options:[
+  `Yes, since the power to suspend a subordinate official is always a lesser, and therefore necessarily included, incident of any power of supervision granted by statute`,
+  `No, since the power of supervision does not include the power to suspend or remove, that power being greater than, and therefore excluded from, what was actually granted`,
+  `Yes, since supervisory power under Philippine administrative law is defined broadly enough to automatically encompass full disciplinary authority`,
+  `No, since only the President of the Republic, and no other public officer, may ever exercise the power to suspend a regional director`
+], correct:1, cite:`Grant of power excludes greater power (Agpalo, Ch. 4)`, explain:`While a grant of power includes lesser, incidental powers, it excludes powers greater than the one actually conferred. The power of supervision does not include the power to suspend or remove, since suspension is a greater, not a lesser, incident of supervisory authority.`},
+
+{tag:"requisites", prompt:`A newly enacted statute clearly grants displaced workers a right to a specific separation benefit but is entirely silent on the procedure or forum for enforcing that right.`, options:[
+  `Yes, since a substantive right granted by statute is unenforceable and effectively meaningless unless the same statute also expressly provides an enforcement procedure`,
+  `Yes, since courts may never supply a procedural mechanism the legislature itself failed to expressly provide, regardless of how clear the underlying right is`,
+  `No, but only because every labor statute in the Philippines automatically incorporates the general procedure found in the Labor Code by default`,
+  `No, since where a right is clearly established, the way must be cleared for its enforcement, and a remedy is implied even where the statute is silent as to procedure`
+], correct:3, cite:`Ubi jus, ibi remedium (Agpalo, Ch. 4)`, explain:`Under the maxim ubi jus, ibi remedium, once a right is clearly established by statute, a remedy for its enforcement is implied even where the statute does not expressly provide one; the statute's silence on procedure does not defeat the substantive right itself.`},
+
+{tag:"jurisprudence", prompt:`One section of a tax code grants the Court of Tax Appeals jurisdiction to review decisions of the "Commissioner of Customs," while a related section — evidently through a drafting oversight — instead refers to decisions of the "Collector of Customs" as directly appealable to the same court, even though the code's own organizational scheme makes Collector decisions reviewable by the Commissioner first.`, options:[
+  `Treat it as an obvious clerical error and read the second section as also referring to the Commissioner, consistent with the code's overall organizational scheme`,
+  `Strike down both sections as irreconcilably inconsistent, since courts have no authority to correct any discrepancy appearing in the text of a tax code`,
+  `Apply each section exactly as literally worded, creating two independent and mutually exclusive routes of appeal for the same category of customs decisions`,
+  `Refer the discrepancy to Congress for a curative amendment, declining meanwhile to exercise jurisdiction over appeals from either official at all`
+], correct:0, cite:`Rufino Lopez & Sons, Inc. v. CTA, 100 Phil. 850 (1957)`, explain:`Rufino Lopez & Sons corrected an analogous, demonstrable clerical error by reading the statute consistently with its evident overall scheme, rather than applying the erroneous reference literally in a way that would create an absurd, internally inconsistent appellate structure.`},
+
+{tag:"exceptions", prompt:`A statute clearly and deliberately sets a five-year prescriptive period for a specific cause of action — a period legislative deliberations show was the subject of extensive, contested debate before being deliberately fixed at five years rather than the ten years originally proposed. A litigant argues the court should "correct" the period to ten years, believing that would better serve substantial justice in her case.`, options:[
+  `Yes, since courts may always adjust a clearly established statutory period whenever doing so would better serve substantial justice in an individual case`,
+  `No, since the five-year period was a deliberate legislative policy choice, not a clerical slip, and rewriting it would constitute forbidden judicial legislation`,
+  `Yes, since any statutory period may be freely modified by courts so long as deliberations reveal that a longer period was originally proposed`,
+  `No, since prescriptive periods are exclusively within the jurisdiction of the Department of Justice to interpret, never within that of the regular courts`
+], correct:1, cite:`Limits on correcting errors — no judicial legislation (Agpalo, Ch. 4)`, explain:`Courts may correct only demonstrable clerical slips, never a deliberate legislative policy choice reflected in extensive debate. Rewriting a consciously fixed period, however sympathetic the individual case, would be forbidden judicial legislation encroaching on legislative prerogative.`},
+
+{tag:"memorization", prompt:`A provision, read in its entirety, contains a phrase that, if given full literal effect, would nullify the very right the rest of the same provision was clearly designed to grant, rendering the whole provision self-contradictory and senseless.`, options:[
+  `Give the phrase full literal effect regardless of the contradiction, since every single word in an enacted statute must always be given independent operative force`,
+  `Strike down the entire provision as void for internal contradiction, without attempting any reconciliation between the phrase and the rest of the text`,
+  `Refer the contradictory phrase to the implementing agency for an authoritative administrative ruling before any court may act on the provision at all`,
+  `Treat the nullifying phrase as surplusage and disregard it, since a construction that nullifies a statute's evident sense should generally be avoided in favor of one that gives the provision effect`
+], correct:3, cite:`Surplusage disregarded (Agpalo, Ch. 4)`, explain:`Where a word or phrase, given full literal effect, would nullify the statute's evident sense or render a provision self-contradictory, courts may treat it as surplusage and disregard it, in favor of a construction that gives the provision its intended operative effect.`},
+
+{tag:"effects", prompt:`A statute on succession provides a specific inheritance rule using the plural term "children" throughout its text. A decedent, however, is survived by only a single child.`, options:[
+  `Yes, since in the absence of a contrary intent, a plural word in a statute is understood to include the singular, and vice versa`,
+  `No, since the statute's exclusive use of the plural form "children" necessarily excludes every case involving only a single surviving child`,
+  `No, but only because inheritance statutes are always strictly construed against any party claiming an entitlement under an ambiguous term`,
+  `Yes, but only if the surviving child files a separate petition asking the court to judicially convert the plural term into its singular equivalent`
+], correct:0, cite:`Number and gender of words; Art. 996, Civil Code`, explain:`Absent a contrary intent shown by the context, a plural word in a statute is understood to include the singular, and vice versa — so "children" in a succession rule applies with equal force to a single surviving child.`},
+
+{tag:"requisites", prompt:`A law requires publication of a notice in the Official Gazette "three times, once a week for three consecutive weeks," but the Official Gazette, due to circumstances entirely outside any party's control, was not actually being published weekly during the relevant period, making strict, literal compliance genuinely impossible.`, options:[
+  `Require strict, literal compliance regardless of the Gazette's actual publication schedule, dismissing the case for failure to meet the requirement as worded`,
+  `Excuse compliance with the publication requirement altogether, since impossibility of literal compliance is treated as a complete waiver of the requirement itself`,
+  `Accept substantial compliance under the circumstances, since the law does not require an impossible act, and the party had no control over the Gazette's actual schedule`,
+  `Suspend the proceeding indefinitely until the Official Gazette resumes weekly publication, since no other outlet may substitute for this specific requirement`
+], correct:2, cite:`Nemo tenetur ad impossibile; Lim Co Chui v. Posadas, 47 Phil. 461 (1925)`, explain:`The law does not require the impossible. Where literal compliance with a publication requirement becomes genuinely impossible through no fault of the party, substantial compliance with the requirement's other, achievable aspects is generally accepted.`},
+
+{tag:"jurisprudence", prompt:`Petitioners ask an election body to conduct a special voter-registration period so close to election day that, given the printing, verification, and logistical steps legally required beforehand, compliance is genuinely and physically impossible within the remaining time.`, options:[
+  `No, since where time constraints make compliance genuinely impossible, the body cannot be faulted for declining to act, as the law does not require an impossible act`,
+  `Yes, since the statutory grant of stand-by registration authority must always be exercised whenever any petitioner formally requests its use, however impracticable`,
+  `Yes, since election-related rights are given such primacy that even genuine practical impossibility can never justify an election body's refusal to act`,
+  `No, since the authority to conduct special registration was never, in the first place, validly delegated to any election body under Philippine election law`
+], correct:0, cite:`Akbayan-Youth v. COMELEC, 355 SCRA 318 (2001)`, explain:`The Court held that where time constraints and surrounding circumstances make special registration genuinely impossible to accomplish before an election, the election body cannot be faulted for declining to act, consistent with the maxim that the law does not require the impossible.`},
+
+{tag:"memorization", prompt:`A court, faced with a plainly worded provision, is invited by a litigant to consider "what the legislature probably meant," even though no ambiguity, absurdity, or injustice of any kind is shown in the provision's clear, literal application.`, options:[
+  `Yes, since a court's very first duty in every case is to search for probable legislative intent, entirely independent of the statute's actual words`,
+  `Yes, since departure from a clear statute's literal words is always preferred over strict application whenever any litigant simply requests it`,
+  `No, since courts are absolutely forbidden from ever considering legislative intent even where genuine ambiguity is later shown in a statute's wording`,
+  `No, since where a statute is clear and its literal application produces no absurdity or injustice, the plain-meaning rule governs and construction is unnecessary`
+], correct:3, cite:`Literal meaning as the general rule; departure as the exception (Agpalo, Ch. 4)`, explain:`Where a statute's literal application produces no absurdity, injustice, or defeat of purpose, the plain-meaning rule controls, and there is simply no occasion for construction — courts do not speculate about "probable" intent behind an already-clear text.`},
+
+{tag:"jurisprudence", prompt:`A manning contract clause, if read with rigid literalism, would deny a seafarer any compensation whatsoever for an injury sustained in the actual course of his sanctioned duties, an outcome plainly contrary to the protective purpose of the governing regulatory scheme for overseas workers.`, options:[
+  `Read literally and strictly regardless of the harsh result, since contractual clauses affecting seafarers must always be enforced exactly as worded`,
+  `Declare the entire clause void for uncertainty, leaving the seafarer with no contractual remedy of any kind under the scheme`,
+  `Read to avoid the unjust, absurd result, construing the clause consistently with the protective purpose of the regulatory scheme governing overseas workers`,
+  `Read literally, but only because any resulting unfairness is deemed a matter exclusively for administrative, not judicial, correction under this scheme`
+], correct:2, cite:`Soriano v. Offshore Shipping and Manning Corp., 177 SCRA 513 (1989)`, explain:`A literal interpretation is to be rejected where it would be unjust or lead to absurd results. Soriano applied this principle to construe a manning-contract provision consistently with the protective purpose of the overseas-workers regulatory scheme, rather than a rigid literalism that would defeat that purpose.`},
+
+{tag:"requisites", prompt:`A workplace-safety statute's literal terms name several specific categories of hazardous machinery requiring safety guards but do not literally list a newly invented type of machine posing an identical class of hazard the statute was clearly designed to address — a device that did not yet exist when the statute was drafted.`, options:[
+  `No, since a safety statute may never be applied to any device not specifically and individually named in the statute's original enacted text`,
+  `Yes, since a statute may be extended to cases not literally within its named terms so long as the new case genuinely comes within its spirit and evident intent`,
+  `Yes, since every safety statute automatically covers all future technology without limitation, regardless of any actual similarity of hazard`,
+  `No, since extending coverage to unnamed devices would violate the constitutional prohibition against ex post facto laws in every regulatory context`
+], correct:1, cite:`What is within the spirit is within the law (Agpalo, Ch. 4)`, explain:`A statute may properly be extended to cases not within its literal terms so long as they come within its spirit and evident intent; a genuinely analogous new device posing the identical class of hazard the statute was designed to address falls within that spirit.`}
+];
+
+const BANK_CH5 = [
+{tag:"memorization", prompt:`A special law expressly defines "employee," for purposes of that law alone, to include only persons paid on a monthly basis, excluding daily-wage workers. A daily-wage worker, relying on the term's broader ordinary meaning in everyday usage, claims coverage under this particular law.`, options:[
+  `The statutory definition controls, since where a statute itself defines a term, that definition governs irrespective of the word's meaning in ordinary usage`,
+  `The ordinary, everyday meaning controls, since courts are never bound by a legislature's own definition where it departs from common usage of the term`,
+  `The ordinary meaning controls, but only for penal statutes, while the statutory definition controls exclusively for every non-penal statute`,
+  `Neither controls; the term must instead be defined solely by reference to a general, all-purpose dictionary's entry for the identical word`
+], correct:0, cite:`Statutory definitions control (Agpalo, Ch. 5)`, explain:`Where a statute itself defines a word or phrase, that legislative definition controls the term's meaning within that statute, irrespective of any broader or different meaning the word may carry in ordinary, everyday usage.`},
+
+{tag:"exceptions", prompt:`A code expressly defines "vehicle," for purposes of one specific chapter regulating land transportation, to include watercraft as well, evidently an oversight carried over from an earlier draft. Applying that definition literally to a separate chapter governing maritime safety would produce results directly contrary to that chapter's own evident purpose, creating outright incongruity with its other provisions.`, options:[
+  `Yes, since a single statutory definition, once given anywhere in a code, must always control every other chapter of that same code without exception`,
+  `Yes, since courts have no discretion to decline applying an express statutory definition, regardless of the resulting incongruity between chapters`,
+  `No, since statutory definitions, once given anywhere in a code, are automatically treated as surplusage and never binding on any provision`,
+  `No, since a statutory definition need not be extended where doing so would create incongruity or defeat the evident purpose of a different specific provision`
+], correct:3, cite:`Qualification of the rule on statutory definitions (Agpalo, Ch. 5)`, explain:`The rule that a statutory definition controls yields where mechanically applying it to a different provision would create incongruity or defeat that provision's own evident purpose — the exact situation here, where importing a transportation-chapter definition would derail the maritime safety chapter's own object.`},
+
+{tag:"requisites", prompt:`A statute prohibits engaging in "gambling, betting, or other similar games of chance" within a public park. A vendor is cited under this provision for selling raffle tickets for a legitimate, government-authorized charity sweepstakes conducted at the park.`, options:[
+  `As covering every activity involving any element of chance whatsoever, since the phrase must be read in complete isolation from its surrounding words`,
+  `As covering only illegal or unauthorized games of chance, taking its color and meaning from "gambling" and "betting," terms it is paired alongside in the statute`,
+  `As covering only games played exclusively by children, since "similar" is understood to narrow the phrase strictly by the age of the participants`,
+  `As covering only games explicitly licensed by a national gaming regulator, since "similar" is understood to require formal government licensure`
+], correct:1, cite:`Noscitur a sociis; Magtajas v. Pryce Properties Corp., 234 SCRA 255 (1994)`, explain:`Noscitur a sociis directs that an ambiguous word takes its color and meaning from associated words in the same list. "Other similar games of chance," paired with "gambling" and "betting," is understood to cover illegal or unauthorized gambling — not a lawful, government-authorized sweepstakes.`},
+
+{tag:"memorization", prompt:`A statute exempts from a certain regulation "pistols, revolvers, and other similar firearms." A collector argues that his antique cannon, being technically a "firearm" in the broadest possible dictionary sense, should also fall within the exemption.`, options:[
+  `Yes, since "firearms" in its broadest dictionary sense automatically includes every weapon that discharges a projectile, cannons included, regardless of context`,
+  `Yes, since ejusdem generis requires courts to give the broadest possible reading to any general term following a specific enumeration`,
+  `No, since "other similar firearms" is restricted to firearms of the same class as pistols and revolvers — handheld, personal firearms — which a cannon is not`,
+  `No, since antique weapons of every kind are automatically and categorically excluded from any statute using the general term "firearms" at all`
+], correct:2, cite:`Ejusdem generis (Agpalo, Ch. 5)`, explain:`Under ejusdem generis, a general term following an enumeration of specific words of a particular class is restricted to things of that same class. Pistols and revolvers form a class of handheld, personal firearms — a class a cannon simply does not share, whatever its literal dictionary status as a "firearm."`},
+
+{tag:"exceptions", prompt:`A statute regulates "pens, lighters, fans, flashlights, athletic goods, materials, and the like" as electoral campaign giveaways. The surrounding text and legislative deliberations make plain the enumeration was meant only as illustrative examples of tangible campaign gadgets generally, not as a closed, defining class.`, options:[
+  `Ejusdem generis applies rigidly regardless of legislative intent, restricting "and the like" strictly to items sharing every physical trait common to pens, lighters, and fans`,
+  `The phrase "and the like" is void for vagueness and must be struck from the statute entirely, leaving only the specifically named items enforceable`,
+  `The phrase "and the like" is read as referring exclusively to items of equal or lesser monetary value than the least expensive item specifically named`,
+  `Ejusdem generis does not strictly confine the phrase, since the doctrine yields where the enumeration is shown to be merely illustrative rather than a closed class`
+], correct:3, cite:`Limitations of ejusdem generis; Mutuc v. COMELEC, 36 SCRA 228 (1970)`, explain:`Ejusdem generis does not apply where the enumeration is shown, by the statute's own structure and history, to be merely illustrative rather than an exhaustive, defining class — as Mutuc v. COMELEC recognized in declining to confine "and the like" to the narrow physical traits of the named items.`},
+
+{tag:"memorization", prompt:`A statute expressly authorizes a court to award "actual damages and attorney's fees" to a prevailing party in a specific type of action, without mentioning moral or exemplary damages anywhere in its text or legislative history.`, options:[
+  `Yes, since the express mention of certain remedies is presumed to silently authorize every other conceivable remedy a court might consider appropriate`,
+  `No, since the express mention of actual damages and attorney's fees is generally understood to exclude other remedies, such as moral damages, not similarly named`,
+  `Yes, since moral damages are automatically read into every civil statute regardless of whether the legislature expressly named them among the available remedies`,
+  `No, since attorney's fees and actual damages, once granted together, are always treated as the exclusive and maximum possible award under Philippine law`
+], correct:1, cite:`Expressio unius est exclusio alterius (Agpalo, Ch. 5)`, explain:`Under expressio unius est exclusio alterius, the express mention of certain remedies — here, actual damages and attorney's fees — is generally understood to exclude other remedies not similarly named, such as moral damages.`},
+
+{tag:"exceptions", prompt:`A statute lists several examples of "unfair labor practices," expressly stating in its own text that the enumeration given is "not exclusive" and is meant merely "by way of illustration." A litigant nonetheless argues that any practice not literally named in the list must, under expressio unius, necessarily fall outside the statute's coverage.`, options:[
+  `The argument is incorrect, since expressio unius is merely an auxiliary rule that does not apply where the enumeration is expressly stated to be illustrative rather than exclusive`,
+  `The argument is correct, since expressio unius is a rigid rule of law admitting no exception once a legislature has provided any list of specific examples`,
+  `The argument is correct, since any statutory list is conclusively presumed exclusive unless a separate, later statute expressly states otherwise`,
+  `The argument is incorrect, but only because labor legislation is categorically exempted from expressio unius under a specific, express statutory carve-out`
+], correct:0, cite:`Limitations of expressio unius (Agpalo, Ch. 5)`, explain:`Expressio unius is merely an auxiliary rule of interpretation, not a rigid rule of law, and it does not apply where the statute's own text expressly signals that the enumeration is illustrative rather than exclusive — precisely the qualification present here.`},
+
+{tag:"requisites", prompt:`A statute listing persons disqualified from holding a particular office names "convicted felons, insolvent debtors, and persons previously removed from public office for cause," but does not mention persons who have merely resigned pending an administrative investigation — a category the legislative deliberations show was actually considered and consciously left out during drafting.`, options:[
+  `Yes, since casus omissus always permits a court to add any category to a statutory list so long as doing so would arguably serve the statute's general policy`,
+  `Yes, since every disqualification statute must, as a matter of law, be read as broadly as possible against any person seeking public office`,
+  `No, since where an omission from an enumeration is shown to have been deliberate, it is presumed intentional, and a court may not supply what the legislature consciously left out`,
+  `No, but only because disqualification statutes are, without exception, entirely a matter for the Civil Service Commission rather than judicial construction`
+], correct:2, cite:`Doctrine of casus omissus (Agpalo, Ch. 5)`, explain:`Under the doctrine of casus omissus, a case, thing, or person omitted from a statutory enumeration is presumed omitted intentionally, and courts may not add it — particularly where, as here, the legislative record affirmatively shows the omission was deliberate rather than inadvertent.`},
+
+{tag:"jurisprudence", prompt:`A statute reads: "No person convicted of a crime involving moral turpitude, or against public order, who has not been granted amnesty, shall be eligible for the position." A person convicted of a crime against public order — but who was never granted, nor even applied for, amnesty — argues that the phrase "who has not been granted amnesty" qualifies only "against public order," the term nearest to it, leaving the separate class of "moral turpitude" untouched by the qualifier.`, options:[
+  `As modifying both antecedents equally in every case, since the doctrine of last antecedent requires a qualifying phrase to reach back and cover an entire preceding series`,
+  `As modifying only the nearest antecedent, "against public order," since the doctrine of last antecedent ordinarily confines a qualifying phrase to the term immediately preceding it`,
+  `As modifying neither antecedent, since any qualifying phrase in a disqualification statute is treated as pure surplusage and is disregarded as a matter of law`,
+  `As modifying only "moral turpitude," the antecedent listed first, since the doctrine of last antecedent is understood to always reach back to the earliest term listed`
+], correct:1, cite:`Doctrine of last antecedent (Agpalo, Ch. 5)`, explain:`The doctrine of last antecedent ordinarily confines a qualifying phrase to the word or phrase immediately preceding it, especially where separated from the more distant antecedent by other language — here, limiting "who has not been granted amnesty" to "against public order" alone.`},
+
+{tag:"exceptions", prompt:`A statute penalizes "any person who forges, alters, or utters as genuine any forged instrument, knowing the same to be forged." The provision's structure and history show the three acts — forging, altering, and uttering — were meant to be treated as one integrated class of culpable conduct sharing a single knowledge requirement. A prosecutor argues that "knowing the same to be forged" modifies only "utters," the nearest antecedent, so forging or altering may be punished even without any showing of knowledge.`, options:[
+  `No, since where the statute's structure and evident purpose show an integrated series meant to share one qualifier, a converse application extends the qualifier to the entire series`,
+  `Yes, since the doctrine of last antecedent, without any recognized exception, always confines a qualifying phrase strictly to the single word immediately preceding it`,
+  `Yes, since criminal statutes are always construed on the broadest possible reading of every operative verb they contain, knowledge requirements notwithstanding`,
+  `No, but only because forgery statutes are, by an express statutory exception, entirely excluded from the doctrine of last antecedent`
+], correct:0, cite:`Converse application of the doctrine of last antecedent (Agpalo, Ch. 5)`, explain:`Where a statute's structure and evident purpose show a series of terms was meant to be read together as a single integrated class sharing one qualifier, courts apply the converse of the ordinary last-antecedent rule, extending the qualifier to the entire series rather than confining it to the nearest term alone.`},
+
+{tag:"memorization", prompt:`A statute states: "The chairman shall be appointed by the President, and the members, by the Secretary." A litigant argues that, read literally in sequence, the President should be understood as appointing both the chairman and the members, since "appointed by the President" appears first in the sentence.`, options:[
+  `The entire sentence is read as a single undivided clause, so that the President alone appoints both the chairman and all of the members`,
+  `The entire sentence is treated as ambiguous and void for uncertainty, requiring a separate implementing rule before either official may act`,
+  `Each phrase is distributed to its own respective, matching antecedent in order — the President appoints the chairman, and the Secretary appoints the members`,
+  `Each phrase is read in reverse order of appearance, so that the Secretary appoints the chairman while the President appoints the members`
+], correct:2, cite:`Reddendo singula singulis (Agpalo, Ch. 5)`, explain:`Under reddendo singula singulis, each word or phrase in a statutory sentence is distributed to its own respective, matching antecedent in the order given — here, assigning the chairman's appointment to the President and the members' appointment to the Secretary, as the sentence's structure plainly intends.`},
+
+{tag:"requisites", prompt:`A statute's main clause broadly authorizes a government agency to regulate "all forms of outdoor advertising," immediately followed by a proviso stating: "Provided, that political campaign materials posted during an election period shall be regulated instead by the Commission on Elections." A litigant argues the proviso should also remove ordinary commercial billboards from the agency's regulatory authority.`, options:[
+  `Yes, since a proviso, once inserted anywhere in a statute, automatically qualifies and narrows every clause found throughout the entire remainder of the statute`,
+  `Yes, since provisos are, without exception, construed as broadly as possible against the government agency named in the statute's main clause`,
+  `No, since a proviso can never validly remove any matter from an agency's regulatory jurisdiction, regardless of how the statute's text is actually worded`,
+  `No, since a proviso ordinarily qualifies only the clause it immediately follows — here, removing political campaign materials alone, absent a clear indication of broader intended scope`
+], correct:3, cite:`What a proviso qualifies (Agpalo, Ch. 5)`, explain:`A proviso ordinarily qualifies or restrains only the clause it immediately follows, unless the statute's language clearly shows a legislative intent for it to have a wider scope. Here, the proviso's own terms address only political campaign materials, giving no indication it was meant to reach ordinary commercial advertising as well.`},
+
+{tag:"jurisprudence", prompt:`A statute grants a particular tax exemption to "all properties owned by the Republic of the Philippines," without further qualification. The tax collector argues the exemption should be understood to cover only property held by the Republic in its sovereign or governmental capacity, and not property held in a proprietary or patrimonial capacity, even though the statute itself draws no such distinction.`, options:[
+  `Sustain the collector's distinction, because courts should always read a narrowing qualification into a tax exemption statute, even one the legislature never actually wrote`,
+  `Sustain the collector's distinction, because tax exemption statutes, unlike other statutes, are automatically exempt from the general rule against judicially supplied distinctions`,
+  `Reject the collector's distinction, because where the law itself draws no distinction between governmental and proprietary capacity, the courts should not supply one`,
+  `Reject the collector's distinction, but only because the Republic is, under a wholly separate statute, always immune from every form of local or national taxation`
+], correct:2, cite:`SSS v. City of Bacolod, 115 SCRA 412 (1982)`, explain:`Ubi lex non distinguit, nec nos distinguere debemus — where the law does not distinguish, courts should not distinguish. SSS v. City of Bacolod applied this precept to reject a governmental-versus-proprietary-capacity distinction the tax exemption statute itself never actually drew.`},
+
+{tag:"effects", prompt:`A statute conditions eligibility for a benefit on a claimant being "a widow and/or a person with at least three dependent minor children." A claimant is a widow with no dependent minor children at all.`, options:[
+  `Yes, since "and/or" gives effect to both the conjunctive and disjunctive senses of the phrase, so satisfying either one of the stated conditions alone suffices for eligibility`,
+  `No, since "and/or" is treated exactly like the strict conjunctive "and" alone, requiring a claimant to satisfy both stated conditions simultaneously`,
+  `Yes, but only if the claimant additionally proves she satisfies some third, unstated condition the statute never actually mentions anywhere in its text`,
+  `No, since "and/or" is treated exactly like the strict disjunctive "or" alone, which under this statute is understood to exclude every widow from eligibility entirely`
+], correct:0, cite:`"And/or" construed (Agpalo, Ch. 5)`, explain:`"And/or" is used precisely to give effect to both the conjunctive and disjunctive senses of a phrase, so that satisfying either condition alone suffices. A widow with no dependent minor children still qualifies, since she independently satisfies the first alternative.`},
+
+{tag:"memorization", prompt:`A statute uses the term "action," a word that has long acquired a settled, technical legal meaning in Philippine procedural law as an ordinary suit filed in court to enforce or protect a right. A litigant argues the term should instead be read in a looser, colloquial sense to include a mere motion to intervene filed within an already pending case.`, options:[
+  `In the litigant's proposed colloquial sense, since ordinary, everyday usage always controls over any competing technical legal meaning a term might carry`,
+  `In its settled technical legal sense, but only where the statute using the term happens to be a purely penal, rather than a procedural, enactment`,
+  `In the litigant's proposed colloquial sense, but only where the statute using the term was enacted more than fifty years before the present case`,
+  `In its settled technical legal sense, since words with an established technical or legal meaning are presumed used by the legislature in that established sense`
+], correct:3, cite:`Manila Herald Publishing Co. v. Ramos, 88 Phil. 93 (1951)`, explain:`Words that have acquired a settled technical or legal meaning are presumed to be used by the legislature in that same established sense. "Action," having a well-defined procedural meaning as a suit filed in court, is not readily broadened to include a mere motion to intervene.`},
+
+{tag:"effects", prompt:`A tariff statute exempts from duty any article that has been "disposed of" before the statute's effective date, without further definition. Evidence shows that, among merchants and traders in the relevant trade, "disposed of" is commonly and consistently understood to mean "sold" — a narrower sense than its everyday lay meaning of simply "parted with" or "gotten rid of."`, options:[
+  `The broader lay meaning of merely parting with an article, since tariff and customs statutes are always construed using ordinary, non-technical, everyday language exclusively`,
+  `The narrower commercial or trade meaning of "sold," since words used in tariff and commerce-related statutes are given the meaning generally understood among merchants and traders`,
+  `Neither meaning controls; the term is instead defined solely by whatever definition, if any, appears in the general, non-technical civil law dictionary`,
+  `The broader lay meaning, but only because the statute in question fails to expressly identify itself as a tariff or customs-related enactment in its own title`
+], correct:1, cite:`Asiatic Petroleum Co. v. CIR, 69 Phil. 396 (1940)`, explain:`Words used in tariff, commerce, and revenue statutes are generally given the meaning commonly understood among merchants and traders in the relevant trade — here, the narrower, settled commercial meaning of "sold," rather than the word's looser everyday sense.`},
+
+{tag:"requisites", prompt:`A single statute uses the word "action" in one section to mean an ordinary judicial suit generally, while in an entirely different section of the same statute, evident context strongly indicates the same word was meant more narrowly, referring only to the specific commencement of a civil case by the filing of a complaint.`, options:[
+  `Yes, since the meaning of a term is properly dictated by the particular context in which it is used, and context may reasonably assign a different sense to the word in different sections`,
+  `No, since a single word appearing anywhere in a statute must always be given the exact identical meaning in absolutely every section of that same statute`,
+  `No, since using the same word in two different senses within a single statute automatically renders the entire statute void for internal ambiguity`,
+  `Yes, but only where the statute expressly states, in a separate definitions section, that its terms are permitted to vary freely between different sections`
+], correct:0, cite:`Verba accipienda sunt secundum materiam (Agpalo, Ch. 5)`, explain:`A word is to be understood in the context in which it is used; the meaning of a term is dictated by context, and it is not improper for the same word to carry different, context-appropriate shades of meaning across different sections of a single statute.`}
+];
+
+const TOPICS = {
+  ch1: {name:"Statutes", eyebrow:"AGPALO · CHAPTER 1", desc:"Kinds & duration of statutes; citation by era; legislative process; parts of a statute; presidential issuances; delegation; publication & effectivity; computation of time.", bank: BANK_CH1},
+  ch2: {name:"Construction & Interpretation", eyebrow:"AGPALO · CHAPTER 2", desc:"Construction vs. interpretation; when courts may construe; construction as a judicial function; stare decisis; prospectivity; limits on the power to construe.", bank: BANK_CH2},
+  ch3: {name:"Aids to Construction", eyebrow:"AGPALO · CHAPTER 3", desc:"Intrinsic aids (title, preamble, punctuation) & extrinsic aids (intent, mischief rule, legislative history, contemporaneous construction).", bank: BANK_CH3},
+  ch4: {name:"Adherence to / Departure from Literal Language", eyebrow:"AGPALO · CHAPTER 4", desc:"Verba legis & dura lex sed lex; when courts may depart from literal wording; ratio legis; necessary implication; correcting clerical errors; surplusage.", bank: BANK_CH4},
+  ch5: {name:"Interpretation of Words & Phrases", eyebrow:"AGPALO · CHAPTER 5", desc:"Statutory definitions; noscitur a sociis; ejusdem generis; expressio unius; casus omissus; last antecedent; reddendo singula singulis; proviso vs. exception.", bank: BANK_CH5},
+  all:  {name:"All Chapters 1–5", eyebrow:"COMBINED PRACTICE", desc:"One mixed pool drawing from all five chapters together.", bank: null}
+};
+
+const TAG_LABELS = {memorization:"Memorization", requisites:"Requisites", exceptions:"Exceptions", effects:"Effects / consequences", jurisprudence:"Jurisprudence"};
+const TAG_ORDER = ["memorization","requisites","exceptions","effects","jurisprudence"];
+let secondsPerQuestion = 60;
+
+let currentTopic = null;
+let QUESTIONS = [];
+let HISTORY_KEY = "";
+let activeFilters = new Set(TAG_ORDER);
+let pool = [];
+let poolDisplay = [];
+let answers = [];
+let flags = new Set();
+let currentIdx = 0;
+let timerInterval = null;
+let timeLeft = 0;
+let timerEnabled = true;
+let lastMissedQs = [];
+
+function buildTopicCards(){
+  const wrap = document.getElementById('topic-cards');
+  wrap.innerHTML = '';
+  ['ch1','ch2','ch3','ch4','ch5','all'].forEach(key=>{
+    const t = TOPICS[key];
+    const card = document.createElement('div');
+    card.className = 'tcard' + (key==='all' ? ' combo' : '');
+    const count = key==='all' ? (BANK_CH1.length+BANK_CH2.length+BANK_CH3.length+BANK_CH4.length+BANK_CH5.length) : t.bank.length;
+    card.innerHTML = `<p class="tname">${t.name}</p><p class="tdesc">${t.desc}</p><p class="tcount">${count} questions</p>`;
+    card.onclick = () => chooseTopic(key);
+    wrap.appendChild(card);
+  });
+}
+
+const ALAC = {
+  "Chapter 1 — Statutes": [
+    {
+      fact:"A newly enacted special law provides: \"This Act shall take effect immediately upon approval by the President.\" It is approved on January 5, 2025, but is published in full in a newspaper of general circulation only on March 1, 2025. On January 20, 2025, Mrs. Reyes engaged in an activity that the law prohibits, unaware that any such law existed.",
+      question:"May Mrs. Reyes be held liable under the law for her January 20, 2025 act? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, Mrs. Reyes may not be held liable, because the law had not yet taken effect on January 20, 2025.</p><p><b>Legal Basis:</b> Article 2 of the Civil Code, as amended, requires that a statute be published in full, either in the Official Gazette or in a newspaper of general circulation, before it may take effect; publication is indispensable to due process. Jurisprudence, in Tañada v. Tuvera, holds that a clause stating a law takes effect \"immediately upon approval\" fixes the reference point for effectivity as the date of publication, not as a waiver of publication itself — even the legislature cannot dispense with this requirement by its own say-so.</p><p><b>Application:</b> Although the law purports to take effect \"immediately upon approval,\" its actual effectivity could only begin once it was properly published. Since publication occurred only on March 1, 2025, the law was not yet in force on January 20, 2025, when Mrs. Reyes acted.</p><p><b>Conclusion:</b> Mrs. Reyes cannot be held liable for an act committed before the law's actual effectivity date.</p>"
+    }
+  ],
+  "Chapter 2 — Construction & Interpretation": [
+    {
+      fact:"The Supreme Court, construing a tax code provision, rules that the salaries of members of a certain constitutional commission are not covered by a particular withholding tax, reasoning that Congress's own deliberations show it never intended the provision to reach constitutional officers. Displeased, Congress passes a joint resolution \"clarifying\" that the provision was always meant to cover such salaries, and directs the tax agency to disregard the Court's ruling going forward, without amending the tax code's actual text.",
+      question:"Is the resolution effective to override the Court's construction? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the resolution is not effective to override the Court's construction.</p><p><b>Legal Basis:</b> The law generally provides that construing an ambiguous statute is a function of the judiciary, not the legislature. Jurisprudence, in Endencia v. David and Perfecto v. Meer, holds that once the Supreme Court has interpreted a statute, Congress cannot simply declare that construction erroneous by resolution — it may only achieve a different result by validly amending or repealing the statute itself, subject to constitutional limits.</p><p><b>Application:</b> Here, Congress did not amend the tax code's text; it merely passed a resolution declaring the Court's construction wrong and directing the agency to disregard it. This is precisely the kind of legislative override that Endencia and Perfecto forbid, since it invades the judicial function of construction without going through the constitutionally required process of amendment.</p><p><b>Conclusion:</b> The resolution does not bind the courts or alter the statute's meaning; only a valid legislative amendment could change the result the Court reached.</p>"
+    }
+  ],
+  "Chapter 3 — Aids to Construction": [
+    {
+      fact:"A special decree's operative provision, read literally, punishes \"the mere possession of any bladed weapon exceeding six inches in length,\" without further qualification. The decree's preamble, however, recites that it was enacted \"to curb the resort to blade weapons in perpetrating crimes of violence and public disorder.\" Mang Kikoy, a retired butcher, is charged under the decree for possessing his old, six-and-a-half-inch boning knife, found stored in his kitchen, with no evidence whatsoever of any intent to use it unlawfully.",
+      question:"May the preamble be used to limit Mang Kikoy's liability under the decree? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, the preamble may properly be used to narrow the decree's literal coverage, and Mang Kikoy should not be held liable absent some showing of unlawful intent.</p><p><b>Legal Basis:</b> The law generally provides that a preamble is resorted to as an aid to construction only where the statute's operative text is ambiguous, or where a purely literal reading would produce a result manifestly at odds with the statute's evident objective. Jurisprudence, in People v. Purisima, applied the preamble of a similarly worded decree on illegal possession of weapons to hold that the offense requires some nexus to the intent to commit crimes against persons or property, rather than covering the mere, innocent possession of an implement in the ordinary course of daily life.</p><p><b>Application:</b> A purely literal reading of the decree's operative provision would sweep in an old kitchen knife kept by a retired butcher with no criminal purpose whatsoever — a result plainly at odds with the decree's stated objective of curbing blade weapons used in perpetrating violence. The preamble's evident purpose properly narrows the offense to possession attended by some unlawful intent, which the facts here do not show.</p><p><b>Conclusion:</b> Mang Kikoy should not be held liable under the decree, since his possession of the knife bears no relation to the mischief the decree, read through its preamble, was actually designed to address.</p>"
+    },
+    {
+      fact:"For over twenty years, the Bureau charged with implementing a tax exemption provision has consistently construed \"raw agricultural products\" to exclude coffee that has been roasted and ground, treating roasting and grinding as processing steps that take the product outside the exemption. A coffee company challenges a recent assessment, arguing for the first time that roasted, ground coffee should still be considered \"raw\" since no chemical additive was introduced.",
+      question:"Should the Bureau's long-standing construction be sustained? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, the Bureau's long-standing construction should generally be sustained.</p><p><b>Legal Basis:</b> The law provides that where a statutory term is genuinely ambiguous, the contemporaneous construction placed upon it by the administrative agency charged with its enforcement is entitled to great weight, particularly where that construction has been applied consistently over a long period, unless it is shown to be clearly erroneous or in conflict with the statute's evident intent.</p><p><b>Application:</b> The Bureau has consistently treated roasting and grinding as processing steps removing coffee from the \"raw agricultural product\" exemption for over two decades — a reasonable reading consistent with the ordinary understanding that \"raw\" refers to an unprocessed state. The company's belated, alternative reading does not show the Bureau's settled construction to be clearly erroneous; it merely proposes a different, but not obviously superior, interpretation.</p><p><b>Conclusion:</b> The Bureau's long-standing contemporaneous construction should be sustained, and the assessment upheld.</p>"
+    }
+  ],
+  "Chapter 4 — Adherence to / Departure from Literal Language": [
+    {
+      fact:"A special penal provision criminalizes a tenant's transfer of any part of a shared harvest to another tenant without the landowner's written consent, a rule enacted specifically to protect the share-tenancy system then prevailing in agriculture. Years later, Congress abolishes share tenancy nationwide and converts all such relationships into agricultural leasehold. Mang Ambo, a leasehold farmer, is charged under the old provision for sharing part of his harvest with a neighboring farmer without the landowner's written consent.",
+      question:"Should Mang Ambo be convicted under the old provision? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, Mang Ambo should not be convicted.</p><p><b>Legal Basis:</b> The maxim cessante ratione legis, cessat et ipsa lex provides that when the reason for a law ceases to exist, the law itself ceases to have application. Jurisprudence, in People v. Almuete, applied this maxim to a materially identical provision, holding that its rationale — protecting the share-tenancy relationship — disappeared once share tenancy was abolished by law.</p><p><b>Application:</b> The provision under which Mang Ambo is charged existed solely to protect the share-tenancy arrangement between a tenant and a landowner. Since share tenancy no longer exists as a legal relationship, having been converted to leasehold, the very reason for the provision's existence has ceased, and with it, the provision's application to Mang Ambo's leasehold relationship.</p><p><b>Conclusion:</b> Mang Ambo cannot be convicted under a provision whose underlying rationale no longer applies to his present leasehold relationship.</p>"
+    }
+  ],
+  "Chapter 5 — Interpretation of Words & Phrases": [
+    {
+      fact:"A city ordinance exempts from a nighttime noise prohibition \"fire trucks, ambulances, police vehicles, and other similar vehicles\" responding to an emergency. A resident's personal car, retrofitted with a loud siren he installed himself so he could rush his pregnant wife to the hospital, is impounded for violating the noise ordinance, and he invokes the exemption, arguing his car became a vehicle \"similar\" to the ones named.",
+      question:"Does the resident's car fall within the ordinance's exemption? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the resident's car does not fall within the exemption as worded.</p><p><b>Legal Basis:</b> Under the doctrine of ejusdem generis, a general term following an enumeration of specific things of a particular class is restricted to things of the same kind or class as those enumerated. Fire trucks, ambulances, and police vehicles share the common class of officially operated emergency-response vehicles.</p><p><b>Application:</b> The resident's personal car, though used for an undeniably urgent and sympathetic personal purpose, is not an officially operated emergency-response vehicle of the same class as those specifically enumerated; a privately owned car retrofitted with a siren does not share the class-defining trait — official emergency-response status — common to fire trucks, ambulances, and police vehicles.</p><p><b>Conclusion:</b> The resident's car does not fall within \"other similar vehicles\" under the ordinance's exemption, though his sympathetic circumstances might properly be raised as a mitigating factor in any enforcement proceeding.</p>"
+    },
+    {
+      fact:"A statute grants a specific retirement gratuity benefit to \"permanent employees and casual employees who have rendered at least five years of continuous service,\" without mentioning contractual employees anywhere in its text or legislative history. A contractual employee with eight years of continuous, uninterrupted service applies for the same gratuity, arguing that fairness demands his inclusion.",
+      question:"Is the contractual employee entitled to the gratuity? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the contractual employee is generally not entitled to the gratuity under this statute.</p><p><b>Legal Basis:</b> Under the maxim expressio unius est exclusio alterius, the express mention of certain classes of employees in a statute ordinarily implies the exclusion of other classes not mentioned.</p><p><b>Application:</b> The statute specifically names permanent and casual employees as the beneficiaries of the gratuity, without mentioning contractual employees anywhere in its text, suggesting a deliberate legislative choice to exclude that class, notwithstanding the sympathetic length of his actual service.</p><p><b>Conclusion:</b> The contractual employee is not entitled to the gratuity under the statute's present wording; his recourse, if any, lies with the legislature to amend the statute's coverage, not with the courts through construction.</p>"
+    },
+    {
+      fact:"A statute reads: \"Any government employee who receives a gift, gratuity, or favor from a person having a pending transaction with his office, knowing the giver to have such a pending transaction, shall be administratively liable.\" An employee who received an unsolicited gift from a stranger — later discovered to have a pending transaction with his office, a fact the employee genuinely did not know at the time — is charged administratively, with the prosecuting officer arguing that the knowledge requirement modifies only the word \"favor,\" the term immediately preceding it, and not \"gift\" or \"gratuity.\"",
+      question:"Is the prosecuting officer's reading correct? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the prosecuting officer's narrow reading is likely incorrect.</p><p><b>Legal Basis:</b> The doctrine of last antecedent ordinarily confines a qualifying phrase to the word or phrase immediately preceding it, especially where set off by a comma; but courts recognize a converse application extending the qualifier to an entire preceding series where the statute's structure and evident purpose show the enumerated items were meant to be treated as a single, integrated class.</p><p><b>Application:</b> \"Gift, gratuity, or favor\" are presented together as a single class of prohibited benefits, and nothing in the statute suggests the legislature meant to punish knowing receipt of a \"favor\" while punishing even innocent receipt of a \"gift\" or \"gratuity\" — an arbitrary and illogical distinction the statute's integrated phrasing does not support. The knowledge qualifier is best read as applying to the entire series.</p><p><b>Conclusion:</b> The knowledge requirement applies to \"gift\" and \"gratuity\" as well as to \"favor,\" and since the employee did not know of the giver's pending transaction, he should not be held administratively liable.</p>"
+    }
+  ]
+};
+
+const STUDY_GUIDE_HTML = `
+<p class="sg-h2">Chapter 1 — Statutes</p>
+<table class="sg-table">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Classification</td><td>Public (general application) vs. private (particular persons/rights). Public subdivides into general (whole class), special (particular persons/things of a class or community), and local (confined to a locality). Permanent (indefinite) vs. temporary (fixed duration or event).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Citation by era</td><td>Public Acts (U.S. sovereignty era) → Commonwealth Acts (1935–1946) → Republic Acts (1946–present) → Presidential Decrees (martial law) → Batas Pambansa (Interim/Regular Batasang Pambansa).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Legislative process</td><td>Three readings on separate days (printed copies distributed 3 days before third reading, unless presidentially certified urgent); revenue/appropriation/tariff/public-debt/local-application/private bills originate exclusively in the House; a bicameral conference committee may add germane provisions; the President signs, vetoes, or the bill lapses into law after 30 days of inaction.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Enrolled bill doctrine</td><td>The signed, attested enrolled bill is conclusive on courts over the legislative journals (Mabanag v. Lopez Vito); journals are themselves conclusive/unimpeachable on matters they are required to record (U.S. v. Pons).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Parts of a statute</td><td>Title (one-subject-one-title rule — prevents logrolling, gives notice; insufficiency voids only the non-germane part) · preamble · enacting clause · purview/body · separability clause · repealing clause · effectivity clause.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Presidential issuances</td><td>Executive orders (general/permanent, implement law/policy) · administrative orders (particular governmental operations) · proclamations (official acts/dates of public interest) · memorandum circulars/orders (internal/lesser matters).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Delegation of rule-making</td><td>Valid only if the law is complete in itself (states the policy) and fixes a sufficient standard to guide the delegate (Pelaez v. Auditor General; Eastern Shipping Lines v. POEA).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Publication</td><td>Laws take effect 15 days after completion of publication in the Official Gazette or a newspaper of general circulation, unless otherwise provided — but "otherwise provided" only changes the period, never waives publication itself (Tañada v. Tuvera).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Computation of time</td><td>Art. 13, Civil Code: exclude the first day, include the last — except prescription of crimes, which includes the first day.</td></tr>
+</table>
+
+<p class="sg-h2">Chapter 2 — Construction and Interpretation</p>
+<p class="sg-h3">Construction vs. Interpretation</p>
+<table class="cmp-table">
+  <tr><th>Aspect</th><th>Interpretation</th><th>Construction</th></tr>
+  <tr><td class="aspect">Object</td><td>Finds the meaning of the words actually used in the text</td><td>Draws conclusions on matters not textually covered, guided by the statute's spirit</td></tr>
+  <tr><td class="aspect">When proper</td><td>Whenever the text requires reading for meaning</td><td>Only where the statute is genuinely ambiguous or silent</td></tr>
+  <tr><td class="aspect">Character</td><td>Narrower, closer to the literal words</td><td>Broader, reaches beyond the letter of the text</td></tr>
+</table>
+<p style="font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));color:var(--ink-soft);margin:-2px 0 14px;">In practice, courts and writers frequently use the two terms interchangeably.</p>
+<table class="sg-table">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Legislative intent</td><td>The controlling factor, "leading star," and "guiding light" of construction — the ultimate object is to ascertain and give effect to what the legislature meant to accomplish.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>When courts may construe</td><td>Only where the statute is ambiguous (verba legis bars construction of a clear text) — courts may not enlarge, restrict, or rule on the wisdom of a clear law, and cannot cure void-for-vagueness through construction.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Construction is judicial</td><td>Congress cannot overrule a judicial construction by mere resolution — only by validly amending or repealing the statute itself (Endencia v. David; Perfecto v. Meer).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Stare decisis</td><td>Lower courts follow SC doctrine; only the SC en banc may abandon or modify its own precedent — and the doctrine binds only where facts are substantially the same.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Prospectivity</td><td>Abandonment of a doctrine applies prospectively; good-faith reliance on the old, prevailing rule at the time of the act is protected (People v. Jabinal).</td></tr>
+</table>
+
+<p class="sg-h2">Chapter 3 — Aids to Construction</p>
+<table class="sg-table">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Intrinsic vs. extrinsic</td><td>Intrinsic: title, preamble, context, punctuation, capitalization, headnotes, lingual text (found within the statute). Extrinsic: intent/spirit, policy, mischief rule, dictionaries, legislative history, contemporaneous construction (found outside the statute).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Title</td><td>Removes doubt, never creates it — cannot narrow an otherwise clear body.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Preamble</td><td>Resorted to only where the body is ambiguous, or a literal reading would sweep too broadly — narrowed the illegal-possession offense in People v. Purisima.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Punctuation & headnotes</td><td>Low-degree/secondary aids only — yield to context and evident purpose; cannot control the operative text.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Lingual text</td><td>English controls absent a contrary statutory designation, per traditional Philippine legislative practice.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Mischief rule</td><td>Construe to suppress the mischief the statute targeted and advance its intended remedy.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Legislative history</td><td>Explanatory notes, sponsorship speeches, deliberations, amendment-by-deletion, and change-in-phraseology are persuasive, not controlling.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Contemporaneous construction</td><td>Great weight, unless clearly erroneous or the text is unambiguous (Nestle Phils. v. CA); reenactment of the same language is treated as implied legislative ratification; stare decisis remains the strongest form, abandonable only by the SC en banc.</td></tr>
+</table>
+
+<p class="sg-h2">Chapter 4 — Adherence to, or Departure from, Literal Language</p>
+<table class="sg-table">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Verba legis / dura lex sed lex</td><td>A clear statute is applied as written — index animi sermo est, verba legis non est recedendum — the law may be harsh, but it is still the law.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>When departure allowed</td><td>Only where literal application would defeat intent, or produce absurdity, injustice, or render the statute meaningless — not for mere inconvenience (Santiago v. COMELEC declined to fill a genuine statutory gap even for a favored policy).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Ratio legis / cessante ratione</td><td>Spirit controls letter where ambiguity exists; cessante ratione legis, cessat et ipsa lex — when the reason for a law ceases, so does the law (People v. Almuete).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Necessary implication</td><td>What is implied is as much a part of the statute as what is expressed — includes incidental powers, excludes greater ones; ubi jus ibi remedium supplies a remedy for a clearly granted right.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Clerical errors</td><td>Courts may correct a demonstrable clerical slip (Rufino Lopez & Sons v. CTA) but may never rewrite a clear, deliberate policy choice — that is forbidden judicial legislation.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Surplusage; number/gender</td><td>Truly redundant words that nullify sense may be disregarded; singular includes plural and vice versa, absent contrary intent.</td></tr>
+</table>
+
+<p class="sg-h2">Chapter 5 — Interpretation of Words and Phrases</p>
+<table class="sg-table">
+  <tr><th>Maxim</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Statutory definitions</td><td>Control over ordinary meaning — unless applying the definition would create incongruity or destroy the specific provision's purpose.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Ordinary / technical meaning</td><td>Undefined words take their plain, ordinary sense; trade terms take their commercial meaning; words with settled legal meaning are presumed used in that sense.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Ubi lex non distinguit</td><td>Where the law does not distinguish, courts should not distinguish.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Noscitur a sociis</td><td>An ambiguous word takes color and meaning from its associated words in the same list.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Ejusdem generis</td><td>A general term following specific enumerated words is restricted to the same class — <strong>unless the enumeration is merely illustrative, or a contrary intent appears</strong>.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Expressio unius</td><td>Express mention of one thing excludes others of the same class — but it is a mere auxiliary rule, inapplicable where the enumeration is by way of example only.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Casus omissus</td><td>An omitted case is presumed omitted intentionally — unless the statute's history and structure clearly show an inadvertent oversight.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Last antecedent</td><td>A qualifier ordinarily modifies only its nearest antecedent, especially set off by a comma — <strong>but a converse application extends it to an entire series</strong> meant to be read as one integrated class.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Reddendo singula singulis</td><td>Distribute each word to its own respective, matching antecedent or consequent, in order.</td></tr>
+</table>
+
+<div class="exoex-box">
+  <span class="exoex-label">Exemption of the exemption — Chapter 5 Maxims</span>
+  Ejusdem generis restricts a general term to the same class as its enumerated companions — but this restriction is itself defeated where the statute's own language shows the enumeration was merely illustrative, or where a contrary intent otherwise clearly appears. Similarly, the doctrine of last antecedent's normal "nearest antecedent only" rule is itself subject to a converse application extending a qualifier to an entire series treated as one integrated class. Watch for these built-in escape hatches on exam day.
+</div>
+
+<p class="sg-h3">Proviso vs. Exception</p>
+<table class="cmp-table">
+  <tr><th>Aspect</th><th>Proviso</th><th>Exception</th></tr>
+  <tr><td class="aspect">Function</td><td>Qualifies or restrains the clause it immediately follows</td><td>Withdraws specific matter from a rule's general scope</td></tr>
+  <tr><td class="aspect">Scope</td><td>Ordinarily limited to the clause immediately preceding it, unless intent shows otherwise</td><td>May be built into the enacting clause itself or stated separately</td></tr>
+  <tr><td class="aspect">Typical signal</td><td>Introduced by "provided, that..."</td><td>Introduced by "except," "other than," or similar language</td></tr>
+</table>
+
+<p class="sg-h3">Case Quick-Reference</p>
+<div class="case-card"><div class="cname">Tañada v. Tuvera (1986)</div><div class="cdoc">Publication of laws in the Official Gazette or a newspaper of general circulation is indispensable to due process; an "immediate effectivity" or publication-dispensed-with clause fixes only the reference date, and can never validly waive publication itself.</div></div>
+<div class="case-card"><div class="cname">Endencia v. David (1953) / Perfecto v. Meer (1950)</div><div class="cdoc">Construing a statute is a judicial function; Congress cannot override a judicial construction by mere resolution or declaration — only by validly amending or repealing the statute itself.</div></div>
+<div class="case-card"><div class="cname">People v. Purisima (1978)</div><div class="cdoc">A penal statute's preamble may narrow an otherwise unqualified operative text — illegal possession of weapons under P.D. 9 required a nexus to intent to commit crimes against persons or property, not mere possession.</div></div>
+<div class="case-card"><div class="cname">People v. Almuete (1976)</div><div class="cdoc">Cessante ratione legis, cessat et ipsa lex — a penal provision protecting the share-tenancy system lost its application once share tenancy itself was abolished by law.</div></div>
+<div class="case-card"><div class="cname">Rufino Lopez & Sons, Inc. v. CTA (1957)</div><div class="cdoc">Courts may correct a clearly demonstrable clerical error in a statute's text, reading it as the legislature evidently intended — but this narrow power never extends to rewriting a genuine, deliberate policy choice.</div></div>
+`;
+
+function renderStudyGuide(){
+  document.getElementById('sg-content').innerHTML = STUDY_GUIDE_HTML;
+}
+
+function renderAlac(){
+  const wrap = document.getElementById('alac-list');
+  wrap.innerHTML = '';
+  Object.keys(ALAC).forEach(topicName=>{
+    const h = document.createElement('p');
+    h.className = 'alac-topic-h';
+    h.textContent = topicName;
+    wrap.appendChild(h);
+    ALAC[topicName].forEach((item, i)=>{
+      const card = document.createElement('div');
+      card.className = 'alac-card';
+      card.innerHTML = `
+        <p class="alac-fact">${item.fact}</p>
+        <p class="alac-q">${item.question}</p>
+        <details><summary>Reveal model answer</summary><div class="alac-ans">${item.answer}</div></details>`;
+      wrap.appendChild(card);
+    });
+  });
+}
+
+const FS_MIN = 0.8, FS_MAX = 1.8;
+function getFontScale(){
+  const v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fs'));
+  return isNaN(v) ? 1.15 : v;
+}
+function setFontScale(v){
+  v = Math.max(FS_MIN, Math.min(FS_MAX, v));
+  document.documentElement.style.setProperty('--fs', v.toFixed(2));
+  try{ localStorage.setItem('statconQuizFontScale', v.toFixed(2)); }catch(e){}
+}
+function adjustFontScale(delta){ setFontScale(getFontScale() + delta); }
+function resetFontScale(){ setFontScale(1.15); }
+(function initFontScale(){
+  try{
+    const saved = localStorage.getItem('statconQuizFontScale');
+    if(saved) document.documentElement.style.setProperty('--fs', saved);
+  }catch(e){}
+})();
+
+const WATCHFOR = {
+  ch1: `<strong>Watch for: which body must originate the bill, and what "immediate effectivity" really waives.</strong>
+    <ul>
+      <li>Revenue, appropriation, tariff, public-debt, local-application, and private bills must originate exclusively in the House — but the Senate may still propose amendments or its own version.</li>
+      <li>An "immediate effectivity" or "publication dispensed with" clause never waives publication itself — Tañada v. Tuvera treats this as fixing only the reference date, not excusing due process.</li>
+      <li>An insufficient title voids only the non-germane provision, not the whole statute — don't over-read the one-subject-one-title rule's consequence.</li>
+    </ul>`,
+  ch2: `<strong>Watch for: who has the last word on meaning.</strong>
+    <ul>
+      <li>Only the Supreme Court en banc may abandon its own doctrine — a division, a lower court, or Congress by mere resolution cannot.</li>
+      <li>Overruling a doctrine operates prospectively — good-faith reliance on the old, prevailing rule is protected (Jabinal).</li>
+      <li>Courts may not enlarge, restrict, or rule on the wisdom of a clear statute, and cannot cure a void-for-vagueness law through construction.</li>
+    </ul>`,
+  ch3: `<strong>Watch for: which aids can only narrow doubt, not create it.</strong>
+    <ul>
+      <li>A title or preamble may remove ambiguity but can never be used to cut down an otherwise plain and unambiguous text.</li>
+      <li>Contemporaneous/administrative construction earns great weight only where genuine ambiguity exists, and only until shown clearly erroneous.</li>
+      <li>Legislative history (explanatory notes, sponsorship speeches) is persuasive, never controlling, over the statute's actual enacted text.</li>
+    </ul>`,
+  ch4: `<strong>Watch for: when departure from literal text is actually allowed.</strong>
+    <ul>
+      <li>Verba legis governs a clear text — departure requires genuine ambiguity plus absurdity, injustice, or a defeated intent, not mere inconvenience.</li>
+      <li>Necessary implication supplies only powers truly incidental to an express grant — it never converts a lesser express power into an unstated greater one.</li>
+      <li>Courts may fix a demonstrable clerical slip, but may never rewrite a clear, deliberate policy choice — that is judicial legislation.</li>
+    </ul>`,
+  ch5: `<strong>Watch for: which maxim actually fits the sentence structure in front of you.</strong>
+    <ul>
+      <li>Ejusdem generis, noscitur a sociis, and expressio unius are easy to confuse — ask whether the issue is a general word after a list (ejusdem generis), a vague word beside specific ones (noscitur a sociis), or an enumeration implying an exclusion (expressio unius).</li>
+      <li>Casus omissus presumes an omission is deliberate — the last-antecedent doctrine is about which antecedent a qualifier modifies. Don't mix the two up.</li>
+      <li>A proviso ordinarily qualifies only its immediately preceding clause — reading it more broadly requires a clear contrary intent.</li>
+    </ul>`,
+  all: `<strong>Watch for: the exception to the rule you just memorized.</strong> Across all five chapters, examiners love testing the recognized exception to a general rule — verify whether the facts trigger the general rule or its established exception before answering.`
+};
+
+function chooseTopic(key){
+  currentTopic = key;
+  const t = TOPICS[key];
+  if(key === 'all'){
+    QUESTIONS = [
+      ...BANK_CH1.map(q=>({...q, topicLabel:"Ch.1"})),
+      ...BANK_CH2.map(q=>({...q, topicLabel:"Ch.2"})),
+      ...BANK_CH3.map(q=>({...q, topicLabel:"Ch.3"})),
+      ...BANK_CH4.map(q=>({...q, topicLabel:"Ch.4"})),
+      ...BANK_CH5.map(q=>({...q, topicLabel:"Ch.5"}))
+    ];
+  } else {
+    QUESTIONS = t.bank.map(q=>({...q, topicLabel:null}));
+  }
+  HISTORY_KEY = "statconQuizAttempts_" + key;
+
+  document.getElementById('mast-eyebrow').textContent = t.eyebrow;
+  document.getElementById('mast-title').textContent = t.name + " — Situational MCQs";
+  document.getElementById('mast-sub').textContent = "Fact-pattern practice · \"Which is the BEST answer?\" format";
+  document.getElementById('hero-cap-text').textContent = "fact-pattern questions available — pick a category or run the full set";
+  document.getElementById('watchfor-box').innerHTML = WATCHFOR[key] || WATCHFOR.all;
+
+  document.getElementById('view-picker').classList.add('hide');
+  document.getElementById('view-quiz').classList.remove('hide');
+  document.getElementById('start-screen').classList.remove('hide');
+  document.getElementById('quiz-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('results-screen').classList.add('hide');
+
+  activeFilters = new Set(TAG_ORDER);
+  renderFilterPills();
+  renderHistory();
+}
+
+function backToPicker(){
+  document.getElementById('view-quiz').classList.add('hide');
+  document.getElementById('view-alac').classList.add('hide');
+  document.getElementById('view-studyguide').classList.add('hide');
+  document.getElementById('view-picker').classList.remove('hide');
+  document.getElementById('mast-eyebrow').textContent = "STATUTORY CONSTRUCTION · CHAPTERS 1–5 (AGPALO)";
+  document.getElementById('mast-title').textContent = "Situational MCQ Practice";
+  document.getElementById('mast-sub').textContent = "Pick a topic below to begin.";
+}
+
+function showAlac(){
+  document.getElementById('view-picker').classList.add('hide');
+  document.getElementById('view-alac').classList.remove('hide');
+  document.getElementById('mast-eyebrow').textContent = "ALAC METHOD PRACTICE";
+  document.getElementById('mast-title').textContent = "Essay-Style Bar Problems";
+  document.getElementById('mast-sub').textContent = "Answer · Legal Basis · Application · Conclusion";
+  renderAlac();
+}
+
+function showStudyGuide(){
+  document.getElementById('view-picker').classList.add('hide');
+  document.getElementById('view-studyguide').classList.remove('hide');
+  document.getElementById('mast-eyebrow').textContent = "QUICK REFERENCE";
+  document.getElementById('mast-title').textContent = "Color-Coded Study Guide";
+  document.getElementById('mast-sub').textContent = "Provisions · requisites · exceptions · exceptions of exceptions";
+  renderStudyGuide();
+}
+
+function onTimerToggleChange(){
+  timerEnabled = document.getElementById('timer-toggle-input').checked;
+  document.getElementById('speed-choice').classList.toggle('hide', !timerEnabled);
+  updateTimerNote();
+}
+
+function onSpeedChange(){
+  const checked = document.querySelector('input[name="secPerQ"]:checked');
+  secondsPerQuestion = parseInt(checked.value, 10);
+  updateTimerNote();
+}
+
+function matchesFilters(q){ return activeFilters.has(q.tag); }
+
+function renderFilterPills(){
+  const wrap = document.getElementById('filter-pills');
+  wrap.innerHTML = '';
+  const allPill = document.createElement('div');
+  allPill.className = 'filter-pill active';
+  allPill.textContent = 'All categories';
+  allPill.onclick = () => { activeFilters = new Set(TAG_ORDER); refreshFilterUI(); };
+  allPill.dataset.all = "1";
+  wrap.appendChild(allPill);
+  TAG_ORDER.forEach(tag => {
+    const p = document.createElement('div');
+    p.className = 'filter-pill active';
+    p.textContent = TAG_LABELS[tag];
+    p.dataset.tag = tag;
+    p.onclick = () => {
+      if(activeFilters.has(tag) && activeFilters.size > 1){ activeFilters.delete(tag); }
+      else { activeFilters.add(tag); }
+      refreshFilterUI();
+    };
+    wrap.appendChild(p);
+  });
+  refreshFilterUI();
+}
+function refreshFilterUI(){
+  document.querySelectorAll('.filter-pill').forEach(p=>{
+    if(p.dataset.all){ p.classList.toggle('active', activeFilters.size === TAG_ORDER.length); }
+    else { p.classList.toggle('active', activeFilters.has(p.dataset.tag)); }
+  });
+  const n = QUESTIONS.filter(matchesFilters).length;
+  document.getElementById('total-count').textContent = n;
+  document.getElementById('filtered-count-line').textContent = n + (n===1 ? ' question selected' : ' questions selected');
+  updateTimerNote();
+}
+
+function updateTimerNote(){
+  const n = QUESTIONS.filter(matchesFilters).length;
+  const totalSec = n * secondsPerQuestion;
+  const mm = Math.floor(totalSec/60), ss = totalSec%60;
+  const label = document.getElementById('timer-toggle-label');
+  const note = document.getElementById('timer-note-text');
+  if(timerEnabled){
+    label.textContent = 'Enable timer';
+    note.textContent = `⏱ One continuous timer for the whole attempt: ${n} question${n===1?'':'s'} × ${secondsPerQuestion}s = ${mm}:${String(ss).padStart(2,'0')} total. Answers are graded only at the end — the quiz auto-submits if time runs out.`;
+  } else {
+    label.textContent = 'Enable timer';
+    note.textContent = "Timer is off — take as long as you need. Answers are graded only at the end, once you submit.";
+  }
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function startQuiz(customPool){
+  pool = customPool || shuffle(QUESTIONS.filter(matchesFilters));
+  poolDisplay = pool.map(q => shuffle(q.options.map((opt,i)=>({text:opt, isCorrect:i===q.correct}))));
+  answers = pool.map(()=>null);
+  flags = new Set();
+  currentIdx = 0;
+
+  document.getElementById('start-screen').classList.add('hide');
+  document.getElementById('results-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.remove('hide');
+
+  startTimer();
+  showQuestion(0);
+}
+
+function letterFor(i){ return ['A','B','C','D','E'][i]; }
+
+function showQuestion(i){
+  currentIdx = i;
+  const q = pool[i];
+  const disp = poolDisplay[i];
+
+  document.getElementById('ledger-pos').textContent = `Item ${i+1} of ${pool.length}`;
+  const answeredCount = answers.filter(a=>a!==null).length;
+  document.getElementById('ledger-score').textContent = `Answered: ${answeredCount}/${pool.length}`;
+  document.getElementById('track-fill').style.width = (i/pool.length*100)+'%';
+
+  let chip = `<span class="tag ${q.tag}">${TAG_LABELS[q.tag]}</span>`;
+  if(q.topicLabel) chip += `<span class="tag topicbadge">${q.topicLabel}</span>`;
+  document.getElementById('tag-chip').innerHTML = chip;
+  document.getElementById('cite-line').textContent = q.cite ? ("Provision / doctrine: " + q.cite) : "";
+  document.getElementById('q-text').textContent = q.prompt;
+
+  document.getElementById('hint-box').classList.add('hide');
+  document.getElementById('hint-box').textContent = q.hint || '';
+  document.getElementById('hint-btn').textContent = 'Show hint';
+  document.getElementById('hint-btn').classList.toggle('hide', !q.hint);
+
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+  disp.forEach((opt, oi)=>{
+    const li = document.createElement('li');
+    li.className = 'opt' + (answers[i]===oi ? ' selected' : '');
+    li.innerHTML = `<span class="letter">${letterFor(oi)}</span><span>${opt.text}</span>`;
+    li.onclick = () => selectOption(oi);
+    list.appendChild(li);
+  });
+
+  document.getElementById('prev-btn').disabled = (i===0);
+  document.getElementById('flag-btn').textContent = flags.has(i) ? 'Unflag this question' : 'Flag this question';
+  document.getElementById('skip-btn').textContent = (i === pool.length-1) ? 'Review answers' : 'Skip / Next';
+
+  renderPalette('palette', showQuestion);
+}
+
+function renderPalette(containerId, onClick){
+  const wrap = document.getElementById(containerId);
+  wrap.innerHTML = '';
+  pool.forEach((q, i)=>{
+    const b = document.createElement('div');
+    let cls = 'pnum';
+    if(answers[i]!==null) cls += ' answered';
+    if(i===currentIdx && containerId==='palette') cls += ' current';
+    if(flags.has(i)) cls += ' flagged';
+    b.className = cls;
+    b.textContent = i+1;
+    b.onclick = () => onClick(i);
+    wrap.appendChild(b);
+  });
+}
+
+function selectOption(oi){
+  answers[currentIdx] = oi;
+  if(currentIdx < pool.length - 1){
+    showQuestion(currentIdx + 1);
+  } else {
+    showReviewScreen();
+  }
+}
+
+function goPrev(){ if(currentIdx > 0) showQuestion(currentIdx - 1); }
+function goNext(){ if(currentIdx < pool.length - 1) showQuestion(currentIdx + 1); else showReviewScreen(); }
+
+function toggleFlag(){
+  if(flags.has(currentIdx)) flags.delete(currentIdx); else flags.add(currentIdx);
+  showQuestion(currentIdx);
+}
+
+function toggleHint(){
+  const box = document.getElementById('hint-box');
+  const btn = document.getElementById('hint-btn');
+  const showing = !box.classList.contains('hide');
+  box.classList.toggle('hide', showing);
+  btn.textContent = showing ? 'Show hint' : 'Hide hint';
+}
+
+function requestSubmit(){ showReviewScreen(); }
+
+function showReviewScreen(){
+  document.getElementById('quiz-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.remove('hide');
+  renderPalette('review-palette', jumpFromReview);
+  const answeredCount = answers.filter(a=>a!==null).length;
+  const flaggedCount = flags.size;
+  const unanswered = pool.length - answeredCount;
+  document.getElementById('review-summary').textContent =
+    `${answeredCount} of ${pool.length} answered · ${unanswered} unanswered · ${flaggedCount} flagged. Click any number to jump back to that question.`;
+}
+
+function jumpFromReview(i){
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.remove('hide');
+  showQuestion(i);
+}
+
+function backToQuiz(){
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.remove('hide');
+  showQuestion(currentIdx);
+}
+
+function finalizeSubmit(){
+  clearInterval(timerInterval);
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.add('hide');
+  gradeAndShowResults();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  const el = document.getElementById('timer-display');
+  if(!timerEnabled){
+    el.textContent = 'Timer off';
+    el.classList.remove('timer-warn');
+    el.classList.add('timer-off');
+    return;
+  }
+  el.classList.remove('timer-off');
+  timeLeft = pool.length * secondsPerQuestion;
+  updateTimerDisplay();
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    updateTimerDisplay();
+    if(timeLeft <= 0){
+      clearInterval(timerInterval);
+      timeUp();
+    }
+  }, 1000);
+}
+function updateTimerDisplay(){
+  const el = document.getElementById('timer-display');
+  const mm = Math.floor(timeLeft/60), ss = timeLeft%60;
+  el.textContent = `⏱ ${mm}:${String(ss).padStart(2,'0')}`;
+  el.classList.toggle('timer-warn', timeLeft <= 60);
+}
+function timeUp(){
+  document.getElementById('quiz-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.add('hide');
+  gradeAndShowResults(true);
+}
+
+function gradeAndShowResults(timedOut){
+  let score = 0;
+  const responses = [];
+  pool.forEach((q, i)=>{
+    const disp = poolDisplay[i];
+    const correctIdx = disp.findIndex(o=>o.isCorrect);
+    const chosenIdx = answers[i];
+    const isCorrect = (chosenIdx !== null && chosenIdx === correctIdx);
+    if(isCorrect) score++;
+    responses.push({
+      q,
+      chosenText: chosenIdx===null ? '(no answer — skipped)' : disp[chosenIdx].text,
+      correctText: disp[correctIdx].text,
+      correct: isCorrect
+    });
+  });
+  lastMissedQs = responses.filter(r=>!r.correct).map(r=>r.q);
+
+  document.getElementById('results-screen').classList.remove('hide');
+  const total = responses.length;
+  document.getElementById('final-score').textContent = `${score}/${total}`;
+  document.getElementById('final-pct').textContent = (total ? Math.round(score/total*100)+'% correct' : '') + (timedOut ? ' — time expired' : '');
+
+  const byTag = {};
+  TAG_ORDER.forEach(t=>byTag[t] = {correct:0,total:0});
+  responses.forEach(r=>{ byTag[r.q.tag].total++; if(r.correct) byTag[r.q.tag].correct++; });
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = '';
+  TAG_ORDER.forEach(t=>{
+    if(byTag[t].total === 0) return;
+    const pct = Math.round(byTag[t].correct/byTag[t].total*100);
+    const row = document.createElement('div');
+    row.className = 'bd-row';
+    row.innerHTML = `<span class="dot" style="background:var(--${dotColor(t)})"></span>
+      <span class="label">${TAG_LABELS[t]}</span>
+      <span class="bar"><span style="width:${pct}%"></span></span>
+      <span class="num">${byTag[t].correct}/${byTag[t].total}</span>`;
+    bd.appendChild(row);
+  });
+
+  document.getElementById('retake-missed-btn').disabled = lastMissedQs.length === 0;
+  document.getElementById('retake-missed-btn').textContent = lastMissedQs.length === 0 ? "No missed questions!" : `Retake missed only (${lastMissedQs.length})`;
+
+  const reviewWrap = document.getElementById('review-list');
+  reviewWrap.innerHTML = '';
+  const h = document.createElement('p');
+  h.style.fontFamily = "'Inter',sans-serif";
+  h.style.fontSize = '13px';
+  h.style.color = 'var(--ink-soft)';
+  h.style.margin = '0 0 4px';
+  h.textContent = `Full review — every question, in order`;
+  reviewWrap.appendChild(h);
+  responses.forEach((r, i)=>{
+    const div = document.createElement('div');
+    div.className = 'review-item';
+    div.innerHTML = `
+      <p class="review-q">${i+1}. ${r.q.prompt}</p>
+      ${r.q.cite ? `<p class="cite-line" style="margin:-4px 0 10px;">Provision / doctrine: ${r.q.cite}</p>` : ''}
+      <p class="review-meta"><span class="${r.correct?'right':'wrong'}">Your answer: ${r.chosenText}</span>${r.correct? '' : `<br><span class="right">Correct: ${r.correctText}</span>`}</p>
+      <details><summary>Show explanation</summary><p class="explain">${r.q.explain}</p></details>`;
+    reviewWrap.appendChild(div);
+  });
+
+  saveAttempt({date: new Date().toISOString(), score, total, pct: total?Math.round(score/total*100):0});
+  renderHistory();
+}
+
+function dotColor(tag){
+  return {memorization:'yellow', requisites:'green', exceptions:'blue', effects:'purple', jurisprudence:'red'}[tag];
+}
+
+function restart(missedOnly){
+  document.getElementById('results-screen').classList.add('hide');
+  if(missedOnly && lastMissedQs.length){ startQuiz(shuffle(lastMissedQs)); }
+  else { startQuiz(shuffle(QUESTIONS.filter(matchesFilters))); }
+}
+
+function loadHistory(){
+  try{ return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+  catch(e){ return []; }
+}
+function saveAttempt(record){
+  try{
+    const hist = loadHistory();
+    hist.unshift(record);
+    while(hist.length > 25) hist.pop();
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(hist));
+  }catch(e){ /* localStorage unavailable — skip silently */ }
+}
+function clearHistory(){
+  try{ localStorage.removeItem(HISTORY_KEY); }catch(e){}
+  renderHistory();
+}
+function renderHistory(){
+  let hist = [];
+  try{ hist = loadHistory(); }catch(e){}
+  const block = document.getElementById('history-block');
+  const list = document.getElementById('history-list');
+  if(!hist.length){ block.classList.add('hide'); return; }
+  block.classList.remove('hide');
+  list.innerHTML = '';
+  hist.forEach(r=>{
+    const d = new Date(r.date);
+    const dateStr = isNaN(d) ? '' : d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) + ' ' + d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+    const row = document.createElement('div');
+    row.className = 'history-row';
+    row.innerHTML = `<span>${dateStr}</span><span class="hscore">${r.score}/${r.total} (${r.pct}%)</span>`;
+    list.appendChild(row);
+  });
+}
+
+buildTopicCards();
+</script>
+</body>
+</html>
