@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EDE8DC; --card:#F8F5EC; --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA;
+    --paper:#EDE8DC; --card:#F8F5EC; --card-elevated:#FFFFFF; --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA; --rule-light:#DFD8C6;
     --charcoal:#23282A; --charcoal-hi:#33393B;
     --yellow:#B4922B; --yellow-tint:#F3EBD3;
     --green:#3F7D5C;  --green-tint:#E1EEE5;
@@ -29,24 +29,34 @@
   .fs-control button{width:28px;height:28px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;line-height:1;}
   .fs-control button:hover{border-color:var(--ink-soft);}
   .fs-control .fs-reset{width:auto;padding:0 10px;font-size:11px;font-weight:600;}
+  .masthead-strip{display:flex;justify-content:space-between;align-items:center;padding:13px 32px;border-bottom:1px solid var(--rule);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .masthead-strip .edition{display:flex;align-items:center;gap:8px;color:var(--ink-soft);text-decoration:none;}
+  .masthead-strip .edition::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--dot, var(--green));}
+  .masthead-strip .edition:hover{color:var(--ink);}
   .masthead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
-  .masthead{padding:28px 32px 20px;border-bottom:1px solid var(--rule);}
-  .masthead .eyebrow{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));letter-spacing:0.03em;color:var(--ink-soft);margin:0 0 6px;}
-  .masthead h1{font-family:'Fraunces', serif;font-weight:600;font-size:calc(29px * var(--fs));margin:0 0 6px;line-height:1.15;}
-  .masthead p.sub{font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));color:var(--ink-soft);margin:0;}
+  .masthead{padding:30px 32px 24px;border-bottom:1px solid var(--rule);background:linear-gradient(175deg,#FBF8F0 0%,#F5F1E5 100%);}
+  .masthead .eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(11.5px * var(--fs));letter-spacing:0.1em;color:var(--ink-soft);margin:0 0 10px;text-transform:uppercase;}
+  .masthead h1{font-family:'Fraunces', serif;font-weight:700;font-size:calc(32px * var(--fs));margin:0 0 8px;line-height:1.15;letter-spacing:-0.02em;}
+  .masthead p.sub{font-family:'Source Serif 4', Georgia, serif;font-size:calc(14.5px * var(--fs));color:var(--ink-soft);margin:0;line-height:1.55;}
   .content{padding:28px 32px 32px;}
 
   /* ---- topic picker ---- */
   .topic-eyebrow{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));letter-spacing:0.03em;color:var(--ink-soft);margin:0 0 4px;}
   .topic-h{font-family:'Fraunces',serif;font-weight:600;font-size:calc(22px * var(--fs));margin:0 0 18px;}
-  .tcards{display:grid;gap:14px;margin-bottom:6px;}
-  .tcard{border:1px solid var(--rule);background:var(--paper);padding:18px 20px;cursor:pointer;border-radius:3px;transition:border-color .12s, background .12s;}
-  .tcard:hover{border-color:var(--ink-soft);background:#fff;}
-  .tcard .tname{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:0 0 4px;}
-  .tcard .tdesc{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 8px;}
-  .tcard .tcount{font-family:'Inter',sans-serif;font-size:calc(11.5px * var(--fs));color:var(--ink-soft);}
-  .tcard.combo{background:var(--charcoal);border-color:var(--charcoal);}
+  .tcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:6px;align-items:stretch;}
+  .tcard{border:1px solid var(--rule);background:var(--card-elevated);padding:22px 22px 20px;cursor:pointer;
+    box-shadow:0 1px 0 var(--rule), 0 10px 22px -16px rgba(32,36,31,0.18);
+    transition:transform .15s cubic-bezier(.2,0,0,1), box-shadow .15s cubic-bezier(.2,0,0,1), border-color .15s ease;
+    display:flex;flex-direction:column;}
+  .tcard:hover{border-color:var(--ink-soft);transform:translateY(-2px);box-shadow:0 1px 0 var(--rule), 0 16px 28px -14px rgba(32,36,31,0.25);}
+  .tcard .tname{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:0 0 6px;}
+  .tcard .tdesc{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 14px;line-height:1.5;flex-grow:1;}
+  .tcard .tcount{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.04em;border-top:1px solid var(--rule-light);padding-top:10px;}
+  .tcard.combo{grid-column:1 / -1;background:linear-gradient(175deg,#2A302B 0%, var(--charcoal) 100%);border-color:var(--charcoal);}
+  .tcard.combo .tname{font-size:calc(19px * var(--fs));}
   .tcard.combo .tname, .tcard.combo .tdesc, .tcard.combo .tcount{color:var(--paper);}
+  .tcard.combo .tcount{border-top-color:rgba(237,232,220,0.25);}
+  .tcard.combo:hover{border-color:var(--charcoal-hi);}
   .backlink{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0;margin-bottom:16px;display:inline-block;}
 
   .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:18px 0 26px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);}
@@ -173,8 +183,11 @@
 <body>
 <div>
 <div class="sheet">
+  <div class="masthead-strip" style="--dot:var(--red)">
+    <a href="index.html" class="edition">← All Subjects</a>
+    <span>Criminal Law</span>
+  </div>
   <div class="masthead">
-    <a href="index.html" class="backlink" style="margin-bottom:10px;display:inline-block;font-size:12.5px;">← All subjects</a>
     <div class="masthead-top">
       <div>
         <p class="eyebrow" id="mast-eyebrow">CRIMINAL LAW 1 · REVISED PENAL CODE</p>

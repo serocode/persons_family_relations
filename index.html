@@ -1,203 +1,739 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Law Review Hub — Situational MCQ Practice</title>
-<meta name="description" content="Interactive situational MCQ practice for Philippine law subjects — Persons & Family Relations, Constitutional Law I, Criminal Law 1, and more.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#EDE8DC; --card:#F8F5EC; --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA;
-    --charcoal:#23282A; --charcoal-hi:#33393B;
-    --yellow:#B4922B; --yellow-tint:#F3EBD3;
-    --green:#3F7D5C;  --green-tint:#E1EEE5;
-    --blue:#35688F;   --blue-tint:#DEE9F1;
-    --purple:#6B4F9E; --purple-tint:#E7E1F2;
-    --red:#AA4A3B;    --red-tint:#F3E1DD;
-    --orange:#C1662E; --orange-tint:#F6E4D3;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);color:var(--ink);
-    font-family:'Source Serif 4', Georgia, serif;
-    min-height:100vh;display:flex;justify-content:center;
-    padding:32px 16px 64px;
-    background-image:
-      radial-gradient(circle at 15% 8%, rgba(35,40,42,0.035), transparent 40%),
-      radial-gradient(circle at 85% 92%, rgba(35,40,42,0.035), transparent 40%);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L Situational MCQ Practice</title>
+  <meta name="description"
+    content="Interactive situational MCQ practice and ALAC essay practice for Philippine law subjects — Persons & Family Relations, Constitutional Law I, Criminal Law 1, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #EDE8DC;
+      --card: #F8F5EC;
+      --card-elevated: #FFFFFF;
+      --ink: #20241F;
+      --ink-soft: #4A5148;
+      --rule: #CBC2AA;
+      --rule-light: #DFD8C6;
+      --charcoal: #23282A;
+      --charcoal-hi: #33393B;
+      --yellow: #B4922B;
+      --yellow-tint: #F3EBD3;
+      --green: #3F7D5C;
+      --green-tint: #E1EEE5;
+      --blue: #35688F;
+      --blue-tint: #DEE9F1;
+      --purple: #6B4F9E;
+      --purple-tint: #E7E1F2;
+      --red: #AA4A3B;
+      --red-tint: #F3E1DD;
+      --orange: #C1662E;
+      --orange-tint: #F6E4D3;
+    }
 
-  .page{width:100%;max-width:720px;}
-  @media (min-width:1000px){ .page{width:66.666vw;max-width:1200px;} }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* ---- header ---- */
-  .header{
-    background:var(--card);border:1px solid var(--rule);
-    box-shadow:0 1px 0 var(--rule), 0 18px 40px -24px rgba(32,36,31,0.35);
-    padding:36px 32px 28px;
-    margin-bottom:24px;
-  }
-  .header .eyebrow{
-    font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.05em;
-    color:var(--ink-soft);margin-bottom:8px;text-transform:uppercase;
-  }
-  .header h1{
-    font-family:'Fraunces',serif;font-weight:700;font-size:32px;
-    line-height:1.15;margin-bottom:8px;
-  }
-  .header .sub{
-    font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-soft);
-    line-height:1.55;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ---- subject cards ---- */
-  .subjects{display:grid;gap:16px;}
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 36px 20px 64px;
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(35, 40, 42, 0.032), transparent 45%),
+        radial-gradient(circle at 88% 90%, rgba(35, 40, 42, 0.038), transparent 45%);
+    }
 
-  .subject-card{
-    background:var(--card);border:1px solid var(--rule);
-    box-shadow:0 1px 0 var(--rule), 0 8px 24px -16px rgba(32,36,31,0.2);
-    padding:24px 28px;
-    text-decoration:none;color:inherit;
-    display:block;
-    transition:border-color .15s, box-shadow .15s, transform .15s;
-  }
-  .subject-card:hover{
-    border-color:var(--ink-soft);
-    box-shadow:0 1px 0 var(--rule), 0 14px 32px -16px rgba(32,36,31,0.3);
-    transform:translateY(-2px);
-  }
-  .subject-card:active{transform:translateY(0);}
+    .container {
+      width: 100%;
+      max-width: 1220px;
+    }
 
-  .subject-card .card-eyebrow{
-    font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
-    letter-spacing:0.04em;text-transform:uppercase;
-    margin-bottom:8px;
-  }
-  .subject-card .card-title{
-    font-family:'Fraunces',serif;font-weight:600;font-size:21px;
-    line-height:1.2;margin-bottom:6px;
-  }
-  .subject-card .card-desc{
-    font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);
-    line-height:1.55;margin-bottom:12px;
-  }
-  .subject-card .card-meta{
-    font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);
-    display:flex;flex-wrap:wrap;gap:6px 16px;
-  }
-  .subject-card .card-meta span{display:inline-flex;align-items:center;gap:5px;}
-  .subject-card .card-meta .dot{
-    width:8px;height:8px;border-radius:50%;display:inline-block;
-  }
+    /* ---- masthead strip ---- */
+    .masthead-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
 
-  /* per-card accent colors */
-  .card-pfr .card-eyebrow{color:var(--green);}
-  .card-pfr:hover{border-color:var(--green);}
+    .masthead-strip .edition {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  .card-consti .card-eyebrow{color:var(--blue);}
-  .card-consti:hover{border-color:var(--blue);}
+    .masthead-strip .edition::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
 
-  .card-crim .card-eyebrow{color:var(--red);}
-  .card-crim:hover{border-color:var(--red);}
+    /* ---- bento grid ---- */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
 
-  .card-cases .card-eyebrow{color:var(--purple);}
-  .card-cases:hover{border-color:var(--purple);}
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      box-shadow: 0 1px 0 var(--rule), 0 12px 28px -18px rgba(32, 36, 31, 0.22);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .18s cubic-bezier(.2, 0, 0, 1), box-shadow .18s cubic-bezier(.2, 0, 0, 1), border-color .18s ease;
+    }
 
-  .card-statcon .card-eyebrow{color:var(--orange);}
-  .card-statcon:hover{border-color:var(--orange);}
+    .bento-card.clickable:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 1px 0 var(--rule), 0 20px 38px -16px rgba(32, 36, 31, 0.28);
+    }
 
-  /* ---- arrow indicator ---- */
-  .subject-card .arrow{
-    float:right;margin-top:2px;
-    font-family:'Inter',sans-serif;font-size:18px;font-weight:300;
-    color:var(--rule);
-    transition:color .15s, transform .15s;
-  }
-  .subject-card:hover .arrow{color:var(--ink-soft);transform:translateX(3px);}
+    .bento-card.clickable:active {
+      transform: translateY(0);
+    }
 
-  /* ---- footer ---- */
-  .hub-footer{
-    font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);
-    text-align:center;margin-top:24px;line-height:1.55;
-  }
-</style>
+    /* ---- hero ---- */
+    .bento-hero {
+      grid-column: span 8;
+      padding: 38px 40px 32px;
+      background: linear-gradient(175deg, #FBF8F0 0%, #F5F1E5 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bento-hero .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .bento-hero h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .bento-hero p.sub {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    .hero-meta-row {
+      border-top: 1px solid var(--rule-light);
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-item .num {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .stat-item .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10.5px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--rule);
+      padding: 5px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--charcoal);
+      color: var(--charcoal);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .filter-btn.active {
+      background: var(--charcoal);
+      color: #FAF7EE;
+      border-color: var(--charcoal);
+    }
+
+    /* ---- methodology widget ---- */
+    .bento-methodology {
+      grid-column: span 4;
+      padding: 30px 28px;
+      background: var(--card-elevated);
+      border: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bento-methodology .widget-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--rule-light);
+      padding-bottom: 10px;
+    }
+
+    .bento-methodology .widget-title h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .bento-methodology .widget-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--yellow-tint);
+      border: 1px solid var(--rule);
+      color: var(--yellow);
+      padding: 2px 7px;
+      font-weight: 600;
+    }
+
+    .alac-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+
+    .alac-step {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 12.5px;
+      line-height: 1.4;
+    }
+
+    .alac-key {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      color: var(--charcoal);
+      flex-shrink: 0;
+    }
+
+    .alac-desc {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink-soft);
+      font-size: 12px;
+    }
+
+    .alac-desc strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .alac-tip {
+      background: var(--paper);
+      border: 1px dashed var(--rule);
+      padding: 10px 12px;
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      line-height: 1.45;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    /* ---- subject cards ---- */
+    .card-pfr {
+      grid-column: span 7;
+      padding: 32px 34px 28px;
+    }
+
+    .card-pfr:hover {
+      border-color: var(--green);
+    }
+
+    .card-pfr .card-eyebrow {
+      color: var(--green);
+    }
+
+    .card-cases {
+      grid-column: span 5;
+      padding: 30px 28px 26px;
+      background: linear-gradient(175deg, #FBF8FA 0%, #F5F1F6 100%);
+    }
+
+    .card-cases:hover {
+      border-color: var(--purple);
+    }
+
+    .card-cases .card-eyebrow {
+      color: var(--purple);
+    }
+
+    .card-consti {
+      grid-column: span 4;
+      padding: 28px 26px 24px;
+    }
+
+    .card-consti:hover {
+      border-color: var(--blue);
+    }
+
+    .card-consti .card-eyebrow {
+      color: var(--blue);
+    }
+
+    .card-crim {
+      grid-column: span 4;
+      padding: 28px 26px 24px;
+    }
+
+    .card-crim:hover {
+      border-color: var(--red);
+    }
+
+    .card-crim .card-eyebrow {
+      color: var(--red);
+    }
+
+    .card-statcon {
+      grid-column: span 4;
+      padding: 28px 26px 24px;
+    }
+
+    .card-statcon:hover {
+      border-color: var(--orange);
+    }
+
+    .card-statcon .card-eyebrow {
+      color: var(--orange);
+    }
+
+    .subject-card .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .subject-card .card-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .subject-card .card-action-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--rule);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-soft);
+      font-size: 16px;
+      transition: all .18s ease;
+      background: rgba(255, 255, 255, 0.3);
+      flex-shrink: 0;
+    }
+
+    .subject-card:hover .card-action-icon {
+      color: #FAF7EE;
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+      transform: translateX(3px);
+    }
+
+    .subject-card .card-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.22;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .subject-card.card-pfr .card-title {
+      font-size: 25px;
+    }
+
+    .subject-card .card-desc {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .subject-card .card-meta {
+      border-top: 1px solid var(--rule-light);
+      padding-top: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--ink-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      align-items: center;
+    }
+
+    .subject-card .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .subject-card .card-meta .dot {
+      width: 7.5px;
+      height: 7.5px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* ---- footer ---- */
+    .hub-footer {
+      margin-top: 36px;
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .hub-footer .seal {
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+    }
+
+    .bento-card.is-hidden {
+      display: none !important;
+    }
+
+    @media (max-width:1080px) {
+      .bento-hero {
+        grid-column: span 12;
+      }
+
+      .bento-methodology {
+        grid-column: span 12;
+      }
+
+      .card-pfr {
+        grid-column: span 12;
+      }
+
+      .card-cases {
+        grid-column: span 12;
+      }
+
+      .card-consti {
+        grid-column: span 6;
+      }
+
+      .card-crim {
+        grid-column: span 6;
+      }
+
+      .card-statcon {
+        grid-column: span 12;
+      }
+    }
+
+    @media (max-width:720px) {
+      body {
+        padding: 20px 14px 44px;
+      }
+
+      .bento-grid {
+        gap: 14px;
+      }
+
+      .bento-hero {
+        padding: 24px 20px;
+      }
+
+      .bento-hero h1 {
+        font-size: 28px;
+      }
+
+      .hero-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-pfr,
+      .card-cases,
+      .card-consti,
+      .card-crim,
+      .card-statcon {
+        grid-column: span 12;
+        padding: 22px 20px;
+      }
+
+      .masthead-strip {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="page">
+  <div class="container">
 
-  <div class="header">
-    <p class="eyebrow">Law Review Materials</p>
-    <h1>Situational MCQ Practice</h1>
-    <p class="sub">Choose a subject below to start reviewing. Each module includes timed MCQs, essay-style ALAC problems, and a color-coded study guide.</p>
+    <div class="masthead-strip">
+      <!-- <div class="edition">Law Review Hub</div> -->
+      <div>5 modules · 289 MCQs · 77 ALAC essays</div>
+    </div>
+
+    <div class="bento-grid">
+
+      <div class="bento-card bento-hero" id="bento-hero">
+        <div>
+          <!-- <p class="eyebrow">Law Review Materials</p> -->
+          <h1>Situational MCQ Practice</h1>
+          <p class="sub">Choose a subject below to start reviewing. Each module includes timed situational MCQs,
+            ALAC-format essay problems, and a study guide.</p>
+        </div>
+        <div class="hero-meta-row">
+          <div class="hero-stats">
+            <div class="stat-item"><span class="num">5</span><span class="label">Modules</span></div>
+            <div class="stat-item"><span class="num">289</span><span class="label">MCQ Items</span></div>
+            <div class="stat-item"><span class="num">77</span><span class="label">ALAC Essays</span></div>
+          </div>
+          <div class="filter-bar" role="group" aria-label="Subject filter">
+            <button class="filter-btn active" data-filter="all" type="button">All Modules</button>
+            <button class="filter-btn" data-filter="civil" type="button">Civil</button>
+            <button class="filter-btn" data-filter="political" type="button">Political</button>
+            <button class="filter-btn" data-filter="criminal" type="button">Criminal</button>
+            <button class="filter-btn" data-filter="method" type="button">Legal Method</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-methodology">
+        <div class="widget-title">
+          <h3>ALAC Method</h3>
+          <span class="widget-tag">Essay Format</span>
+        </div>
+        <p
+          style="font-family:'Source Serif 4',serif; font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:12px;">
+          Every ALAC essay problem in these modules asks you to structure your answer in four parts:
+        </p>
+        <div class="alac-grid">
+          <div class="alac-step"><span class="alac-key">A</span><span class="alac-desc"><strong>Answer:</strong>
+              Categorical, direct affirmative or negative reply.</span></div>
+          <div class="alac-step"><span class="alac-key">L</span><span class="alac-desc"><strong>Legal Basis:</strong>
+              Specific codal provision, doctrine, or statute.</span></div>
+          <div class="alac-step"><span class="alac-key">A</span><span class="alac-desc"><strong>Application:</strong>
+              Direct intertwining of facts with elements of law.</span></div>
+          <div class="alac-step"><span class="alac-key">C</span><span class="alac-desc"><strong>Conclusion:</strong>
+              Final disposition based on applied rules.</span></div>
+        </div>
+        <div class="alac-tip">
+          <!-- <span style="font-size:16px; line-height:1; color:var(--yellow); font-weight:700;">★</span> -->
+          <span>Per-topic quiz results are saved in this browser and reload automatically when you return.</span>
+        </div>
+      </div>
+
+      <a href="pfr.html" class="bento-card clickable subject-card card-pfr" data-category="civil" id="card-pfr">
+        <div class="card-header-row">
+          <span class="card-eyebrow">Civil Law</span>
+          <span class="card-action-icon" aria-label="Open Persons &amp; Family Relations module">→</span>
+        </div>
+        <h2 class="card-title">Persons &amp; Family Relations</h2>
+        <p class="card-desc">Preliminary Title · Civil Personality · Marriage, including Property Relations &amp; Family
+          Home (Civil Code Arts. 1–18, 37–51; Family Code Arts. 1–162).</p>
+        <div class="card-meta">
+          <span><span class="dot" style="background:var(--green)"></span>MCQ Practice</span>
+          <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
+          <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
+        </div>
+      </a>
+
+      <a href="pfr_case_pronouncements.html" class="bento-card clickable subject-card card-cases" data-category="civil"
+        id="card-cases">
+        <div class="card-header-row">
+          <span class="card-eyebrow">Civil Law — Supplement</span>
+          <span class="card-action-icon" aria-label="Open PFR Case Pronouncements">→</span>
+        </div>
+        <h2 class="card-title">PFR Case Pronouncements</h2>
+        <p class="card-desc">Key Supreme Court pronouncements on Persons &amp; Family Relations — organized by topic for
+          quick case-law review.</p>
+        <div class="card-meta">
+          <span><span class="dot" style="background:var(--purple)"></span>Case Digest Reference</span>
+        </div>
+      </a>
+
+      <a href="consti_one.html" class="bento-card clickable subject-card card-consti" data-category="political"
+        id="card-consti">
+        <div class="card-header-row">
+          <span class="card-eyebrow">Political Law</span>
+          <span class="card-action-icon" aria-label="Open Constitutional Law I module">→</span>
+        </div>
+        <h2 class="card-title">Constitutional Law I</h2>
+        <p class="card-desc">Arts. I, II, IV, V, VI, VII &amp; VIII of the 1987 Philippine Constitution — National
+          Territory, State Policies, Citizenship, Suffrage, Legislative, Executive &amp; Judicial Departments.</p>
+        <div class="card-meta">
+          <span><span class="dot" style="background:var(--blue)"></span>MCQ Practice</span>
+          <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
+          <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
+        </div>
+      </a>
+
+      <a href="crim_one.html" class="bento-card clickable subject-card card-crim" data-category="criminal"
+        id="card-crim">
+        <div class="card-header-row">
+          <span class="card-eyebrow">Criminal Law</span>
+          <span class="card-action-icon" aria-label="Open Criminal Law 1 module">→</span>
+        </div>
+        <h2 class="card-title">Criminal Law 1 — RPC Book One</h2>
+        <p class="card-desc">Revised Penal Code Arts. 1–15: fundamentals, stages of execution, conspiracy &amp;
+          proposal, classification of felonies, and justifying through alternative circumstances.</p>
+        <div class="card-meta">
+          <span><span class="dot" style="background:var(--red)"></span>MCQ Practice</span>
+          <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
+          <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
+        </div>
+      </a>
+
+      <a href="statutory_construction.html" class="bento-card clickable subject-card card-statcon"
+        data-category="method" id="card-statcon">
+        <div class="card-header-row">
+          <span class="card-eyebrow">Legal Method</span>
+          <span class="card-action-icon" aria-label="Open Statutory Construction module">→</span>
+        </div>
+        <h2 class="card-title">Statutory Construction — Ch. 1–5</h2>
+        <p class="card-desc">Agpalo, Chapters 1–5: Statutes &amp; enactment; Construction &amp; Interpretation; Aids to
+          Construction; Adherence to/Departure from Literal Language; Interpretation of Words &amp; Phrases.</p>
+        <div class="card-meta">
+          <span><span class="dot" style="background:var(--orange)"></span>MCQ Practice</span>
+          <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
+          <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
+        </div>
+      </a>
+
+    </div>
+
+    <footer class="hub-footer">
+      <!-- <p class="seal">LAW REVIEW HUB</p> -->
+      <p>Study aid only — always verify against the primary sources and current jurisprudence.<br>Per-topic quiz history
+        is saved on this device/browser only.</p>
+    </footer>
+
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.subject-card');
 
-  <div class="subjects">
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
 
-    <a href="pfr.html" class="subject-card card-pfr" id="card-pfr">
-      <span class="arrow">→</span>
-      <p class="card-eyebrow">Civil Law</p>
-      <p class="card-title">Persons &amp; Family Relations</p>
-      <p class="card-desc">Preliminary Title · Civil Personality · Marriage, including Property Relations &amp; Family Home (Civil Code Arts. 1–18, 37–51; Family Code Arts. 1–162).</p>
-      <div class="card-meta">
-        <span><span class="dot" style="background:var(--green)"></span>MCQ Practice</span>
-        <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
-        <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
-      </div>
-    </a>
-
-    <a href="pfr_case_pronouncements.html" class="subject-card card-cases" id="card-cases">
-      <span class="arrow">→</span>
-      <p class="card-eyebrow">Civil Law — Supplement</p>
-      <p class="card-title">PFR Case Pronouncements</p>
-      <p class="card-desc">Key Supreme Court pronouncements on Persons &amp; Family Relations — organized by topic for quick case-law review.</p>
-      <div class="card-meta">
-        <span><span class="dot" style="background:var(--purple)"></span>Case Digest Reference</span>
-      </div>
-    </a>
-
-    <a href="consti_one.html" class="subject-card card-consti" id="card-consti">
-      <span class="arrow">→</span>
-      <p class="card-eyebrow">Political Law</p>
-      <p class="card-title">Constitutional Law I</p>
-      <p class="card-desc">Arts. I, II, IV, V, VI, VII &amp; VIII of the 1987 Philippine Constitution — National Territory, State Policies, Citizenship, Suffrage, Legislative, Executive &amp; Judicial Departments.</p>
-      <div class="card-meta">
-        <span><span class="dot" style="background:var(--blue)"></span>MCQ Practice</span>
-        <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
-        <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
-      </div>
-    </a>
-
-    <a href="crim_one.html" class="subject-card card-crim" id="card-crim">
-      <span class="arrow">→</span>
-      <p class="card-eyebrow">Criminal Law</p>
-      <p class="card-title">Criminal Law 1 — RPC Book One</p>
-      <p class="card-desc">Revised Penal Code Arts. 1–15: fundamentals, stages of execution, conspiracy &amp; proposal, classification of felonies, and justifying through alternative circumstances.</p>
-      <div class="card-meta">
-        <span><span class="dot" style="background:var(--red)"></span>MCQ Practice</span>
-        <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
-        <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
-      </div>
-    </a>
-
-    <a href="statutory_construction.html" class="subject-card card-statcon" id="card-statcon">
-      <span class="arrow">→</span>
-      <p class="card-eyebrow">Legal Method</p>
-      <p class="card-title">Statutory Construction — Ch. 1–5</p>
-      <p class="card-desc">Agpalo, Chapters 1–5: Statutes &amp; enactment; Construction &amp; Interpretation; Aids to Construction; Adherence to/Departure from Literal Language; Interpretation of Words &amp; Phrases.</p>
-      <div class="card-meta">
-        <span><span class="dot" style="background:var(--orange)"></span>MCQ Practice</span>
-        <span><span class="dot" style="background:var(--yellow)"></span>Study Guide</span>
-        <span><span class="dot" style="background:var(--red)"></span>ALAC Essays</span>
-      </div>
-    </a>
-
-  </div>
-
-  <p class="hub-footer">Study aid only — always verify against the primary sources and current jurisprudence.<br>Per-topic quiz history is saved on this device/browser only.</p>
-
-</div>
+          const filter = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            card.classList.toggle('is-hidden', !(filter === 'all' || category === filter));
+          });
+        });
+      });
+    });
+  </script>
 </body>
+
 </html>
