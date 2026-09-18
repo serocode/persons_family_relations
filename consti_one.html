@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consti I Situational MCQ Practice — Arts. I, II, IV, V, VI, VII, VIII</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE8DC; --card:#F8F5EC; --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA;
+    --charcoal:#23282A; --charcoal-hi:#33393B;
+    --yellow:#B4922B; --yellow-tint:#F3EBD3;
+    --green:#3F7D5C;  --green-tint:#E1EEE5;
+    --blue:#35688F;   --blue-tint:#DEE9F1;
+    --purple:#6B4F9E; --purple-tint:#E7E1F2;
+    --red:#AA4A3B;    --red-tint:#F3E1DD;
+    --timerok:#3F7D5C; --timerwarn:#AA4A3B;
+    --orange:#C1662E; --orange-tint:#F6E4D3;
+    --fs: 1.15;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4', Georgia, serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px 64px;
+    background-image:radial-gradient(circle at 15% 8%, rgba(35,40,42,0.035), transparent 40%), radial-gradient(circle at 85% 92%, rgba(35,40,42,0.035), transparent 40%);}
+  .sheet{width:100%;max-width:720px;background:var(--card);border:1px solid var(--rule);box-shadow:0 1px 0 var(--rule), 0 18px 40px -24px rgba(32,36,31,0.35);}
+  @media (min-width:1000px){ .sheet{width:66.666vw;max-width:1200px;} }
+  .fs-control{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:12px;color:var(--ink-soft);}
+  .fs-control button{width:28px;height:28px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;line-height:1;}
+  .fs-control button:hover{border-color:var(--ink-soft);}
+  .fs-control .fs-reset{width:auto;padding:0 10px;font-size:11px;font-weight:600;}
+  .masthead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+  .masthead{padding:28px 32px 20px;border-bottom:1px solid var(--rule);}
+  .masthead .eyebrow{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));letter-spacing:0.03em;color:var(--ink-soft);margin:0 0 6px;}
+  .masthead h1{font-family:'Fraunces', serif;font-weight:600;font-size:calc(29px * var(--fs));margin:0 0 6px;line-height:1.15;}
+  .masthead p.sub{font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));color:var(--ink-soft);margin:0;}
+  .content{padding:28px 32px 32px;}
+
+  .topic-eyebrow{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));letter-spacing:0.03em;color:var(--ink-soft);margin:0 0 4px;}
+  .topic-h{font-family:'Fraunces',serif;font-weight:600;font-size:calc(22px * var(--fs));margin:0 0 18px;}
+  .tcards{display:grid;gap:14px;margin-bottom:6px;}
+  .tcard{border:1px solid var(--rule);background:var(--paper);padding:18px 20px;cursor:pointer;border-radius:3px;transition:border-color .12s, background .12s;}
+  .tcard:hover{border-color:var(--ink-soft);background:#fff;}
+  .tcard .tname{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:0 0 4px;}
+  .tcard .tdesc{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 8px;}
+  .tcard .tcount{font-family:'Inter',sans-serif;font-size:calc(11.5px * var(--fs));color:var(--ink-soft);}
+  .tcard.combo{background:var(--charcoal);border-color:var(--charcoal);}
+  .tcard.combo .tname, .tcard.combo .tdesc, .tcard.combo .tcount{color:var(--paper);}
+  .backlink{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0;margin-bottom:16px;display:inline-block;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:18px 0 26px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .watchfor{border-left:3px solid var(--yellow);background:var(--yellow-tint);padding:12px 16px;margin:0 0 22px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.55;color:#4a3f18;}
+  .watchfor strong{display:block;font-size:calc(12.5px * var(--fs));margin-bottom:4px;color:#4a3f18;}
+  .watchfor ul{margin:6px 0 0;padding-left:18px;}
+  .watchfor li{margin-bottom:4px;}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;}
+  .filter-pill{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));font-weight:500;padding:7px 13px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;user-select:none;}
+  .filter-pill.active{background:var(--charcoal);color:var(--paper);border-color:var(--charcoal);}
+  .count-line{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:8px;}
+  .timer-note{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:22px;}
+  .timer-toggle{display:flex;align-items:center;gap:9px;font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));color:var(--ink);margin-bottom:10px;cursor:pointer;user-select:none;}
+  .speed-choice{display:flex;gap:18px;margin:0 0 10px 25px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);}
+  .speed-choice.hide{display:none;}
+  .speed-opt{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;}
+  .speed-opt input{accent-color:var(--charcoal);cursor:pointer;}
+  .timer-toggle input{width:16px;height:16px;accent-color:var(--charcoal);cursor:pointer;}
+  #timer-display.timer-off{color:var(--ink-soft);font-weight:500;}
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(14px * var(--fs));padding:12px 22px;background:var(--charcoal);color:var(--paper);border:none;cursor:pointer;letter-spacing:0.01em;}
+  .btn:hover{background:var(--charcoal-hi);}
+  .btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--rule);}
+  .btn.secondary:hover{border-color:var(--ink);}
+  .btn:disabled{opacity:0.4;cursor:not-allowed;}
+  .btn-row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;}
+  .ledger{display:flex;align-items:baseline;justify-content:space-between;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:10px;gap:10px;}
+  .ledger-right{display:flex;align-items:baseline;gap:14px;}
+  #timer-display{font-weight:700;color:var(--timerok);}
+  #timer-display.timer-warn{color:var(--timerwarn);}
+  .track{height:1px;background:var(--rule);position:relative;margin-bottom:26px;}
+  .track .fill{position:absolute;top:-1.5px;left:0;height:4px;background:var(--charcoal);transition:width .25s ease;}
+  .tag{display:inline-block;font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));font-weight:600;letter-spacing:0.02em;padding:3px 9px;border-radius:2px;margin-bottom:14px;}
+  .tag.memorization{background:var(--yellow-tint);color:#7A6320;}
+  .tag.requisites{background:var(--green-tint);color:#2A5A40;}
+  .tag.exceptions{background:var(--blue-tint);color:#254B68;}
+  .tag.effects{background:var(--purple-tint);color:#4E3A78;}
+  .tag.jurisprudence{background:var(--red-tint);color:#7E362A;}
+  .tag.topicbadge{background:var(--charcoal);color:var(--paper);margin-left:8px;}
+  .cite-line{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));font-style:italic;color:var(--ink-soft);margin:-8px 0 14px;}
+  .qtext{font-size:calc(18px * var(--fs));line-height:1.6;margin:0 0 20px;white-space:pre-line;}
+  .options{list-style:none;margin:0 0 6px;padding:0;}
+  .opt{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1px solid var(--rule);margin-bottom:9px;cursor:pointer;background:var(--paper);font-size:calc(15.5px * var(--fs));line-height:1.45;}
+  .opt:hover{border-color:var(--ink-soft);}
+  .opt .letter{font-family:'Inter',sans-serif;font-weight:700;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);border:1px solid var(--rule);width:22px;height:22px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .opt.selected{border-color:var(--ink);}
+  .opt.correct{background:var(--green-tint);border-color:var(--green);}
+  .opt.correct .letter{border-color:var(--green);color:var(--green);}
+  .opt.incorrect{background:var(--red-tint);border-color:var(--red);}
+  .opt.incorrect .letter{border-color:var(--red);color:var(--red);}
+  .opt.disabled{cursor:default;}
+  .opt.disabled:hover{border-color:var(--rule);}
+  .hint-toggle{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0;margin:2px 0 18px;}
+  .hint-box{font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);background:var(--paper);border-left:2px solid var(--rule);padding:9px 13px;margin:0 0 18px;}
+  .explain{font-size:calc(15.5px * var(--fs));line-height:1.6;color:var(--ink);background:var(--paper);border-left:3px solid var(--charcoal);padding:14px 16px;margin:0 0 22px;}
+  .hero-num{font-family:'Fraunces', serif;font-weight:700;font-size:calc(52px * var(--fs));line-height:1;margin:18px 0 4px;}
+  .hero-cap{font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);margin:0 0 22px;}
+  .score-row{display:flex;align-items:baseline;gap:14px;margin-bottom:4px;}
+  .score-big{font-family:'Fraunces',serif;font-weight:700;font-size:calc(48px * var(--fs));}
+  .score-label{font-family:'Inter',sans-serif;color:var(--ink-soft);font-size:calc(14px * var(--fs));}
+  .breakdown{margin:26px 0;}
+  .bd-row{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));margin-bottom:9px;}
+  .bd-row .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .bd-row .label{width:150px;flex:none;color:var(--ink-soft);}
+  .bd-row .bar{flex:1;height:6px;background:var(--rule);position:relative;}
+  .bd-row .bar span{position:absolute;top:0;left:0;height:100%;background:var(--charcoal);}
+  .bd-row .num{width:44px;text-align:right;flex:none;color:var(--ink-soft);}
+  .review-item{border-top:1px solid var(--rule);padding:18px 0;}
+  .review-item:first-child{border-top:none;}
+  .review-q{font-size:calc(16px * var(--fs));line-height:1.5;margin:0 0 8px;white-space:pre-line;}
+  .review-meta{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:10px;}
+  .review-meta .wrong{color:var(--red);}
+  .review-meta .right{color:var(--green);}
+  details summary{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);cursor:pointer;margin-top:4px;}
+  details .explain{margin-top:10px;}
+  .hide{display:none !important;}
+  .palette{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px;}
+  .pnum{position:relative;width:32px;height:32px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-soft);font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:3px;}
+  .pnum:hover{border-color:var(--ink-soft);}
+  .pnum.answered{background:var(--charcoal);color:var(--paper);border-color:var(--charcoal);}
+  .pnum.current{outline:2px solid var(--ink);outline-offset:1px;}
+  .pnum.flagged::after{content:'';position:absolute;top:-3px;right:-3px;width:9px;height:9px;border-radius:50%;background:var(--yellow);border:1px solid var(--paper);}
+  .history-row{display:flex;justify-content:space-between;align-items:baseline;font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);padding:8px 0;border-bottom:1px solid var(--rule);}
+  .history-row:last-child{border-bottom:none;}
+  .history-row .hscore{color:var(--ink);font-weight:600;}
+  .filter-label{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 8px;}
+  .alac-intro{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 20px;}
+  .alac-topic-h{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:28px 0 6px;}
+  .alac-topic-h:first-child{margin-top:6px;}
+  .alac-card{border:1px solid var(--rule);background:var(--paper);padding:16px 18px;margin-bottom:14px;border-radius:3px;}
+  .alac-fact{font-size:calc(15.5px * var(--fs));line-height:1.55;margin:0 0 10px;}
+  .alac-q{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(13.5px * var(--fs));margin:0 0 10px;}
+  .alac-card details summary{font-weight:600;color:var(--ink);font-size:calc(12.5px * var(--fs));}
+  .alac-ans{font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));line-height:1.6;background:var(--card);border-left:3px solid var(--charcoal);padding:12px 15px;margin-top:10px;}
+  .alac-ans p{margin:0 0 8px;}
+  .alac-ans b{color:var(--ink);}
+
+  .sg-intro{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 16px;}
+  .sg-h2{font-family:'Fraunces',serif;font-weight:600;font-size:calc(20px * var(--fs));margin:30px 0 4px;}
+  .sg-h2:first-child{margin-top:6px;}
+  .sg-h3{font-family:'Fraunces',serif;font-weight:600;font-size:calc(15.5px * var(--fs));margin:22px 0 6px;}
+  .sg-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:10px 0 20px;font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));color:var(--ink-soft);}
+  .sg-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .sg-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  table.sg-table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:calc(14px * var(--fs));}
+  table.sg-table th{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-align:left;padding:6px 10px 6px 0;border-bottom:1px solid var(--rule);}
+  table.sg-table td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5;}
+  table.sg-table td.art{font-family:'Inter',sans-serif;font-weight:700;font-size:calc(12.5px * var(--fs));white-space:nowrap;width:88px;}
+  .sg-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;flex:none;}
+  .sg-row-exoex{background:var(--orange-tint);}
+  .case-card{border-left:3px solid var(--red);padding:8px 14px;margin:0 0 10px;}
+  .case-card .cname{font-weight:600;font-size:calc(14.5px * var(--fs));}
+  .case-card .cdoc{font-size:calc(13px * var(--fs));line-height:1.5;font-family:'Inter',sans-serif;color:var(--ink-soft);}
+  .exoex-box{border-left:4px solid var(--orange);background:var(--orange-tint);padding:12px 16px;margin:10px 0 18px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.55;color:#5c3418;}
+  .exoex-box .exoex-label{display:block;font-weight:700;font-size:calc(11px * var(--fs));text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;color:#8a4a1f;}
+  .cmp-table{width:100%;border-collapse:collapse;margin:14px 0 8px;font-size:calc(13.5px * var(--fs));table-layout:fixed;}
+  .cmp-table th{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-align:left;padding:8px 10px;border-bottom:2px solid var(--rule);vertical-align:bottom;}
+  .cmp-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5;}
+  .cmp-table td.aspect{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);width:120px;}
+</style>
+</head>
+<body>
+<div>
+<div class="sheet">
+  <div class="masthead">
+    <a href="index.html" class="backlink" style="margin-bottom:10px;display:inline-block;font-size:12.5px;">← All subjects</a>
+    <div class="masthead-top">
+      <div>
+        <p class="eyebrow" id="mast-eyebrow">1987 PHILIPPINE CONSTITUTION</p>
+        <h1 id="mast-title">Consti I Situational MCQ Practice</h1>
+      </div>
+      <div class="fs-control">
+        <span>Text size</span>
+        <button onclick="adjustFontScale(-0.1)" title="Smaller text">A−</button>
+        <button class="fs-reset" onclick="resetFontScale()" title="Reset text size">Reset</button>
+        <button onclick="adjustFontScale(0.1)" title="Larger text">A+</button>
+      </div>
+    </div>
+    <p class="sub" id="mast-sub">Pick a topic below to begin.</p>
+  </div>
+
+  <div class="content">
+
+    <div id="view-picker">
+      <p class="topic-eyebrow">CHOOSE A TOPIC</p>
+      <p class="topic-h">What are you reviewing today?</p>
+      <div class="tcards" id="topic-cards"></div>
+      <button class="backlink" style="margin-top:18px;" onclick="showAlac()">Prefer essay-style ALAC problems instead? &rarr;</button>
+      <button class="backlink" style="margin-top:8px;display:block;" onclick="showStudyGuide()">View the color-coded study guide &rarr;</button>
+    </div>
+
+    <div id="view-studyguide" class="hide">
+      <button class="backlink" onclick="backToPicker()">&larr; Back to topics</button>
+      <p class="topic-eyebrow">QUICK REFERENCE</p>
+      <p class="topic-h">Color-Coded Study Guide</p>
+      <p class="sg-intro">Arts. I, II, IV, V, VI, VII &amp; VIII of the 1987 Constitution. Art. III (Bill of Rights) excluded — separate course. Not a substitute for the full text — use it to review before recitation.</p>
+      <div class="sg-legend">
+        <span><i style="background:var(--yellow)"></i>Key provision / memorize</span>
+        <span><i style="background:var(--green)"></i>Requisite</span>
+        <span><i style="background:var(--blue)"></i>Exception</span>
+        <span><i style="background:var(--orange)"></i>Exception of the exception</span>
+        <span><i style="background:var(--red)"></i>Jurisprudence / doctrine</span>
+      </div>
+      <div id="sg-content"></div>
+    </div>
+
+    <div id="view-alac" class="hide">
+      <button class="backlink" onclick="backToPicker()">&larr; Back to topics</button>
+      <p class="topic-eyebrow">ALAC METHOD — ANSWER · LEGAL BASIS · APPLICATION · CONCLUSION</p>
+      <p class="topic-h">Essay-style bar problems</p>
+      <p class="alac-intro">Work out your own Answer, Legal Basis, Application, and Conclusion for each problem, then reveal the model answer to check your reasoning against it.</p>
+      <div id="alac-list"></div>
+    </div>
+
+    <div id="view-quiz" class="hide">
+
+      <div id="start-screen">
+        <button class="backlink" onclick="backToPicker()">&larr; Change topic</button>
+        <p class="hero-num" id="total-count">0</p>
+        <p class="hero-cap" id="hero-cap-text">fact-pattern questions available — pick a category or run the full set</p>
+        <div class="legend">
+          <span><i style="background:var(--yellow)"></i>Memorization</span>
+          <span><i style="background:var(--green)"></i>Requisites</span>
+          <span><i style="background:var(--blue)"></i>Exceptions</span>
+          <span><i style="background:var(--purple)"></i>Effects / consequences</span>
+          <span><i style="background:var(--red)"></i>Jurisprudence</span>
+        </div>
+        <div class="watchfor" id="watchfor-box"></div>
+        <div class="filters" id="filter-pills"></div>
+        <p class="count-line" id="filtered-count-line"></p>
+        <label class="timer-toggle" for="timer-toggle-input">
+          <input type="checkbox" id="timer-toggle-input" checked onchange="onTimerToggleChange()">
+          <span id="timer-toggle-label">Enable timer</span>
+        </label>
+        <div class="speed-choice" id="speed-choice">
+          <label class="speed-opt">
+            <input type="radio" name="secPerQ" value="60" checked onchange="onSpeedChange()"> 60s per question
+          </label>
+          <label class="speed-opt">
+            <input type="radio" name="secPerQ" value="30" onchange="onSpeedChange()"> 30s per question
+          </label>
+        </div>
+        <p class="timer-note" id="timer-note-text"></p>
+        <div class="btn-row"><button class="btn" onclick="startQuiz()">Start practice</button></div>
+
+        <div id="history-block" class="hide">
+          <p class="filter-label" style="margin-top:26px;">Past attempts on this topic (saved on this device)</p>
+          <div id="history-list"></div>
+          <button class="hint-toggle" onclick="clearHistory()" style="margin-top:6px;">Clear history</button>
+        </div>
+      </div>
+
+      <div id="quiz-screen" class="hide">
+        <div class="ledger">
+          <span id="ledger-pos">Item 1 of 1</span>
+          <span class="ledger-right"><span id="timer-display">⏱ 10:00</span><span id="ledger-score">Answered: 0</span></span>
+        </div>
+        <div class="track"><div class="fill" id="track-fill" style="width:0%"></div></div>
+
+        <div id="palette" class="palette"></div>
+
+        <div id="tag-chip"></div>
+        <p class="cite-line" id="cite-line"></p>
+        <p class="qtext" id="q-text"></p>
+        <button class="hint-toggle" id="hint-btn" onclick="toggleHint()">Show hint</button>
+        <div class="hint-box hide" id="hint-box"></div>
+        <ul class="options" id="options-list"></ul>
+
+        <div class="btn-row">
+          <button class="btn secondary" id="prev-btn" onclick="goPrev()">Previous</button>
+          <button class="btn secondary" id="flag-btn" onclick="toggleFlag()">Flag this question</button>
+          <button class="btn secondary" id="skip-btn" onclick="goNext()">Skip / Next</button>
+          <button class="btn" id="submit-btn" onclick="requestSubmit()">Submit Quiz</button>
+        </div>
+      </div>
+
+      <div id="review-screen" class="hide">
+        <p class="hero-cap" style="margin-top:18px;">Before you submit — review your progress</p>
+        <div id="review-palette" class="palette"></div>
+        <p class="count-line" id="review-summary"></p>
+        <div class="btn-row">
+          <button class="btn secondary" onclick="backToQuiz()">Continue reviewing</button>
+          <button class="btn" onclick="finalizeSubmit()">Submit Quiz</button>
+        </div>
+      </div>
+
+      <div id="results-screen" class="hide">
+        <div class="score-row">
+          <span class="score-big" id="final-score">0/0</span>
+          <span class="score-label">correct</span>
+        </div>
+        <p class="hero-cap" id="final-pct"></p>
+        <div class="breakdown" id="breakdown"></div>
+        <div class="btn-row">
+          <button class="btn" onclick="restart(false)">Retake this set</button>
+          <button class="btn secondary" onclick="restart(true)" id="retake-missed-btn">Retake missed only</button>
+          <button class="btn secondary" onclick="backToPicker()">Choose another topic</button>
+        </div>
+        <div id="review-list" style="margin-top:30px;"></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<footer style="font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);text-align:center;max-width:720px;margin:18px auto 0;">Study aid only — always verify against the Constitution's text and current jurisprudence. Save this file to reopen anytime; per-topic history is saved on this device/browser only.</footer>
+</div>
+
+<script>
+/* ======================================================================
+   QUESTION BANKS
+   Each question's options[0] is ALWAYS the correct answer in the data
+   below; the app shuffles the displayed order at render time so the
+   correct choice isn't predictably in the same slot.
+   ====================================================================== */
+
+const BANK_TERRITORY_POLICIES = [
+{id:1,tag:"requisites",cite:"Art. I; R.A. 9522 (archipelagic doctrine)",prompt:"The Philippines draws straight baselines connecting the outermost points of the outermost islands of the archipelago, enclosing a water area roughly eight times the enclosed land area. Separately, shorter baselines are drawn around the Kalayaan Group and Scarborough Shoal, areas outside the main archipelago. A foreign state protests that only ONE continuous baseline may ever be drawn around all PH-claimed territory.\n\nIs the two-baseline structure valid?",options:["Yes — R.A. 9522 validly provides one baseline for the main archipelago and separate baselines for the 'regime of islands' outside it, and the 8:1 ratio is within the 9:1 ceiling.","No — the archipelagic doctrine requires a single continuous baseline around every territory the Philippines claims, without exception.","Yes, but only if the water-to-land ratio is exactly 9:1, never less.","No — Kalayaan and Scarborough may never be enclosed by any baseline since they are not part of the 'Philippine archipelago' at all."],correct:0,explain:"The archipelagic doctrine's straight-baseline method (9:1 max ratio) applies to the main archipelago; R.A. 9522 separately provides baselines for the 'regime of islands' outside it (Kalayaan, Scarborough), which fall under Art. I's second category ('other territories over which the Philippines has sovereignty').",hint:"Not every PH-claimed territory needs to be inside the SAME baseline as the main archipelago."},
+{id:2,tag:"exceptions",cite:"Art. I (commentary); Laurel v. Misa",prompt:"During a hypothetical belligerent occupation of a Philippine province, a resident named Mario collaborates with the occupier's forces against the legitimate government. After Philippine sovereignty is restored, Mario is charged with treason under the Revised Penal Code for these acts, committed while the occupation was ongoing.\n\nMay Mario be validly held liable for treason?",options:["Yes — belligerent occupation does not change sovereignty, and while political laws are generally suspended during occupation, the law on treason is the one exception that continues to bind inhabitants throughout.","No — all political laws, without exception, are suspended for the entire duration of any belligerent occupation.","No — belligerent occupation transfers sovereignty to the occupying power, so treason against the ousted government no longer applies.","Yes, but only if Mario is also shown to have violated a specific ordinance of the occupying government."],correct:0,explain:"Belligerent occupation does not change sovereignty; political laws are suspended EXCEPT the law on treason (Laurel v. Misa), which remains in force and binding throughout the occupation.",hint:"There is exactly one political law that survives suspension during belligerent occupation."},
+{id:3,tag:"jurisprudence",cite:"Republic v. Sandiganbayan (the 1986 interregnum)",prompt:"A litigant argues that acts of the Aquino government during the Feb. 25–Mar. 24, 1986 interregnum (before the Freedom Constitution took effect) should be treated as wholly unconstrained, since the 1973 Bill of Rights was not operative at that time.\n\nApplying Republic v. Sandiganbayan, which is the BEST answer?",options:["The 1973 Bill of Rights was indeed inoperative during the interregnum, but the government remained bound by international human rights instruments such as the ICCPR and UDHR.","The litigant is correct — no legal constraint of any kind, domestic or international, applied to the government during the interregnum.","The Freedom Constitution's Bill of Rights was already fully in force from the moment Marcos left the country, making the argument moot.","The interregnum government was a mere de facto government of paramount force, so none of its acts have legal effect even today."],correct:0,explain:"The Aquino government was de jure but 'revolutionary' during the interregnum. The domestic Bill of Rights was not operative, but international human rights protections (ICCPR, UDHR) still bound the government as a matter of international law.",hint:"Two different sources of rights protection are at play here — one was suspended, the other was not."},
+{id:4,tag:"memorization",cite:"Art. I (commentary) — elements & functions of the State",prompt:"A reviewer is testing whether students can correctly list the four elements of a State and correctly classify a government function as 'constituent' rather than 'ministrant.'\n\nWhich pairing is entirely correct?",options:["Elements: People, Territory, Government, Sovereignty. The maintenance of peace and order and the administration of justice are constituent (mandatory) functions.","Elements: People, Territory, Wealth, Sovereignty. Maintaining peace and order is a ministrant (optional) function.","Elements: Citizens, Land, Government, Recognition. Administration of justice is an optional, ministrant function.","Elements: People, Territory, Government, Constitution. Peace and order is neither constituent nor ministrant, but a private matter."],correct:0,explain:"The four elements of a State are People, Territory, Government, and Sovereignty. Constituent functions (peace and order, property regulation, administration of justice) are mandatory; ministrant functions are merely optional welfare-promoting activities.",hint:"Recall the specific illustrative examples always paired with 'constituent' functions."},
+{id:5,tag:"exceptions",cite:"Art. II, Sec. 16 — Oposa v. Factoran",prompt:"A group of minors sues to cancel logging and mining permits, invoking Art. II, Sec. 16 (right to a balanced and healthful ecology) on behalf of themselves and generations not yet born. The respondents move to dismiss, arguing Sec. 16 is a mere non-self-executing statement of policy that confers no enforceable right or standing.\n\nShould the motion to dismiss be granted?",options:["No — Sec. 16 is a recognized exception to Art. II's general non-self-executing rule; it is enforceable on its own and confers standing even for future generations (Oposa v. Factoran).","Yes — every provision of Art. II, without exception, is non-self-executing and requires implementing legislation before it may support any suit.","No, but only because Congress has already passed a law specifically implementing Sec. 16 for this exact type of suit.","Yes — minors categorically lack standing to sue on environmental matters under any provision of the Constitution."],correct:0,explain:"While Art. II provisions are generally not self-executing, Sec. 16 is the recognized exception — Oposa v. Factoran treated it as enforceable on its own terms, conferring standing on minors even for future generations' interests.",hint:"There is exactly one named exception to Art. II's general non-self-executing rule, and it involves ecology."},
+{id:6,tag:"requisites",cite:"Art. II, Sec. 12 (protection of the unborn)",prompt:"A pregnant woman's doctors determine that continuing her pregnancy poses a substantial risk of death to her, with no danger merely to her emotional wellbeing. An ordinance, citing Art. II, Sec. 12, purports to criminalize ALL terminations without exception.\n\nIs the blanket ordinance, as applied to this life-threatening situation, consistent with Sec. 12's accepted constitutional understanding?",options:["No — the unborn's life may be sacrificed to save the mother's life; Sec. 12 does not treat the mother's life and the unborn's life as absolutely equal in every circumstance, though it does not permit sacrificing the unborn merely to spare emotional suffering.","Yes — Sec. 12 grants the unborn full legal personality, making any termination absolutely prohibited without exception.","No, but only because the ordinance was passed by a mere local government unit rather than Congress.","Yes — Sec. 12 places the unborn's life and the mother's life on exactly equal footing in all situations, without any recognized basis for termination."],correct:0,explain:"Sec. 12 does not grant the unborn full legal personality nor place its life exactly on the mother's level; the unborn's life may be sacrificed only to save the mother's actual life — not merely to spare her emotional suffering.",hint:"There is exactly one recognized basis on which the unborn's life may be sacrificed under Sec. 12's accepted reading."},
+{id:7,tag:"jurisprudence",cite:"Art. II, Sec. 26 — Pamatong v. COMELEC",prompt:"COMELEC bars a candidate from filing his certificate of candidacy for governor on the ground that his close relatives already occupy several elective posts in the same province — a situation critics call a 'political dynasty' under Art. II, Sec. 26. Congress has never passed any law defining 'political dynasty' or implementing Sec. 26.\n\nWas COMELEC correct to rely on Sec. 26 alone?",options:["No — Sec. 26 is not self-executing; it is merely a guideline for legislative action, and the definition of 'political dynasty' is left to Congress, which has not yet acted (Pamatong v. COMELEC).","Yes — Sec. 26 is immediately enforceable by COMELEC even absent any implementing legislation from Congress.","No, but only because COMELEC lacks jurisdiction over candidacy disputes generally.","Yes — 'political dynasty' has a plain, self-evident meaning that requires no legislative definition at all."],correct:0,explain:"Pamatong v. COMELEC held that Sec. 26 is not self-executing — it specifies a guideline for legislative or executive action, with the definition of 'political dynasty' expressly left to Congress, which has not enacted implementing legislation.",hint:"This is the flip side of the Sec. 16 exception — Sec. 26 falls within the GENERAL non-self-executing rule."},
+{id:8,tag:"memorization",cite:"Art. II, Sec. 1 (Nachura's manifestations of republicanism)",prompt:"A bar reviewer asks examinees to list Nachura's six manifestations of republicanism under Art. II, Sec. 1.\n\nWhich list is complete and accurate?",options:["Government of laws and not of men; rule of the majority; accountability of public officials; Bill of Rights; legislature cannot pass irrepealable laws; separation of powers.","Universal suffrage; bicameralism; judicial review; federalism; a written constitution; an independent judiciary.","Separation of church and state; civilian supremacy; freedom of the press; due process; equal protection; eminent domain.","Popular sovereignty; a presidential system; term limits; the party-list system; local autonomy; fiscal independence."],correct:0,explain:"Nachura's six manifestations of republicanism are: government of laws not of men; rule of the majority; accountability of public officials; the Bill of Rights; the rule against irrepealable laws; and separation of powers.",hint:"This list mixes structural principles rather than specific provisions or institutions."}
+];
+
+const BANK_CITIZENSHIP_SUFFRAGE = [
+{id:1,tag:"requisites",cite:"Art. IV, Sec. 1(3) (election of citizenship)",prompt:"Linda was born in 1970 to a Filipino mother and a foreign father. She turned 18 in 1988 and executed her sworn statement of election of Philippine citizenship, along with an oath of allegiance, in 1990 — about two years after reaching majority, explaining the delay was due to her family's relocation.\n\nDoes Linda qualify as natural-born under Sec. 1(3)?",options:["Yes — her mother is Filipino, she was born before January 17, 1973, and she elected citizenship within a reasonable time (generally three years, extendible for good cause) after reaching majority.","No — Sec. 1(3) requires election to occur before, not after, reaching the age of majority.","No — Sec. 1(3) applies only to children born after January 17, 1973.","Yes, but only if she additionally undergoes judicial naturalization proceedings to perfect her status."],correct:0,explain:"Sec. 1(3)'s requisites are: Filipino mother, birth before January 17, 1973, and election of citizenship upon reaching majority (within a reasonable time, generally three years, extendible for good cause). Linda satisfies all three.",hint:"Check the three specific requisites of Sec. 1(3) against Linda's facts one at a time."},
+{id:2,tag:"exceptions",cite:"Art. IV, Sec. 2 (natural-born deeming clause)",prompt:"Carlo properly elected Philippine citizenship under Sec. 1(3) upon reaching majority. An examiner later argues Carlo cannot be 'natural-born' because Sec. 2 defines natural-born citizens as those who need not perform any act to acquire or perfect citizenship — and election is technically such an act.\n\nIs the examiner's objection correct?",options:["No — Sec. 2 expressly deems those who elect under Sec. 1(3) to be natural-born, despite election technically being an act to perfect citizenship.","Yes — anyone who performs any act to acquire citizenship, including election, can never be natural-born under any circumstance.","No, but only because Carlo may alternatively pursue judicial naturalization to cure the defect.","Yes — Carlo remains a naturalized citizen for all legal purposes, including offices reserved for natural-born citizens."],correct:0,explain:"Sec. 2's second sentence carves out an express exception: those who elect citizenship under Sec. 1(3) are DEEMED natural-born, even though electing is technically an act performed to perfect citizenship.",hint:"Sec. 2 has two sentences — the second one is doing something special for a specific group."},
+{id:3,tag:"exceptions",cite:"R.A. 9225 — Sobejana-Condon v. COMELEC",prompt:"Danilo, naturalized as a Canadian citizen in 2005, reacquired Philippine citizenship under R.A. 9225 in 2018 by taking the oath of allegiance. In 2023 he files his certificate of candidacy for mayor, believing his 2018 oath already sufficiently renounced his Canadian citizenship for all purposes, including candidacy.\n\nIs Danilo qualified to run based on these facts alone?",options:["No — R.A. 9225 requires an ADDITIONAL personal, sworn renunciation of foreign citizenship before or simultaneous with COC filing for those seeking public office; the reacquisition oath alone does not satisfy this.","Yes — the 2018 oath of allegiance under R.A. 9225 is, by itself, a complete and sufficient renunciation of all foreign citizenships for every purpose.","No — R.A. 9225 does not allow reacquisition by anyone previously naturalized in another country.","Yes — filing the certificate of candidacy itself automatically operates as the required renunciation under R.A. 9225."],correct:0,explain:"Sobejana-Condon v. COMELEC held that R.A. 9225 imposes a SEPARATE, additional requirement for those seeking elective office: a personal, sworn renunciation of foreign citizenship distinct from the oath of allegiance used to reacquire citizenship.",hint:"Two separate acts, two separate purposes — reacquiring citizenship is not the same as qualifying for public office."},
+{id:4,tag:"jurisprudence",cite:"Poe-Llamanzares v. COMELEC (foundling doctrine)",prompt:"An infant was found abandoned in a Philippine public market decades ago, with no records establishing his biological parents' nationality. He later seeks a position requiring proof of natural-born citizenship. An opponent argues that, absent proof of a Filipino parent, he cannot be a citizen under the jus sanguinis principle.\n\nIs the opponent correct?",options:["No — a foundling of unknown parentage found in the Philippines is presumed a natural-born Filipino citizen, based on circumstantial evidence and generally accepted principles of international law.","Yes — without documentary proof of at least one Filipino parent, Philippine law can never recognize the foundling as a citizen.","No — the foundling instead becomes a naturalized citizen automatically upon reaching the age of majority.","Yes, unless the foundling undergoes formal judicial naturalization proceedings before claiming any citizenship."],correct:0,explain:"Poe-Llamanzares v. COMELEC held that a foundling found in the Philippines is presumed natural-born, based on circumstantial evidence of the finding and generally accepted principles of international law incorporated under Art. II, Sec. 2.",hint:"This doctrine fills an evidentiary gap for a specific class of person, rather than abandoning jus sanguinis altogether."},
+{id:5,tag:"memorization",cite:"Art. IV, Sec. 3 (modes of losing citizenship)",prompt:"A reviewer lists several situations and asks which one does NOT result in loss of Philippine citizenship under Art. IV, Sec. 3.\n\nWhich is the BEST answer?",options:["Marrying a foreign national while remaining physically present in the Philippines.","Naturalization in a foreign country.","Express renunciation of citizenship.","Being found by final judgment to be a deserter of the Armed Forces of the Philippines in time of war."],correct:0,explain:"Merely marrying a foreigner is NOT among Sec. 3's enumerated modes of losing citizenship (naturalization abroad, express renunciation, oath of allegiance to a foreign country, service in a foreign military, denaturalization, and wartime desertion by final judgment).",hint:"Marriage to a foreigner, standing alone, does not appear on the Sec. 3 list at all."},
+{id:6,tag:"requisites",cite:"Art. V, Sec. 1 (voter qualifications)",prompt:"Teresa, 22, a lifelong Filipino resident, moved to a new city four months ago and wants to register to vote there, with the election two months away.\n\nApplying the two separate residency clocks under Sec. 1, will Teresa satisfy the LOCAL residency requirement in her new city by election day?",options:["Only if her cumulative residency in the new city reaches at least six months by election day; on these facts (4 months elapsed + 2 months remaining = 6 months), she reaches the floor exactly on election day.","Yes automatically, since her lifelong national residency already satisfies both the national and local requirements.","No — Sec. 1 requires a full year of residency in the specific locality, not six months.","Yes, because Sec. 1 only requires residency in the Philippines generally, with no separate local residency requirement at all."],correct:0,explain:"Art. V, Sec. 1 imposes two separate residency clocks: at least 1 year nationally, and at least 6 months in the specific locality of voting. Teresa's national residency is satisfied; her local residency reaches exactly the 6-month floor by election day on these facts.",hint:"There are two separate residency clocks under Sec. 1 — national and local — and they don't always move together."},
+{id:7,tag:"jurisprudence",cite:"Kabataan Party-List v. COMELEC",prompt:"A law requires mandatory biometrics validation for all registered voters, with deactivation for non-compliance by a set deadline. A voter challenges this as an unconstitutional 'additional substantive requirement' barred by Art. V, Sec. 1.\n\nApplying Kabataan Party-List v. COMELEC, is the challenge likely to succeed?",options:["No — voter registration, including mandatory biometrics validation, is a procedural requirement, not the kind of substantive requirement (literacy, property, etc.) Sec. 1 prohibits, even though non-compliance results in deactivation.","Yes — any requirement whose non-compliance results in losing the ability to vote is automatically a prohibited substantive requirement.","No, but only because COMELEC, not Congress, enacted the biometrics rule.","Yes — Sec. 1's bar on 'other substantive requirements' was intended to cover registration mechanics as well."],correct:0,explain:"Kabataan Party-List v. COMELEC held that voter registration, including biometrics validation, is a mere procedural requirement — distinct from the substantive qualifications (literacy, property, etc.) Sec. 1 bars — even though deactivation results from non-compliance.",hint:"Distinguish the severity of a consequence from the constitutional character (procedural vs. substantive) of the requirement itself."},
+{id:8,tag:"effects",cite:"Art. V, Sec. 1 (disqualification requires final conviction)",prompt:"Ferdie is detained pending trial on a criminal charge but has not been convicted by final judgment. Jail authorities refuse to arrange for him to vote, reasoning that detention itself automatically disqualifies a person from suffrage.\n\nIs the jail authorities' position correct?",options:["No — disqualification from suffrage generally attaches only upon final conviction for a qualifying offense; mere detention or an unresolved charge does not strip a presumptively innocent person of the right to vote.","Yes — any person under any form of detention, convicted or not, automatically loses the right to vote until the case is resolved.","No, but only because Ferdie is charged with an offense that carries no possible prison term.","Yes — the presumption of innocence has no bearing on a detainee's voting rights under Philippine election law."],correct:0,explain:"Disqualification from suffrage generally requires final conviction for a qualifying offense. A detainee who has not been convicted retains the presumption of innocence and, correspondingly, the right to vote.",hint:"The relevant trigger is a FINAL CONVICTION for a disqualifying offense — not mere accusation or detention."}
+];
+
+const BANK_LEGISLATIVE = [
+{id:1,tag:"memorization",cite:"Art. VI, Secs. 3, 6 & 7 (Senate vs. House)",prompt:"A student keeps mixing up the age and residency figures required of Senators versus members of the House of Representatives.\n\nWhich pairing is correct?",options:["Senate: at least 35 years old, at least 2 years of PH residency, 6-year term (max 2 consecutive). House: at least 25 years old, at least 1 year of district residency, 3-year term (max 3 consecutive).","Senate: at least 25 years old, at least 1 year of PH residency, 3-year term. House: at least 35 years old, at least 2 years of district residency, 6-year term.","Senate: at least 30 years old, at least 5 years of PH residency, 4-year term. House: at least 21 years old, at least 6 months of district residency, 2-year term.","Senate: at least 40 years old, at least 10 years of PH residency, 6-year term. House: at least 25 years old, at least 3 years of district residency, 3-year term."],correct:0,explain:"Senators: ≥35, ≥2-yr PH residency, 6-yr term (max 2 consecutive). House members: ≥25, ≥1-yr district residency, 3-yr term (max 3 consecutive).",hint:"The Senate figures are consistently higher across every category than the House figures."},
+{id:2,tag:"requisites",cite:"Atong Paglaum v. COMELEC (party-list categories)",prompt:"A national party registers under the party-list system without claiming to represent any marginalized sector. Separately, a sectoral organization representing indigenous farmers nominates, as its top nominee, a wealthy businessman with no connection to farming.\n\nApplying Atong Paglaum v. COMELEC, are both nominations valid?",options:["The national party's nominations are valid (it need not be 'marginalized'), but the sectoral organization's nomination of the businessman is invalid, since sectoral-party nominees must actually belong to the sector represented.","Both nominations are valid, since Atong Paglaum abolished any distinction between national and sectoral party-list groups.","Neither nomination is valid — only genuinely marginalized individuals may ever be nominated under the party-list system.","The sectoral organization's nomination is valid, but the national party must first prove it represents a marginalized sector."],correct:0,explain:"Atong Paglaum recognizes national/regional parties (need NOT be marginalized) separately from sectoral parties (whose NOMINEES must actually belong to the marginalized sector represented). The businessman nominee fails that sector-membership requirement.",hint:"The 'must belong to the sector' rule applies only to one of the three Atong Paglaum categories."},
+{id:3,tag:"exceptions",cite:"Art. VI, Sec. 18 — Sarmiento v. Mison",prompt:"The President appoints a new department Secretary and, separately, a new Commissioner of a bureau that is not itself a full executive department. Only the Secretary's appointment is transmitted to the Commission on Appointments.\n\nApplying Sarmiento v. Mison, was the President correct in requiring CA confirmation only for the Secretary?",options:["Yes — CA confirmation is required only for the four Sarmiento v. Mison categories (department heads, ambassadors/consuls, AFP officers colonel/naval captain up, and other officers the Constitution vests in the President); a bureau-level Commissioner falls outside all four.","No — every single presidential appointee, without exception, requires CA confirmation.","Yes, but only because the bureau Commissioner's position did not yet exist when the Constitution took effect.","No — bureau-level Commissioners are specifically named in Sarmiento v. Mison as requiring CA confirmation."],correct:0,explain:"Sarmiento v. Mison limited CA confirmation to four specific categories; a bureau-level Commissioner heading an office that is not a full executive department falls outside all four.",hint:"Memorize all four Sarmiento v. Mison categories — does a bureau-level office fall within any of them?"},
+{id:4,tag:"requisites",cite:"Art. VI, Sec. 21 — Neri v. Senate; Garcillano v. House",prompt:"A Senate committee, investigating alleged anomalies with the stated purpose of drafting new procurement legislation, summons a private contractor. The committee's rules of procedure exist internally but were never published in the Official Gazette or a newspaper of general circulation.\n\nIs the contractor justified in refusing to answer on the basis of the unpublished rules?",options:["Yes — a valid Sec. 21 inquiry requires (1) being in aid of legislation, (2) duly PUBLISHED rules of procedure, and (3) respect for the rights of persons involved; unpublished rules alone render the inquiry defective.","No — 'in aid of legislation' is the only requisite for a valid Sec. 21 inquiry, and that requisite is clearly satisfied here.","No — publication of a committee's internal rules of procedure has never been required for a valid legislative inquiry.","Yes, but only because the contractor is a private individual rather than a government official."],correct:0,explain:"A valid Sec. 21 inquiry requires three requisites, including duly published rules of procedure (Neri v. Senate; Garcillano v. House). Unpublished rules render the inquiry defective on that requisite alone.",hint:"Being 'in aid of legislation' is necessary but not sufficient — there are two more requisites to check."},
+{id:5,tag:"memorization",cite:"Art. VI, Secs. 21–22 (inquiry vs. question hour)",prompt:"A student needs to distinguish Sec. 21 (legislative inquiry) from Sec. 22 (question hour) for an exam.\n\nWhich is the BEST statement of the distinction?",options:["Sec. 21 inquiries compel attendance, enforceable by the contempt power; Sec. 22's question hour lets a department head decline appearance when the security of the State or public interest so requires.","Sec. 21 and Sec. 22 are functionally identical, differing only as to which chamber may invoke each.","Sec. 22's question hour compels attendance under pain of contempt, while Sec. 21 inquiries are purely voluntary.","Sec. 21 applies only to private individuals, while Sec. 22 applies only to sitting members of Congress."],correct:0,explain:"Sec. 21 inquiries are compulsory, backed by the contempt power (subject to respecting witnesses' rights); Sec. 22's question hour allows department heads to decline appearance where security or public interest requires it.",hint:"One provision has real enforcement teeth; the other allows a specific, limited excuse."},
+{id:6,tag:"exceptions",cite:"Art. VI, Sec. 26(2) (bill-passage exception)",prompt:"After a massive typhoon, the President certifies to Congress the necessity of a relief bill's immediate enactment. Both Houses pass it without three readings on separate days or the usual 3-day distribution of printed copies.\n\nIs the resulting law's passage constitutionally valid?",options:["Yes — the 3-readings/3-days requirement is expressly waived when the President certifies the necessity of immediate enactment to meet a public calamity or emergency.","No — the 3-readings/3-days requirement can never be waived under any circumstance.","Yes, but only if the Supreme Court first issues an order specifically suspending the ordinary legislative process.","No — only the Senate President, not the President of the Philippines, may certify a bill as urgent."],correct:0,explain:"Art. VI's ordinary bill-passage requirements are waived when the President certifies the necessity of the bill's immediate enactment to meet a public calamity or emergency.",hint:"There's a specific, named exception tied to a presidential certification."},
+{id:7,tag:"exceptions",cite:"Art. VI, Sec. 27(2) (item veto)",prompt:"Congress passes a general appropriations act. The President disagrees with one specific line item but otherwise supports the rest, including its other appropriations.\n\nMay the President validly veto just that one item while approving the rest?",options:["Yes — for appropriation, revenue, or tariff bills specifically, the President may exercise an item veto, disapproving particular items while approving the rest.","No — the President must always veto an entire bill in its totality, with no exceptions.","Yes, but only for revenue and tariff bills; appropriation bills may only be vetoed or approved wholesale.","No — only Congress, through a later amending law, may remove a specific appropriations item."],correct:0,explain:"The general veto rule requires vetoing an entire bill; the recognized exception (item veto) applies specifically to appropriation, revenue, or tariff bills.",hint:"There's a specific, named category of bills where a partial veto is allowed."},
+{id:8,tag:"jurisprudence",cite:"Art. VI, Sec. 24 — Tolentino v. Secretary of Finance",prompt:"A revenue bill originates in the House and is transmitted to the Senate, which works on its own substantially different version covering the same subject, later reconciled through a bicameral conference committee.\n\nApplying Tolentino v. Secretary of Finance, is this process valid under the House-origination rule?",options:["Yes — it is the BILL, not the LAW, that must originate in the House; the Senate may propose amendments or even substitute its own version, so long as House action came first.","No — once the House originates a revenue bill, the Senate may only approve or reject it outright, without any power to amend.","Yes, but only if the Senate's substitute version is word-for-word identical to the House bill.","No — Tolentino held that any Senate-originated substitute for a House revenue bill renders the resulting law void."],correct:0,explain:"Tolentino v. Secretary of Finance held that the House-origination requirement concerns the BILL, not the final LAW — the Senate is free to amend or substitute, since it is the initiation process that must start in the House.",hint:"Distinguish what must originate in the House from what the Senate is free to do with it afterward."}
+];
+
+const BANK_EXECUTIVE = [
+{id:1,tag:"memorization",cite:"Art. VII, Secs. 2 & 4 (qualifications and term)",prompt:"A student answers that a presidential candidate must be a naturalized citizen, at least 35 years old, and a resident of the Philippines for at least 5 years.\n\nWhich correction should be made?",options:["The candidate must be natural-born (not naturalized), at least 40 years old, and a PH resident for at least 10 years immediately preceding the election.","No correction is needed — the answer is fully accurate.","Only the age requirement needs correction, to 45 instead of 35.","Only the residency period needs correction, to 15 years instead of 5."],correct:0,explain:"Art. VII, Sec. 2 requires natural-born citizenship, at least 40 years of age, and PH residency of at least 10 years immediately preceding the election — the student's answer got all three wrong.",hint:"Compare every figure and category in the student's answer against the actual text of Sec. 2."},
+{id:2,tag:"effects",cite:"Art. VII, Secs. 7–8 (succession)",prompt:"A sitting President dies eight months before the end of the term. There is no vacancy in the Vice-Presidency at the time of the President's death.\n\nWho serves out the remainder of the term, and in what capacity?",options:["The Vice-President becomes President (not merely Acting President) for the unexpired portion of the term.","The Senate President automatically becomes President, bypassing the sitting Vice-President.","A special election must be called within 60 days to elect a new President for the remainder of the term.","The Vice-President merely acts as President temporarily pending a special presidential election."],correct:0,explain:"Under Sec. 8, if the President dies, is permanently disabled, is removed, or resigns during the term, the Vice-President BECOMES President (not just 'Acting President') for the unexpired term.",hint:"Distinguish merely 'acting as' President from actually 'becoming' President."},
+{id:3,tag:"requisites",cite:"Neri v. Senate Committees (presidential communications privilege)",prompt:"A Senate committee demands that the Executive Secretary disclose details of his private conversation with the President regarding the President's decision on a foreign loan agreement. The Secretary invokes presidential communications privilege.\n\nApplying Neri v. Senate Committees, what must be shown for the privilege to attach?",options:["That the communication relates to a quintessential, non-delegable presidential power, was received by a close advisor under the 'operational proximity' test, and there is no adequate showing of a compelling need to override it.","That the President personally appears before the committee to invoke the privilege for each question.","That the communication was reduced to writing and formally marked 'confidential' by the Office of the President.","That Congress has, by prior statute, expressly listed the topic as covered by presidential communications privilege."],correct:0,explain:"Neri v. Senate Committees laid out three requisites: (1) relates to a quintessential, non-delegable presidential power, (2) received by a close advisor under 'operational proximity,' and (3) no adequate showing of compelling need to override the (merely presumptive) privilege.",hint:"There are exactly three elements in the Neri test."},
+{id:4,tag:"exceptions",cite:"Art. VII, Sec. 1 (commentary) — Estrada v. Desierto",prompt:"A former President, now out of office, is sued for acts done in his purely private capacity, unrelated to any official function, during his term. He invokes presidential immunity from suit.\n\nIs the invocation likely to succeed?",options:["No — presidential immunity applies during incumbency and does not extend to acts done in a private/personal capacity, nor does it survive after the term ends for non-official conduct.","Yes — presidential immunity from suit is absolute and permanent, covering all acts, official or private, for life.","No, but only because he is being sued in a criminal rather than civil proceeding.","Yes — immunity automatically attaches to any act committed at any point during a President's term, however personal in nature."],correct:0,explain:"Presidential immunity from suit applies during incumbency and does not cover private/personal acts, nor does it survive the term for unofficial conduct — a former President enjoys no special immunity for such acts.",hint:"Two separate limits apply here: the TIMING of the suit and the NATURE of the act."},
+{id:5,tag:"exceptions",cite:"Art. VII, Sec. 15 (appointments ban)",prompt:"One month before the next presidential election, an Undersecretary position suddenly becomes vacant. The President appoints a 'temporary' replacement, reasoning simply that the position is 'too important to leave vacant,' without any specific showing that the vacancy would prejudice public service or endanger public safety.\n\nDoes the appointment fall within the Sec. 15 exception?",options:["No — the exception requires BOTH a genuinely temporary appointment AND an actual showing that continued vacancy would prejudice public service or endanger public safety; general importance alone does not satisfy the second element.","Yes — any appointment labeled 'temporary' automatically satisfies the Sec. 15 exception regardless of the reason given.","No — the Sec. 15 exception never applies to any vacancy in an executive department, regardless of urgency.","Yes — the importance of a position, by itself, is sufficient to trigger the exception."],correct:0,explain:"The Sec. 15 exception requires two elements together: a genuinely temporary appointment, AND an actual showing that continued vacancy would prejudice public service or endanger public safety — general importance alone does not satisfy the second element.",hint:"The exception has TWO required elements, not one — check both."},
+{id:6,tag:"jurisprudence",cite:"De Castro v. JBC",prompt:"During the Sec. 15 appointments-ban period, a Supreme Court vacancy arises. The President's staff debates whether the ban suspends the separate constitutional duty to fill judicial vacancies within 90 days.\n\nApplying De Castro v. JBC, which is the BEST answer?",options:["The Judiciary's 90-day rule under Art. VIII is a specific command that prevails over the general Sec. 15 ban — the ban does not suspend the duty to fill Supreme Court vacancies.","The Sec. 15 ban fully applies, meaning the President may not fill any Supreme Court seat arising during the ban period.","Only the Judicial and Bar Council, not the President, may act on any vacancy arising during the ban period.","The 90-day rule and the ban are irreconcilable, so the vacancy simply remains unfilled until both periods lapse."],correct:0,explain:"De Castro v. JBC held that the Judiciary's specific 90-day mandatory-filling rule prevails over the general Sec. 15 appointments ban, since a specific constitutional command generally governs over a general one.",hint:"When a specific rule and a general rule conflict, which one usually controls?"},
+{id:7,tag:"memorization",cite:"Art. VII, Sec. 18 (three graduated C-in-C powers)",prompt:"Isolated but serious armed clashes occur in one region, while public order elsewhere remains normal. The President wants to deploy the armed forces without yet resorting to martial law or suspending the writ of habeas corpus.\n\nWhich Commander-in-Chief power is the appropriate, least drastic option?",options:["The calling-out power, triggered by lawless violence, invasion, or rebellion, and involving the broadest presidential discretion of the three graduated powers.","Suspension of the writ of habeas corpus, since this is always the mildest of the three options.","Declaration of martial law, since any armed clash automatically satisfies its threshold.","None of the three powers may be exercised unless the entire country is simultaneously affected."],correct:0,explain:"The calling-out power is the broadest and least drastic of the three graduated Commander-in-Chief powers, without the stricter safeguards (60-day cap, congressional report, SC review) attached to the other two.",hint:"Of the three graduated powers, one is specifically suited to a localized, lower-intensity situation."},
+{id:8,tag:"memorization",cite:"Art. VII, Sec. 19 (pardon vs. amnesty)",prompt:"A convicted individual's case is still on appeal, with no final judgment of conviction rendered. He asks what form of executive clemency, if any, remains available to him.\n\nWhich is the BEST answer?",options:["Amnesty may still be granted even before final conviction, with the concurrence of a majority of all members of Congress — unlike pardon, which requires a final conviction.","Pardon may be granted at any stage of a criminal case, including while it remains pending on appeal.","No form of executive clemency is ever available prior to a final judgment of conviction.","Commutation of sentence may be granted before final conviction, since it only reduces rather than eliminates the eventual penalty."],correct:0,explain:"Pardon, commutation, and reprieve all require a FINAL conviction. Amnesty is the exception — available even before conviction, but requiring the concurrence of a majority of all Congress members.",hint:"Only one form of clemency listed here does NOT require a final conviction."}
+];
+
+const BANK_JUDICIAL = [
+{id:1,tag:"memorization",cite:"Art. VIII, Sec. 1 (two-fold concept of judicial power)",prompt:"A student must describe both halves of the constitutional definition of judicial power under Sec. 1 — the traditional concept and the concept added specifically in 1987.\n\nWhich is the BEST statement?",options:["(1) The traditional duty to settle actual controversies involving legally demandable and enforceable rights, and (2) the expanded duty to determine grave abuse of discretion amounting to lack or excess of jurisdiction by any branch or instrumentality of government.","(1) The duty to issue advisory opinions on pending bills, and (2) the duty to review the wisdom of any executive or legislative policy choice.","(1) The duty to try all criminal cases, and (2) the duty to supervise the budgets of the other two branches.","(1) The traditional duty to settle actual controversies, and (2) the duty to substitute the Court's own judgment for a political branch's whenever it disagrees."],correct:0,explain:"Sec. 1's two-fold concept: (1) the traditional duty to settle actual controversies over legally demandable rights, and (2) the expanded certiorari jurisdiction over grave abuse of discretion, added in 1987 to curb excessive reliance on the political question doctrine.",hint:"One half is the classic judicial function; the other was added for a specific historical reason."},
+{id:2,tag:"requisites",cite:"Art. VIII, Sec. 1 (commentary) — requisites of judicial review",prompt:"A citizen challenges a law's constitutionality without any personal, direct injury, raises the issue only in a motion for reconsideration after losing on other grounds, and the constitutional question is not actually decisive of the case.\n\nWhich requisite(s) of judicial review does this petition fail?",options:["Standing (absent a recognized exception), timeliness (not raised at the earliest opportunity), and lis mota (not the decisive issue).","None — an actual case or controversy alone automatically satisfies every other requisite of judicial review.","Only the actual-case-or-controversy requisite; the rest apply solely in the Supreme Court.","Only lis mota; standing and timeliness apply solely to class actions."],correct:0,explain:"Judicial review requires (1) actual case/controversy, (2) legal standing, (3) earliest opportunity, and (4) lis mota. This petition fails standing (absent an exception), timeliness, and lis mota.",hint:"Go through all four requisites of judicial review and check the facts against each one."},
+{id:3,tag:"exceptions",cite:"Lagman v. Medialdea; Belgica v. Executive Secretary",prompt:"The President issues a proclamation traditionally classified as a political question. A petitioner challenges it not by asking the Court to substitute its own policy judgment, but by alleging grave abuse of discretion amounting to lack or excess of jurisdiction.\n\nMay the Court still take cognizance despite the political-question character of the act?",options:["Yes — under the expanded certiorari jurisdiction of Sec. 1, the Court may review whether grave abuse of discretion attended even a traditionally political act, without substituting its own judgment of wisdom.","No — once an act is a political question, no court may ever review it, even for grave abuse of discretion.","Yes, but only if a majority of Congress first passes a resolution authorizing the Court to take up the challenge.","No — the 1987 Constitution narrowed, rather than expanded, judicial review of political acts."],correct:0,explain:"The expanded certiorari clause allows the Court to inquire into grave abuse of discretion even in traditionally political acts, without substituting its own judgment of wisdom (Lagman v. Medialdea; Belgica v. Executive Secretary).",hint:"The 1987 Constitution specifically added a clause addressing exactly this situation."},
+{id:4,tag:"memorization",cite:"Art. VIII, Secs. 4(1), 8–9 (JBC composition and the 90-day rule)",prompt:"A group wants the JBC's exact composition and the deadline for filling a Supreme Court vacancy.\n\nWhich is the BEST statement?",options:["Ex officio: Chief Justice (Chair), Secretary of Justice, and a representative of Congress; four regular members appointed by the President with CA consent. The President must fill any SC vacancy within 90 days from its occurrence.","Ex officio: only the Chief Justice; the President has unlimited time to fill any SC vacancy.","Ex officio: Chief Justice and Senate President; the President must fill a vacancy within 6 months.","Ex officio: Chief Justice, Secretary of Justice, and the Ombudsman; no fixed deadline applies to filling vacancies."],correct:0,explain:"The JBC's ex officio members are the Chief Justice (Chair), the Secretary of Justice, and a representative of Congress, plus four regular members. The President must fill an SC vacancy within 90 days from its occurrence.",hint:"There are exactly three ex officio members and four regular members, plus a specific numeric deadline."},
+{id:5,tag:"requisites",cite:"Art. VIII, Sec. 4(2) (en banc requirement)",prompt:"A five-member Division of the Supreme Court hears a case squarely challenging the constitutionality of a revenue law, voting 3-2 to strike it down, and prepares to promulgate that decision as final.\n\nMay the Division validly do so?",options:["No — cases involving the constitutionality of a treaty, international/executive agreement, or law must be heard and decided en banc, regardless of the Division's internal vote.","Yes — any Division of at least three members has full authority over any constitutional question.","No — such cases must instead be resolved exclusively by the Chief Justice alone.","Yes, provided all members of the Division unanimously agree to bypass the en banc requirement."],correct:0,explain:"Art. VIII, Sec. 4(2) requires cases involving the constitutionality of a law, treaty, or international/executive agreement to be heard and decided en banc, not by a Division, however decisive its internal vote.",hint:"This is a threshold, procedural rule about WHERE the case must be decided, not just how many votes are needed."},
+{id:6,tag:"exceptions",cite:"Art. VIII, Sec. 14 (minute resolution exception)",prompt:"After the Supreme Court fully explained its factual and legal bases in an earlier decision, the losing party's motion for reconsideration is denied through a brief minute resolution that does not restate the reasoning in full.\n\nDoes the minute resolution violate Sec. 14's requirement that decisions clearly state the facts and law relied upon?",options:["No — a minute resolution denying a motion for reconsideration for lack of merit is a recognized exception, provided the Court already fully explained its bases in an earlier action in the same case.","Yes — every resolution the Court issues must always restate the complete factual and legal basis in full.","No — Sec. 14 applies only to trial courts, never to the Supreme Court.","Yes — minute resolutions are altogether prohibited under the 1987 Constitution."],correct:0,explain:"Sec. 14 admits an exception for a minute resolution denying reconsideration for lack of merit, PROVIDED the court already fully explained its bases in an earlier action in the same case.",hint:"The exception depends on whether the reasoning was already given earlier in the same case."},
+{id:7,tag:"memorization",cite:"Art. VIII, Sec. 15 (periods to decide cases)",prompt:"A litigant wants the maximum periods for different court levels to decide a case, measured from submission for decision.\n\nWhich is correct?",options:["Supreme Court: 24 months; lower collegiate courts (CA, Sandiganbayan): 12 months; all other lower courts: 3 months.","Supreme Court: 12 months; lower collegiate courts: 24 months; all other lower courts: 6 months.","Supreme Court: 6 months; lower collegiate courts: 12 months; all other lower courts: 24 months.","All Philippine courts, at every level, must decide within 90 days without distinction."],correct:0,explain:"Sec. 15 sets graduated periods: 24 months for the Supreme Court, 12 months for lower collegiate courts, and 3 months (90 days) for all other lower courts.",hint:"The Supreme Court gets the longest period, shrinking as you move down the court hierarchy."},
+{id:8,tag:"jurisprudence",cite:"Lagman v. Medialdea (sui generis review standard)",prompt:"After a martial law declaration, citizens ask the Court to review the sufficiency of its factual basis. The Solicitor General argues the ordinary 'grave abuse of discretion' certiorari standard should apply.\n\nApplying Lagman v. Medialdea, is the Solicitor General correct?",options:["No — the Court's review of the sufficiency of the factual basis for martial law is sui generis, separate from the ordinary grave-abuse standard, and looks only at facts available to the President at the time of proclamation.","Yes — the ordinary grave-abuse-of-discretion standard is the only standard ever applicable to a martial law challenge.","No — the Court may not review the factual basis for martial law at all, since this is a purely political question.","Yes — the Court must apply a 'proof beyond reasonable doubt' standard, as though trying the President criminally."],correct:0,explain:"Lagman v. Medialdea held that the Court's review of martial law's factual basis is sui generis — distinct from the ordinary certiorari standard — confined to facts available to the President at the time of proclamation.",hint:"Lagman was careful to say this standard is NOT the same as the one used for grave abuse of discretion generally."}
+];
+
+const TOPICS = {
+  territory_policies: {name:"National Territory & State Policies", eyebrow:"ARTS. I & II", desc:"Archipelagic doctrine, elements of a State, self-executing exceptions, protection of the unborn, republicanism.", bank: BANK_TERRITORY_POLICIES},
+  citizenship_suffrage: {name:"Citizenship & Suffrage", eyebrow:"ARTS. IV & V", desc:"Modes of acquiring/losing citizenship, natural-born deeming clause, R.A. 9225, foundlings, voter qualifications.", bank: BANK_CITIZENSHIP_SUFFRAGE},
+  legislative: {name:"The Legislative Department", eyebrow:"ART. VI", desc:"Senate/House qualifications, party-list, CA confirmation, legislative inquiry, bill passage, veto power.", bank: BANK_LEGISLATIVE},
+  executive: {name:"The Executive Department", eyebrow:"ART. VII", desc:"Qualifications & succession, executive privilege, immunity, appointments ban, C-in-C powers, pardon vs. amnesty.", bank: BANK_EXECUTIVE},
+  judicial: {name:"The Judicial Department", eyebrow:"ART. VIII", desc:"Judicial power, judicial review requisites, political question doctrine, JBC, en banc rules, periods to decide.", bank: BANK_JUDICIAL},
+  all: {name:"All Five Topics", eyebrow:"COMBINED PRACTICE", desc:"One mixed pool drawing from all five topics together — full midterm coverage in one run.", bank: null}
+};
+
+const TAG_LABELS = {memorization:"Memorization", requisites:"Requisites", exceptions:"Exceptions", effects:"Effects / consequences", jurisprudence:"Jurisprudence"};
+const TAG_ORDER = ["memorization","requisites","exceptions","effects","jurisprudence"];
+let secondsPerQuestion = 60;
+
+let currentTopic = null;
+let QUESTIONS = [];
+let HISTORY_KEY = "";
+let activeFilters = new Set(TAG_ORDER);
+let pool = [];
+let poolDisplay = [];
+let answers = [];
+let flags = new Set();
+let currentIdx = 0;
+let timerInterval = null;
+let timeLeft = 0;
+let timerEnabled = true;
+let lastMissedQs = [];
+
+function buildTopicCards(){
+  const wrap = document.getElementById('topic-cards');
+  wrap.innerHTML = '';
+  ['territory_policies','citizenship_suffrage','legislative','executive','judicial','all'].forEach(key=>{
+    const t = TOPICS[key];
+    const card = document.createElement('div');
+    card.className = 'tcard' + (key==='all' ? ' combo' : '');
+    const count = key==='all' ? (BANK_TERRITORY_POLICIES.length+BANK_CITIZENSHIP_SUFFRAGE.length+BANK_LEGISLATIVE.length+BANK_EXECUTIVE.length+BANK_JUDICIAL.length) : t.bank.length;
+    card.innerHTML = `<p class="tname">${t.name}</p><p class="tdesc">${t.desc}</p><p class="tcount">${count} questions</p>`;
+    card.onclick = () => chooseTopic(key);
+    wrap.appendChild(card);
+  });
+}
+
+/* ======================================================================
+   ALAC ESSAY PROBLEMS, grouped by the same five topics
+   ====================================================================== */
+const ALAC = {
+  "National Territory & State Policies (Arts. I & II)": [
+    {
+      fact:"The Philippines, through R.A. 9522, draws straight baselines connecting the outermost points of the outermost islands of the archipelago. A separate, shorter set of baselines is drawn around the Kalayaan Group and Scarborough Shoal, areas outside the main archipelago but over which the Philippines also claims sovereignty. A foreign state protests, arguing that Philippine law may draw only ONE continuous baseline around all PH-claimed territory.",
+      question:"Is the foreign state's objection correct? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the foreign state's objection is not correct.</p><p><b>Legal Basis:</b> Art. I defines the national territory as the Philippine archipelago plus 'all other territories over which the Philippines has sovereignty or jurisdiction.' Under the archipelagic doctrine, waters around, between, and connecting the islands of the archipelago form internal waters, using the straight baseline method (outermost points of outermost islands, water-to-land ratio not exceeding 9:1). R.A. 9522 expressly provides for one baseline around the main archipelago AND separate baselines for the 'regime of islands' outside it.</p><p><b>Application:</b> Kalayaan and Scarborough are not part of the main archipelago as historically delineated; they fall under Art. I's second category of territory. Treating them under a single continuous baseline with the main islands would distort the archipelagic doctrine's own geographic logic and would not conform to the UNCLOS 'regime of islands' framework.</p><p><b>Conclusion:</b> The two-baseline system under R.A. 9522 validly applies Art. I and the archipelagic doctrine; the foreign state's objection incorrectly assumes all PH-claimed territory must be enclosed by a single baseline.</p>"
+    },
+    {
+      fact:"During a hypothetical foreign military occupation of a Philippine province, a resident named Mario collaborates with the occupying force's administration against the legitimate government. After Philippine sovereignty is restored, Mario is prosecuted for treason based on acts committed during the occupation.",
+      question:"May Mario be validly prosecuted for treason? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, Mario may be validly prosecuted for treason.</p><p><b>Legal Basis:</b> Belligerent occupation does not change sovereignty. Philippine political laws are suspended during occupation, EXCEPT the law on treason, which continues to bind Filipino citizens even under enemy occupation (Laurel v. Misa).</p><p><b>Application:</b> Mario's collaboration with the occupier constitutes disloyalty to the Philippines — precisely the conduct the law on treason punishes. Since the law on treason is the one political law never suspended during belligerent occupation, and sovereignty never actually shifted to the occupier, Mario remains liable exactly as if no occupation had intervened.</p><p><b>Conclusion:</b> Mario is validly liable for treason, since the law on treason was never suspended during the occupation.</p>"
+    },
+    {
+      fact:"A group of minors, through their parents, sues to cancel existing mining and logging permits, alleging irreversible environmental damage affecting themselves and generations not yet born. The respondent agencies move to dismiss, arguing Art. II, Sec. 16 is a non-self-executing policy statement and that the minors lack standing to sue for people who do not yet exist.",
+      question:"Should the motion to dismiss be granted? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the motion to dismiss should be denied.</p><p><b>Legal Basis:</b> As a general rule, Art. II provisions are not self-executing. Sec. 16 (right to a balanced and healthful ecology) is a recognized EXCEPTION — treated as enforceable on its own, conferring standing even on minors suing for future generations, based on intergenerational responsibility (Oposa v. Factoran).</p><p><b>Application:</b> The agencies' argument treats Sec. 16 like the rest of Art. II's non-self-executing provisions, but Oposa specifically carved out Sec. 16 from that general rule. The minors' claim to sue for future generations is likewise directly sanctioned by that doctrine.</p><p><b>Conclusion:</b> The motion to dismiss should be denied — Sec. 16 is a self-executing exception, and confers standing even for future generations' interests.</p>"
+    },
+    {
+      fact:"Grace is diagnosed with a life-threatening pregnancy complication; her physicians recommend immediate termination as the only way to save her life. A local ordinance, citing Art. II, Sec. 12, attempts to criminalize ALL terminations without exception, including hers.",
+      question:"Is the ordinance, as applied to Grace, consistent with Sec. 12? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the ordinance as applied to Grace is not consistent with Sec. 12's accepted constitutional understanding.</p><p><b>Legal Basis:</b> Sec. 12 protects the unborn's life from conception, but this is not an assertion of the unborn's full legal personality, nor does it place the unborn's life exactly on the mother's level in every situation. The unborn's life may be sacrificed when necessary to save the mother's life — not merely to spare her emotional suffering.</p><p><b>Application:</b> Grace's situation is precisely the recognized basis for sacrificing the unborn's life: an actual, substantial threat to her own life. A blanket criminalization with no exception for this scenario extends Sec. 12 further than its accepted understanding allows.</p><p><b>Conclusion:</b> As applied to Grace, the ordinance's blanket criminalization exceeds what Sec. 12 protects, since the mother's life may take precedence in this narrow circumstance.</p>"
+    },
+    {
+      fact:"COMELEC bars Renato's candidacy for governor, reasoning that his family's simultaneous occupancy of several elective posts in the province constitutes a 'political dynasty' under Art. II, Sec. 26. Congress has never passed a law defining 'political dynasty' or implementing Sec. 26.",
+      question:"Was COMELEC correct to bar Renato's candidacy on Sec. 26 alone? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, COMELEC was not correct.</p><p><b>Legal Basis:</b> Sec. 26 directs the State to prohibit political dynasties 'as may be defined by law.' The Supreme Court has held this provision is NOT self-executing — it is a guideline for legislative action, with the definition of 'political dynasty' expressly left to Congress (Pamatong v. COMELEC).</p><p><b>Application:</b> Since Congress has never defined 'political dynasty' or set disqualification rules under Sec. 26, no existing legal standard allows COMELEC to determine that Renato's situation falls within a prohibited dynasty. COMELEC's action effectively invents a disqualification ground the Constitution left to Congress to define.</p><p><b>Conclusion:</b> COMELEC erred in relying on Sec. 26 alone; absent implementing legislation, Renato cannot be barred from candidacy on that basis.</p>"
+    },
+    {
+      fact:"A civics reviewer asks examinees to state Nachura's six manifestations of republicanism under Art. II, Sec. 1, and to explain why this list matters for interpreting the rest of the Constitution.",
+      question:"State and briefly explain the six manifestations, using the ALAC method.",
+      answer:"<p><b>Answer:</b> The six manifestations are: government of laws and not of men; rule of the majority; accountability of public officials; the Bill of Rights; the rule against irrepealable laws; and separation of powers.</p><p><b>Legal Basis:</b> Art. II, Sec. 1 declares the Philippines a democratic and republican State, with sovereignty residing in the people and all government authority emanating from them; Nachura's commentary distills this into six concrete structural manifestations.</p><p><b>Application:</b> Each manifestation operationalizes the abstract declaration of Sec. 1 into a recognizable constitutional feature — for instance, the Bill of Rights operationalizes limits on government power, while separation of powers operationalizes the distribution of authority among the three branches.</p><p><b>Conclusion:</b> These six manifestations collectively give concrete, structural meaning to Sec. 1's declaration that the Philippines is a democratic and republican State.</p>"
+    }
+  ],
+  "Citizenship & Suffrage (Arts. IV & V)": [
+    {
+      fact:"Linda was born in 1970 to a Filipino mother and a foreign father, her parents never having married. She turned 18 in 1988 and executed her sworn election of Philippine citizenship, with an oath of allegiance, in 1990 — about two years later — explaining the delay was due to her family's relocation and belated birth registration. She now applies for a position requiring proof of natural-born citizenship.",
+      question:"Does Linda qualify as a natural-born Filipino citizen? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, Linda qualifies as natural-born.</p><p><b>Legal Basis:</b> Under Sec. 1(3), those born before January 17, 1973 of Filipino mothers who elect Philippine citizenship upon reaching majority are citizens; under Sec. 2, those who so elect are DEEMED natural-born. Jurisprudence allows election within a reasonable time after majority — generally three years, extendible for justifiable reasons.</p><p><b>Application:</b> Linda satisfies all three Sec. 1(3) requisites: Filipino mother, birth before January 17, 1973, and election within two years of majority — within the generally recognized period, and in any event justified by her stated reasons. The Sec. 2 deeming clause therefore applies.</p><p><b>Conclusion:</b> Linda is a natural-born Filipino citizen under Secs. 1(3) and 2, having properly elected citizenship within a reasonable time.</p>"
+    },
+    {
+      fact:"Danilo, naturalized as a Canadian citizen in 2005, reacquired Philippine citizenship under R.A. 9225 in 2018 by taking the oath of allegiance. In 2023, he files his certificate of candidacy for mayor, believing his 2018 oath already sufficiently renounced his Canadian citizenship for candidacy purposes.",
+      question:"Is Danilo qualified to run for mayor on these facts? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, Danilo is not qualified based on these facts alone.</p><p><b>Legal Basis:</b> R.A. 9225 allows reacquisition of natural-born status through an oath of allegiance. For those seeking PUBLIC OFFICE, however, R.A. 9225 imposes an additional requirement: a personal, sworn renunciation of foreign citizenship before or simultaneous with COC filing — a separate act from the reacquisition oath (Sobejana-Condon v. COMELEC).</p><p><b>Application:</b> Danilo's 2018 oath reacquired his citizenship, but it does not satisfy the separate renunciation requirement specifically imposed on candidates for public office. He performed no such renunciation.</p><p><b>Conclusion:</b> Danilo remains disqualified from running for mayor until he executes the required personal, sworn renunciation of his Canadian citizenship.</p>"
+    },
+    {
+      fact:"Justo was found abandoned outside a church in a rural Philippine town decades ago, with no records of his biological parents. He seeks to run for a position requiring proof of natural-born citizenship. An opponent argues that, absent proof of a Filipino parent, he cannot be a citizen under jus sanguinis.",
+      question:"Is the opponent's argument correct? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the opponent's argument is not correct.</p><p><b>Legal Basis:</b> While the Constitution generally follows jus sanguinis, a foundling of unknown parentage found in the Philippines is presumed a natural-born Filipino citizen, based on circumstantial evidence and generally accepted principles of international law incorporated under Art. II, Sec. 2 (Poe-Llamanzares v. COMELEC).</p><p><b>Application:</b> Justo's situation — found abandoned in the Philippines with no evidence of his parents' nationality — is exactly the scenario the foundling presumption addresses, filling the evidentiary gap through circumstantial evidence and international law principles against statelessness.</p><p><b>Conclusion:</b> Justo is presumed a natural-born Filipino citizen under the foundling doctrine, notwithstanding the absence of direct proof of his parents' nationality.</p>"
+    },
+    {
+      fact:"Teresa, a lifelong Filipino resident, moved to a new city four months ago and wants to register to vote there, with the election two months away. Local COMELEC denies her application, citing failure to meet local residency.",
+      question:"Was the denial correct? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> The denial is correct only if Teresa's local residency falls short of six months by election day.</p><p><b>Legal Basis:</b> Art. V, Sec. 1 requires PH residency of at least 1 year and residency in the specific voting locality of at least 6 months immediately preceding the election.</p><p><b>Application:</b> Teresa satisfies national residency and other qualifications. Given four months elapsed and two months remaining before election day, she reaches exactly six months of local residency by election day — meeting, not exceeding, the floor. If her actual local residency falls even a day short, the denial as to that locality is correct, though she may remain qualified to vote in her prior locality if still validly registered there.</p><p><b>Conclusion:</b> Teresa's registration in the new city is proper only once she accumulates a full six months of local residency; this does not disenfranchise her nationally if her prior registration remains valid.</p>"
+    },
+    {
+      fact:"Congress passes a law requiring mandatory biometrics validation for all voters, providing for deactivation upon non-compliance by a set deadline. Nestor fails to comply due to negligence and is deactivated. He challenges the law as an unconstitutional 'additional substantive requirement.'",
+      question:"Is Nestor's challenge likely to succeed? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, Nestor's challenge is unlikely to succeed.</p><p><b>Legal Basis:</b> Art. V, Sec. 1 bars 'literacy, property, or other substantive requirement' on suffrage. Voter registration, including biometrics validation, is a mere PROCEDURAL requirement, not a prohibited substantive one, even where non-compliance results in deactivation (Kabataan Party-List v. COMELEC).</p><p><b>Application:</b> Nestor conflates the practical consequence of non-compliance (losing the ability to vote) with the constitutional character of the requirement (procedural, not substantive). Biometrics does not add a new qualification to who may vote — it regulates the administrative mechanics of exercising an already-existing right.</p><p><b>Conclusion:</b> Nestor's registration was validly deactivated for his own non-compliance with a procedural requirement; this is not an unconstitutional substantive requirement.</p>"
+    },
+    {
+      fact:"Ferdie is detained pending trial, not yet convicted by final judgment, but is otherwise a qualified, registered voter. Jail authorities refuse to arrange for him to vote, reasoning that any detained person automatically loses the right to vote.",
+      question:"Is the jail authorities' position correct? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the jail authorities' position is not correct.</p><p><b>Legal Basis:</b> Suffrage under Sec. 1 may be exercised by qualified citizens 'not otherwise disqualified by law.' Disqualification generally attaches only upon final conviction for specified offenses, not upon mere detention or an unresolved charge.</p><p><b>Application:</b> Ferdie has not been convicted by final judgment and retains the presumption of innocence, and correspondingly, the right to vote. Nothing in Art. V or the Omnibus Election Code treats detention itself, absent final conviction, as disqualifying.</p><p><b>Conclusion:</b> Ferdie retains his right to vote despite his detention; appropriate arrangements should be made to allow him to exercise it.</p>"
+    }
+  ],
+  "The Legislative Department (Art. VI)": [
+    {
+      fact:"A national political party registers under the party-list system without claiming to represent any marginalized sector, fielding diverse nominees unconnected to any disadvantaged group. Separately, a sectoral organization representing indigenous farmers nominates, as its top-ranked nominee, a wealthy businessman with no connection to farming.",
+      question:"Are both party-list groups' nominations valid? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> The national party's nominations are valid; the sectoral organization's nomination of the businessman is not.</p><p><b>Legal Basis:</b> Atong Paglaum v. COMELEC recognizes three groups: (1) national/regional parties, which need NOT be marginalized; (2) sectoral parties, whose nominees must actually belong to the sector represented; and (3) the religious sector, excluded from registering altogether.</p><p><b>Application:</b> The national party falls under the first category, freed from any sectoral-connection requirement. The farmers' organization falls under the second category, and its nominee's lack of any genuine connection to farming directly violates the sector-membership requirement applicable specifically to sectoral nominees.</p><p><b>Conclusion:</b> The national party's slate is valid; the farming organization's nomination of the businessman is invalid.</p>"
+    },
+    {
+      fact:"The President appoints a new Secretary of a full executive department and, separately, a new Commissioner of a bureau that is not itself a full executive department, both while Congress is in session. Only the Secretary's appointment is transmitted to the Commission on Appointments.",
+      question:"Was the President correct to require CA confirmation only for the Secretary? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, the President was correct.</p><p><b>Legal Basis:</b> Sarmiento v. Mison limits CA confirmation to four categories: department heads, ambassadors/consuls, AFP officers colonel/naval captain up, and other officers the Constitution vests in the President.</p><p><b>Application:</b> The Secretary falls squarely within the first category. The bureau Commissioner heads an office that is not a full executive department and falls within none of the remaining three categories either.</p><p><b>Conclusion:</b> CA confirmation was correctly required only for the Secretary; the bureau Commissioner's appointment is valid without it.</p>"
+    },
+    {
+      fact:"A Senate committee investigating alleged government contract anomalies, with the stated purpose of drafting procurement legislation, summons a private contractor. The committee's rules of procedure were never published in the Official Gazette or a newspaper of general circulation. The contractor refuses to answer, citing the lack of published rules.",
+      question:"Is the contractor's refusal justified? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, the contractor's refusal is justified.</p><p><b>Legal Basis:</b> A valid Sec. 21 legislative inquiry requires (1) being in aid of legislation, (2) duly published rules of procedure, and (3) respect for the rights of persons involved (Neri v. Senate; Garcillano v. House).</p><p><b>Application:</b> The stated purpose satisfies the first requisite, but the committee's admission that its rules were never published means the second requisite is unmet — a defect the Court has treated as sufficient to invalidate the compulsory character of the inquiry.</p><p><b>Conclusion:</b> Because the rules were never published, the inquiry does not satisfy all Sec. 21 requisites, and the contractor's refusal is justified until validly published rules are in place.</p>"
+    }
+  ],
+  "The Executive Department (Art. VII)": [
+    {
+      fact:"One month before the next presidential election, an Undersecretary position suddenly becomes vacant. The President appoints a 'temporary' replacement, reasoning that the position is 'too important to leave vacant,' without any specific finding that continued vacancy would prejudice public service or endanger public safety.",
+      question:"Does the appointment fall within the recognized exception to the Sec. 15 appointments ban? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, not clearly, as described.</p><p><b>Legal Basis:</b> The Sec. 15 exception applies only to temporary appointments to executive positions where continued vacancy would prejudice public service or endanger public safety — both elements must be satisfied together.</p><p><b>Application:</b> While the appointment is 'temporary' in form, the President's reasoning — that the position is simply 'too important to leave vacant' — falls short of the second element, which requires an actual showing of prejudice or danger, not merely general importance.</p><p><b>Conclusion:</b> Without an actual showing of prejudice to public service or danger to public safety, the appointment does not properly fall within the Sec. 15 exception.</p>"
+    },
+    {
+      fact:"A Senate committee summons the Executive Secretary, who advised the President on approving a foreign loan agreement, and he declines to answer specific questions about their private conversation, invoking presidential communications privilege. The committee argues only communications between two Presidents can ever be privileged.",
+      question:"Is the committee's argument correct? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the committee's argument is not correct.</p><p><b>Legal Basis:</b> Neri v. Senate Committees extends the privilege to communications with a close advisor under 'operational proximity,' not merely between two Presidents, subject to three requisites, including that there be no adequate showing of compelling need to override the privilege.</p><p><b>Application:</b> The Executive Secretary, as a close advisor on the President's decision regarding a foreign loan — a quintessential presidential power — fits the Neri test. The committee remains free to overcome the privilege with a showing of compelling need, which the facts do not indicate.</p><p><b>Conclusion:</b> The Executive Secretary properly invoked the privilege; the committee's categorical argument limiting it to inter-presidential communications is incorrect.</p>"
+    },
+    {
+      fact:"While rebellion cases against several individuals remain pending trial with no conviction yet rendered, the President wishes to extend clemency to encourage them to lay down arms.",
+      question:"What form of clemency may the President validly extend at this stage, and what additional step is required? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> The President may not grant pardon at this stage, but may grant amnesty, with the concurrence of a majority of all Members of Congress.</p><p><b>Legal Basis:</b> Pardon, commutation, and reprieve require a final conviction. Amnesty may be granted even before conviction, typically for political offenses, but requires the concurrence of a majority of all Congress members.</p><p><b>Application:</b> Since the rebellion cases remain pending, pardon is unavailable, presupposing exactly the final conviction that is missing. Amnesty is designed for precisely this situation.</p><p><b>Conclusion:</b> The President should pursue amnesty, subject to the required congressional concurrence, since the cases have not reached final conviction.</p>"
+    }
+  ],
+  "The Judicial Department (Art. VIII)": [
+    {
+      fact:"A group of ordinary taxpayers sues to challenge a government contract allegedly involving illegal disbursement of public funds. None can point to any injury personal to themselves beyond their general status as taxpayers. The government moves to dismiss for lack of standing.",
+      question:"Should the motion to dismiss for lack of standing be granted? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the motion should not be granted.</p><p><b>Legal Basis:</b> Judicial review ordinarily requires standing through direct injury, but this requirement is relaxed for taxpayer suits involving illegal disbursement of public funds.</p><p><b>Application:</b> While the taxpayers show no injury beyond their general status, that is precisely the situation the taxpayer-suit exception was designed to address.</p><p><b>Conclusion:</b> The taxpayers have standing under the taxpayer-suit exception; the motion to dismiss should be denied.</p>"
+    },
+    {
+      fact:"The President proclaims the calling-out of armed forces to suppress an alleged rebellion. A petitioner challenges the proclamation not by asking the Court to substitute its own policy judgment, but by alleging the factual basis was fabricated and contradicted by existing government records. The Solicitor General argues the matter is a purely political question beyond judicial review.",
+      question:"Is the Solicitor General correct that the Court has no power to review the proclamation at all? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the Solicitor General is not correct.</p><p><b>Legal Basis:</b> Art. VIII, Sec. 1, second paragraph, expands judicial power to include determining grave abuse of discretion by any branch or instrumentality, even over acts traditionally classified as political questions, without substituting the Court's own policy wisdom.</p><p><b>Application:</b> The petitioner alleges grave abuse of discretion — a fabricated factual basis — not a request for the Court to override policy wisdom. This falls precisely within the expanded certiorari jurisdiction.</p><p><b>Conclusion:</b> The Court retains jurisdiction to review the proclamation for grave abuse of discretion; the Solicitor General's blanket non-justiciability argument is incorrect.</p>"
+    },
+    {
+      fact:"A five-member Division of the Supreme Court hears a case squarely challenging the constitutionality of a revenue law. Three of the five Justices vote to declare the law unconstitutional, two dissent, and the ponente prepares to promulgate the Division's 3-2 decision as final.",
+      question:"May the Division validly promulgate this decision? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the Division may not validly promulgate such a decision.</p><p><b>Legal Basis:</b> Art. VIII, Sec. 4(2) requires cases involving the constitutionality of a law to be heard and decided en banc, not by a Division, regardless of the Division's internal vote.</p><p><b>Application:</b> The case squarely involves a revenue law's constitutionality — precisely the category Sec. 4(2) reserves for the en banc. A Division, however decisive its vote, cannot promulgate a final ruling on this category of case.</p><p><b>Conclusion:</b> The case must instead be referred to, heard, and decided by the Supreme Court en banc.</p>"
+    }
+  ]
+};
+
+/* ======================================================================
+   STUDY GUIDE
+   ====================================================================== */
+const STUDY_GUIDE_HTML = `
+<p class="sg-h2">Part I — Article I: The National Territory</p>
+<table class="sg-table">
+  <tr><th>Provision</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Sole Sec.</td><td>National territory = the Philippine archipelago (Treaty of Paris, as modified) + all other territories over which PH has sovereignty/jurisdiction (e.g., Batanes, Kalayaan) — including terrestrial, fluvial, and aerial domains, territorial sea, seabed, subsoil, insular shelves.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Archipelagic doctrine</td><td>Waters around/between/connecting the islands are internal waters regardless of breadth. Straight baseline method: outermost points of outermost islands, water-to-land ratio ≤ 9:1 (R.A. 9522).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Elements of a State</td><td>People, Territory, Government, Sovereignty.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Government classes</td><td>Constituent (mandatory) vs. ministrant (optional) functions; de jure vs. de facto (usurper / revolutionary / paramount-force) governments; presidential vs. parliamentary; unitary vs. federal.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Sovereignty effects</td><td>Change in sovereignty: political laws abrogated, municipal laws continue. Belligerent occupation: NO change in sovereignty; political laws suspended <strong>except the law on treason</strong>; municipal laws continue unless repealed by occupant; suspended laws automatically revive after occupation (jus postliminium).</td></tr>
+</table>
+<div class="exoex-box">
+  <span class="exoex-label">Exception of the exception — Article I</span>
+  Belligerent occupation suspends political laws as a general matter — but the law on treason is carved out and remains fully in force throughout the occupation. Don't let "political laws are suspended" swallow this one standing exception.
+</div>
+<div class="case-card"><div class="cname">Republic v. Sandiganbayan (the 1986 interregnum)</div><div class="cdoc">The Aquino government was de jure but "revolutionary" during the Feb.–Mar. 1986 interregnum — the 1973 Bill of Rights was inoperative then, but ICCPR/UDHR protections still applied under international law.</div></div>
+
+<p class="sg-h2">Part II — Article II: Declaration of Principles and State Policies</p>
+<div class="exoex-box">
+  <span class="exoex-label">Framing rule — read this first</span>
+  <strong>General rule:</strong> Art. II provisions are NOT self-executing — they need implementing legislation and create no judicially enforceable right by themselves (e.g., Sec. 26, political dynasties — Pamatong v. COMELEC). <strong>Exception:</strong> Sec. 16 (right to a balanced and healthful ecology) HAS been treated as enforceable — it conferred standing on minors in Oposa v. Factoran, supported LLDA's regulatory power, and grounded a mandamus to clean up Manila Bay.
+</div>
+<table class="sg-table">
+  <tr><th>Sec.</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>1</td><td>Democratic and republican State; sovereignty resides in the people. Nachura's 6 manifestations: government of laws not of men; rule of the majority; accountability of public officials; Bill of Rights; no irrepealable laws; separation of powers.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>2</td><td>Renounces AGGRESSIVE (not defensive) war; adopts generally accepted principles of int'l law as part of the law of the land (doctrine of incorporation); amity with all nations ≠ automatic diplomatic recognition.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>3</td><td>Civilian authority supreme over the military — institutionalized by making the President (a civilian) Commander-in-Chief, not by making every civilian outrank every soldier.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>12</td><td>Protects the life of the unborn from conception — NOT full legal personality, NOT equal to the mother's life in every case; may be sacrificed only to save the mother's LIFE, not merely her emotional wellbeing.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>16</td><td>Right to a balanced and healthful ecology — the ONE Art. II provision treated as self-executing (see framing box above).</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>26</td><td>Equal access to public service + anti-political-dynasty clause — NOT self-executing; "political dynasty" is left for Congress to define by law (Pamatong v. COMELEC).</td></tr>
+</table>
+<div class="case-card"><div class="cname">Oposa v. Factoran</div><div class="cdoc">Sec. 16 is self-executing and enforceable, conferring standing on minors to sue on behalf of future generations to cancel logging concessions.</div></div>
+<div class="case-card"><div class="cname">Pamatong v. COMELEC</div><div class="cdoc">Sec. 26 is NOT self-executing — creates no judicially enforceable right to run for President; the State may validly limit candidates to those able to wage a nationwide campaign.</div></div>
+
+<p class="sg-h2">Part III — Article IV: Citizenship</p>
+<table class="sg-table">
+  <tr><th>Sec.</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>1</td><td>Four categories of citizens: (1) citizens at time of adoption; (2) those whose father OR mother is a Filipino citizen; (3) those born before Jan. 17, 1973 of Filipino mothers who elect citizenship upon majority; (4) those naturalized by law.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>1(3) &amp; 2</td><td>Election requisites: Filipino mother + born before Jan. 17, 1973 + election within a reasonable time (generally 3 years, extendible) after majority. Sec. 2 then DEEMS these electors natural-born — despite election technically being an "act" to perfect citizenship, which would otherwise disqualify natural-born status.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>3</td><td>Loss of citizenship: naturalization abroad; express renunciation; oath of allegiance to a foreign country; service in a foreign military; denaturalization; wartime desertion by final judgment.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>R.A. 9225</td><td>Oath of allegiance reacquires natural-born status. <strong>But</strong> running for PUBLIC OFFICE requires an ADDITIONAL personal, sworn renunciation of foreign citizenship before/simultaneous with COC filing (Sobejana-Condon v. COMELEC) — the reacquisition oath alone is not enough.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Foundlings</td><td>Presumed natural-born based on circumstantial evidence and int'l law principles against statelessness (Poe-Llamanzares v. COMELEC).</td></tr>
+</table>
+
+<p class="sg-h2">Part IV — Article V: Suffrage</p>
+<table class="sg-table">
+  <tr><th>Sec.</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>1</td><td>Voter qualifications: Filipino, not disqualified by law, ≥18, PH residency ≥1 year, LOCAL residency ≥6 months. No literacy, property, or other substantive requirement.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>1 (registration)</td><td>Mandatory biometrics/registration is a PROCEDURAL requirement, not a barred "substantive requirement" — deactivation for non-compliance is constitutional (Kabataan Party-List v. COMELEC), even though the practical effect is losing the vote.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>2</td><td>Congress must provide systems for ballot secrecy/sanctity and absentee voting by overseas Filipinos. Disqualification from suffrage requires FINAL CONVICTION — mere detention does not disenfranchise.</td></tr>
+</table>
+
+<p class="sg-h2">Part V — Article VI: The Legislative Department</p>
+<table class="cmp-table">
+  <tr><th>Aspect</th><th>Senate</th><th>House of Representatives</th></tr>
+  <tr><td class="aspect">Composition</td><td>24, elected at large</td><td>≤250 (district + 20% party-list)</td></tr>
+  <tr><td class="aspect">Age</td><td>≥35</td><td>≥25</td></tr>
+  <tr><td class="aspect">Residency</td><td>PH, ≥2 yrs</td><td>District, ≥1 yr</td></tr>
+  <tr><td class="aspect">Term</td><td>6 yrs; max 2 consecutive</td><td>3 yrs; max 3 consecutive</td></tr>
+</table>
+<table class="sg-table" style="margin-top:14px;">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Party-list</td><td>Atong Paglaum's 3 groups: national/regional (need NOT be marginalized); sectoral (nominees MUST belong to the sector); religious sector (excluded from registering at all).</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>CA confirmation</td><td>Required ONLY for Sarmiento v. Mison's 4 categories (dept. heads, ambassadors/consuls, AFP colonel/naval captain up, other officers the Constitution vests in the President) — all other appointees need no CA confirmation.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Sec. 21</td><td>Legislative inquiry requisites: in aid of legislation + duly PUBLISHED rules of procedure + respect for rights of persons involved (Neri v. Senate; Garcillano v. House).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Sec. 22</td><td>Question hour — department heads MAY decline appearance "when the security of the State or public interest so requires," unlike Sec. 21's compulsory attendance.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Bill passage</td><td>3 readings/3 days rule is WAIVED when the President certifies the bill's immediate enactment necessary for a calamity/emergency.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Veto (Sec. 27)</td><td>General rule: veto the WHOLE bill. Exception: item veto allowed ONLY for appropriation, revenue, or tariff bills.</td></tr>
+</table>
+<div class="case-card"><div class="cname">Tolentino v. Secretary of Finance</div><div class="cdoc">It is the BILL, not the LAW, that must originate exclusively in the House (Sec. 24) — the Senate may amend or even substitute its own version, so long as House action came first.</div></div>
+
+<p class="sg-h2">Part VI — Article VII: The Executive Department</p>
+<table class="sg-table">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Sec. 2 &amp; 4</td><td>President/VP: natural-born, registered voter, literate, ≥40, ≥10-yr PH residency. President: 6-yr term, ABSOLUTE one-term bar. VP: 6-yr term, max 2 consecutive.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Secs. 7–8</td><td>Vacancy before proclamation → VP-elect acts as President; both offices vacant during term → Senate President, then House Speaker, acts as President; President dies/resigns during term with VP in place → VP BECOMES President for the unexpired term.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Sec. 15</td><td>Appointments ban (2 months before election to end of term) does NOT apply to temporary executive appointments where continued vacancy would prejudice public service/endanger public safety — BOTH elements required together; general "importance" of the position is not enough.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Sec. 15 vs. Art. VIII</td><td>The Judiciary's own 90-day rule for filling vacancies is a SEPARATE, specific command that prevails over the general Sec. 15 ban (De Castro v. JBC) — the ban does not suspend the duty to fill SC vacancies.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Sec. 18</td><td>3 graduated C-in-C powers: calling-out (broadest discretion) → suspension of the writ (60-day cap, 48-hr report, SC 30-day review) → martial law (same limits; does NOT suspend the Constitution or supplant civil courts).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Sec. 19</td><td>Pardon: after final conviction only; can't cover impeachment; doesn't restore office/suffrage unless stated. Amnesty: even before conviction, needs concurrence of majority of ALL Congress, obliterates the offense itself.</td></tr>
+</table>
+<div class="case-card"><div class="cname">Neri v. Senate Committees</div><div class="cdoc">Presidential communications privilege requires: (1) relates to a quintessential, non-delegable presidential power, (2) received by a close advisor under "operational proximity," (3) no adequate showing of compelling need to override the (merely presumptive) privilege.</div></div>
+<div class="case-card"><div class="cname">Estrada v. Desierto</div><div class="cdoc">Presidential immunity applies during incumbency and does not cover private/personal acts, nor survive the term for unofficial conduct.</div></div>
+
+<p class="sg-h2">Part VII — Article VIII: The Judicial Department</p>
+<table class="sg-table">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Sec. 1</td><td>Judicial power = (1) traditional duty to settle actual controversies over legally demandable rights + (2) EXPANDED duty to determine grave abuse of discretion by any branch/instrumentality (added 1987 to curb political-question abuse).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Judicial review</td><td>Requisites: (1) actual case/controversy, (2) locus standi, (3) earliest opportunity, (4) lis mota. Standing relaxed for taxpayer/citizen/legislator suits and cases of transcendental importance.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Political question</td><td>Traditionally non-justiciable — BUT the expanded certiorari clause lets courts review grave abuse of discretion even in political acts, without substituting policy wisdom (Lagman v. Medialdea; Belgica v. Executive Secretary).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>JBC</td><td>Ex officio: Chief Justice (Chair), Sec. of Justice, Congress rep. Regular (4, President-appointed w/ CA consent): IBP rep, law professor, retired Justice, private-sector rep. President must fill an SC vacancy within 90 days.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Sec. 4(2)</td><td>Cases on the constitutionality of a law/treaty/int'l agreement MUST be heard and decided en banc, never by a Division, regardless of the Division's internal vote.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Sec. 14</td><td>Decisions must state facts and law clearly — EXCEPT a minute resolution denying reconsideration for lack of merit, provided the court already fully explained its bases earlier in the same case.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Sec. 15</td><td>Periods to decide: SC 24 months; lower collegiate courts 12 months; all other lower courts 3 months.</td></tr>
+</table>
+<div class="case-card"><div class="cname">Lagman v. Medialdea</div><div class="cdoc">The Court's review of the sufficiency of the factual basis for martial law/suspension of the writ is sui generis — separate from the ordinary grave-abuse-of-discretion standard — and reviews only facts available to the President at the time of proclamation.</div></div>
+`;
+
+function renderStudyGuide(){
+  document.getElementById('sg-content').innerHTML = STUDY_GUIDE_HTML;
+}
+
+function renderAlac(){
+  const wrap = document.getElementById('alac-list');
+  wrap.innerHTML = '';
+  Object.keys(ALAC).forEach(topicName=>{
+    const h = document.createElement('p');
+    h.className = 'alac-topic-h';
+    h.textContent = topicName;
+    wrap.appendChild(h);
+    ALAC[topicName].forEach((item, i)=>{
+      const card = document.createElement('div');
+      card.className = 'alac-card';
+      card.innerHTML = `
+        <p class="alac-fact">${item.fact}</p>
+        <p class="alac-q">${item.question}</p>
+        <details><summary>Reveal model answer</summary><div class="alac-ans">${item.answer}</div></details>`;
+      wrap.appendChild(card);
+    });
+  });
+}
+
+const FS_MIN = 0.8, FS_MAX = 1.8;
+function getFontScale(){
+  const v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fs'));
+  return isNaN(v) ? 1.15 : v;
+}
+function setFontScale(v){
+  v = Math.max(FS_MIN, Math.min(FS_MAX, v));
+  document.documentElement.style.setProperty('--fs', v.toFixed(2));
+  try{ localStorage.setItem('consti1QuizFontScale', v.toFixed(2)); }catch(e){}
+}
+function adjustFontScale(delta){ setFontScale(getFontScale() + delta); }
+function resetFontScale(){ setFontScale(1.15); }
+(function initFontScale(){
+  try{
+    const saved = localStorage.getItem('consti1QuizFontScale');
+    if(saved) document.documentElement.style.setProperty('--fs', saved);
+  }catch(e){}
+})();
+
+const WATCHFOR = {
+  territory_policies: `<strong>Watch for: exceptions to the exceptions.</strong>
+    <ul>
+      <li>Belligerent occupation suspends political laws — <strong>except</strong> the law on treason, which never stops applying.</li>
+      <li>Art. II is generally NOT self-executing — <strong>except</strong> Sec. 16 (ecology), which Oposa v. Factoran treated as directly enforceable.</li>
+      <li>Sec. 12's protection of the unborn allows sacrificing the unborn's life ONLY to save the mother's life — not for emotional or socioeconomic reasons.</li>
+    </ul>`,
+  citizenship_suffrage: `<strong>Watch for: the exemption OF the exemption.</strong>
+    <ul>
+      <li>Election of citizenship under Sec. 1(3) is technically an "act" — which should disqualify natural-born status — but Sec. 2 expressly deems these electors natural-born anyway.</li>
+      <li>R.A. 9225's oath of allegiance reacquires citizenship, but candidacy for public office needs an ADDITIONAL, separate sworn renunciation (Sobejana-Condon).</li>
+      <li>Registration/biometrics is procedural, not a barred "substantive requirement," even though non-compliance costs you your vote (Kabataan Party-List).</li>
+    </ul>`,
+  legislative: `<strong>Watch for: narrow, named exceptions.</strong>
+    <ul>
+      <li>CA confirmation applies ONLY to the 4 Sarmiento v. Mison categories — don't extend it by "importance" of the office.</li>
+      <li>The 3-readings/3-days bill-passage rule is waived ONLY by presidential certification of urgency.</li>
+      <li>Item veto is allowed ONLY for appropriation, revenue, or tariff bills — every other bill must be vetoed whole.</li>
+    </ul>`,
+  executive: `<strong>Watch for: two-element exceptions and rule-vs-rule conflicts.</strong>
+    <ul>
+      <li>The Sec. 15 appointments-ban exception needs BOTH a genuinely temporary appointment AND an actual showing of prejudice/danger — general importance of the office is not enough.</li>
+      <li>The Judiciary's 90-day rule is a specific command that beats the general Sec. 15 ban (De Castro v. JBC).</li>
+      <li>Pardon requires final conviction; amnesty does not, but needs congressional concurrence — don't mix these up.</li>
+    </ul>`,
+  judicial: `<strong>Watch for: exceptions nested inside doctrines.</strong>
+    <ul>
+      <li>Standing's direct-injury rule is relaxed for taxpayer/citizen/legislator suits and transcendental importance — don't stop at "no direct injury shown."</li>
+      <li>The political question doctrine still yields to the EXPANDED certiorari clause for grave abuse of discretion.</li>
+      <li>Sec. 14's "state the facts and law" rule has a named exception for minute resolutions that build on an earlier, fully-explained ruling in the same case.</li>
+    </ul>`,
+  all: `<strong>Watch for: exceptions to the exceptions, across every topic.</strong> Several rules that look like blanket exemptions (the Sec. 15 appointments ban, the R.A. 9225 reacquisition oath, the political question doctrine, Art. II's non-self-executing default) carry their own built-in exceptions or additional requirements that defeat or narrow the exemption itself — these are classic examiner traps.`
+};
+
+function chooseTopic(key){
+  currentTopic = key;
+  const t = TOPICS[key];
+  if(key === 'all'){
+    QUESTIONS = [
+      ...BANK_TERRITORY_POLICIES.map(q=>({...q, topicLabel:"Arts. I–II"})),
+      ...BANK_CITIZENSHIP_SUFFRAGE.map(q=>({...q, topicLabel:"Arts. IV–V"})),
+      ...BANK_LEGISLATIVE.map(q=>({...q, topicLabel:"Art. VI"})),
+      ...BANK_EXECUTIVE.map(q=>({...q, topicLabel:"Art. VII"})),
+      ...BANK_JUDICIAL.map(q=>({...q, topicLabel:"Art. VIII"}))
+    ];
+  } else {
+    QUESTIONS = t.bank.map(q=>({...q, topicLabel:null}));
+  }
+  HISTORY_KEY = "consti1QuizAttempts_" + key;
+
+  document.getElementById('mast-eyebrow').textContent = t.eyebrow;
+  document.getElementById('mast-title').textContent = t.name + " — Situational MCQs";
+  document.getElementById('mast-sub').textContent = 'Fact-pattern practice · "Which is the BEST answer?" format';
+  document.getElementById('hero-cap-text').textContent = "fact-pattern questions available — pick a category or run the full set";
+  document.getElementById('watchfor-box').innerHTML = WATCHFOR[key] || WATCHFOR.all;
+
+  document.getElementById('view-picker').classList.add('hide');
+  document.getElementById('view-quiz').classList.remove('hide');
+  document.getElementById('start-screen').classList.remove('hide');
+  document.getElementById('quiz-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('results-screen').classList.add('hide');
+
+  activeFilters = new Set(TAG_ORDER);
+  renderFilterPills();
+  renderHistory();
+}
+
+function backToPicker(){
+  document.getElementById('view-quiz').classList.add('hide');
+  document.getElementById('view-alac').classList.add('hide');
+  document.getElementById('view-studyguide').classList.add('hide');
+  document.getElementById('view-picker').classList.remove('hide');
+  document.getElementById('mast-eyebrow').textContent = "1987 PHILIPPINE CONSTITUTION";
+  document.getElementById('mast-title').textContent = "Consti I Situational MCQ Practice";
+  document.getElementById('mast-sub').textContent = "Pick a topic below to begin.";
+}
+
+function showAlac(){
+  document.getElementById('view-picker').classList.add('hide');
+  document.getElementById('view-alac').classList.remove('hide');
+  document.getElementById('mast-eyebrow').textContent = "ALAC METHOD PRACTICE";
+  document.getElementById('mast-title').textContent = "Essay-Style Bar Problems";
+  document.getElementById('mast-sub').textContent = "Answer · Legal Basis · Application · Conclusion";
+  renderAlac();
+}
+
+function showStudyGuide(){
+  document.getElementById('view-picker').classList.add('hide');
+  document.getElementById('view-studyguide').classList.remove('hide');
+  document.getElementById('mast-eyebrow').textContent = "QUICK REFERENCE";
+  document.getElementById('mast-title').textContent = "Color-Coded Study Guide";
+  document.getElementById('mast-sub').textContent = "Provisions · requisites · exceptions · exceptions of exceptions";
+  renderStudyGuide();
+}
+
+function onTimerToggleChange(){
+  timerEnabled = document.getElementById('timer-toggle-input').checked;
+  document.getElementById('speed-choice').classList.toggle('hide', !timerEnabled);
+  updateTimerNote();
+}
+
+function onSpeedChange(){
+  const checked = document.querySelector('input[name="secPerQ"]:checked');
+  secondsPerQuestion = parseInt(checked.value, 10);
+  updateTimerNote();
+}
+
+function matchesFilters(q){ return activeFilters.has(q.tag); }
+
+function renderFilterPills(){
+  const wrap = document.getElementById('filter-pills');
+  wrap.innerHTML = '';
+  const allPill = document.createElement('div');
+  allPill.className = 'filter-pill active';
+  allPill.textContent = 'All categories';
+  allPill.onclick = () => { activeFilters = new Set(TAG_ORDER); refreshFilterUI(); };
+  allPill.dataset.all = "1";
+  wrap.appendChild(allPill);
+  TAG_ORDER.forEach(tag => {
+    const p = document.createElement('div');
+    p.className = 'filter-pill active';
+    p.textContent = TAG_LABELS[tag];
+    p.dataset.tag = tag;
+    p.onclick = () => {
+      if(activeFilters.has(tag) && activeFilters.size > 1){ activeFilters.delete(tag); }
+      else { activeFilters.add(tag); }
+      refreshFilterUI();
+    };
+    wrap.appendChild(p);
+  });
+  refreshFilterUI();
+}
+function refreshFilterUI(){
+  document.querySelectorAll('.filter-pill').forEach(p=>{
+    if(p.dataset.all){ p.classList.toggle('active', activeFilters.size === TAG_ORDER.length); }
+    else { p.classList.toggle('active', activeFilters.has(p.dataset.tag)); }
+  });
+  const n = QUESTIONS.filter(matchesFilters).length;
+  document.getElementById('total-count').textContent = n;
+  document.getElementById('filtered-count-line').textContent = n + (n===1 ? ' question selected' : ' questions selected');
+  updateTimerNote();
+}
+
+function updateTimerNote(){
+  const n = QUESTIONS.filter(matchesFilters).length;
+  const totalSec = n * secondsPerQuestion;
+  const mm = Math.floor(totalSec/60), ss = totalSec%60;
+  const label = document.getElementById('timer-toggle-label');
+  const note = document.getElementById('timer-note-text');
+  if(timerEnabled){
+    label.textContent = 'Enable timer';
+    note.textContent = `⏱ One continuous timer for the whole attempt: ${n} question${n===1?'':'s'} × ${secondsPerQuestion}s = ${mm}:${String(ss).padStart(2,'0')} total. Answers are graded only at the end — the quiz auto-submits if time runs out.`;
+  } else {
+    label.textContent = 'Enable timer';
+    note.textContent = "Timer is off — take as long as you need. Answers are graded only at the end, once you submit.";
+  }
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function startQuiz(customPool){
+  pool = customPool || shuffle(QUESTIONS.filter(matchesFilters));
+  poolDisplay = pool.map(q => shuffle(q.options.map((opt,i)=>({text:opt, isCorrect:i===q.correct}))));
+  answers = pool.map(()=>null);
+  flags = new Set();
+  currentIdx = 0;
+
+  document.getElementById('start-screen').classList.add('hide');
+  document.getElementById('results-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.remove('hide');
+
+  startTimer();
+  showQuestion(0);
+}
+
+function letterFor(i){ return ['A','B','C','D','E'][i]; }
+
+function showQuestion(i){
+  currentIdx = i;
+  const q = pool[i];
+  const disp = poolDisplay[i];
+
+  document.getElementById('ledger-pos').textContent = `Item ${i+1} of ${pool.length}`;
+  const answeredCount = answers.filter(a=>a!==null).length;
+  document.getElementById('ledger-score').textContent = `Answered: ${answeredCount}/${pool.length}`;
+  document.getElementById('track-fill').style.width = (i/pool.length*100)+'%';
+
+  let chip = `<span class="tag ${q.tag}">${TAG_LABELS[q.tag]}</span>`;
+  if(q.topicLabel) chip += `<span class="tag topicbadge">${q.topicLabel}</span>`;
+  document.getElementById('tag-chip').innerHTML = chip;
+  document.getElementById('cite-line').textContent = q.cite ? ("Provision / doctrine: " + q.cite) : "";
+  document.getElementById('q-text').textContent = q.prompt;
+
+  document.getElementById('hint-box').classList.add('hide');
+  document.getElementById('hint-box').textContent = q.hint || '';
+  document.getElementById('hint-btn').textContent = 'Show hint';
+  document.getElementById('hint-btn').classList.toggle('hide', !q.hint);
+
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+  disp.forEach((opt, oi)=>{
+    const li = document.createElement('li');
+    li.className = 'opt' + (answers[i]===oi ? ' selected' : '');
+    li.innerHTML = `<span class="letter">${letterFor(oi)}</span><span>${opt.text}</span>`;
+    li.onclick = () => selectOption(oi);
+    list.appendChild(li);
+  });
+
+  document.getElementById('prev-btn').disabled = (i===0);
+  document.getElementById('flag-btn').textContent = flags.has(i) ? 'Unflag this question' : 'Flag this question';
+  document.getElementById('skip-btn').textContent = (i === pool.length-1) ? 'Review answers' : 'Skip / Next';
+
+  renderPalette('palette', showQuestion);
+}
+
+function renderPalette(containerId, onClick){
+  const wrap = document.getElementById(containerId);
+  wrap.innerHTML = '';
+  pool.forEach((q, i)=>{
+    const b = document.createElement('div');
+    let cls = 'pnum';
+    if(answers[i]!==null) cls += ' answered';
+    if(i===currentIdx && containerId==='palette') cls += ' current';
+    if(flags.has(i)) cls += ' flagged';
+    b.className = cls;
+    b.textContent = i+1;
+    b.onclick = () => onClick(i);
+    wrap.appendChild(b);
+  });
+}
+
+function selectOption(oi){
+  answers[currentIdx] = oi;
+  if(currentIdx < pool.length - 1){
+    showQuestion(currentIdx + 1);
+  } else {
+    showReviewScreen();
+  }
+}
+
+function goPrev(){ if(currentIdx > 0) showQuestion(currentIdx - 1); }
+function goNext(){ if(currentIdx < pool.length - 1) showQuestion(currentIdx + 1); else showReviewScreen(); }
+
+function toggleFlag(){
+  if(flags.has(currentIdx)) flags.delete(currentIdx); else flags.add(currentIdx);
+  showQuestion(currentIdx);
+}
+
+function toggleHint(){
+  const box = document.getElementById('hint-box');
+  const btn = document.getElementById('hint-btn');
+  const showing = !box.classList.contains('hide');
+  box.classList.toggle('hide', showing);
+  btn.textContent = showing ? 'Show hint' : 'Hide hint';
+}
+
+function requestSubmit(){ showReviewScreen(); }
+
+function showReviewScreen(){
+  document.getElementById('quiz-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.remove('hide');
+  renderPalette('review-palette', jumpFromReview);
+  const answeredCount = answers.filter(a=>a!==null).length;
+  const flaggedCount = flags.size;
+  const unanswered = pool.length - answeredCount;
+  document.getElementById('review-summary').textContent =
+    `${answeredCount} of ${pool.length} answered · ${unanswered} unanswered · ${flaggedCount} flagged. Click any number to jump back to that question.`;
+}
+
+function jumpFromReview(i){
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.remove('hide');
+  showQuestion(i);
+}
+
+function backToQuiz(){
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.remove('hide');
+  showQuestion(currentIdx);
+}
+
+function finalizeSubmit(){
+  clearInterval(timerInterval);
+  document.getElementById('review-screen').classList.add('hide');
+  document.getElementById('quiz-screen').classList.add('hide');
+  gradeAndShowResults();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  const el = document.getElementById('timer-display');
+  if(!timerEnabled){
+    el.textContent = 'Timer off';
+    el.classList.remove('timer-warn');
+    el.classList.add('timer-off');
+    return;
+  }
+  el.classList.remove('timer-off');
+  timeLeft = pool.length * secondsPerQuestion;
+  updateTimerDisplay();
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    updateTimerDisplay();
+    if(timeLeft <= 0){
+      clearInterval(timerInterval);
+      timeUp();
+    }
+  }, 1000);
+}
+function updateTimerDisplay(){
+  const el = document.getElementById('timer-display');
+  const mm = Math.floor(timeLeft/60), ss = timeLeft%60;
+  el.textContent = `⏱ ${mm}:${String(ss).padStart(2,'0')}`;
+  el.classList.toggle('timer-warn', timeLeft <= 60);
+}
+function timeUp(){
+  document.getElementById('quiz-screen').classList.add('hide');
+  document.getElementById('review-screen').classList.add('hide');
+  gradeAndShowResults(true);
+}
+
+function gradeAndShowResults(timedOut){
+  let score = 0;
+  const responses = [];
+  pool.forEach((q, i)=>{
+    const disp = poolDisplay[i];
+    const correctIdx = disp.findIndex(o=>o.isCorrect);
+    const chosenIdx = answers[i];
+    const isCorrect = (chosenIdx !== null && chosenIdx === correctIdx);
+    if(isCorrect) score++;
+    responses.push({
+      q,
+      chosenText: chosenIdx===null ? '(no answer — skipped)' : disp[chosenIdx].text,
+      correctText: disp[correctIdx].text,
+      correct: isCorrect
+    });
+  });
+  lastMissedQs = responses.filter(r=>!r.correct).map(r=>r.q);
+
+  document.getElementById('results-screen').classList.remove('hide');
+  const total = responses.length;
+  document.getElementById('final-score').textContent = `${score}/${total}`;
+  document.getElementById('final-pct').textContent = (total ? Math.round(score/total*100)+'% correct' : '') + (timedOut ? ' — time expired' : '');
+
+  const byTag = {};
+  TAG_ORDER.forEach(t=>byTag[t] = {correct:0,total:0});
+  responses.forEach(r=>{ byTag[r.q.tag].total++; if(r.correct) byTag[r.q.tag].correct++; });
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = '';
+  TAG_ORDER.forEach(t=>{
+    if(byTag[t].total === 0) return;
+    const pct = Math.round(byTag[t].correct/byTag[t].total*100);
+    const row = document.createElement('div');
+    row.className = 'bd-row';
+    row.innerHTML = `<span class="dot" style="background:var(--${dotColor(t)})"></span>
+      <span class="label">${TAG_LABELS[t]}</span>
+      <span class="bar"><span style="width:${pct}%"></span></span>
+      <span class="num">${byTag[t].correct}/${byTag[t].total}</span>`;
+    bd.appendChild(row);
+  });
+
+  document.getElementById('retake-missed-btn').disabled = lastMissedQs.length === 0;
+  document.getElementById('retake-missed-btn').textContent = lastMissedQs.length === 0 ? "No missed questions!" : `Retake missed only (${lastMissedQs.length})`;
+
+  const reviewWrap = document.getElementById('review-list');
+  reviewWrap.innerHTML = '';
+  const h = document.createElement('p');
+  h.style.fontFamily = "'Inter',sans-serif";
+  h.style.fontSize = '13px';
+  h.style.color = 'var(--ink-soft)';
+  h.style.margin = '0 0 4px';
+  h.textContent = `Full review — every question, in order`;
+  reviewWrap.appendChild(h);
+  responses.forEach((r, i)=>{
+    const div = document.createElement('div');
+    div.className = 'review-item';
+    div.innerHTML = `
+      <p class="review-q">${i+1}. ${r.q.prompt}</p>
+      ${r.q.cite ? `<p class="cite-line" style="margin:-4px 0 10px;">Provision / doctrine: ${r.q.cite}</p>` : ''}
+      <p class="review-meta"><span class="${r.correct?'right':'wrong'}">Your answer: ${r.chosenText}</span>${r.correct? '' : `<br><span class="right">Correct: ${r.correctText}</span>`}</p>
+      <details><summary>Show explanation</summary><p class="explain">${r.q.explain}</p></details>`;
+    reviewWrap.appendChild(div);
+  });
+
+  saveAttempt({date: new Date().toISOString(), score, total, pct: total?Math.round(score/total*100):0});
+  renderHistory();
+}
+
+function dotColor(tag){
+  return {memorization:'yellow', requisites:'green', exceptions:'blue', effects:'purple', jurisprudence:'red'}[tag];
+}
+
+function restart(missedOnly){
+  document.getElementById('results-screen').classList.add('hide');
+  if(missedOnly && lastMissedQs.length){ startQuiz(shuffle(lastMissedQs)); }
+  else { startQuiz(shuffle(QUESTIONS.filter(matchesFilters))); }
+}
+
+function loadHistory(){
+  try{ return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+  catch(e){ return []; }
+}
+function saveAttempt(record){
+  try{
+    const hist = loadHistory();
+    hist.unshift(record);
+    while(hist.length > 25) hist.pop();
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(hist));
+  }catch(e){ /* localStorage unavailable — skip silently */ }
+}
+function clearHistory(){
+  try{ localStorage.removeItem(HISTORY_KEY); }catch(e){}
+  renderHistory();
+}
+function renderHistory(){
+  let hist = [];
+  try{ hist = loadHistory(); }catch(e){}
+  const block = document.getElementById('history-block');
+  const list = document.getElementById('history-list');
+  if(!hist.length){ block.classList.add('hide'); return; }
+  block.classList.remove('hide');
+  list.innerHTML = '';
+  hist.forEach(r=>{
+    const d = new Date(r.date);
+    const dateStr = isNaN(d) ? '' : d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) + ' ' + d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+    const row = document.createElement('div');
+    row.className = 'history-row';
+    row.innerHTML = `<span>${dateStr}</span><span class="hscore">${r.score}/${r.total} (${r.pct}%)</span>`;
+    list.appendChild(row);
+  });
+}
+
+buildTopicCards();
+</script>
+</body>
+</html>
