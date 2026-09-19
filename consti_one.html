@@ -4,10 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Consti I Situational MCQ Practice — Arts. I, II, IV, V, VI, VII, VIII</title>
+<meta name="description" content="Situational MCQ practice, ALAC essay problems, and a color-coded study guide for Constitutional Law I (Arts. I, II, IV, V, VI, VII & VIII of the 1987 Philippine Constitution).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ==================================================================
+     LAW REVIEW HUB — shared design system
+     Tokens, typography, and components are identical across every
+     module page. Per-subject identity comes from --accent alone,
+     declared in the accent block directly beneath this stylesheet.
+     ================================================================== */
   :root{
+    color-scheme: light;
     --paper:#EDE8DC; --card:#F8F5EC; --card-elevated:#FFFFFF; --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA; --rule-light:#DFD8C6;
     --charcoal:#23282A; --charcoal-hi:#33393B;
     --yellow:#B4922B; --yellow-tint:#F3EBD3;
@@ -17,78 +26,159 @@
     --red:#AA4A3B;    --red-tint:#F3E1DD;
     --timerok:#3F7D5C; --timerwarn:#AA4A3B;
     --orange:#C1662E; --orange-tint:#F6E4D3;
+    /* per-subject accent — overridden per page */
+    --accent:var(--green); --accent-tint:var(--green-tint);
+    /* spacing + motion scale */
+    --gutter:32px;
+    --ease:cubic-bezier(.2,0,0,1);
     --fs: 1.15;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4', Georgia, serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px 64px;
     background-image:radial-gradient(circle at 15% 8%, rgba(35,40,42,0.035), transparent 40%), radial-gradient(circle at 85% 92%, rgba(35,40,42,0.035), transparent 40%);}
-  .sheet{width:100%;max-width:720px;background:var(--card);border:1px solid var(--rule);box-shadow:0 1px 0 var(--rule), 0 18px 40px -24px rgba(32,36,31,0.35);}
+  /* body is a centering flex container; flex items default to min-width:auto,
+     which lets wide content push the whole page sideways on narrow screens. */
+  body > *{min-width:0;max-width:100%;}
+  .sheet{width:100%;max-width:720px;background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--accent);box-shadow:0 1px 0 var(--rule), 0 18px 40px -24px rgba(32,36,31,0.35);}
   @media (min-width:1000px){ .sheet{width:66.666vw;max-width:1200px;} }
-  .fs-control{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:12px;color:var(--ink-soft);}
-  .fs-control button{width:28px;height:28px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;line-height:1;}
-  .fs-control button:hover{border-color:var(--ink-soft);}
+
+  /* ---- focus: one visible ring for every interactive element ---- */
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .opt:focus-visible,.tcard:focus-visible,.pnum:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--charcoal);color:var(--paper);font-family:'Inter',sans-serif;font-size:13px;padding:10px 16px;z-index:10;text-decoration:none;}
+  .skip-link:focus{left:8px;top:8px;}
+
+  /* ---- text-size control ---- */
+  .fs-control{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:12px;color:var(--ink-soft);flex:none;}
+  .fs-control button{width:28px;height:28px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;line-height:1;transition:border-color .15s ease,background .15s ease;}
+  .fs-control button:hover{border-color:var(--ink-soft);background:var(--card-elevated);}
   .fs-control .fs-reset{width:auto;padding:0 10px;font-size:11px;font-weight:600;}
-  .masthead-strip{display:flex;justify-content:space-between;align-items:center;padding:13px 32px;border-bottom:1px solid var(--rule);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
-  .masthead-strip .edition{display:flex;align-items:center;gap:8px;color:var(--ink-soft);text-decoration:none;}
-  .masthead-strip .edition::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--dot, var(--green));}
+
+  /* ---- masthead ---- */
+  .masthead-strip{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px var(--gutter);border-bottom:1px solid var(--rule);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .masthead-strip .edition{display:flex;align-items:center;gap:8px;color:var(--ink-soft);text-decoration:none;transition:color .15s ease;}
+  .masthead-strip .edition::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);}
   .masthead-strip .edition:hover{color:var(--ink);}
   .masthead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
-  .masthead{padding:30px 32px 24px;border-bottom:1px solid var(--rule);background:linear-gradient(175deg,#FBF8F0 0%,#F5F1E5 100%);}
+  .masthead{padding:30px var(--gutter) 24px;border-bottom:1px solid var(--rule);background:linear-gradient(175deg,#FBF8F0 0%,#F5F1E5 100%);}
   .masthead .eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(11.5px * var(--fs));letter-spacing:0.1em;color:var(--ink-soft);margin:0 0 10px;text-transform:uppercase;}
   .masthead h1{font-family:'Fraunces', serif;font-weight:700;font-size:calc(32px * var(--fs));margin:0 0 8px;line-height:1.15;letter-spacing:-0.02em;}
   .masthead p.sub{font-family:'Source Serif 4', Georgia, serif;font-size:calc(14.5px * var(--fs));color:var(--ink-soft);margin:0;line-height:1.55;}
-  .content{padding:28px 32px 32px;}
+  .content{padding:28px var(--gutter) 32px;}
 
+  /* ---- topic picker ---- */
   .topic-eyebrow{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));letter-spacing:0.03em;color:var(--ink-soft);margin:0 0 4px;}
   .topic-h{font-family:'Fraunces',serif;font-weight:600;font-size:calc(22px * var(--fs));margin:0 0 18px;}
-  .tcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:6px;align-items:stretch;}
-  .tcard{border:1px solid var(--rule);background:var(--card-elevated);padding:22px 22px 20px;cursor:pointer;
-    box-shadow:0 1px 0 var(--rule), 0 10px 22px -16px rgba(32,36,31,0.18);
-    transition:transform .15s cubic-bezier(.2,0,0,1), box-shadow .15s cubic-bezier(.2,0,0,1), border-color .15s ease;
-    display:flex;flex-direction:column;}
-  .tcard:hover{border-color:var(--ink-soft);transform:translateY(-2px);box-shadow:0 1px 0 var(--rule), 0 16px 28px -14px rgba(32,36,31,0.25);}
-  .tcard .tname{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:0 0 6px;}
-  .tcard .tdesc{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 14px;line-height:1.5;flex-grow:1;}
-  .tcard .tcount{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.04em;border-top:1px solid var(--rule-light);padding-top:10px;}
-  .tcard.combo{grid-column:1 / -1;background:linear-gradient(175deg,#2A302B 0%, var(--charcoal) 100%);border-color:var(--charcoal);}
-  .tcard.combo .tname{font-size:calc(19px * var(--fs));}
-  .tcard.combo .tname, .tcard.combo .tdesc, .tcard.combo .tcount{color:var(--paper);}
-  .tcard.combo .tcount{border-top-color:rgba(237,232,220,0.25);}
-  .tcard.combo:hover{border-color:var(--charcoal-hi);}
-  .backlink{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0;margin-bottom:16px;display:inline-block;}
+  /* ---- bento grid ----
+     A 12-column bento shared by the topic picker, the pre-quiz dashboard and
+     the results dashboard. Spans are chosen so every row adds up to 12, so the
+     grid never leaves a ragged hole at the end of a row. */
+  .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:stretch;margin:0 0 18px;}
+  .bento .sp-4{grid-column:span 4;}
+  .bento .sp-6{grid-column:span 6;}
+  .bento .sp-8{grid-column:span 8;}
+  .bento .sp-12{grid-column:span 12;}
+  .bento-card{background:var(--card-elevated);border:1px solid var(--rule);padding:20px 22px;display:flex;flex-direction:column;grid-column:span 12;
+    box-shadow:0 1px 0 var(--rule), 0 10px 22px -16px rgba(32,36,31,0.18);}
+  .bento-card.clickable{cursor:pointer;text-align:left;font:inherit;color:inherit;text-decoration:none;
+    transition:transform .15s var(--ease), box-shadow .15s var(--ease), border-color .15s ease;}
+  .bento-card.clickable:hover{transform:translateY(-2px);border-color:var(--accent);
+    box-shadow:0 1px 0 var(--rule), 0 16px 28px -14px rgba(32,36,31,0.25);}
+  .bento-card.clickable:active{transform:translateY(0);}
+  .bento-label{font-family:'Inter',sans-serif;font-size:calc(10.5px * var(--fs));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px;}
+  .bento-title{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));line-height:1.25;margin:0 0 6px;}
+  .bento-card.feature .bento-title{font-size:calc(22px * var(--fs));}
+  .bento-desc{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);line-height:1.5;margin:0 0 14px;flex-grow:1;}
+  .bento-foot{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;
+    border-top:1px solid var(--rule-light);padding-top:10px;margin:auto 0 0;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .bento-arrow{width:26px;height:26px;border:1px solid var(--rule);border-radius:3px;display:inline-flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);font-size:14px;flex:none;transition:all .18s ease;}
+  .bento-card.clickable:hover .bento-arrow{color:var(--paper);background:var(--charcoal);border-color:var(--charcoal);transform:translateX(2px);}
+  .bento-stat{font-family:'Fraunces',serif;font-weight:700;font-size:calc(44px * var(--fs));line-height:1;margin:0 0 6px;}
+  .bento-card .bento-stat{margin:0 0 12px;}
+  .bento-card.dark .bento-stat{color:var(--paper);}
 
+  /* dark hero tile (the mixed "all topics" pool) */
+  .bento-card.dark{background:linear-gradient(175deg,#2A302B 0%, var(--charcoal) 100%);border-color:var(--charcoal);}
+  .bento-card.dark .bento-title{color:var(--paper);}
+  .bento-card.dark .bento-label{color:rgba(237,232,220,.70);}
+  .bento-card.dark .bento-desc{color:rgba(237,232,220,.85);}
+  .bento-card.dark .bento-foot{color:rgba(237,232,220,.75);border-top-color:rgba(237,232,220,.25);}
+  .bento-card.dark .bento-arrow{border-color:rgba(237,232,220,.35);color:rgba(237,232,220,.85);}
+  .bento-card.dark.clickable:hover{border-color:var(--charcoal-hi);}
+  .bento-card.dark.clickable:hover .bento-arrow{background:var(--paper);color:var(--charcoal);border-color:var(--paper);}
+
+  /* note tile — carries the "watch for" warning colour as the tile itself */
+  .bento-card.tile-note{background:var(--yellow-tint);border-color:#DCCB9B;}
+  .bento-card.tile-note .bento-label{color:#7A6320;}
+  .bento-card.tile-note .watchfor{background:none;border:none;padding:0;margin:0;}
+
+  /* tiles reset the stacking margins their contents carry when standalone */
+  .bento-card > :last-child{margin-bottom:0;}
+  .bento-card .legend{margin:0 0 12px;}
+  .bento-card .filters{margin:0 0 12px;}
+  .bento-card .count-line{margin:0;}
+  .bento-card .timer-note{margin:0;}
+  .bento-card .breakdown{margin:0;}
+  .bento-card .hero-cap{margin:0;}
+  .bento-card .score-row{margin:0 0 6px;}
+  .bento-card .history-row:first-child{padding-top:0;}
+
+  @media (max-width:900px){
+    .bento .sp-4,.bento .sp-8{grid-column:span 6;}
+  }
+  @media (max-width:640px){
+    .bento{gap:12px;margin-bottom:14px;}
+    .bento .sp-4,.bento .sp-6,.bento .sp-8,.bento .sp-12{grid-column:span 12;}
+    .bento-card{padding:17px 18px;}
+    .bento-card.feature .bento-title{font-size:calc(19px * var(--fs));}
+  }
+
+  .backlink{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:2px 0;margin-bottom:16px;display:inline-block;transition:color .15s ease;}
+  .backlink:hover{color:var(--ink);}
+
+  /* ---- quiz start screen ---- */
   .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:18px 0 26px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);}
   .legend span{display:inline-flex;align-items:center;gap:6px;}
-  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;}
   .watchfor{border-left:3px solid var(--yellow);background:var(--yellow-tint);padding:12px 16px;margin:0 0 22px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.55;color:#4a3f18;}
   .watchfor strong{display:block;font-size:calc(12.5px * var(--fs));margin-bottom:4px;color:#4a3f18;}
   .watchfor ul{margin:6px 0 0;padding-left:18px;}
   .watchfor li{margin-bottom:4px;}
   .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;}
-  .filter-pill{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));font-weight:500;padding:7px 13px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;user-select:none;}
+  .filter-pill{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));font-weight:500;padding:7px 13px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:3px;user-select:none;transition:border-color .15s ease,background .15s ease;}
+  .filter-pill:hover{border-color:var(--ink-soft);background:var(--card-elevated);}
   .filter-pill.active{background:var(--charcoal);color:var(--paper);border-color:var(--charcoal);}
+  .filter-pill.active:hover{background:var(--charcoal-hi);}
   .count-line{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:8px;}
   .timer-note{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:22px;}
   .timer-toggle{display:flex;align-items:center;gap:9px;font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));color:var(--ink);margin-bottom:10px;cursor:pointer;user-select:none;}
-  .speed-choice{display:flex;gap:18px;margin:0 0 10px 25px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);}
+  .speed-choice{display:flex;gap:18px;margin:0 0 10px 25px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);flex-wrap:wrap;}
   .speed-choice.hide{display:none;}
   .speed-opt{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;}
   .speed-opt input{accent-color:var(--charcoal);cursor:pointer;}
   .timer-toggle input{width:16px;height:16px;accent-color:var(--charcoal);cursor:pointer;}
   #timer-display.timer-off{color:var(--ink-soft);font-weight:500;}
-  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(14px * var(--fs));padding:12px 22px;background:var(--charcoal);color:var(--paper);border:none;cursor:pointer;letter-spacing:0.01em;}
-  .btn:hover{background:var(--charcoal-hi);}
-  .btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--rule);}
-  .btn.secondary:hover{border-color:var(--ink);}
+
+  /* ---- buttons ---- */
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(14px * var(--fs));padding:12px 22px;background:var(--charcoal);color:var(--paper);border:1px solid var(--charcoal);cursor:pointer;letter-spacing:0.01em;border-radius:3px;transition:background .15s ease,border-color .15s ease;}
+  .btn:hover{background:var(--charcoal-hi);border-color:var(--charcoal-hi);}
+  .btn.secondary{background:transparent;color:var(--ink);border-color:var(--rule);}
+  .btn.secondary:hover{background:var(--card-elevated);border-color:var(--ink);}
   .btn:disabled{opacity:0.4;cursor:not-allowed;}
+  .btn:disabled:hover{background:var(--charcoal);border-color:var(--charcoal);}
+  .btn.secondary:disabled:hover{background:transparent;border-color:var(--rule);}
   .btn-row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;}
-  .ledger{display:flex;align-items:baseline;justify-content:space-between;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:10px;gap:10px;}
+
+  /* ---- quiz runner ---- */
+  .ledger{display:flex;align-items:baseline;justify-content:space-between;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin-bottom:10px;gap:10px;flex-wrap:wrap;}
   .ledger-right{display:flex;align-items:baseline;gap:14px;}
-  #timer-display{font-weight:700;color:var(--timerok);}
+  #timer-display{font-weight:700;color:var(--timerok);font-variant-numeric:tabular-nums;}
   #timer-display.timer-warn{color:var(--timerwarn);}
   .track{height:1px;background:var(--rule);position:relative;margin-bottom:26px;}
-  .track .fill{position:absolute;top:-1.5px;left:0;height:4px;background:var(--charcoal);transition:width .25s ease;}
+  .track .fill{position:absolute;top:-1.5px;left:0;height:4px;background:var(--accent);transition:width .25s ease;}
   .tag{display:inline-block;font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));font-weight:600;letter-spacing:0.02em;padding:3px 9px;border-radius:2px;margin-bottom:14px;}
   .tag.memorization{background:var(--yellow-tint);color:#7A6320;}
   .tag.requisites{background:var(--green-tint);color:#2A5A40;}
@@ -99,23 +189,28 @@
   .cite-line{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));font-style:italic;color:var(--ink-soft);margin:-8px 0 14px;}
   .qtext{font-size:calc(18px * var(--fs));line-height:1.6;margin:0 0 20px;white-space:pre-line;}
   .options{list-style:none;margin:0 0 6px;padding:0;}
-  .opt{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1px solid var(--rule);margin-bottom:9px;cursor:pointer;background:var(--paper);font-size:calc(15.5px * var(--fs));line-height:1.45;}
-  .opt:hover{border-color:var(--ink-soft);}
+  .opt{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1px solid var(--rule);margin-bottom:9px;cursor:pointer;background:var(--paper);font-size:calc(15.5px * var(--fs));line-height:1.45;border-radius:3px;transition:border-color .15s ease,background .15s ease;}
+  .opt:hover{border-color:var(--ink-soft);background:var(--card-elevated);}
   .opt .letter{font-family:'Inter',sans-serif;font-weight:700;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);border:1px solid var(--rule);width:22px;height:22px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-  .opt.selected{border-color:var(--ink);}
+  .opt.selected{border-color:var(--ink);background:var(--card-elevated);}
   .opt.correct{background:var(--green-tint);border-color:var(--green);}
   .opt.correct .letter{border-color:var(--green);color:var(--green);}
   .opt.incorrect{background:var(--red-tint);border-color:var(--red);}
   .opt.incorrect .letter{border-color:var(--red);color:var(--red);}
   .opt.disabled{cursor:default;}
-  .opt.disabled:hover{border-color:var(--rule);}
-  .hint-toggle{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0;margin:2px 0 18px;}
+  .opt.disabled:hover{border-color:var(--rule);background:var(--paper);}
+  .opt.correct.disabled:hover{background:var(--green-tint);border-color:var(--green);}
+  .opt.incorrect.disabled:hover{background:var(--red-tint);border-color:var(--red);}
+  .hint-toggle{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);background:none;border:none;text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:2px 0;margin:2px 0 18px;transition:color .15s ease;}
+  .hint-toggle:hover{color:var(--ink);}
   .hint-box{font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);background:var(--paper);border-left:2px solid var(--rule);padding:9px 13px;margin:0 0 18px;}
   .explain{font-size:calc(15.5px * var(--fs));line-height:1.6;color:var(--ink);background:var(--paper);border-left:3px solid var(--charcoal);padding:14px 16px;margin:0 0 22px;}
+
+  /* ---- results ---- */
   .hero-num{font-family:'Fraunces', serif;font-weight:700;font-size:calc(52px * var(--fs));line-height:1;margin:18px 0 4px;}
   .hero-cap{font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);margin:0 0 22px;}
-  .score-row{display:flex;align-items:baseline;gap:14px;margin-bottom:4px;}
-  .score-big{font-family:'Fraunces',serif;font-weight:700;font-size:calc(48px * var(--fs));}
+  .score-row{display:flex;align-items:baseline;gap:14px;margin-bottom:4px;flex-wrap:wrap;}
+  .score-big{font-family:'Fraunces',serif;font-weight:700;font-size:calc(48px * var(--fs));font-variant-numeric:tabular-nums;}
   .score-label{font-family:'Inter',sans-serif;color:var(--ink-soft);font-size:calc(14px * var(--fs));}
   .breakdown{margin:26px 0;}
   .bd-row{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));margin-bottom:9px;}
@@ -123,7 +218,7 @@
   .bd-row .label{width:150px;flex:none;color:var(--ink-soft);}
   .bd-row .bar{flex:1;height:6px;background:var(--rule);position:relative;}
   .bd-row .bar span{position:absolute;top:0;left:0;height:100%;background:var(--charcoal);}
-  .bd-row .num{width:44px;text-align:right;flex:none;color:var(--ink-soft);}
+  .bd-row .num{width:44px;text-align:right;flex:none;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
   .review-item{border-top:1px solid var(--rule);padding:18px 0;}
   .review-item:first-child{border-top:none;}
   .review-q{font-size:calc(16px * var(--fs));line-height:1.5;margin:0 0 8px;white-space:pre-line;}
@@ -133,16 +228,21 @@
   details summary{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);cursor:pointer;margin-top:4px;}
   details .explain{margin-top:10px;}
   .hide{display:none !important;}
+
+  /* ---- question palette ---- */
   .palette{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px;}
-  .pnum{position:relative;width:32px;height:32px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-soft);font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:3px;}
-  .pnum:hover{border-color:var(--ink-soft);}
+  .pnum{position:relative;width:32px;height:32px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-soft);font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:3px;padding:0;transition:border-color .15s ease,background .15s ease;}
+  .pnum:hover{border-color:var(--ink-soft);background:var(--card-elevated);}
   .pnum.answered{background:var(--charcoal);color:var(--paper);border-color:var(--charcoal);}
+  .pnum.answered:hover{background:var(--charcoal-hi);}
   .pnum.current{outline:2px solid var(--ink);outline-offset:1px;}
   .pnum.flagged::after{content:'';position:absolute;top:-3px;right:-3px;width:9px;height:9px;border-radius:50%;background:var(--yellow);border:1px solid var(--paper);}
-  .history-row{display:flex;justify-content:space-between;align-items:baseline;font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);padding:8px 0;border-bottom:1px solid var(--rule);}
+  .history-row{display:flex;justify-content:space-between;align-items:baseline;font-family:'Inter',sans-serif;font-size:calc(13px * var(--fs));color:var(--ink-soft);padding:8px 0;border-bottom:1px solid var(--rule);gap:12px;}
   .history-row:last-child{border-bottom:none;}
   .history-row .hscore{color:var(--ink);font-weight:600;}
   .filter-label{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 8px;}
+
+  /* ---- ALAC essays ---- */
   .alac-intro{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 20px;}
   .alac-topic-h{font-family:'Fraunces',serif;font-weight:600;font-size:calc(17px * var(--fs));margin:28px 0 6px;}
   .alac-topic-h:first-child{margin-top:6px;}
@@ -154,13 +254,15 @@
   .alac-ans p{margin:0 0 8px;}
   .alac-ans b{color:var(--ink);}
 
+  /* ---- study guide ---- */
   .sg-intro{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 16px;}
   .sg-h2{font-family:'Fraunces',serif;font-weight:600;font-size:calc(20px * var(--fs));margin:30px 0 4px;}
   .sg-h2:first-child{margin-top:6px;}
   .sg-h3{font-family:'Fraunces',serif;font-weight:600;font-size:calc(15.5px * var(--fs));margin:22px 0 6px;}
   .sg-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:10px 0 20px;font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));color:var(--ink-soft);}
   .sg-legend span{display:inline-flex;align-items:center;gap:6px;}
-  .sg-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .sg-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;}
+  .table-scroll{overflow-x:auto;margin:0 0 6px;}
   table.sg-table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:calc(14px * var(--fs));}
   table.sg-table th{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-align:left;padding:6px 10px 6px 0;border-bottom:1px solid var(--rule);}
   table.sg-table td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5;}
@@ -176,12 +278,80 @@
   .cmp-table th{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-align:left;padding:8px 10px;border-bottom:2px solid var(--rule);vertical-align:bottom;}
   .cmp-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5;}
   .cmp-table td.aspect{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);width:120px;}
+
+  /* ---- footer ---- */
+  .page-footer{font-family:'Inter',sans-serif;font-size:11.5px;line-height:1.6;color:var(--ink-soft);text-align:center;max-width:720px;margin:18px auto 0;padding:0 8px;}
+  @media (min-width:1000px){ .page-footer{max-width:66.666vw;} }
+
+  /* ---- responsive ---- */
+  @media (max-width:640px){
+    :root{--gutter:20px;}
+    body{padding:18px 12px 48px;}
+    .masthead{padding:22px var(--gutter) 18px;}
+    .masthead-top{flex-direction:column;gap:14px;}
+    .masthead h1{font-size:calc(25px * var(--fs));}
+    .content{padding:22px var(--gutter) 26px;}
+    .tcards{grid-template-columns:1fr;gap:12px;}
+    .tcard{padding:18px;}
+    .btn{padding:11px 18px;flex:1 1 auto;}
+    .btn-row{gap:8px;}
+    .speed-choice{margin-left:0;gap:12px;}
+    .bd-row .label{width:110px;}
+    .qtext{font-size:calc(16.5px * var(--fs));}
+    .hero-num{font-size:calc(42px * var(--fs));}
+    .score-big{font-size:calc(38px * var(--fs));}
+    .cmp-table{table-layout:auto;}
+    .cmp-table td.aspect{width:auto;}
+  }
+
+  /* ---- motion + print ---- */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+    .tcard:hover{transform:none;}
+  }
+  @media print{
+    body{background:#fff;padding:0;display:block;}
+    .sheet{width:100%;max-width:none;border:none;box-shadow:none;}
+    .fs-control,.masthead-strip,.palette,.btn-row,.backlink,.filters{display:none !important;}
+  }
+
+  /* ---- issue reporting ---- */
+  .report-wrap{margin:10px 0 2px;}
+  .report-btn{font-family:'Inter',sans-serif;font-size:calc(11.5px * var(--fs));color:var(--ink-soft);background:none;border:none;padding:3px 0;cursor:pointer;
+    text-decoration:underline;text-underline-offset:2px;display:inline-flex;align-items:center;gap:6px;transition:color .15s ease;}
+  .report-btn:hover{color:var(--red);}
+  .report-btn.reported{color:var(--red);font-weight:600;text-decoration:none;}
+  .report-btn .rdot{width:7px;height:7px;border-radius:50%;background:var(--red);display:none;flex:none;}
+  .report-btn.reported .rdot{display:inline-block;}
+  .report-panel{border:1px solid var(--rule);background:var(--card-elevated);padding:14px 16px;margin:10px 0 4px;}
+  .report-panel .rp-h{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(12.5px * var(--fs));margin:0 0 10px;color:var(--ink);}
+  .report-reasons{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 12px;}
+  .reason-pill{position:relative;display:inline-flex;}
+  .reason-pill input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0;}
+  .reason-pill span{font-family:'Inter',sans-serif;font-size:calc(12px * var(--fs));padding:6px 12px;border:1px solid var(--rule);border-radius:3px;background:var(--paper);color:var(--ink);cursor:pointer;}
+  .reason-pill input:checked + span{background:var(--charcoal);color:var(--paper);border-color:var(--charcoal);}
+  .reason-pill input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px;}
+  .rp-note-label{display:block;font-family:'Inter',sans-serif;font-size:calc(11.5px * var(--fs));color:var(--ink-soft);margin:0 0 5px;}
+  .report-panel textarea{width:100%;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.5;padding:9px 11px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical;min-height:60px;}
+  .report-actions{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;}
+  .btn.tiny{padding:7px 14px;font-size:calc(12.5px * var(--fs));}
+  .issue-item{border:1px solid var(--rule);background:var(--card-elevated);padding:14px 16px;margin-bottom:10px;}
+  .issue-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em;}
+  .issue-kind{background:var(--charcoal);color:var(--paper);padding:2px 8px;border-radius:2px;font-weight:600;}
+  .issue-item.alac .issue-kind{background:var(--purple);}
+  .issue-excerpt{font-size:calc(14px * var(--fs));line-height:1.5;margin:0;}
+  .issue-note{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.5;color:var(--ink-soft);background:var(--paper);border-left:2px solid var(--rule);padding:8px 11px;margin:10px 0 0;}
+
+  /* ---- subject accent ---- */
+  :root{ --accent:var(--blue); --accent-tint:var(--blue-tint); }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div>
 <div class="sheet">
-  <div class="masthead-strip" style="--dot:var(--blue)">
+  <div class="masthead-strip">
     <a href="index.html" class="edition">← All Subjects</a>
     <span>Political Law</span>
   </div>
@@ -201,14 +371,12 @@
     <p class="sub" id="mast-sub">Pick a topic below to begin.</p>
   </div>
 
-  <div class="content">
+  <main class="content" id="main">
 
     <div id="view-picker">
       <p class="topic-eyebrow">CHOOSE A TOPIC</p>
       <p class="topic-h">What are you reviewing today?</p>
-      <div class="tcards" id="topic-cards"></div>
-      <button class="backlink" style="margin-top:18px;" onclick="showAlac()">Prefer essay-style ALAC problems instead? &rarr;</button>
-      <button class="backlink" style="margin-top:8px;display:block;" onclick="showStudyGuide()">View the color-coded study guide &rarr;</button>
+      <div class="bento" id="topic-cards"></div>
     </div>
 
     <div id="view-studyguide" class="hide">
@@ -234,27 +402,55 @@
       <div id="alac-list"></div>
     </div>
 
+    <div id="view-issues" class="hide">
+      <button class="backlink" onclick="backToPicker()">&larr; Back to topics</button>
+      <p class="topic-eyebrow">SAVED ON THIS DEVICE</p>
+      <p class="topic-h">Items you've reported</p>
+      <p class="alac-intro">Questions and model answers you marked as wrong or doubtful. This file has no server behind it, so the list lives in this browser only &mdash; copy it out to raise with your professor or to correct the source.</p>
+      <div class="btn-row" id="issue-actions">
+        <button class="btn secondary" onclick="copyIssues()">Copy all as text</button>
+        <button class="btn secondary" onclick="clearIssues()">Clear all</button>
+      </div>
+      <div id="issue-list" style="margin-top:18px;"></div>
+    </div>
+
     <div id="view-quiz" class="hide">
 
       <div id="start-screen">
         <button class="backlink" onclick="backToPicker()">&larr; Change topic</button>
-        <p class="hero-num" id="total-count">0</p>
-        <p class="hero-cap" id="hero-cap-text">fact-pattern questions available — pick a category or run the full set</p>
-        <div class="legend">
+        <div class="bento">
+
+          <div class="bento-card sp-4">
+            <p class="bento-label">Question pool</p>
+            <p class="bento-stat" id="total-count">0</p>
+            <p class="bento-desc" id="hero-cap-text">fact-pattern questions available — pick a category or run the full set</p>
+          </div>
+
+          <div class="bento-card sp-8 tile-note">
+            <p class="bento-label">What to watch for</p>
+            <div class="watchfor" id="watchfor-box"></div>
+          </div>
+
+          <div class="bento-card sp-8">
+            <p class="bento-label">Filter by category</p>
+            <div class="filters" id="filter-pills"></div>
+            <div class="legend">
           <span><i style="background:var(--yellow)"></i>Memorization</span>
           <span><i style="background:var(--green)"></i>Requisites</span>
           <span><i style="background:var(--blue)"></i>Exceptions</span>
           <span><i style="background:var(--purple)"></i>Effects / consequences</span>
           <span><i style="background:var(--red)"></i>Jurisprudence</span>
         </div>
-        <div class="watchfor" id="watchfor-box"></div>
-        <div class="filters" id="filter-pills"></div>
-        <p class="count-line" id="filtered-count-line"></p>
-        <label class="timer-toggle" for="timer-toggle-input">
+            <p class="count-line" id="filtered-count-line"></p>
+          </div>
+
+          <div class="bento-card sp-4">
+            <p class="bento-label">Timing</p>
+            <label class="timer-toggle" for="timer-toggle-input">
           <input type="checkbox" id="timer-toggle-input" checked onchange="onTimerToggleChange()">
           <span id="timer-toggle-label">Enable timer</span>
         </label>
-        <div class="speed-choice" id="speed-choice">
+            <div class="speed-choice" id="speed-choice">
           <label class="speed-opt">
             <input type="radio" name="secPerQ" value="60" checked onchange="onSpeedChange()"> 60s per question
           </label>
@@ -262,7 +458,10 @@
             <input type="radio" name="secPerQ" value="30" onchange="onSpeedChange()"> 30s per question
           </label>
         </div>
-        <p class="timer-note" id="timer-note-text"></p>
+            <p class="timer-note" id="timer-note-text"></p>
+          </div>
+
+        </div>
         <div class="btn-row"><button class="btn" onclick="startQuiz()">Start practice</button></div>
 
         <div id="history-block" class="hide">
@@ -286,7 +485,7 @@
         <p class="qtext" id="q-text"></p>
         <button class="hint-toggle" id="hint-btn" onclick="toggleHint()">Show hint</button>
         <div class="hint-box hide" id="hint-box"></div>
-        <ul class="options" id="options-list"></ul>
+        <ul class="options" id="options-list" role="radiogroup" aria-labelledby="q-text"></ul>
 
         <div class="btn-row">
           <button class="btn secondary" id="prev-btn" onclick="goPrev()">Previous</button>
@@ -307,12 +506,20 @@
       </div>
 
       <div id="results-screen" class="hide">
-        <div class="score-row">
-          <span class="score-big" id="final-score">0/0</span>
-          <span class="score-label">correct</span>
+        <div class="bento">
+          <div class="bento-card sp-4">
+            <p class="bento-label">Final score</p>
+            <div class="score-row">
+              <span class="score-big" id="final-score">0/0</span>
+              <span class="score-label">correct</span>
+            </div>
+            <p class="hero-cap" id="final-pct"></p>
+          </div>
+          <div class="bento-card sp-8">
+            <p class="bento-label">Breakdown by category</p>
+            <div class="breakdown" id="breakdown"></div>
+          </div>
         </div>
-        <p class="hero-cap" id="final-pct"></p>
-        <div class="breakdown" id="breakdown"></div>
         <div class="btn-row">
           <button class="btn" onclick="restart(false)">Retake this set</button>
           <button class="btn secondary" onclick="restart(true)" id="retake-missed-btn">Retake missed only</button>
@@ -323,9 +530,9 @@
 
     </div>
 
-  </div>
+  </main>
 </div>
-<footer style="font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);text-align:center;max-width:720px;margin:18px auto 0;">Study aid only — always verify against the Constitution's text and current jurisprudence. Save this file to reopen anytime; per-topic history is saved on this device/browser only.</footer>
+<footer class="page-footer">Study aid only — always verify against the Constitution's text and current jurisprudence. Save this file to reopen anytime; per-topic history is saved on this device/browser only.</footer>
 </div>
 
 <script>
@@ -418,18 +625,71 @@ let timeLeft = 0;
 let timerEnabled = true;
 let lastMissedQs = [];
 
+/* ======================================================================
+   BENTO LAYOUT HELPERS
+   ====================================================================== */
+
+/* Pick column spans so each bento row sums to exactly 12 columns, with the
+   first card given prominence when there is more than one row to fill. */
+function bentoSpans(n){
+  const rows = [];
+  let rem = n, first = true;
+  while(rem > 0){
+    if(rem === 1){ rows.push([12]); rem = 0; }
+    else if(rem === 2){ rows.push(first ? [8,4] : [6,6]); rem = 0; }
+    else if(rem === 3){ rows.push([4,4,4]); rem = 0; }
+    else if(rem === 4){ rows.push(first ? [8,4] : [6,6]); rem -= 2; }
+    else { rows.push(first ? [8,4] : [4,4,4]); rem -= first ? 2 : 3; }
+    first = false;
+  }
+  return rows.flat();
+}
+
+function bentoCard(cls, label, title, desc, foot, onClick, stat){
+  const card = document.createElement('button');
+  card.type = 'button';
+  card.className = 'bento-card clickable ' + cls;
+  card.innerHTML =
+    `<p class="bento-label">${label}</p>` +
+    `<p class="bento-title">${title}</p>` +
+    `<p class="bento-desc">${desc}</p>` +
+    (stat ? `<p class="bento-stat">${stat}</p>` : '') +
+    `<p class="bento-foot"><span>${foot}</span><span class="bento-arrow" aria-hidden="true">\u2192</span></p>`;
+  card.onclick = onClick;
+  return card;
+}
+
 function buildTopicCards(){
   const wrap = document.getElementById('topic-cards');
   wrap.innerHTML = '';
-  ['territory_policies','citizenship_suffrage','legislative','executive','judicial','all'].forEach(key=>{
+  const keys = ['territory_policies','citizenship_suffrage','legislative','executive','judicial','all'];
+  const topicKeys = keys.filter(k => k !== 'all');
+  const spans = bentoSpans(topicKeys.length);
+
+  topicKeys.forEach((key, ix) => {
     const t = TOPICS[key];
-    const card = document.createElement('div');
-    card.className = 'tcard' + (key==='all' ? ' combo' : '');
-    const count = key==='all' ? (BANK_TERRITORY_POLICIES.length+BANK_CITIZENSHIP_SUFFRAGE.length+BANK_LEGISLATIVE.length+BANK_EXECUTIVE.length+BANK_JUDICIAL.length) : t.bank.length;
-    card.innerHTML = `<p class="tname">${t.name}</p><p class="tdesc">${t.desc}</p><p class="tcount">${count} questions</p>`;
-    card.onclick = () => chooseTopic(key);
-    wrap.appendChild(card);
+    const feature = spans[ix] >= 8;
+    const cls = 'sp-' + spans[ix] + (feature ? ' feature' : '');
+    /* The wide feature tile carries its count as a numeral so it fills the
+       extra height it gets from the row, rather than sitting half empty. */
+    wrap.appendChild(feature
+      ? bentoCard(cls, 'Topic', t.name, t.desc, 'Questions', () => chooseTopic(key), t.bank.length)
+      : bentoCard(cls, 'Topic', t.name, t.desc, t.bank.length + ' questions', () => chooseTopic(key)));
   });
+
+  if(keys.includes('all')){
+    const t = TOPICS['all'];
+    const count = BANK_TERRITORY_POLICIES.length+BANK_CITIZENSHIP_SUFFRAGE.length+BANK_LEGISLATIVE.length+BANK_EXECUTIVE.length+BANK_JUDICIAL.length;
+    wrap.appendChild(bentoCard('sp-12 dark', 'Mixed pool', t.name, t.desc,
+      count + ' questions', () => chooseTopic('all')));
+  }
+
+  wrap.appendChild(bentoCard('sp-6', 'Essay practice', 'ALAC Essay Problems',
+    'Work out your own Answer, Legal Basis, Application and Conclusion, then reveal the model answer.',
+    'Open essays', showAlac));
+  wrap.appendChild(bentoCard('sp-6', 'Quick reference', 'Color-Coded Study Guide',
+    'Provisions, requisites, exceptions and doctrine, laid out for a fast pass before recitation.',
+    'Open guide', showStudyGuide));
 }
 
 /* ======================================================================
@@ -655,6 +915,15 @@ const STUDY_GUIDE_HTML = `
 
 function renderStudyGuide(){
   document.getElementById('sg-content').innerHTML = STUDY_GUIDE_HTML;
+  /* Wide reference tables get their own scroll container so narrow screens
+     never force the whole sheet sideways. */
+  document.querySelectorAll('#sg-content table').forEach(t => {
+    if(t.parentElement.classList.contains('table-scroll')) return;
+    const box = document.createElement('div');
+    box.className = 'table-scroll';
+    t.replaceWith(box);
+    box.appendChild(t);
+  });
 }
 
 function renderAlac(){
@@ -809,14 +1078,16 @@ function matchesFilters(q){ return activeFilters.has(q.tag); }
 function renderFilterPills(){
   const wrap = document.getElementById('filter-pills');
   wrap.innerHTML = '';
-  const allPill = document.createElement('div');
+  const allPill = document.createElement('button');
+  allPill.type = 'button';
   allPill.className = 'filter-pill active';
   allPill.textContent = 'All categories';
   allPill.onclick = () => { activeFilters = new Set(TAG_ORDER); refreshFilterUI(); };
   allPill.dataset.all = "1";
   wrap.appendChild(allPill);
   TAG_ORDER.forEach(tag => {
-    const p = document.createElement('div');
+    const p = document.createElement('button');
+    p.type = 'button';
     p.className = 'filter-pill active';
     p.textContent = TAG_LABELS[tag];
     p.dataset.tag = tag;
@@ -833,6 +1104,7 @@ function refreshFilterUI(){
   document.querySelectorAll('.filter-pill').forEach(p=>{
     if(p.dataset.all){ p.classList.toggle('active', activeFilters.size === TAG_ORDER.length); }
     else { p.classList.toggle('active', activeFilters.has(p.dataset.tag)); }
+    p.setAttribute('aria-pressed', p.classList.contains('active') ? 'true' : 'false');
   });
   const n = QUESTIONS.filter(matchesFilters).length;
   document.getElementById('total-count').textContent = n;
@@ -904,9 +1176,14 @@ function showQuestion(i){
   list.innerHTML = '';
   disp.forEach((opt, oi)=>{
     const li = document.createElement('li');
-    li.className = 'opt' + (answers[i]===oi ? ' selected' : '');
+    const chosen = answers[i] === oi;
+    li.className = 'opt' + (chosen ? ' selected' : '');
+    li.setAttribute('role', 'radio');
+    li.setAttribute('aria-checked', chosen ? 'true' : 'false');
+    li.tabIndex = (chosen || (answers[i] === null && oi === 0)) ? 0 : -1;
     li.innerHTML = `<span class="letter">${letterFor(oi)}</span><span>${opt.text}</span>`;
     li.onclick = () => selectOption(oi);
+    li.onkeydown = (e) => onOptionKey(e, oi, disp.length);
     list.appendChild(li);
   });
 
@@ -921,16 +1198,33 @@ function renderPalette(containerId, onClick){
   const wrap = document.getElementById(containerId);
   wrap.innerHTML = '';
   pool.forEach((q, i)=>{
-    const b = document.createElement('div');
+    const b = document.createElement('button');
+    b.type = 'button';
     let cls = 'pnum';
     if(answers[i]!==null) cls += ' answered';
     if(i===currentIdx && containerId==='palette') cls += ' current';
     if(flags.has(i)) cls += ' flagged';
     b.className = cls;
     b.textContent = i+1;
+    b.setAttribute('aria-label', `Question ${i+1}`+ (answers[i]!==null ? ', answered' : ', unanswered')+ (flags.has(i) ? ', flagged' : ''));
     b.onclick = () => onClick(i);
     wrap.appendChild(b);
   });
+}
+
+/* Roving-tabindex keyboard handling for the answer radiogroup. */
+function onOptionKey(e, oi, count){
+  if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); selectOption(oi); return; }
+  let next = null;
+  if(e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (oi + 1) % count;
+  else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (oi - 1 + count) % count;
+  else if(e.key === 'Home') next = 0;
+  else if(e.key === 'End') next = count - 1;
+  if(next === null) return;
+  e.preventDefault();
+  const items = Array.from(document.getElementById('options-list').children);
+  items.forEach((el, ix) => { el.tabIndex = ix === next ? 0 : -1; });
+  items[next].focus();
 }
 
 function selectOption(oi){
@@ -1133,6 +1427,329 @@ function renderHistory(){
     list.appendChild(row);
   });
 }
+
+buildTopicCards();
+
+/* A closed <details> is hidden by the UA stylesheet in a way page CSS cannot
+   override, so open every disclosure for printing and put them back after. */
+let printReopened = [];
+window.addEventListener('beforeprint', () => {
+  printReopened = Array.from(document.querySelectorAll('details:not([open])'));
+  printReopened.forEach(d => { d.open = true; });
+});
+window.addEventListener('afterprint', () => {
+  printReopened.forEach(d => { d.open = false; });
+  printReopened = [];
+});
+
+/* ======================================================================
+   ISSUE REPORTING
+   Lets a reader flag an MCQ item or an ALAC model answer they believe is
+   wrong or doubtful. This is deliberately separate from the quiz's own
+   "Flag this question", which is only a bookmark for revisiting an item
+   within a single attempt. There is no server behind this file, so reports
+   are kept in localStorage and can be copied out as plain text.
+   ====================================================================== */
+const ISSUES_KEY = "consti1QuizIssues";
+const ISSUE_REASONS = [
+  ["wrong",    "Answer looks wrong"],
+  ["unclear",  "Question is unclear"],
+  ["outdated", "Outdated law"],
+  ["typo",     "Typo / formatting"],
+  ["other",    "Something else"]
+];
+
+function reasonLabel(value){
+  const hit = ISSUE_REASONS.find(r => r[0] === value);
+  return hit ? hit[1] : value;
+}
+function escapeHtml(s){
+  return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+}
+function excerptOf(text){
+  const t = String(text).replace(/\s+/g, " ").trim();
+  return t.length > 160 ? t.slice(0, 157) + "…" : t;
+}
+/* djb2 over the item's own text, so a report survives reloads and reshuffles
+   but is retired if the item itself is later edited. */
+function issueId(kind, text){
+  let h = 5381;
+  for(let i = 0; i < text.length; i++){ h = ((h << 5) + h + text.charCodeAt(i)) | 0; }
+  return kind + "-" + (h >>> 0).toString(36);
+}
+function loadIssues(){
+  try{ return JSON.parse(localStorage.getItem(ISSUES_KEY)) || {}; }catch(e){ return {}; }
+}
+function storeIssues(all){
+  try{ localStorage.setItem(ISSUES_KEY, JSON.stringify(all)); }catch(e){ /* storage unavailable */ }
+}
+function issueCount(){ return Object.keys(loadIssues()).length; }
+function currentTopicName(){
+  return (currentTopic && TOPICS[currentTopic]) ? TOPICS[currentTopic].name : "";
+}
+
+/* Build the report control (link + inline panel) for one item. */
+function issueControl(kind, text, topic){
+  const id = issueId(kind, text);
+  const excerpt = excerptOf(text);
+  const wrap = document.createElement("div");
+  wrap.className = "report-wrap";
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "report-btn";
+  btn.setAttribute("aria-expanded", "false");
+
+  const panel = document.createElement("div");
+  panel.className = "report-panel hide";
+  const group = "reason-" + id;
+  const parts = ['<p class="rp-h">What looks wrong with this item?</p>', '<div class="report-reasons">'];
+  ISSUE_REASONS.forEach(r => {
+    parts.push('<label class="reason-pill"><input type="radio" name="' + group + '" value="' + r[0] + '"><span>' + r[1] + '</span></label>');
+  });
+  parts.push('</div>');
+  parts.push('<label class="rp-note-label" for="note-' + id + '">Note (optional)</label>');
+  parts.push('<textarea id="note-' + id + '" placeholder="What specifically looks off? e.g. the explanation cites the wrong article."></textarea>');
+  parts.push('<div class="report-actions">');
+  parts.push('<button type="button" class="btn tiny" data-act="save">Save report</button>');
+  parts.push('<button type="button" class="btn secondary tiny" data-act="cancel">Cancel</button>');
+  parts.push('<button type="button" class="btn secondary tiny" data-act="remove">Remove report</button>');
+  parts.push('</div>');
+  panel.innerHTML = parts.join("");
+
+  function sync(){
+    const rec = loadIssues()[id];
+    btn.classList.toggle("reported", !!rec);
+    btn.innerHTML = rec
+      ? '<span class="rdot"></span>Reported — ' + escapeHtml(reasonLabel(rec.reason)) + ' · edit'
+      : '<span class="rdot"></span>Report an issue';
+    panel.querySelector('[data-act="remove"]').style.display = rec ? "" : "none";
+  }
+  function openPanel(){
+    const rec = loadIssues()[id];
+    panel.querySelectorAll('input[type="radio"]').forEach(r => {
+      r.checked = rec ? (r.value === rec.reason) : (r.value === "wrong");
+    });
+    panel.querySelector("textarea").value = rec ? (rec.note || "") : "";
+    panel.classList.remove("hide");
+    btn.setAttribute("aria-expanded", "true");
+    const checked = panel.querySelector('input[type="radio"]:checked');
+    if(checked) checked.focus();
+  }
+  function closePanel(){
+    panel.classList.add("hide");
+    btn.setAttribute("aria-expanded", "false");
+  }
+
+  btn.onclick = () => { if(panel.classList.contains("hide")) openPanel(); else closePanel(); };
+
+  panel.addEventListener("click", e => {
+    const act = e.target.getAttribute && e.target.getAttribute("data-act");
+    if(!act) return;
+    if(act === "cancel"){ closePanel(); btn.focus(); return; }
+    const all = loadIssues();
+    if(act === "remove"){
+      delete all[id];
+    } else {
+      const sel = panel.querySelector('input[type="radio"]:checked');
+      all[id] = {
+        id: id,
+        kind: kind,
+        topic: topic || "",
+        excerpt: excerpt,
+        reason: sel ? sel.value : "other",
+        note: panel.querySelector("textarea").value.trim(),
+        at: new Date().toISOString()
+      };
+    }
+    storeIssues(all);
+    closePanel();
+    sync();
+    refreshIssuesCard();
+    btn.focus();
+  });
+
+  sync();
+  wrap.appendChild(btn);
+  wrap.appendChild(panel);
+  return wrap;
+}
+
+/* ---- attach a control wherever an item is shown ---- */
+function decorateCurrentQuestion(){
+  const screen = document.getElementById("quiz-screen");
+  const q = pool[currentIdx];
+  if(!screen || !q) return;
+  const existing = screen.querySelector(".report-wrap");
+  if(existing) existing.parentNode.removeChild(existing);
+  const list = document.getElementById("options-list");
+  screen.insertBefore(issueControl("mcq", q.prompt, currentTopicName()), list.nextSibling);
+}
+
+function decorateReviewList(){
+  const list = document.getElementById("review-list");
+  if(!list) return;
+  list.querySelectorAll(".review-item").forEach((el, i) => {
+    const q = pool[i];
+    if(!q || el.querySelector(".report-wrap")) return;
+    el.appendChild(issueControl("mcq", q.prompt, currentTopicName()));
+  });
+}
+
+function decorateAlacCards(){
+  const list = document.getElementById("alac-list");
+  if(!list) return;
+  let topic = "";
+  Array.from(list.children).forEach(el => {
+    if(el.classList.contains("alac-topic-h")){ topic = el.textContent.trim(); return; }
+    if(!el.classList.contains("alac-card") || el.querySelector(".report-wrap")) return;
+    const qEl = el.querySelector(".alac-q");
+    const text = (qEl ? qEl.textContent : el.textContent).trim();
+    el.appendChild(issueControl("alac", text, topic));
+  });
+}
+
+/* ---- the reported-items view ---- */
+function showIssues(){
+  document.getElementById("view-picker").classList.add("hide");
+  document.getElementById("view-quiz").classList.add("hide");
+  document.getElementById("view-alac").classList.add("hide");
+  document.getElementById("view-studyguide").classList.add("hide");
+  document.getElementById("view-issues").classList.remove("hide");
+  document.getElementById("mast-eyebrow").textContent = "FLAGGED BY YOU";
+  document.getElementById("mast-title").textContent = "Reported Items";
+  document.getElementById("mast-sub").textContent = "Questions and model answers you marked as wrong or doubtful";
+  renderIssues();
+}
+
+function renderIssues(){
+  const list = document.getElementById("issue-list");
+  const rows = Object.keys(loadIssues()).map(k => loadIssues()[k])
+    .sort((a, b) => String(b.at || "").localeCompare(String(a.at || "")));
+  document.getElementById("issue-actions").classList.toggle("hide", rows.length === 0);
+  list.innerHTML = "";
+  if(!rows.length){
+    const p = document.createElement("p");
+    p.className = "count-line";
+    p.textContent = "Nothing reported yet. While you practise, use “Report an issue” under any question or model answer.";
+    list.appendChild(p);
+    return;
+  }
+  rows.forEach(r => {
+    const d = new Date(r.at);
+    const when = isNaN(d) ? "" : d.toLocaleDateString(undefined, {month:"short", day:"numeric", year:"numeric"});
+    const div = document.createElement("div");
+    div.className = "issue-item" + (r.kind === "alac" ? " alac" : "");
+    const meta = ['<span class="issue-kind">' + (r.kind === "alac" ? "ALAC essay" : "MCQ") + '</span>',
+                  '<span>' + escapeHtml(reasonLabel(r.reason)) + '</span>'];
+    if(r.topic) meta.push('<span>' + escapeHtml(r.topic) + '</span>');
+    if(when) meta.push('<span>' + when + '</span>');
+    let html = '<p class="issue-meta">' + meta.join("") + '</p>';
+    html += '<p class="issue-excerpt">' + escapeHtml(r.excerpt) + '</p>';
+    if(r.note) html += '<p class="issue-note">' + escapeHtml(r.note) + '</p>';
+    div.innerHTML = html;
+    const rm = document.createElement("button");
+    rm.type = "button";
+    rm.className = "hint-toggle";
+    rm.style.marginTop = "10px";
+    rm.textContent = "Remove this report";
+    rm.onclick = () => {
+      const all = loadIssues();
+      delete all[r.id];
+      storeIssues(all);
+      renderIssues();
+      refreshIssuesCard();
+    };
+    div.appendChild(rm);
+    list.appendChild(div);
+  });
+}
+
+function issuesAsText(){
+  const rows = Object.keys(loadIssues()).map(k => loadIssues()[k])
+    .sort((a, b) => String(b.at || "").localeCompare(String(a.at || "")));
+  return rows.map((r, i) => {
+    let s = (i + 1) + ". [" + (r.kind === "alac" ? "ALAC essay" : "MCQ") + "] " + reasonLabel(r.reason);
+    if(r.topic) s += "\n   Topic: " + r.topic;
+    s += "\n   Item: " + r.excerpt;
+    if(r.note) s += "\n   Note: " + r.note;
+    return s;
+  }).join("\n\n");
+}
+
+function copyIssues(){
+  const text = issuesAsText();
+  if(!text) return;
+  const btn = document.querySelector("#issue-actions .btn");
+  const done = () => {
+    if(!btn) return;
+    const original = btn.textContent;
+    btn.textContent = "Copied to clipboard";
+    setTimeout(() => { btn.textContent = original; }, 1600);
+  };
+  const fallback = () => {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); done(); }catch(e){ /* nothing else to try */ }
+    document.body.removeChild(ta);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else {
+    fallback();
+  }
+}
+
+function clearIssues(){
+  if(!confirm("Remove every reported item? This cannot be undone.")) return;
+  storeIssues({});
+  renderIssues();
+  refreshIssuesCard();
+}
+
+/* ---- entry point on the topic picker ---- */
+function appendIssuesCard(){
+  const wrap = document.getElementById("topic-cards");
+  if(!wrap || document.getElementById("issues-card")) return;
+  const n = issueCount();
+  const card = bentoCard("sp-12", "Your flags", "Reported Items",
+    n ? "Questions and model answers you marked as wrong or doubtful while practising."
+      : "Nothing reported yet. Use “Report an issue” under any question or model answer to build a list to check later.",
+    n ? (n + (n === 1 ? " item" : " items")) : "None yet",
+    showIssues);
+  card.id = "issues-card";
+  wrap.appendChild(card);
+}
+function refreshIssuesCard(){
+  const old = document.getElementById("issues-card");
+  if(!old) return;
+  old.parentNode.removeChild(old);
+  appendIssuesCard();
+}
+
+/* The controls hang off the existing render points. Wrapping them here keeps
+   this feature in one block rather than threaded through the whole file. */
+const baseRenderAlac = renderAlac;
+renderAlac = function(){ const r = baseRenderAlac.apply(this, arguments); decorateAlacCards(); return r; };
+
+const baseShowQuestion = showQuestion;
+showQuestion = function(){ const r = baseShowQuestion.apply(this, arguments); decorateCurrentQuestion(); return r; };
+
+const baseGradeAndShowResults = gradeAndShowResults;
+gradeAndShowResults = function(){ const r = baseGradeAndShowResults.apply(this, arguments); decorateReviewList(); return r; };
+
+const baseBuildTopicCards = buildTopicCards;
+buildTopicCards = function(){ const r = baseBuildTopicCards.apply(this, arguments); appendIssuesCard(); return r; };
+
+const baseBackToPicker = backToPicker;
+backToPicker = function(){
+  document.getElementById("view-issues").classList.add("hide");
+  return baseBackToPicker.apply(this, arguments);
+};
 
 buildTopicCards();
 </script>

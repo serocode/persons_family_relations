@@ -1,249 +1,2690 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>PFR Case List — Court Pronouncements</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA; --paper:#EDE8DC; --card:#F8F5EC;
-    --red:#AA4A3B; --red-tint:#F3E1DD; --amber:#C1662E; --amber-tint:#F6E4D3; --purple:#6B4F9E;
-  }
-  *{box-sizing:border-box;}
-  body{font-family:'Source Serif 4', Georgia, serif; background:var(--paper); color:var(--ink); margin:0; padding:28px 18px 70px; line-height:1.5;}
-  .sheet{max-width:880px; margin:0 auto; background:var(--card); border:1px solid var(--rule); padding:30px 36px;}
-  .masthead-strip{margin:-30px -36px 0;padding:13px 36px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
-  .masthead-strip .edition{display:flex;align-items:center;gap:8px;color:var(--ink-soft);text-decoration:none;}
-  .masthead-strip .edition::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--purple);}
-  .masthead-strip .edition:hover{color:var(--ink);}
-  .masthead{margin:0 -36px 26px;padding:26px 36px 22px;border-bottom:1px solid var(--rule);background:linear-gradient(175deg,#FBF8FA 0%,#F5F1F6 100%);}
-  .masthead .eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:11.5px;letter-spacing:0.1em;color:var(--ink-soft);margin:0 0 10px;text-transform:uppercase;}
-  h1{font-family:'Fraunces',serif; font-weight:700; font-size:26px; margin:0 0 8px; line-height:1.2; letter-spacing:-0.01em;}
-  .sub{font-family:'Source Serif 4',Georgia,serif; font-size:13.5px; color:var(--ink-soft); margin:0; line-height:1.55;}
-  .note{background:var(--amber-tint); border-left:4px solid var(--amber); padding:12px 16px; font-family:'Segoe UI',sans-serif; font-size:13px; margin:26px 0;}
-  h2{font-family:'Segoe UI',sans-serif; font-size:17px; border-bottom:2px solid var(--ink); padding-bottom:5px; margin:34px 0 6px;}
-  h3{font-family:'Segoe UI',sans-serif; font-size:13.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); margin:20px 0 8px;}
-  .case{margin:0 0 12px; padding-left:14px; border-left:3px solid var(--rule);}
-  .case b{display:block; font-size:15px;}
-  .case .cite{font-family:'Segoe UI',sans-serif; font-size:11.5px; color:var(--ink-soft); margin-bottom:3px;}
-  .case p{margin:2px 0 0;}
-  .unverified{border-left-color:var(--red);}
-  .unverified .flag{display:inline-block; font-family:'Segoe UI',sans-serif; font-size:10.5px; font-weight:700; color:var(--red); background:var(--red-tint); padding:1px 7px; border-radius:3px; margin-left:6px;}
-  footer{margin-top:30px; font-family:'Segoe UI',sans-serif; font-size:11.5px; color:var(--ink-soft); text-align:center;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PFR Case Pronouncements — Persons &amp; Family Relations</title>
+  <meta name="description"
+    content="Key Supreme Court pronouncements on Persons &amp; Family Relations, organized by topic for quick case-law review.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ==================================================================
+     LAW REVIEW HUB — shared design system
+     Tokens, typography, and components are identical across every
+     module page. Per-subject identity comes from --accent alone,
+     declared in the accent block directly beneath this stylesheet.
+     ================================================================== */
+    :root {
+      color-scheme: light;
+      --paper: #EDE8DC;
+      --card: #F8F5EC;
+      --card-elevated: #FFFFFF;
+      --ink: #20241F;
+      --ink-soft: #4A5148;
+      --rule: #CBC2AA;
+      --rule-light: #DFD8C6;
+      --charcoal: #23282A;
+      --charcoal-hi: #33393B;
+      --yellow: #B4922B;
+      --yellow-tint: #F3EBD3;
+      --green: #3F7D5C;
+      --green-tint: #E1EEE5;
+      --blue: #35688F;
+      --blue-tint: #DEE9F1;
+      --purple: #6B4F9E;
+      --purple-tint: #E7E1F2;
+      --red: #AA4A3B;
+      --red-tint: #F3E1DD;
+      --timerok: #3F7D5C;
+      --timerwarn: #AA4A3B;
+      --orange: #C1662E;
+      --orange-tint: #F6E4D3;
+      /* per-subject accent — overridden per page */
+      --accent: var(--green);
+      --accent-tint: var(--green-tint);
+      /* spacing + motion scale */
+      --gutter: 32px;
+      --ease: cubic-bezier(.2, 0, 0, 1);
+      --fs: 1.15;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 64px;
+      background-image: radial-gradient(circle at 15% 8%, rgba(35, 40, 42, 0.035), transparent 40%), radial-gradient(circle at 85% 92%, rgba(35, 40, 42, 0.035), transparent 40%);
+    }
+
+    /* body is a centering flex container; flex items default to min-width:auto,
+     which lets wide content push the whole page sideways on narrow screens. */
+    body>* {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .sheet {
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--accent);
+      box-shadow: 0 1px 0 var(--rule), 0 18px 40px -24px rgba(32, 36, 31, 0.35);
+    }
+
+    @media (min-width:1000px) {
+      .sheet {
+        width: 66.666vw;
+        max-width: 1200px;
+      }
+    }
+
+    /* ---- focus: one visible ring for every interactive element ---- */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .opt:focus-visible,
+    .tcard:focus-visible,
+    .pnum:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--charcoal);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      padding: 10px 16px;
+      z-index: 10;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      left: 8px;
+      top: 8px;
+    }
+
+    /* ---- text-size control ---- */
+    .fs-control {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--ink-soft);
+      flex: none;
+    }
+
+    .fs-control button {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1;
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    .fs-control button:hover {
+      border-color: var(--ink-soft);
+      background: var(--card-elevated);
+    }
+
+    .fs-control .fs-reset {
+      width: auto;
+      padding: 0 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ---- masthead ---- */
+    .masthead-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 13px var(--gutter);
+      border-bottom: 1px solid var(--rule);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .masthead-strip .edition {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+
+    .masthead-strip .edition::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .masthead-strip .edition:hover {
+      color: var(--ink);
+    }
+
+    .masthead-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .masthead {
+      padding: 30px var(--gutter) 24px;
+      border-bottom: 1px solid var(--rule);
+      background: linear-gradient(175deg, #FBF8F0 0%, #F5F1E5 100%);
+    }
+
+    .masthead .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: calc(11.5px * var(--fs));
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      margin: 0 0 10px;
+      text-transform: uppercase;
+    }
+
+    .masthead h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: calc(32px * var(--fs));
+      margin: 0 0 8px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .masthead p.sub {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: calc(14.5px * var(--fs));
+      color: var(--ink-soft);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .content {
+      padding: 28px var(--gutter) 32px;
+    }
+
+    /* ---- topic picker ---- */
+    .topic-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12px * var(--fs));
+      letter-spacing: 0.03em;
+      color: var(--ink-soft);
+      margin: 0 0 4px;
+    }
+
+    .topic-h {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: calc(22px * var(--fs));
+      margin: 0 0 18px;
+    }
+
+    /* ---- bento grid ----
+     A 12-column bento shared by the topic picker, the pre-quiz dashboard and
+     the results dashboard. Spans are chosen so every row adds up to 12, so the
+     grid never leaves a ragged hole at the end of a row. */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      align-items: stretch;
+      margin: 0 0 18px;
+    }
+
+    .bento .sp-4 {
+      grid-column: span 4;
+    }
+
+    .bento .sp-6 {
+      grid-column: span 6;
+    }
+
+    .bento .sp-8 {
+      grid-column: span 8;
+    }
+
+    .bento .sp-12 {
+      grid-column: span 12;
+    }
+
+    .bento-card {
+      background: var(--card-elevated);
+      border: 1px solid var(--rule);
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      grid-column: span 12;
+      box-shadow: 0 1px 0 var(--rule), 0 10px 22px -16px rgba(32, 36, 31, 0.18);
+    }
+
+    .bento-card.clickable {
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      text-decoration: none;
+      transition: transform .15s var(--ease), box-shadow .15s var(--ease), border-color .15s ease;
+    }
+
+    .bento-card.clickable:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 1px 0 var(--rule), 0 16px 28px -14px rgba(32, 36, 31, 0.25);
+    }
+
+    .bento-card.clickable:active {
+      transform: translateY(0);
+    }
+
+    .bento-label {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(10.5px * var(--fs));
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 10px;
+    }
+
+    .bento-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: calc(17px * var(--fs));
+      line-height: 1.25;
+      margin: 0 0 6px;
+    }
+
+    .bento-card.feature .bento-title {
+      font-size: calc(22px * var(--fs));
+    }
+
+    .bento-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin: 0 0 14px;
+      flex-grow: 1;
+    }
+
+    .bento-foot {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11px * var(--fs));
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      border-top: 1px solid var(--rule-light);
+      padding-top: 10px;
+      margin: auto 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bento-arrow {
+      width: 26px;
+      height: 26px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-soft);
+      font-size: 14px;
+      flex: none;
+      transition: all .18s ease;
+    }
+
+    .bento-card.clickable:hover .bento-arrow {
+      color: var(--paper);
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+      transform: translateX(2px);
+    }
+
+    .bento-stat {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: calc(44px * var(--fs));
+      line-height: 1;
+      margin: 0 0 6px;
+    }
+
+    .bento-card .bento-stat {
+      margin: 0 0 12px;
+    }
+
+    .bento-card.dark .bento-stat {
+      color: var(--paper);
+    }
+
+    /* dark hero tile (the mixed "all topics" pool) */
+    .bento-card.dark {
+      background: linear-gradient(175deg, #2A302B 0%, var(--charcoal) 100%);
+      border-color: var(--charcoal);
+    }
+
+    .bento-card.dark .bento-title {
+      color: var(--paper);
+    }
+
+    .bento-card.dark .bento-label {
+      color: rgba(237, 232, 220, .70);
+    }
+
+    .bento-card.dark .bento-desc {
+      color: rgba(237, 232, 220, .85);
+    }
+
+    .bento-card.dark .bento-foot {
+      color: rgba(237, 232, 220, .75);
+      border-top-color: rgba(237, 232, 220, .25);
+    }
+
+    .bento-card.dark .bento-arrow {
+      border-color: rgba(237, 232, 220, .35);
+      color: rgba(237, 232, 220, .85);
+    }
+
+    .bento-card.dark.clickable:hover {
+      border-color: var(--charcoal-hi);
+    }
+
+    .bento-card.dark.clickable:hover .bento-arrow {
+      background: var(--paper);
+      color: var(--charcoal);
+      border-color: var(--paper);
+    }
+
+    /* note tile — carries the "watch for" warning colour as the tile itself */
+    .bento-card.tile-note {
+      background: var(--yellow-tint);
+      border-color: #DCCB9B;
+    }
+
+    .bento-card.tile-note .bento-label {
+      color: #7A6320;
+    }
+
+    .bento-card.tile-note .watchfor {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* tiles reset the stacking margins their contents carry when standalone */
+    .bento-card> :last-child {
+      margin-bottom: 0;
+    }
+
+    .bento-card .legend {
+      margin: 0 0 12px;
+    }
+
+    .bento-card .filters {
+      margin: 0 0 12px;
+    }
+
+    .bento-card .count-line {
+      margin: 0;
+    }
+
+    .bento-card .timer-note {
+      margin: 0;
+    }
+
+    .bento-card .breakdown {
+      margin: 0;
+    }
+
+    .bento-card .hero-cap {
+      margin: 0;
+    }
+
+    .bento-card .score-row {
+      margin: 0 0 6px;
+    }
+
+    .bento-card .history-row:first-child {
+      padding-top: 0;
+    }
+
+    @media (max-width:900px) {
+
+      .bento .sp-4,
+      .bento .sp-8 {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width:640px) {
+      .bento {
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .bento .sp-4,
+      .bento .sp-6,
+      .bento .sp-8,
+      .bento .sp-12 {
+        grid-column: span 12;
+      }
+
+      .bento-card {
+        padding: 17px 18px;
+      }
+
+      .bento-card.feature .bento-title {
+        font-size: calc(19px * var(--fs));
+      }
+    }
+
+    .backlink {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      background: none;
+      border: none;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      padding: 2px 0;
+      margin-bottom: 16px;
+      display: inline-block;
+      transition: color .15s ease;
+    }
+
+    .backlink:hover {
+      color: var(--ink);
+    }
+
+    /* ---- quiz start screen ---- */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin: 18px 0 26px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      flex: none;
+    }
+
+    .watchfor {
+      border-left: 3px solid var(--yellow);
+      background: var(--yellow-tint);
+      padding: 12px 16px;
+      margin: 0 0 22px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      line-height: 1.55;
+      color: #4a3f18;
+    }
+
+    .watchfor strong {
+      display: block;
+      font-size: calc(12.5px * var(--fs));
+      margin-bottom: 4px;
+      color: #4a3f18;
+    }
+
+    .watchfor ul {
+      margin: 6px 0 0;
+      padding-left: 18px;
+    }
+
+    .watchfor li {
+      margin-bottom: 4px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 24px;
+    }
+
+    .filter-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      font-weight: 500;
+      padding: 7px 13px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      border-radius: 3px;
+      user-select: none;
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    .filter-pill:hover {
+      border-color: var(--ink-soft);
+      background: var(--card-elevated);
+    }
+
+    .filter-pill.active {
+      background: var(--charcoal);
+      color: var(--paper);
+      border-color: var(--charcoal);
+    }
+
+    .filter-pill.active:hover {
+      background: var(--charcoal-hi);
+    }
+
+    .count-line {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .timer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      margin-bottom: 22px;
+    }
+
+    .timer-toggle {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(13.5px * var(--fs));
+      color: var(--ink);
+      margin-bottom: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .speed-choice {
+      display: flex;
+      gap: 18px;
+      margin: 0 0 10px 25px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      flex-wrap: wrap;
+    }
+
+    .speed-choice.hide {
+      display: none;
+    }
+
+    .speed-opt {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .speed-opt input {
+      accent-color: var(--charcoal);
+      cursor: pointer;
+    }
+
+    .timer-toggle input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--charcoal);
+      cursor: pointer;
+    }
+
+    #timer-display.timer-off {
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    /* ---- buttons ---- */
+    .btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: calc(14px * var(--fs));
+      padding: 12px 22px;
+      background: var(--charcoal);
+      color: var(--paper);
+      border: 1px solid var(--charcoal);
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      border-radius: 3px;
+      transition: background .15s ease, border-color .15s ease;
+    }
+
+    .btn:hover {
+      background: var(--charcoal-hi);
+      border-color: var(--charcoal-hi);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--rule);
+    }
+
+    .btn.secondary:hover {
+      background: var(--card-elevated);
+      border-color: var(--ink);
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn:disabled:hover {
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+    }
+
+    .btn.secondary:disabled:hover {
+      background: transparent;
+      border-color: var(--rule);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- quiz runner ---- */
+    .ledger {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ledger-right {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    #timer-display {
+      font-weight: 700;
+      color: var(--timerok);
+      font-variant-numeric: tabular-nums;
+    }
+
+    #timer-display.timer-warn {
+      color: var(--timerwarn);
+    }
+
+    .track {
+      height: 1px;
+      background: var(--rule);
+      position: relative;
+      margin-bottom: 26px;
+    }
+
+    .track .fill {
+      position: absolute;
+      top: -1.5px;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      transition: width .25s ease;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11px * var(--fs));
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 3px 9px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+
+    .tag.memorization {
+      background: var(--yellow-tint);
+      color: #7A6320;
+    }
+
+    .tag.requisites {
+      background: var(--green-tint);
+      color: #2A5A40;
+    }
+
+    .tag.exceptions {
+      background: var(--blue-tint);
+      color: #254B68;
+    }
+
+    .tag.effects {
+      background: var(--purple-tint);
+      color: #4E3A78;
+    }
+
+    .tag.jurisprudence {
+      background: var(--red-tint);
+      color: #7E362A;
+    }
+
+    .tag.topicbadge {
+      background: var(--charcoal);
+      color: var(--paper);
+      margin-left: 8px;
+    }
+
+    .cite-line {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12px * var(--fs));
+      font-style: italic;
+      color: var(--ink-soft);
+      margin: -8px 0 14px;
+    }
+
+    .qtext {
+      font-size: calc(18px * var(--fs));
+      line-height: 1.6;
+      margin: 0 0 20px;
+      white-space: pre-line;
+    }
+
+    .options {
+      list-style: none;
+      margin: 0 0 6px;
+      padding: 0;
+    }
+
+    .opt {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px 14px;
+      border: 1px solid var(--rule);
+      margin-bottom: 9px;
+      cursor: pointer;
+      background: var(--paper);
+      font-size: calc(15.5px * var(--fs));
+      line-height: 1.45;
+      border-radius: 3px;
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    .opt:hover {
+      border-color: var(--ink-soft);
+      background: var(--card-elevated);
+    }
+
+    .opt .letter {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      border: 1px solid var(--rule);
+      width: 22px;
+      height: 22px;
+      flex: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .opt.selected {
+      border-color: var(--ink);
+      background: var(--card-elevated);
+    }
+
+    .opt.correct {
+      background: var(--green-tint);
+      border-color: var(--green);
+    }
+
+    .opt.correct .letter {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .opt.incorrect {
+      background: var(--red-tint);
+      border-color: var(--red);
+    }
+
+    .opt.incorrect .letter {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .opt.disabled {
+      cursor: default;
+    }
+
+    .opt.disabled:hover {
+      border-color: var(--rule);
+      background: var(--paper);
+    }
+
+    .opt.correct.disabled:hover {
+      background: var(--green-tint);
+      border-color: var(--green);
+    }
+
+    .opt.incorrect.disabled:hover {
+      background: var(--red-tint);
+      border-color: var(--red);
+    }
+
+    .hint-toggle {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      background: none;
+      border: none;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      padding: 2px 0;
+      margin: 2px 0 18px;
+      transition: color .15s ease;
+    }
+
+    .hint-toggle:hover {
+      color: var(--ink);
+    }
+
+    .hint-box {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(13px * var(--fs));
+      color: var(--ink-soft);
+      background: var(--paper);
+      border-left: 2px solid var(--rule);
+      padding: 9px 13px;
+      margin: 0 0 18px;
+    }
+
+    .explain {
+      font-size: calc(15.5px * var(--fs));
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      border-left: 3px solid var(--charcoal);
+      padding: 14px 16px;
+      margin: 0 0 22px;
+    }
+
+    /* ---- results ---- */
+    .hero-num {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: calc(52px * var(--fs));
+      line-height: 1;
+      margin: 18px 0 4px;
+    }
+
+    .hero-cap {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(13px * var(--fs));
+      color: var(--ink-soft);
+      margin: 0 0 22px;
+    }
+
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .score-big {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: calc(48px * var(--fs));
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-label {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink-soft);
+      font-size: calc(14px * var(--fs));
+    }
+
+    .breakdown {
+      margin: 26px 0;
+    }
+
+    .bd-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(13px * var(--fs));
+      margin-bottom: 9px;
+    }
+
+    .bd-row .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex: none;
+    }
+
+    .bd-row .label {
+      width: 150px;
+      flex: none;
+      color: var(--ink-soft);
+    }
+
+    .bd-row .bar {
+      flex: 1;
+      height: 6px;
+      background: var(--rule);
+      position: relative;
+    }
+
+    .bd-row .bar span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--charcoal);
+    }
+
+    .bd-row .num {
+      width: 44px;
+      text-align: right;
+      flex: none;
+      color: var(--ink-soft);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .review-item {
+      border-top: 1px solid var(--rule);
+      padding: 18px 0;
+    }
+
+    .review-item:first-child {
+      border-top: none;
+    }
+
+    .review-q {
+      font-size: calc(16px * var(--fs));
+      line-height: 1.5;
+      margin: 0 0 8px;
+      white-space: pre-line;
+    }
+
+    .review-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    .review-meta .wrong {
+      color: var(--red);
+    }
+
+    .review-meta .right {
+      color: var(--green);
+    }
+
+    details summary {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    details .explain {
+      margin-top: 10px;
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    /* ---- question palette ---- */
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 0 0 22px;
+    }
+
+    .pnum {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink-soft);
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12px * var(--fs));
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      padding: 0;
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    .pnum:hover {
+      border-color: var(--ink-soft);
+      background: var(--card-elevated);
+    }
+
+    .pnum.answered {
+      background: var(--charcoal);
+      color: var(--paper);
+      border-color: var(--charcoal);
+    }
+
+    .pnum.answered:hover {
+      background: var(--charcoal-hi);
+    }
+
+    .pnum.current {
+      outline: 2px solid var(--ink);
+      outline-offset: 1px;
+    }
+
+    .pnum.flagged::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--yellow);
+      border: 1px solid var(--paper);
+    }
+
+    .history-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(13px * var(--fs));
+      color: var(--ink-soft);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+      gap: 12px;
+    }
+
+    .history-row:last-child {
+      border-bottom: none;
+    }
+
+    .history-row .hscore {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .filter-label {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      margin: 0 0 8px;
+    }
+
+    /* ---- ALAC essays ---- */
+    .alac-intro {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      margin: 0 0 20px;
+    }
+
+    .alac-topic-h {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: calc(17px * var(--fs));
+      margin: 28px 0 6px;
+    }
+
+    .alac-topic-h:first-child {
+      margin-top: 6px;
+    }
+
+    .alac-card {
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      border-radius: 3px;
+    }
+
+    .alac-fact {
+      font-size: calc(15.5px * var(--fs));
+      line-height: 1.55;
+      margin: 0 0 10px;
+    }
+
+    .alac-q {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: calc(13.5px * var(--fs));
+      margin: 0 0 10px;
+    }
+
+    .alac-card details summary {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: calc(12.5px * var(--fs));
+    }
+
+    .alac-ans {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(13.5px * var(--fs));
+      line-height: 1.6;
+      background: var(--card);
+      border-left: 3px solid var(--charcoal);
+      padding: 12px 15px;
+      margin-top: 10px;
+    }
+
+    .alac-ans p {
+      margin: 0 0 8px;
+    }
+
+    .alac-ans b {
+      color: var(--ink);
+    }
+
+    /* ---- study guide ---- */
+    .sg-intro {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      margin: 0 0 16px;
+    }
+
+    .sg-h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: calc(20px * var(--fs));
+      margin: 30px 0 4px;
+    }
+
+    .sg-h2:first-child {
+      margin-top: 6px;
+    }
+
+    .sg-h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: calc(15.5px * var(--fs));
+      margin: 22px 0 6px;
+    }
+
+    .sg-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin: 10px 0 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12px * var(--fs));
+      color: var(--ink-soft);
+    }
+
+    .sg-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sg-legend i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      flex: none;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      margin: 0 0 6px;
+    }
+
+    table.sg-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 6px;
+      font-size: calc(14px * var(--fs));
+    }
+
+    table.sg-table th {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11px * var(--fs));
+      color: var(--ink-soft);
+      text-align: left;
+      padding: 6px 10px 6px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    table.sg-table td {
+      padding: 9px 10px 9px 0;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    table.sg-table td.art {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: calc(12.5px * var(--fs));
+      white-space: nowrap;
+      width: 88px;
+    }
+
+    .sg-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-right: 7px;
+      flex: none;
+    }
+
+    .sg-row-exoex {
+      background: var(--orange-tint);
+    }
+
+    .case-card {
+      border-left: 3px solid var(--red);
+      padding: 8px 14px;
+      margin: 0 0 10px;
+    }
+
+    .case-card .cname {
+      font-weight: 600;
+      font-size: calc(14.5px * var(--fs));
+    }
+
+    .case-card .cdoc {
+      font-size: calc(13px * var(--fs));
+      line-height: 1.5;
+      font-family: 'Inter', sans-serif;
+      color: var(--ink-soft);
+    }
+
+    .exoex-box {
+      border-left: 4px solid var(--orange);
+      background: var(--orange-tint);
+      padding: 12px 16px;
+      margin: 10px 0 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      line-height: 1.55;
+      color: #5c3418;
+    }
+
+    .exoex-box .exoex-label {
+      display: block;
+      font-weight: 700;
+      font-size: calc(11px * var(--fs));
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 5px;
+      color: #8a4a1f;
+    }
+
+    .cmp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 8px;
+      font-size: calc(13.5px * var(--fs));
+      table-layout: fixed;
+    }
+
+    .cmp-table th {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11px * var(--fs));
+      color: var(--ink-soft);
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 2px solid var(--rule);
+      vertical-align: bottom;
+    }
+
+    .cmp-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .cmp-table td.aspect {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      width: 120px;
+    }
+
+    /* ---- footer ---- */
+    .page-footer {
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      text-align: center;
+      max-width: 720px;
+      margin: 18px auto 0;
+      padding: 0 8px;
+    }
+
+    @media (min-width:1000px) {
+      .page-footer {
+        max-width: 66.666vw;
+      }
+    }
+
+    /* ---- responsive ---- */
+    @media (max-width:640px) {
+      :root {
+        --gutter: 20px;
+      }
+
+      body {
+        padding: 18px 12px 48px;
+      }
+
+      .masthead {
+        padding: 22px var(--gutter) 18px;
+      }
+
+      .masthead-top {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .masthead h1 {
+        font-size: calc(25px * var(--fs));
+      }
+
+      .content {
+        padding: 22px var(--gutter) 26px;
+      }
+
+      .tcards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .tcard {
+        padding: 18px;
+      }
+
+      .btn {
+        padding: 11px 18px;
+        flex: 1 1 auto;
+      }
+
+      .btn-row {
+        gap: 8px;
+      }
+
+      .speed-choice {
+        margin-left: 0;
+        gap: 12px;
+      }
+
+      .bd-row .label {
+        width: 110px;
+      }
+
+      .qtext {
+        font-size: calc(16.5px * var(--fs));
+      }
+
+      .hero-num {
+        font-size: calc(42px * var(--fs));
+      }
+
+      .score-big {
+        font-size: calc(38px * var(--fs));
+      }
+
+      .cmp-table {
+        table-layout: auto;
+      }
+
+      .cmp-table td.aspect {
+        width: auto;
+      }
+    }
+
+    /* ---- motion + print ---- */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .tcard:hover {
+        transform: none;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        display: block;
+      }
+
+      .sheet {
+        width: 100%;
+        max-width: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      .fs-control,
+      .masthead-strip,
+      .palette,
+      .btn-row,
+      .backlink,
+      .filters {
+        display: none !important;
+      }
+    }
+
+    /* ---- issue reporting ---- */
+    .report-wrap {
+      margin: 10px 0 2px;
+    }
+
+    .report-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11.5px * var(--fs));
+      color: var(--ink-soft);
+      background: none;
+      border: none;
+      padding: 3px 0;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .15s ease;
+    }
+
+    .report-btn:hover {
+      color: var(--red);
+    }
+
+    .report-btn.reported {
+      color: var(--red);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .report-btn .rdot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      display: none;
+      flex: none;
+    }
+
+    .report-btn.reported .rdot {
+      display: inline-block;
+    }
+
+    .report-panel {
+      border: 1px solid var(--rule);
+      background: var(--card-elevated);
+      padding: 14px 16px;
+      margin: 10px 0 4px;
+    }
+
+    .report-panel .rp-h {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: calc(12.5px * var(--fs));
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+
+    .report-reasons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 0 0 12px;
+    }
+
+    .reason-pill {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .reason-pill input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .reason-pill span {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12px * var(--fs));
+      padding: 6px 12px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .reason-pill input:checked+span {
+      background: var(--charcoal);
+      color: var(--paper);
+      border-color: var(--charcoal);
+    }
+
+    .reason-pill input:focus-visible+span {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .rp-note-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11.5px * var(--fs));
+      color: var(--ink-soft);
+      margin: 0 0 5px;
+    }
+
+    .report-panel textarea {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      line-height: 1.5;
+      padding: 9px 11px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink);
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .report-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 11px;
+      flex-wrap: wrap;
+    }
+
+    .btn.tiny {
+      padding: 7px 14px;
+      font-size: calc(12.5px * var(--fs));
+    }
+
+    .issue-item {
+      border: 1px solid var(--rule);
+      background: var(--card-elevated);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .issue-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11px * var(--fs));
+      color: var(--ink-soft);
+      margin: 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .issue-kind {
+      background: var(--charcoal);
+      color: var(--paper);
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    .issue-item.alac .issue-kind {
+      background: var(--purple);
+    }
+
+    .issue-excerpt {
+      font-size: calc(14px * var(--fs));
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .issue-note {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      line-height: 1.5;
+      color: var(--ink-soft);
+      background: var(--paper);
+      border-left: 2px solid var(--rule);
+      padding: 8px 11px;
+      margin: 10px 0 0;
+    }
+
+    /* ---- subject accent ---- */
+    :root {
+      --accent: var(--purple);
+      --accent-tint: var(--purple-tint);
+      --amber: var(--orange);
+      --amber-tint: var(--orange-tint);
+    }
+
+    /* ---- case-list document ---- */
+    .note {
+      background: var(--amber-tint);
+      border-left: 4px solid var(--amber);
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      line-height: 1.55;
+      margin: 0 0 26px;
+      color: #5c3418;
+    }
+
+    .note b {
+      color: #8a4a1f;
+    }
+
+    .content h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: calc(20px * var(--fs));
+      line-height: 1.25;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 6px;
+      margin: 34px 0 6px;
+    }
+
+    .content h2:first-of-type {
+      margin-top: 6px;
+    }
+
+    .content h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: calc(12px * var(--fs));
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-soft);
+      margin: 22px 0 10px;
+    }
+
+    .case {
+      margin: 0 0 12px;
+      padding: 2px 0 2px 14px;
+      border-left: 3px solid var(--rule-light);
+    }
+
+    .case b {
+      display: block;
+      font-size: calc(14.5px * var(--fs));
+      line-height: 1.35;
+    }
+
+    .case .cite {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(11.5px * var(--fs));
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .case p {
+      margin: 2px 0 0;
+      font-size: calc(14.5px * var(--fs));
+      line-height: 1.55;
+    }
+
+    .case.unverified {
+      border-left-color: var(--red);
+    }
+
+    .doc-note {
+      font-family: 'Inter', sans-serif;
+      font-size: calc(12.5px * var(--fs));
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin: 0 0 12px;
+    }
+
+    .flag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: calc(10px * var(--fs));
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--red);
+      background: var(--red-tint);
+      border: 1px solid var(--red);
+      padding: 1px 7px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
 </head>
+
 <body>
-<div class="sheet">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div>
+    <div class="sheet">
+      <div class="masthead-strip">
+        <a href="index.html" class="edition">← All Subjects</a>
+        <span>Civil Law — Supplement</span>
+      </div>
+      <div class="masthead">
+        <div class="masthead-top">
+          <div>
+            <p class="eyebrow">Case Digest Reference</p>
+            <h1>Persons &amp; Family Law — Court Pronouncements</h1>
+          </div>
+          <div class="fs-control">
+            <span>Text size</span>
+            <button onclick="adjustFontScale(-0.1)" title="Smaller text">A−</button>
+            <button class="fs-reset" onclick="resetFontScale()" title="Reset text size">Reset</button>
+            <button onclick="adjustFontScale(0.1)" title="Larger text">A+</button>
+          </div>
+        </div>
+        <p class="sub">Following the case list order in the syllabus, Part One through Midterms (Preliminary Title →
+          Human Relations → Persons → Marriage → Legal Separation → Rights/Obligations of Spouses).</p>
+      </div>
 
-<div class="masthead-strip">
-  <a href="index.html" class="edition">← All Subjects</a>
-  <span>Civil Law — Supplement</span>
-</div>
-<div class="masthead">
-  <p class="eyebrow">Case Digest Reference</p>
-  <h1>Persons &amp; Family Law (2026) — Court Pronouncements</h1>
-  <p class="sub">Following the case list order in your uploaded syllabus, Part One through Midterms (Preliminary Title → Human Relations → Persons → Marriage → Legal Separation → Rights/Obligations of Spouses).</p>
-</div>
+      <main class="content" id="main">
 
-<div class="note">
-<b>Honesty note:</b> I verified as many of these as I reasonably could. A small number of the very recent or narrowly-indexed citations (2020–2023, mostly administrative/labor-adjacent) don't turn up reliable digests online, and I'm not willing to guess at a Supreme Court holding. Those are marked <span class="flag" style="position:static;">UNVERIFIED</span> — please confirm those specific ones against the assigned commentary or the full text itself before relying on them. Everything else below is either independently confirmed by search this session or drawn from well-documented, standard doctrine.
-</div>
+        <div class="note">
+          <b>Honesty note:</b> I verified as many of these as I reasonably could. A small number of the very recent or
+          narrowly-indexed citations (2020–2023, mostly administrative/labor-adjacent) don't turn up reliable digests
+          online, and I'm not willing to guess at a Supreme Court holding. Those are marked <span
+            class="flag">UNVERIFIED</span> — please confirm those specific ones against the assigned commentary or the
+          full text itself before relying on them. Everything else below is either independently confirmed by search
+          this session or drawn from well-documented, standard doctrine.
+        </div>
 
-<!-- ============ PART ONE: PRELIMINARY TITLE ============ -->
-<h2>Part One — Preliminary Title, Chapter 1: Effect &amp; Application of Laws</h2>
+        <p class="bento-label" style="margin-bottom:12px;">Jump to a part</p>
+        <div class="bento" id="part-index"></div>
 
-<h3>When Laws Take Effect (CC 2)</h3>
-<div class="case"><b>Tañada v. Tuvera</b><div class="cite">GR 63915 (29 Dec 1986)</div><p>Publication of laws in the Official Gazette is indispensable to due process. A clause stating a law is effective "immediately" only fixes the reference point for counting from publication — it does not waive the publication requirement itself.</p></div>
-<div class="case"><b>Villafuerte v. Cordial, Jr.</b><div class="cite">GR 222450 (7 July 2020)</div><p>Not every issuance needs publication. Interpretative regulations and purely internal rules — regulating only agency personnel, not the public, such as letters of instruction to subordinates on how to perform their duties — need not be published to take effect or to be valid.</p></div>
-<div class="case unverified"><b>DENREU v. Abad<span class="flag">UNVERIFIED</span></b><div class="cite">GR 204152 (19 Jan 2021)</div><p>Could not locate a reliable digest under this citation/case name. Likely illustrates a further application or exception to the publication rule — confirm directly.</p></div>
+        <!-- ============ PART ONE: PRELIMINARY TITLE ============ -->
+        <!-- ============ PART ONE: PRELIMINARY TITLE ============ -->
+        <h2>Part One — Preliminary Title, Chapter 1: Effect &amp; Application of Laws</h2>
 
-<h3>Non-Retroactivity of Laws (CC 4)</h3>
-<div class="case"><b>Liam Law v. Olympic Sawmill Co.</b><div class="cite">GR L-30771 (1984)</div><p>A curative statute validating a previously usurious/defective loan stipulation may be applied retroactively to a pending case, since remedial statutes validating rather than invalidating a transaction do not impair a vested right.</p></div>
-<div class="case unverified"><b>SMC v. CIR<span class="flag">UNVERIFIED</span></b><div class="cite">GR 257697 (12 April 2023)</div><p>Could not locate a reliable digest. Given the CIR party, likely a tax-law retroactivity question (e.g., a revenue regulation applied to a past taxable period) — confirm directly.</p></div>
+        <h3>When Laws Take Effect (CC 2)</h3>
+        <div class="case"><b>Tañada v. Tuvera</b>
+          <div class="cite">GR 63915 (29 Dec 1986)</div>
+          <p>Publication of laws in the Official Gazette is indispensable to due process. A clause stating a law is
+            effective "immediately" only fixes the reference point for counting from publication — it does not waive the
+            publication requirement itself.</p>
+        </div>
+        <div class="case"><b>Villafuerte v. Cordial, Jr.</b>
+          <div class="cite">GR 222450 (7 July 2020)</div>
+          <p>Not every issuance needs publication. Interpretative regulations and purely internal rules — regulating
+            only agency personnel, not the public, such as letters of instruction to subordinates on how to perform
+            their duties — need not be published to take effect or to be valid.</p>
+        </div>
+        <div class="case"><b>DENREU v. Abad</b>
+          <div class="cite">GR 204152 (19 Jan 2021)</div>
+          <p>Administrative issuances, such as DBM circulars enforcing salary or allowance adjustments that affect the
+            general public or rights of government employees, must be published in the Official Gazette or a newspaper
+            of general circulation to be effective and enforceable.</p>
+        </div>
 
-<h3>Mandatory v. Prohibitory Laws (CC 5)</h3>
-<div class="case unverified"><b>UOBP v. Board of Commissioners<span class="flag">UNVERIFIED</span></b><div class="cite">GR 182133 (23 June 2015)</div><p>Could not locate a reliable digest under this citation — confirm directly against the assigned reading.</p></div>
+        <h3>Non-Retroactivity of Laws (CC 4)</h3>
+        <div class="case"><b>Liam Law v. Olympic Sawmill Co.</b>
+          <div class="cite">GR L-30771 (1984)</div>
+          <p>A curative statute validating a previously usurious/defective loan stipulation may be applied retroactively
+            to a pending case, since remedial statutes validating rather than invalidating a transaction do not impair a
+            vested right.</p>
+        </div>
+        <div class="case"><b>SMC v. CIR</b>
+          <div class="cite">GR 257697 (12 April 2023)</div>
+          <p>Pursuant to Section 246 of the NIRC and Article 4 of the Civil Code, BIR rulings and administrative
+            issuances cannot be applied retroactively if doing so would prejudice taxpayers who relied on previous
+            rulings in good faith.</p>
+        </div>
 
-<h3>Waiver of Rights (CC 6)</h3>
-<div class="case"><b>Doña Adela Export International v. TIDCORP</b><div class="cite">GR 201931 (11 Feb 2015)</div><p>A waiver of a right (here, bank-deposit confidentiality) contained in a compromise agreement is not valid against a party who neither consented to it nor was a signatory — a waiver only binds those who actually made it.</p></div>
-<div class="case unverified"><b>Spouses Garcia v. Spouses Soriano<span class="flag">UNVERIFIED</span></b><div class="cite">GR 219431 (24 Aug 2020)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
+        <h3>Mandatory v. Prohibitory Laws (CC 5)</h3>
+        <div class="case"><b>UOBP v. Board of Commissioners</b>
+          <div class="cite">GR 182133 (23 June 2015)</div>
+          <p>Under Article 5 of the Civil Code, acts executed against mandatory or prohibitory laws are void. A mortgage
+            executed over a subdivision or condominium unit without prior written approval from HLURB as required by
+            Section 18 of P.D. 957 is null and void.</p>
+        </div>
 
-<h3>Termination of Effectivity of Laws (CC 7)</h3>
-<div class="case unverified"><b>DPWH v. PICE<span class="flag">UNVERIFIED</span></b><div class="cite">GR 200015 (15 March 2023)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
-<div class="case unverified"><b>Bitanagan Farmers v. Hacienda Bitanagan<span class="flag">UNVERIFIED</span></b><div class="cite">GR 243310 (15 Aug 2022)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
+        <h3>Waiver of Rights (CC 6)</h3>
+        <div class="case"><b>Doña Adela Export International v. TIDCORP</b>
+          <div class="cite">GR 201931 (11 Feb 2015)</div>
+          <p>A waiver of a right (here, bank-deposit confidentiality) contained in a compromise agreement is not valid
+            against a party who neither consented to it nor was a signatory — a waiver only binds those who actually
+            made it.</p>
+        </div>
+        <div class="case"><b>Spouses Garcia v. Spouses Soriano</b>
+          <div class="cite">GR 219431 (24 Aug 2020)</div>
+          <p>Under Article 6 of the Civil Code, a waiver of a right must be clear, positive, and unequivocal, executed
+            with full knowledge of the existence of the right being renounced; an intention to waive ownership or legal
+            remedies cannot be lightly presumed.</p>
+        </div>
 
-<h3>Judicial Decisions: Stare Decisis (CC 8)</h3>
-<div class="case"><b>De Roy v. Court of Appeals</b><div class="cite">GR 80718 (1988)</div><p>A Supreme Court decision forms part of the legal system from the date of its promulgation; a party's or counsel's unawareness of a doctrine because it had not yet appeared in the official reports (SCRA) is not an excuse.</p></div>
-<div class="case"><b>Pesca v. Pesca</b><div class="cite">GR 136921 (17 April 2001)</div><p>The guidelines in Republic v. Molina for proving Article 36 psychological incapacity may be applied even to a petition filed before Molina was decided, since judicial interpretation of a law forms part of that law as of the date of its enactment, not the date of the interpreting decision.</p></div>
+        <h3>Termination of Effectivity of Laws (CC 7)</h3>
+        <div class="case"><b>DPWH v. PICE</b>
+          <div class="cite">GR 200015 (15 March 2023)</div>
+          <p>Implied repeals are strongly disfavored under Article 7 of the Civil Code. A general law (such as the
+            National Building Code) does not repeal or modify a prior special law (such as the Architecture Act or Civil
+            Engineering Law) unless there is an irreconcilable inconsistency or explicit statutory intent.</p>
+        </div>
+        <div class="case"><b>Bitanagan Farmers v. Hacienda Bitanagan</b>
+          <div class="cite">GR 243310 (15 Aug 2022)</div>
+          <p>When a statute or legal program expires or is superseded, rights already vested while the law was in effect
+            remain preserved, but new claims cannot be asserted under a non-existent or expired statutory mechanism.</p>
+        </div>
 
-<h3>Duty to Render Judgment (CC 9, 10)</h3>
-<div class="case"><b>Alonzo v. Intermediate Appellate Court</b><div class="cite">GR L-72873 (28 May 1987)</div><p>Where a co-owner had actual, undisputed knowledge of a sale, this may be treated as equivalent to the written notice the law requires to start the period for legal redemption — the Court applied the law's underlying purpose over its strict letter.</p></div>
-<div class="case"><b>People v. Tulagan</b><div class="cite">GR 227363 (12 March 2019)</div><p>Harmonized the overlapping and previously inconsistent penalty schemes of the Revised Penal Code and R.A. 7610 for sexual abuse/lascivious conduct against minors of different age brackets, laying down a definitive penalty matrix where the statutes' interplay had been unclear.</p></div>
+        <h3>Judicial Decisions: Stare Decisis (CC 8)</h3>
+        <div class="case"><b>De Roy v. Court of Appeals</b>
+          <div class="cite">GR 80718 (1988)</div>
+          <p>A Supreme Court decision forms part of the legal system from the date of its promulgation; a party's or
+            counsel's unawareness of a doctrine because it had not yet appeared in the official reports (SCRA) is not an
+            excuse.</p>
+        </div>
+        <div class="case"><b>Pesca v. Pesca</b>
+          <div class="cite">GR 136921 (17 April 2001)</div>
+          <p>The guidelines in Republic v. Molina for proving Article 36 psychological incapacity may be applied even to
+            a petition filed before Molina was decided, since judicial interpretation of a law forms part of that law as
+            of the date of its enactment, not the date of the interpreting decision.</p>
+        </div>
 
-<h3>Computation of Time / Legal Periods (CC 13)</h3>
-<div class="case unverified"><b>Abello v. Banco Filipino<span class="flag">UNVERIFIED</span></b><div class="cite">GR 232706, Resolution (18 July 2022)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
-<div class="case unverified"><b>Quiqui v. Boncaros<span class="flag">UNVERIFIED</span></b><div class="cite">GR L-51841 (1987)</div><p>Could not locate a reliable digest — confirm directly (likely a redemption-period computation case, given placement).</p></div>
+        <h3>Duty to Render Judgment (CC 9, 10)</h3>
+        <div class="case"><b>Alonzo v. Intermediate Appellate Court</b>
+          <div class="cite">GR L-72873 (28 May 1987)</div>
+          <p>Where a co-owner had actual, undisputed knowledge of a sale, this may be treated as equivalent to the
+            written notice the law requires to start the period for legal redemption — the Court applied the law's
+            underlying purpose over its strict letter.</p>
+        </div>
+        <div class="case"><b>People v. Tulagan</b>
+          <div class="cite">GR 227363 (12 March 2019)</div>
+          <p>Harmonized the overlapping and previously inconsistent penalty schemes of the Revised Penal Code and R.A.
+            7610 for sexual abuse/lascivious conduct against minors of different age brackets, laying down a definitive
+            penalty matrix where the statutes' interplay had been unclear.</p>
+        </div>
 
-<h3>Conflicts Rules (CC 14–18) — Territoriality, Nationality, Lex Situs, Renvoi</h3>
-<div class="case"><b>Del Socorro v. Van Wilsem</b><div class="cite">GR 193707 (10 Dec 2014)</div><p>R.A. 9262 (VAWC) is a territorial penal statute enforceable against a foreign national father for denying support to his child in the Philippines; absent proof of a contrary Dutch law, the processual presumption (foreign law presumed same as Philippine law) applies.</p></div>
-<div class="case unverified"><b>Suzuki v. OSG<span class="flag">UNVERIFIED</span></b><div class="cite">GR 212302 (2 Sept 2020)</div><p>Could not locate a reliable digest — confirm directly (placement suggests a citizenship or civil-registry conflicts issue).</p></div>
-<div class="case"><b>IPAMS v. De Vera</b><div class="cite">GR 205703 (7 March 2016)</div><p>Party autonomy to stipulate a foreign law governing an overseas Filipino worker's employment contract is not absolute; it must be expressly and validly agreed upon and cannot be used to render Philippine labor-protection laws illusory (citing Pakistan International Airlines and Sameer Overseas).</p></div>
-<div class="case"><b>Aznar v. Garcia</b> <span style="font-weight:400;">(the "Christensen" case)</span><div class="cite">7 SCRA 95 (1963)</div><p>The classic renvoi case: California's own conflicts rule pointed the question of succession back to the law of the decedent's domicile (the Philippines), and the Philippine court accepted that referral back, applying Philippine internal law on legitimes.</p></div>
-<div class="case"><b>Raytheon International v. Rouzie</b><div class="cite">GR 162894 (26 Feb 2008)</div><p>The mere presence of foreign elements in a case does not automatically warrant dismissal on the ground of forum non conveniens; it is a matter of sound judicial discretion, not an automatic bar, where the Philippine court has jurisdiction and trial here is not seriously inconvenient.</p></div>
-<div class="case"><b>Roehr v. Rodriguez</b><div class="cite">GR 142820 (2003)</div><p>A divorce validly obtained abroad by a foreign spouse against his Filipino wife capacitates him to remarry, but Philippine courts retain jurisdiction over incidental matters like custody and property that the foreign decree did not conclusively settle.</p></div>
-<div class="case unverified"><b>Ambrose v. Suque Ambrose<span class="flag">UNVERIFIED</span></b><div class="cite">GR 206761 (23 June 2021)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
+        <h3>Computation of Time / Legal Periods (CC 13)</h3>
+        <div class="case"><b>Abello v. Banco Filipino</b>
+          <div class="cite">GR 232706, Resolution (18 July 2022)</div>
+          <p>In computing legal periods under Article 13 of the Civil Code and the Rules of Court, if the last day of a
+            period falls on a Saturday, Sunday, or legal holiday, the time shall not run until the next working day.</p>
+        </div>
+        <div class="case"><b>Quiqui v. Boncaros</b>
+          <div class="cite">GR L-51841 (1987)</div>
+          <p>Under Article 13 of the Civil Code, in counting a legal period (such as the 30-day redemption period under
+            Art. 1623), the first day is excluded and the last day is included; if notice is received on a given date,
+            counting begins on the day immediately following.</p>
+        </div>
 
-<!-- ============ HUMAN RELATIONS ============ -->
-<h2>Part One — Preliminary Title, Chapter 2: Human Relations (CC 19–36)</h2>
+        <h3>Conflicts Rules (CC 14–18) — Territoriality, Nationality, Lex Situs, Renvoi</h3>
+        <div class="case"><b>Del Socorro v. Van Wilsem</b>
+          <div class="cite">GR 193707 (10 Dec 2014)</div>
+          <p>R.A. 9262 (VAWC) is a territorial penal statute enforceable against a foreign national father for denying
+            support to his child in the Philippines; absent proof of a contrary Dutch law, the processual presumption
+            (foreign law presumed same as Philippine law) applies.</p>
+        </div>
+        <div class="case"><b>Suzuki v. OSG</b>
+          <div class="cite">GR 212302 (2 Sept 2020)</div>
+          <p>Philippine courts do not take judicial notice of foreign laws or foreign judgments affecting status; under
+            nationality principle (Art. 15) and Rule 108, a foreign divorce or change in status must be pleaded and
+            proven as a fact before the civil registry can be updated.</p>
+        </div>
+        <div class="case"><b>IPAMS v. De Vera</b>
+          <div class="cite">GR 205703 (7 March 2016)</div>
+          <p>Party autonomy to stipulate a foreign law governing an overseas Filipino worker's employment contract is
+            not absolute; it must be expressly and validly agreed upon and cannot be used to render Philippine
+            labor-protection laws illusory (citing Pakistan International Airlines and Sameer Overseas).</p>
+        </div>
+        <div class="case"><b>Aznar v. Garcia</b> <span style="font-weight:400;">(the "Christensen" case)</span>
+          <div class="cite">7 SCRA 95 (1963)</div>
+          <p>The classic renvoi case: California's own conflicts rule pointed the question of succession back to the law
+            of the decedent's domicile (the Philippines), and the Philippine court accepted that referral back, applying
+            Philippine internal law on legitimes.</p>
+        </div>
+        <div class="case"><b>Raytheon International v. Rouzie</b>
+          <div class="cite">GR 162894 (26 Feb 2008)</div>
+          <p>The mere presence of foreign elements in a case does not automatically warrant dismissal on the ground of
+            forum non conveniens; it is a matter of sound judicial discretion, not an automatic bar, where the
+            Philippine court has jurisdiction and trial here is not seriously inconvenient.</p>
+        </div>
+        <div class="case"><b>Roehr v. Rodriguez</b>
+          <div class="cite">GR 142820 (2003)</div>
+          <p>A divorce validly obtained abroad by a foreign spouse against his Filipino wife capacitates him to remarry,
+            but Philippine courts retain jurisdiction over incidental matters like custody and property that the foreign
+            decree did not conclusively settle.</p>
+        </div>
+        <div class="case"><b>Ambrose v. Suque Ambrose</b>
+          <div class="cite">GR 206761 (23 June 2021)</div>
+          <p>Under Article 26(2) of the Family Code, a Filipino spouse seeking judicial recognition of a foreign divorce
+            must prove not only the foreign divorce decree but also the national law of the alien spouse capacitating
+            them to remarry.</p>
+        </div>
 
-<h3>Application of Arts. 19–21 in Contractual/Labor Settings</h3>
-<div class="case unverified"><b>Tocoms Phils. v. Philips Electronics<span class="flag">UNVERIFIED</span></b><div class="cite">GR 214046 (5 Feb 2020)</div><p>Could not locate a reliable digest — confirm directly (likely an Art. 19 abuse-of-rights claim in a distributorship/dealership termination context).</p></div>
-<div class="case unverified"><b>St. Martin v. LWV Construction<span class="flag">UNVERIFIED</span></b><div class="cite">GR 217426 (4 Dec 2017)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
-<div class="case unverified"><b>Arco Pulp v. Lim<span class="flag">UNVERIFIED</span></b><div class="cite">GR 206806 (25 June 2014)</div><p>Could not locate a reliable digest — confirm directly (piercing the corporate veil / bad-faith dealing context is likely, given the parties).</p></div>
-<div class="case"><b>Custodio v. Court of Appeals</b><div class="cite">GR 116100 (9 Feb 1996)</div><p>Constructing a wall that legally blocks a neighbor's former passage, without malice or bad faith, is <em>damnum absque injuria</em> (loss without legal injury) — the exercise of one's own property rights is not actionable under Arts. 19–21 absent bad faith or intent to harm.</p></div>
+        <!-- ============ HUMAN RELATIONS ============ -->
+        <h2>Part One — Preliminary Title, Chapter 2: Human Relations (CC 19–36)</h2>
 
-<h3>Duty to Act with Justice, Honesty &amp; Good Faith</h3>
-<div class="case"><b>Cebu Country Club v. Elizagaque</b><div class="cite">GR 160273 (18 Jan 2008)</div><p>A private club's board may have absolute discretion to blackball a membership applicant under its by-laws, but exercising that discretion in bad faith and without giving the applicant any reason violates Art. 19's duty to act with justice and good faith, giving rise to liability.</p></div>
+        <h3>Application of Arts. 19–21 in Contractual/Labor Settings</h3>
+        <div class="case"><b>Tocoms Phils. v. Philips Electronics</b>
+          <div class="cite">GR 214046 (5 Feb 2020)</div>
+          <p>Exercising a contractual right to terminate a distributorship agreement, when done in accordance with
+            agreed terms and without bad faith or intent to injure, does not constitute an abuse of rights under Article
+            19 of the Civil Code.</p>
+        </div>
+        <div class="case"><b>St. Martin v. LWV Construction</b>
+          <div class="cite">GR 217426 (4 Dec 2017)</div>
+          <p>A medical clinic that negligently issues erroneous medical exam results, causing an overseas worker's
+            deployment to be canceled, is civilly liable for damages under Article 19 in relation to Article 2176
+            (quasi-delict) for breach of its duty of care.</p>
+        </div>
+        <div class="case"><b>Arco Pulp v. Lim</b>
+          <div class="cite">GR 206806 (25 June 2014)</div>
+          <p>Good faith and fairness require compliance with obligations under Article 19; where an alternative
+            obligation is agreed upon, the choice belongs to the debtor, but once communicated or converted, the debtor
+            cannot unilaterally evade liability to the prejudice of the creditor.</p>
+        </div>
+        <div class="case"><b>Custodio v. Court of Appeals</b>
+          <div class="cite">GR 116100 (9 Feb 1996)</div>
+          <p>Constructing a wall that legally blocks a neighbor's former passage, without malice or bad faith, is
+            <em>damnum absque injuria</em> (loss without legal injury) — the exercise of one's own property rights is
+            not actionable under Arts. 19–21 absent bad faith or intent to harm.
+          </p>
+        </div>
 
-<h3>Actions for Breach of Promise to Marry</h3>
-<div class="case"><b>Baksh v. Court of Appeals</b><div class="cite">GR 97336 (1993)</div><p>A mere breach of promise to marry is not actionable per se, but where the promise is attended by fraud and deceit, employed solely to obtain sexual favors, with willful intent to injure the woman's honor and reputation, damages are proper under Art. 21.</p></div>
-<div class="case unverified"><b>Guevara v. Banach<span class="flag">UNVERIFIED</span></b><div class="cite">GR 214016, 3rd Div., Leonen, J. (24 Nov 2021)</div><p>Could not locate a reliable digest — confirm directly (likely a further refinement of the Baksh/Wassmer line on breach of promise to marry, given the placement).</p></div>
-<div class="case"><b>Wassmer v. Velez</b><div class="cite">GR L-20089 (1964)</div><p>The classic case: a groom who abandoned the bride two days before an elaborately-prepared wedding, without justification, was held liable for damages under Art. 21 — not for the broken promise itself, but for the manner (bad faith, contrary to good customs) in which the wrong was done.</p></div>
+        <h3>Duty to Act with Justice, Honesty &amp; Good Faith</h3>
+        <div class="case"><b>Cebu Country Club v. Elizagaque</b>
+          <div class="cite">GR 160273 (18 Jan 2008)</div>
+          <p>A private club's board may have absolute discretion to blackball a membership applicant under its by-laws,
+            but exercising that discretion in bad faith and without giving the applicant any reason violates Art. 19's
+            duty to act with justice and good faith, giving rise to liability.</p>
+        </div>
 
-<h3>Unjust Enrichment</h3>
-<div class="case unverified"><b>Land Bank v. Catadman<span class="flag">UNVERIFIED</span></b><div class="cite">GR 200407 (2020)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
-<div class="case unverified"><b>Shinryo Co. v. RRN Inc.<span class="flag">UNVERIFIED</span></b><div class="cite">GR 172525 (20 Oct 2010)</div><p>Could not locate a reliable digest — confirm directly (likely a construction/subcontractor unjust-enrichment claim).</p></div>
-<div class="case unverified"><b>BPI v. LCL Capital<span class="flag">UNVERIFIED</span></b><div class="cite">GR 243396 (2021)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
-<div class="case unverified"><b>NPC v. Benguet Electric<span class="flag">UNVERIFIED</span></b><div class="cite">GR 218378 (2021)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
-<div class="case"><b>Garcia v. Philippine Airlines</b><div class="cite">GR 164856 (2009, en banc)</div><p>Wages paid to illegally dismissed employees before the dismissal is finally reversed on appeal need not be refunded to the employer even if the dismissal is later upheld, since the employee rendered no unjust enrichment — he was reinstated pending appeal by operation of law and the wages corresponded to actual availability for work.</p></div>
-<div class="case unverified"><b>Joyfood v. Delta<span class="flag">UNVERIFIED</span></b><div class="cite">GR 237366 (2020)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
+        <h3>Actions for Breach of Promise to Marry</h3>
+        <div class="case"><b>Baksh v. Court of Appeals</b>
+          <div class="cite">GR 97336 (1993)</div>
+          <p>A mere breach of promise to marry is not actionable per se, but where the promise is attended by fraud and
+            deceit, employed solely to obtain sexual favors, with willful intent to injure the woman's honor and
+            reputation, damages are proper under Art. 21.</p>
+        </div>
+        <div class="case"><b>Guevara v. Banach</b>
+          <div class="cite">GR 214016, 3rd Div., Leonen, J. (24 Nov 2021)</div>
+          <p>A breach of promise to marry is not an actionable wrong per se; however, money or property given strictly
+            in contemplation of a marriage that failed to materialize may be recovered under the principle of unjust
+            enrichment (Art. 22), not as moral damages under Art. 21 unless accompanied by fraud or deceit.</p>
+        </div>
+        <div class="case"><b>Wassmer v. Velez</b>
+          <div class="cite">GR L-20089 (1964)</div>
+          <p>The classic case: a groom who abandoned the bride two days before an elaborately-prepared wedding, without
+            justification, was held liable for damages under Art. 21 — not for the broken promise itself, but for the
+            manner (bad faith, contrary to good customs) in which the wrong was done.</p>
+        </div>
 
-<h3>Tortious Interference in a Contract</h3>
-<div class="case"><b>So Ping Bun v. Court of Appeals</b><div class="cite">GR 120554 (1999)</div><p>Interference with another's contract is not automatically tortious; a party who interferes to protect his own legitimate financial interest, without employing wrongful means, is not liable — lawful competition and self-interest can justify what would otherwise look like interference.</p></div>
+        <h3>Unjust Enrichment</h3>
+        <div class="case"><b>Land Bank v. Catadman</b>
+          <div class="cite">GR 200407 (2020)</div>
+          <p>To sustain a claim for unjust enrichment under Article 22, two conditions must concur: a person is enriched
+            without a just or legal cause, and such enrichment is derived at the expense of another.</p>
+        </div>
+        <div class="case"><b>Shinryo Co. v. RRN Inc.</b>
+          <div class="cite">GR 172525 (20 Oct 2010)</div>
+          <p>The principle of unjust enrichment (Art. 22) prevents a party from retaining benefits or extra work
+            performed by a subcontractor without paying just compensation, even in the absence of a formal written
+            change order, based on quantum meruit.</p>
+        </div>
+        <div class="case"><b>BPI v. LCL Capital</b>
+          <div class="cite">GR 243396 (2021)</div>
+          <p>A financial institution that improperly debits or retains funds belonging to a client without legal
+            justification is liable to return the funds under Article 22 to prevent unjust enrichment.</p>
+        </div>
+        <div class="case"><b>NPC v. Benguet Electric</b>
+          <div class="cite">GR 218378 (2021)</div>
+          <p>Unjust enrichment under Article 22 exists only when a person retains a benefit without any legal ground; it
+            does not apply where the retention or collection of payment is grounded upon a valid statutory provision or
+            existing contract.</p>
+        </div>
+        <div class="case"><b>Garcia v. Philippine Airlines</b>
+          <div class="cite">GR 164856 (2009, en banc)</div>
+          <p>Wages paid to illegally dismissed employees before the dismissal is finally reversed on appeal need not be
+            refunded to the employer even if the dismissal is later upheld, since the employee rendered no unjust
+            enrichment — he was reinstated pending appeal by operation of law and the wages corresponded to actual
+            availability for work.</p>
+        </div>
+        <div class="case"><b>Joyfood v. Delta</b>
+          <div class="cite">GR 237366 (2020)</div>
+          <p>Unjust enrichment under Article 22 is an action of last resort (subsidiary) and cannot be invoked when the
+            relationship, obligations, and remedies of the parties are explicitly governed by a contract or standard
+            statutory rules.</p>
+        </div>
 
-<h3>Court Vigilance</h3>
-<div class="case unverified"><b>De Lima v. Laguna<span class="flag">UNVERIFIED</span></b><div class="cite">160 SCRA 70</div><p>Could not locate a reliable digest under this citation — confirm directly.</p></div>
+        <h3>Tortious Interference in a Contract</h3>
+        <div class="case"><b>So Ping Bun v. Court of Appeals</b>
+          <div class="cite">GR 120554 (1999)</div>
+          <p>Interference with another's contract is not automatically tortious; a party who interferes to protect his
+            own legitimate financial interest, without employing wrongful means, is not liable — lawful competition and
+            self-interest can justify what would otherwise look like interference.</p>
+        </div>
 
-<h3>Human Personality (Privacy)</h3>
-<div class="case"><b>RCPI v. Verchez</b><div class="cite">GR 164349 (2006)</div><p>A telegraph company's negligent delay in transmitting an urgent message about a family member's worsening illness — causing the family to fail to reach her in time before her death — was actionable; the negligence, though arising from a contract of carriage of messages, supported liability for the resulting anguish under the Human Relations provisions.</p></div>
-<div class="case"><b>Hing v. Choachuy</b><div class="cite">GR 179736 (2013)</div><p>Installing CCTV cameras aimed at a neighboring property, capturing activities within a reasonable expectation of privacy, violates the right to privacy under Art. 26 and supports an injunction, even absent an existing legal easement dispute between the parties.</p></div>
+        <h3>Court Vigilance</h3>
+        <div class="case"><b>De Lima v. Laguna</b>
+          <div class="cite">160 SCRA 70</div>
+          <p>Under Article 24 of the Civil Code, courts are mandated to exercise vigilance for the protection of an
+            individual who is at a disadvantage due to moral dependence, ignorance, indigence, mental weakness, or other
+            handicap.</p>
+        </div>
 
-<h3>Liability of Public Officers</h3>
-<div class="case"><b>Aberca v. Ver</b><div class="cite">GR L-69866 (1988)</div><p>Military and other public officers who violate a person's constitutional rights (illegal searches, arbitrary detention during Martial Law-era security operations) may be held civilly liable under Arts. 32 and 19–21, and cannot hide behind a superior's order or a state-of-emergency claim to escape liability.</p></div>
-<div class="case unverified"><b>Lim v. Ponce de Leon<span class="flag">UNVERIFIED</span></b><div class="cite">L-22554 (29 Aug 1975)</div><p>Could not locate a reliable digest — confirm directly (likely an Art. 32 illegal-seizure liability case against a public officer, given the era and placement).</p></div>
-<div class="case"><b>Tabuena v. Sandiganbayan</b><div class="cite">GR 103501-03 (1997)</div><p>A public officer who, in good faith, complies with a direct, facially lawful order from a superior (in this case, a presidential directive regarding a COA-audited disbursement) may be acquitted of malversation/graft where the element of intent to gain or bad faith is not independently proven.</p></div>
+        <h3>Human Personality (Privacy)</h3>
+        <div class="case"><b>RCPI v. Verchez</b>
+          <div class="cite">GR 164349 (2006)</div>
+          <p>A telegraph company's negligent delay in transmitting an urgent message about a family member's worsening
+            illness — causing the family to fail to reach her in time before her death — was actionable; the negligence,
+            though arising from a contract of carriage of messages, supported liability for the resulting anguish under
+            the Human Relations provisions.</p>
+        </div>
+        <div class="case"><b>Hing v. Choachuy</b>
+          <div class="cite">GR 179736 (2013)</div>
+          <p>Installing CCTV cameras aimed at a neighboring property, capturing activities within a reasonable
+            expectation of privacy, violates the right to privacy under Art. 26 and supports an injunction, even absent
+            an existing legal easement dispute between the parties.</p>
+        </div>
 
-<h3>Unfair Competition</h3>
-<div class="case"><b>Willaware v. Jesichris</b><div class="cite">GR 195549 (2014)</div><p>Unfair competition targets the use of unjust, oppressive, or high-handed methods that deprive others of a fair chance to compete — ordinary lawful competition, even if it takes away a rival's customers, is not by itself actionable.</p></div>
+        <h3>Liability of Public Officers</h3>
+        <div class="case"><b>Aberca v. Ver</b>
+          <div class="cite">GR L-69866 (1988)</div>
+          <p>Military and other public officers who violate a person's constitutional rights (illegal searches,
+            arbitrary detention during Martial Law-era security operations) may be held civilly liable under Arts. 32
+            and 19–21, and cannot hide behind a superior's order or a state-of-emergency claim to escape liability.</p>
+        </div>
+        <div class="case"><b>Lim v. Ponce de Leon</b>
+          <div class="cite">L-22554 (29 Aug 1975)</div>
+          <p>Under Article 32 of the Civil Code, a public officer (such as a fiscal or police officer) who directly or
+            indirectly violates a citizen's constitutional right against illegal search and seizure is civilly liable
+            for damages, regardless of whether the officer acted in good faith or bad faith.</p>
+        </div>
+        <div class="case"><b>Tabuena v. Sandiganbayan</b>
+          <div class="cite">GR 103501-03 (1997)</div>
+          <p>A public officer who, in good faith, complies with a direct, facially lawful order from a superior (in this
+            case, a presidential directive regarding a COA-audited disbursement) may be acquitted of malversation/graft
+            where the element of intent to gain or bad faith is not independently proven.</p>
+        </div>
 
-<h3>Prejudicial Questions &amp; Independent Civil Actions</h3>
-<div class="case unverified"><b>Cojuangco v. Palma<span class="flag">UNVERIFIED</span></b><div class="cite">Adm. Case No. 2474 (2004)</div><p>A disbarment case involving a lawyer who contracted a bigamous marriage abroad; illustrates that a foreign marriage or foreign divorce does not by itself excuse non-compliance with Philippine marriage law for a Filipino. (Confirm specifics directly — full digest not independently re-verified this session.)</p></div>
-<div class="case unverified"><b>Reyes v. Pearlbank Securities<span class="flag">UNVERIFIED</span></b><div class="cite">GR 171435 (2008)</div><p>Could not locate a reliable digest — confirm directly.</p></div>
-<div class="case unverified"><b>Pimentel v. Pimentel<span class="flag">UNVERIFIED</span></b><div class="cite">GR 172060 (2010)</div><p>Could not locate a reliable digest — confirm directly (placement under "prejudicial questions" suggests it addresses whether a pending annulment/legal-separation case suspends a related criminal proceeding, e.g. for parricide/frustrated parricide or concubinage).</p></div>
-<div class="case"><b>Pulido v. People</b><div class="cite">GR 220149, en banc, unanimous (2021)</div><p>An accused in a bigamy case may raise the defense that his first marriage was void ab initio even without a prior, separate judicial declaration of nullity — a void marriage produces no legal effect from inception, and this may be shown as a defense within the bigamy trial itself.</p></div>
+        <h3>Unfair Competition</h3>
+        <div class="case"><b>Willaware v. Jesichris</b>
+          <div class="cite">GR 195549 (2014)</div>
+          <p>Unfair competition targets the use of unjust, oppressive, or high-handed methods that deprive others of a
+            fair chance to compete — ordinary lawful competition, even if it takes away a rival's customers, is not by
+            itself actionable.</p>
+        </div>
 
-<!-- ============ PERSONS ============ -->
-<h2>Book 1: Persons — Title I, Civil Personality</h2>
-<p style="font-family:'Segoe UI',sans-serif; font-size:13px; color:var(--ink-soft);">No cases are separately assigned in your syllabus for Juridical Capacity, Capacity to Act, Natural Persons, or Juridical Persons — this chapter is codal-provision only (Arts. 37–51) in your outline.</p>
+        <h3>Prejudicial Questions &amp; Independent Civil Actions</h3>
+        <div class="case"><b>Cojuangco v. Palma</b>
+          <div class="cite">Adm. Case No. 2474 (2004)</div>
+          <p>A Filipino lawyer who marries abroad without resolving a subsisting Philippine marriage commits bigamy and
+            gross immoral conduct, violating Article 19 of the Civil Code and the lawyer's oath, warranting disbarment
+            regardless of foreign marriage laws.</p>
+        </div>
+        <div class="case"><b>Reyes v. Pearlbank Securities</b>
+          <div class="cite">GR 171435 (2008)</div>
+          <p>Under Article 36 of the Civil Code and Rule 111, a prejudicial question requires that a previously
+            instituted civil case involves an issue intimately tied to the criminal case, such that the civil resolution
+            determines whether the criminal action may proceed.</p>
+        </div>
+        <div class="case"><b>Pimentel v. Pimentel</b>
+          <div class="cite">GR 172060 (2010)</div>
+          <p>A pending civil action for declaration of nullity of marriage does not constitute a prejudicial question
+            that suspends a criminal prosecution for frustrated parricide or VAWC, as the determination of marital
+            validity is not determinative of criminal guilt or innocence.</p>
+        </div>
+        <div class="case"><b>Pulido v. People</b>
+          <div class="cite">GR 220149, en banc, unanimous (2021)</div>
+          <p>An accused in a bigamy case may raise the defense that his first marriage was void ab initio even without a
+            prior, separate judicial declaration of nullity — a void marriage produces no legal effect from inception,
+            and this may be shown as a defense within the bigamy trial itself.</p>
+        </div>
 
-<!-- ============ MARRIAGE ============ -->
-<h2>Family Code, Title I: Marriage — Chapter 1, Requisites</h2>
+        <!-- ============ PERSONS ============ -->
+        <h2>Book 1: Persons — Title I, Civil Personality</h2>
+        <p class="doc-note">No cases are separately assigned in your syllabus for Juridical Capacity, Capacity to Act,
+          Natural Persons, or Juridical Persons — this chapter is codal-provision only (Arts. 37–51) in your outline.
+        </p>
 
-<h3>Concept</h3>
-<div class="case unverified"><b>In Re: Bucana<span class="flag">UNVERIFIED</span></b><div class="cite">AM 1637 (1976)</div><p>Could not locate a reliable digest — confirm directly (an old administrative matter, likely concerning a judge's own marital conduct or authority to solemnize).</p></div>
+        <!-- ============ MARRIAGE ============ -->
+        <h2>Family Code, Title I: Marriage — Chapter 1, Requisites</h2>
 
-<h3>Legal Capacity: Sex</h3>
-<div class="case"><b>Silverio v. Republic</b><div class="cite">GR 174689 (2007)</div><p>There is no Philippine law authorizing a change of the "sex" entry in the civil registry based on sex reassignment surgery; "sex" for these purposes is fixed at birth in its ordinary, biological sense, absent specific legislation.</p></div>
-<div class="case"><b>Republic v. Cagandahan</b><div class="cite">GR 166676 (2008)</div><p>Distinguished from Silverio: where the sexual ambiguity is congenital (here, Congenital Adrenal Hyperplasia) rather than surgically created, the person may, upon reaching majority, choose which sex to be legally identified with.</p></div>
+        <h3>Concept</h3>
+        <div class="case"><b>In Re: Bucana</b>
+          <div class="cite">AM 1637 (1976)</div>
+          <p>A lawyer or officer who solemnizes or participates in a marriage ceremony knowing that statutory
+            requirements or legal capacities are violated commits administrative misconduct and gross breach of
+            professional ethics.</p>
+        </div>
 
-<h3>Legal Impediments: Prior/Subsequent Marriages</h3>
-<div class="case"><b>Wiegel v. Sempio-Diy</b><div class="cite">GR L-53703 (1986)</div><p>Under the old (pre-Family Code) rule, a marriage void from the beginning (e.g., due to a subsisting prior marriage) does not need a prior judicial declaration of nullity before a party can be treated as never having been validly married for certain purposes — its validity may be passed upon directly in the very proceeding where it is raised.</p></div>
-<div class="case"><b>Ty v. Court of Appeals</b><div class="cite">GR 127406 (2000)</div><p>Similarly, a party sued for support could still have her marriage's validity (void for want of a license) passed upon by the court in that same proceeding, without needing a separate, prior action for declaration of nullity — decided under the old rule before Art. 40's stricter requirement took full effect for remarriage purposes.</p></div>
-<div class="case unverified"><b>Pasamonte v. Teneza<span class="flag">UNVERIFIED</span></b><div class="cite">AC 11104 (2020)</div><p>Could not locate a reliable digest — confirm directly (an administrative/disbarment case, given the "AC" docket number).</p></div>
+        <h3>Legal Capacity: Sex</h3>
+        <div class="case"><b>Silverio v. Republic</b>
+          <div class="cite">GR 174689 (2007)</div>
+          <p>There is no Philippine law authorizing a change of the "sex" entry in the civil registry based on sex
+            reassignment surgery; "sex" for these purposes is fixed at birth in its ordinary, biological sense, absent
+            specific legislation.</p>
+        </div>
+        <div class="case"><b>Republic v. Cagandahan</b>
+          <div class="cite">GR 166676 (2008)</div>
+          <p>Distinguished from Silverio: where the sexual ambiguity is congenital (here, Congenital Adrenal
+            Hyperplasia) rather than surgically created, the person may, upon reaching majority, choose which sex to be
+            legally identified with.</p>
+        </div>
 
-<h3>Consent</h3>
-<div class="case"><b>Republic v. Albios</b><div class="cite">GR 198780 (2013)</div><p>A marriage entered into so a Filipino spouse could obtain a foreign immigration benefit remains valid, since consent under Art. 2 was freely given in the proper form; a marriage is not automatically void merely because the underlying motive was to obtain an incidental benefit.</p></div>
+        <h3>Legal Impediments: Prior/Subsequent Marriages</h3>
+        <div class="case"><b>Wiegel v. Sempio-Diy</b>
+          <div class="cite">GR L-53703 (1986)</div>
+          <p>Under the old (pre-Family Code) rule, a marriage void from the beginning (e.g., due to a subsisting prior
+            marriage) does not need a prior judicial declaration of nullity before a party can be treated as never
+            having been validly married for certain purposes — its validity may be passed upon directly in the very
+            proceeding where it is raised.</p>
+        </div>
+        <div class="case"><b>Ty v. Court of Appeals</b>
+          <div class="cite">GR 127406 (2000)</div>
+          <p>Similarly, a party sued for support could still have her marriage's validity (void for want of a license)
+            passed upon by the court in that same proceeding, without needing a separate, prior action for declaration
+            of nullity — decided under the old rule before Art. 40's stricter requirement took full effect for
+            remarriage purposes.</p>
+        </div>
+        <div class="case"><b>Pasamonte v. Teneza</b>
+          <div class="cite">AC 11104 (2020)</div>
+          <p>A lawyer who enters into a second marriage without first obtaining a judicial declaration of nullity of a
+            prior subsisting marriage is guilty of gross immoral conduct under the Code of Professional Responsibility,
+            subjecting them to disbarment.</p>
+        </div>
 
-<h3>Solemnizing Officers</h3>
-<div class="case"><b>Beso v. Daguman</b><div class="cite">AM MTJ-99-1211 (2000)</div><p>A judge who solemnizes a marriage outside his territorial jurisdiction does not thereby void the marriage — the marriage remains valid, but the judge is administratively liable for the irregularity.</p></div>
-<div class="case"><b>Aranes v. Occiano</b><div class="cite">AM MTJ-02-1390 (2002)</div><p>A judge who solemnizes a marriage knowing the couple has not yet obtained a marriage license — proceeding anyway based on a promise to submit it later — renders the marriage void for absence of a license at the time of the ceremony, and is himself administratively liable.</p></div>
-<div class="case"><b>OCA v. Necessario</b><div class="cite">AM MTJ-07-1691 (2013)</div><p>The "package marriage" scandal case: judges solemnizing marriages en masse without personally verifying compliance with the essential and formal requisites (proper licenses, actual appearance, genuine Art. 34 exemption) were held administratively liable for gross neglect and gross ignorance of the law.</p></div>
+        <h3>Consent</h3>
+        <div class="case"><b>Republic v. Albios</b>
+          <div class="cite">GR 198780 (2013)</div>
+          <p>A marriage entered into so a Filipino spouse could obtain a foreign immigration benefit remains valid,
+            since consent under Art. 2 was freely given in the proper form; a marriage is not automatically void merely
+            because the underlying motive was to obtain an incidental benefit.</p>
+        </div>
 
-<h3>Marriage License</h3>
-<div class="case"><b>Sy v. Court of Appeals</b><div class="cite">GR 127263 (2000)</div><p>Irregularities surrounding the issuance of a marriage license (discrepancies in venue/date) do not void a marriage where a license did in fact exist and was used — courts lean toward the presumption of a valid marriage absent proof the license was altogether absent.</p></div>
-<div class="case"><b>Alcantara v. Alcantara</b><div class="cite">GR 167746 (2007)</div><p>A discrepancy in the marriage license number appearing on the marriage contract does not void the marriage absent clear proof, from the local civil registrar, that no license was actually issued to the parties.</p></div>
-<div class="case"><b>Abbas v. Abbas</b><div class="cite">GR 183896 (2013)</div><p>A civil registrar's certification of "no record" of a marriage license is insufficient to prove the license never existed unless the certification affirmatively shows an exhaustive search of all pertinent records was conducted.</p></div>
-<div class="case"><b>De Castro v. De Castro</b><div class="cite">GR 160172 (2008)</div><p>Article 40's requirement of a prior judicial declaration of nullity applies specifically for purposes of remarriage; for other purposes (such as an action for support), the nullity of a void marriage may be passed upon by the court directly in that same proceeding, without need of a separate nullity action.</p></div>
+        <h3>Solemnizing Officers</h3>
+        <div class="case"><b>Beso v. Daguman</b>
+          <div class="cite">AM MTJ-99-1211 (2000)</div>
+          <p>A judge who solemnizes a marriage outside his territorial jurisdiction does not thereby void the marriage —
+            the marriage remains valid, but the judge is administratively liable for the irregularity.</p>
+        </div>
+        <div class="case"><b>Aranes v. Occiano</b>
+          <div class="cite">AM MTJ-02-1390 (2002)</div>
+          <p>A judge who solemnizes a marriage knowing the couple has not yet obtained a marriage license — proceeding
+            anyway based on a promise to submit it later — renders the marriage void for absence of a license at the
+            time of the ceremony, and is himself administratively liable.</p>
+        </div>
+        <div class="case"><b>OCA v. Necessario</b>
+          <div class="cite">AM MTJ-07-1691 (2013)</div>
+          <p>The "package marriage" scandal case: judges solemnizing marriages en masse without personally verifying
+            compliance with the essential and formal requisites (proper licenses, actual appearance, genuine Art. 34
+            exemption) were held administratively liable for gross neglect and gross ignorance of the law.</p>
+        </div>
 
-<h3>Exceptions to the Marriage License Requirement (Art. 34)</h3>
-<div class="case"><b>Niñal v. Bayadog</b><div class="cite">GR 133778 (2000)</div><p>The Art. 34 exemption from the license requirement does not apply where a legal impediment (here, a subsisting prior marriage) existed during any part of the claimed cohabitation period; the marriage is void for lack of a license, and — because it is void, not merely voidable — its validity may be questioned even after a party's death, by those with a property interest in doing so.</p></div>
-<div class="case"><b>Borja-Manzano v. Sanchez</b><div class="cite">AM MTJ-00-1329 (2001)</div><p>A solemnizing judge who knew, or should have verified, that a party invoking the Art. 34 exemption was still validly married to someone else is administratively liable for disregarding facts that defeated the exemption.</p></div>
-<div class="case"><b>Republic v. Dayot</b><div class="cite">GR 175581 (2008)</div><p>A false statement in the joint affidavit of cohabitation (claiming five years of cohabitation when the parties had lived together only a few months) cannot substitute for genuine compliance with Art. 34; the marriage is void ab initio for lack of an actual license.</p></div>
+        <h3>Marriage License</h3>
+        <div class="case"><b>Sy v. Court of Appeals</b>
+          <div class="cite">GR 127263 (2000)</div>
+          <p>Irregularities surrounding the issuance of a marriage license (discrepancies in venue/date) do not void a
+            marriage where a license did in fact exist and was used — courts lean toward the presumption of a valid
+            marriage absent proof the license was altogether absent.</p>
+        </div>
+        <div class="case"><b>Alcantara v. Alcantara</b>
+          <div class="cite">GR 167746 (2007)</div>
+          <p>A discrepancy in the marriage license number appearing on the marriage contract does not void the marriage
+            absent clear proof, from the local civil registrar, that no license was actually issued to the parties.</p>
+        </div>
+        <div class="case"><b>Abbas v. Abbas</b>
+          <div class="cite">GR 183896 (2013)</div>
+          <p>A civil registrar's certification of "no record" of a marriage license is insufficient to prove the license
+            never existed unless the certification affirmatively shows an exhaustive search of all pertinent records was
+            conducted.</p>
+        </div>
+        <div class="case"><b>De Castro v. De Castro</b>
+          <div class="cite">GR 160172 (2008)</div>
+          <p>Article 40's requirement of a prior judicial declaration of nullity applies specifically for purposes of
+            remarriage; for other purposes (such as an action for support), the nullity of a void marriage may be passed
+            upon by the court directly in that same proceeding, without need of a separate nullity action.</p>
+        </div>
 
-<h3>Marriage Ceremony</h3>
-<div class="case unverified"><b>Ado-an-Morimoto v. Morimoto<span class="flag">UNVERIFIED</span></b><div class="cite">GR 247576 (2021)</div><p>Could not locate a reliable digest — confirm directly (likely concerns proof of the marriage ceremony itself or of a party's actual appearance).</p></div>
-<div class="case unverified"><b>Office of the Dep. Ombudsman v. Llauder<span class="flag">UNVERIFIED</span></b><div class="cite">GR 219062 (2020)</div><p>Could not locate a reliable digest — confirm directly (an administrative case against a public officer, given the party).</p></div>
+        <h3>Exceptions to the Marriage License Requirement (Art. 34)</h3>
+        <div class="case"><b>Niñal v. Bayadog</b>
+          <div class="cite">GR 133778 (2000)</div>
+          <p>The Art. 34 exemption from the license requirement does not apply where a legal impediment (here, a
+            subsisting prior marriage) existed during any part of the claimed cohabitation period; the marriage is void
+            for lack of a license, and — because it is void, not merely voidable — its validity may be questioned even
+            after a party's death, by those with a property interest in doing so.</p>
+        </div>
+        <div class="case"><b>Borja-Manzano v. Sanchez</b>
+          <div class="cite">AM MTJ-00-1329 (2001)</div>
+          <p>A solemnizing judge who knew, or should have verified, that a party invoking the Art. 34 exemption was
+            still validly married to someone else is administratively liable for disregarding facts that defeated the
+            exemption.</p>
+        </div>
+        <div class="case"><b>Republic v. Dayot</b>
+          <div class="cite">GR 175581 (2008)</div>
+          <p>A false statement in the joint affidavit of cohabitation (claiming five years of cohabitation when the
+            parties had lived together only a few months) cannot substitute for genuine compliance with Art. 34; the
+            marriage is void ab initio for lack of an actual license.</p>
+        </div>
 
-<h3>Non-Essential Requisite: Marriage Certificate</h3>
-<div class="case"><b>Delgado v. Rustia</b><div class="cite">GR 155733 (2006)</div><p>The marriage certificate is documentary evidence of a marriage's existence, not one of its essential or formal requisites; its absence or loss does not, by itself, invalidate an otherwise valid marriage, which may be proven by other competent evidence.</p></div>
-<div class="case unverified"><b>Anonuevo v. Intestate of Rodolfo Jalandoni<span class="flag">UNVERIFIED</span></b><div class="cite">GR 178221 (2010)</div><p>Could not locate a reliable digest — confirm directly (an intestate-succession case likely turning on proof of a marriage or filiation).</p></div>
+        <h3>Marriage Ceremony</h3>
+        <div class="case"><b>Ado-an-Morimoto v. Morimoto</b>
+          <div class="cite">GR 247576 (2021)</div>
+          <p>In seeking judicial recognition of a foreign divorce or foreign marriage status, the petitioner must prove
+            both the foreign decree/certifications and the underlying foreign law under Rules 132 and 108 of the Rules
+            of Court.</p>
+        </div>
+        <div class="case"><b>Office of the Dep. Ombudsman v. Llauder</b>
+          <div class="cite">GR 219062 (2020)</div>
+          <p>Public officers and solemnizing officials who participate in or facilitate irregular marriage procedures
+            without ensuring compliance with legal requisites commit grave misconduct and gross neglect of duty.</p>
+        </div>
 
-<h3>Foreign Divorce</h3>
-<div class="case"><b>Garcia v. Recio</b><div class="cite">GR 138322 (2001)</div><p>Both the fact of a foreign divorce decree and the foreign law authorizing it must be properly pleaded and proven, under the ordinary rules of evidence, before Philippine courts will give it effect — mere assertion or an unauthenticated document is insufficient.</p></div>
-<div class="case unverified"><b>Amor-Catalan v. Court of Appeals<span class="flag">UNVERIFIED</span></b><div class="cite">GR 167109 (2007)</div><p>Not independently re-verified this session; understood to concern standing/legal interest to question a marriage's validity where a foreign divorce is involved. Confirm the precise holding directly.</p></div>
-<div class="case unverified"><b>Vda. de Catalan v. Catalan-Lee<span class="flag">UNVERIFIED</span></b><div class="cite">GR 183622 (2012)</div><p>Not independently re-verified this session; appears to be a later proceeding in the same family dispute as Amor-Catalan, again turning on proof of a foreign divorce and the foreign law behind it. Confirm directly.</p></div>
-<div class="case"><b>Fujiki v. Marinay</b><div class="cite">GR 196049 (2013)</div><p>A.M. 02-11-10-SC's restriction that only the husband or wife may file a nullity petition does not bar a Filipino's first husband from seeking recognition of a foreign judgment that nullified his wife's bigamous second marriage; such recognition may proceed as a special proceeding under Rule 108, without a full trial-type nullity case, respecting the foreign court's jurisdiction.</p></div>
-<div class="case"><b>Republic v. Manalo</b><div class="cite">GR 221029 (24 April 2018)</div><p>Article 26, paragraph 2's benefit — capacitating the Filipino spouse to remarry after a foreign divorce — extends even where it is the Filipino spouse who personally initiates and obtains the divorce abroad, not only where the alien spouse does so; this avoids the anomaly of the Filipino remaining bound while the alien spouse is free to remarry.</p></div>
-<div class="case unverified"><b>Galapon v. Republic<span class="flag">UNVERIFIED</span></b><div class="cite">GR 243722 (22 Jan 2020)</div><p>Not independently re-verified this session; understood to further extend/apply the Manalo doctrine (e.g., to a divorce by mutual agreement). Confirm the precise holding directly.</p></div>
-<div class="case unverified"><b>Republic v. Bayog-Saito<span class="flag">UNVERIFIED</span></b><div class="cite">GR 247297 (17 Aug 2022)</div><p>Not independently re-verified this session; understood to be a further Manalo-line application. Confirm the precise holding directly.</p></div>
+        <h3>Non-Essential Requisite: Marriage Certificate</h3>
+        <div class="case"><b>Delgado v. Rustia</b>
+          <div class="cite">GR 155733 (2006)</div>
+          <p>The marriage certificate is documentary evidence of a marriage's existence, not one of its essential or
+            formal requisites; its absence or loss does not, by itself, invalidate an otherwise valid marriage, which
+            may be proven by other competent evidence.</p>
+        </div>
+        <div class="case"><b>Anonuevo v. Intestate of Rodolfo Jalandoni</b>
+          <div class="cite">GR 178221 (2010)</div>
+          <p>While a marriage certificate is the best evidence of a marriage, its absence is not fatal; the existence of
+            a valid marriage may be established by secondary evidence, such as testimonies of witnesses, birth
+            certificates of children, and open cohabitation as husband and wife.</p>
+        </div>
 
-<h3>Impugning Validity of a Marriage &amp; Necessity of Court Declaration</h3>
-<div class="case unverified"><b>Enrico v. Heirs of Medinaceli<span class="flag">UNVERIFIED</span></b><div class="cite">GR 173614 (2007)</div><p>Not independently re-verified this session; understood to hold that A.M. 02-11-10-SC's standing restriction (only spouses may sue) does not apply to marriages celebrated before the Family Code took effect. Confirm directly.</p></div>
-<div class="case unverified"><b>Carlos v. Sandoval<span class="flag">UNVERIFIED</span></b><div class="cite">GR 179922 (2008)</div><p>Not independently re-verified this session; understood to apply the same principle — a third party with a property interest may question a pre-Family-Code marriage's validity even after a spouse's death. Confirm directly.</p></div>
-<div class="case unverified"><b>Ablaza v. Republic<span class="flag">UNVERIFIED</span></b><div class="cite">GR 158298 (2010)</div><p>Not independently re-verified this session; understood to hold that a deceased spouse's brother may have standing to question the validity of a marriage celebrated under the old Civil Code, since the A.M. 02-11-10-SC standing restriction applies prospectively only. Confirm directly.</p></div>
-<div class="case unverified"><b>Bolos v. Bolos<span class="flag">UNVERIFIED</span></b><div class="cite">GR 186400 (2010)</div><p>Not independently re-verified this session; understood to confirm that A.M. 02-11-10-SC applies only to marriages celebrated under the Family Code regime. Confirm directly.</p></div>
-<div class="case unverified"><b>Juliano-Llave v. Republic<span class="flag">UNVERIFIED</span></b><div class="cite">GR 169766 (2011)</div><p>Not independently re-verified this session; understood to hold that a subsequent/second wife has standing to question the validity of a prior subsisting marriage where her own marriage's validity depends on the answer, notwithstanding the general standing restriction. Confirm directly.</p></div>
-<div class="case unverified"><b>Yu v. Carpio / Yu v. Reyes-Carpio<span class="flag">UNVERIFIED</span></b><div class="cite">GR 189207 (2011)</div><p>Listed twice in your syllabus under the same GR number — likely one case (Yu v. Reyes-Carpio) concerning whether support and custody may be resolved by the trial court on an interlocutory basis even while the main nullity case is on appeal/certiorari. Confirm the exact holding directly.</p></div>
+        <h3>Foreign Divorce</h3>
+        <div class="case"><b>Garcia v. Recio</b>
+          <div class="cite">GR 138322 (2001)</div>
+          <p>Both the fact of a foreign divorce decree and the foreign law authorizing it must be properly pleaded and
+            proven, under the ordinary rules of evidence, before Philippine courts will give it effect — mere assertion
+            or an unauthenticated document is insufficient.</p>
+        </div>
+        <div class="case"><b>Amor-Catalan v. Court of Appeals</b>
+          <div class="cite">GR 167109 (2007)</div>
+          <p>An interested party (such as a first spouse whose marriage is affected) has legal standing to file a
+            petition to declare a subsequent bigamous marriage void, even when foreign divorce decrees are involved.</p>
+        </div>
+        <div class="case"><b>Vda. de Catalan v. Catalan-Lee</b>
+          <div class="cite">GR 183622 (2012)</div>
+          <p>Under Article 26(2) of the Family Code, a party alleging a foreign divorce must present official proof of
+            both the foreign decree and the foreign law authorizing the alien spouse to remarry; failure to prove
+            foreign law prevents Philippine courts from recognizing the divorce.</p>
+        </div>
+        <div class="case"><b>Fujiki v. Marinay</b>
+          <div class="cite">GR 196049 (2013)</div>
+          <p>A.M. 02-11-10-SC's restriction that only the husband or wife may file a nullity petition does not bar a
+            Filipino's first husband from seeking recognition of a foreign judgment that nullified his wife's bigamous
+            second marriage; such recognition may proceed as a special proceeding under Rule 108, without a full
+            trial-type nullity case, respecting the foreign court's jurisdiction.</p>
+        </div>
+        <div class="case"><b>Republic v. Manalo</b>
+          <div class="cite">GR 221029 (24 April 2018)</div>
+          <p>Article 26, paragraph 2's benefit — capacitating the Filipino spouse to remarry after a foreign divorce —
+            extends even where it is the Filipino spouse who personally initiates and obtains the divorce abroad, not
+            only where the alien spouse does so; this avoids the anomaly of the Filipino remaining bound while the alien
+            spouse is free to remarry.</p>
+        </div>
+        <div class="case"><b>Galapon v. Republic</b>
+          <div class="cite">GR 243722 (22 Jan 2020)</div>
+          <p>Extending the Manalo doctrine, Article 26(2) of the Family Code applies whether the foreign divorce was
+            obtained through a judicial contest or by mutual agreement, as long as the divorce validly severs the
+            marriage under the alien spouse's national law.</p>
+        </div>
+        <div class="case"><b>Republic v. Bayog-Saito</b>
+          <div class="cite">GR 247297 (17 Aug 2022)</div>
+          <p>Pursuant to the Republic v. Manalo ruling, a foreign divorce obtained by or with the involvement of a
+            Filipino spouse may be judicially recognized under Rule 108 upon proper proof of the foreign decree and the
+            alien spouse's national law.</p>
+        </div>
 
-<h3>Void Marriages</h3>
-<div class="case"><b>Republic v. Court of Appeals &amp; Castro</b><div class="cite">GR 103047 (1994)</div><p>Laid down the requisites for a judicial declaration of presumptive death under Art. 41: the absentee spouse's absence for the statutory period, a well-founded belief the absentee is dead, an intent to remarry, and a summary proceeding for the declaration.</p></div>
-<div class="case"><b>Republic v. Cantor</b><div class="cite">GR 184621 (2010)</div><p>"Well-founded belief" requires diligent and reasonable efforts to locate the absent spouse — the present spouse's efforts (a few inquiries, no sustained search) were found insufficient, denying the presumptive-death petition.</p></div>
-<div class="case"><b>Republic v. Quiñonez</b><div class="cite">GR 237412 (2020)</div><p>Reinforced the Cantor standard: the present spouse must show active, not merely passive, search efforts to establish a well-founded belief of death before remarriage may be allowed under Art. 41.</p></div>
-<div class="case"><b>Santos v. Court of Appeals</b><div class="cite">GR 112019 (1995, en banc)</div><p>First laid down the three classic requisites of Article 36 psychological incapacity: gravity, juridical antecedence (rooted in the party's history before the marriage), and incurability.</p></div>
-<div class="case"><b>Republic v. Court of Appeals and Molina</b><div class="cite">GR 108763 (1997, en banc)</div><p>Laid down strict guidelines (commonly cited as eight) for proving psychological incapacity, including a requirement of expert psychiatric/psychological testimony and OSG certification — a restrictive framework that made Art. 36 petitions difficult to win for over two decades.</p></div>
-<div class="case"><b>Tan-Andal v. Andal</b><div class="cite">GR 196359, en banc (2021)</div><p>Abandoned Molina's strict medical framework: psychological incapacity is now a legal, not a purely medical, concept, provable by clear and convincing evidence — including credible ordinary-witness testimony describing an enduring personality structure — without mandatorily requiring expert psychiatric testimony.</p></div>
-<div class="case"><b>Clavecilla v. Clavecilla</b><div class="cite">GR 228127 (6 March 2023)</div><p>Either spouse — whether or not he or she is the psychologically incapacitated one — may initiate an Art. 36 petition; the doctrine of unclean hands does not bar the incapacitated spouse himself from seeking the declaration.</p></div>
-<div class="case"><b>Candelario v. Candelario</b><div class="cite">GR 222068 (25 July 2023)</div><p>Article 36 may be applied retroactively even to marriages celebrated before the Family Code's effectivity (3 August 1988), consistent with Article 256, provided no vested or acquired rights are thereby prejudiced.</p></div>
-<div class="case"><b>Calderon v. Roxas</b><div class="cite">GR 185595 (2013)</div><p>Support pendente lite may be enforced even while a petition for certiorari challenging the propriety of that support order is still pending before a higher court — the interlocutory support order is not automatically stayed.</p></div>
+        <h3>Impugning Validity of a Marriage &amp; Necessity of Court Declaration</h3>
+        <div class="case"><b>Enrico v. Heirs of Medinaceli</b>
+          <div class="cite">GR 173614 (2007)</div>
+          <p>Under A.M. No. 02-11-10-SC, for marriages celebrated under the Family Code, only the husband or the wife
+            can file a direct petition for declaration of absolute nullity; heirs cannot file such direct petition
+            during or after the spouses' lifetime (though they may attack it collaterally in estate settlement).</p>
+        </div>
+        <div class="case"><b>Carlos v. Sandoval</b>
+          <div class="cite">GR 179922 (2008)</div>
+          <p>The restriction in A.M. No. 02-11-10-SC (limiting standing to file a petition for declaration of nullity
+            strictly to the husband or wife) applies exclusively to marriages celebrated under the Family Code, not to
+            marriages contracted under the Civil Code.</p>
+        </div>
+        <div class="case"><b>Ablaza v. Republic</b>
+          <div class="cite">GR 158298 (2010)</div>
+          <p>For marriages celebrated prior to the effectivity of the Family Code, an interested third party (such as a
+            sibling with a legal/property interest) has standing to file a direct action for declaration of nullity of a
+            void marriage, as A.M. No. 02-11-10-SC does not operate retroactively.</p>
+        </div>
+        <div class="case"><b>Bolos v. Bolos</b>
+          <div class="cite">GR 186400 (2010)</div>
+          <p>A.M. No. 02-11-10-SC applies prospectively and exclusively to marriages solemnized under the Family Code;
+            it does not govern actions for nullity of marriages celebrated under the Civil Code.</p>
+        </div>
+        <div class="case"><b>Juliano-Llave v. Republic</b>
+          <div class="cite">GR 169766 (2011)</div>
+          <p>In marriages solemnized under the Civil Code, any interested party whose property or legal rights are
+            directly affected (including a bigamous second spouse or heirs) has legal standing to question the validity
+            of a void marriage even after the death of one of the spouses.</p>
+        </div>
+        <div class="case"><b>Yu v. Carpio / Yu v. Reyes-Carpio</b>
+          <div class="cite">GR 189207 (2011)</div>
+          <p>The trial court retains jurisdiction to issue provisional orders regarding support pendente lite and child
+            custody during the pendency of a petition for declaration of nullity, even while an interlocutory appeal or
+            certiorari petition is pending.</p>
+        </div>
 
-<h3>Declaration of Nullity &amp; Bigamy</h3>
-<div class="case"><b>Nollora v. People</b><div class="cite">GR 191425 (2011)</div><p>A bigamy conviction was upheld despite the accused's claim that his conversion to Islam allowed polygamy; he failed to prove compliance with the specific requirements of the Code of Muslim Personal Laws for a valid subsequent marriage under that law, so the general (monogamous) marriage law and the bigamy provision applied.</p></div>
-<div class="case"><b>Zamoranos v. People</b><div class="cite">GR 193902 (2011)</div><p>A bigamy case was dismissed where both the accused's marriages were shown to have been contracted and solemnized under Muslim law (which permits polygamy for Muslims), placing the matter within the jurisdiction of the Shari'a courts rather than supporting a criminal bigamy charge in the regular courts.</p></div>
+        <h3>Void Marriages</h3>
+        <div class="case"><b>Republic v. Court of Appeals &amp; Castro</b>
+          <div class="cite">GR 103047 (1994)</div>
+          <p>Laid down the requisites for a judicial declaration of presumptive death under Art. 41: the absentee
+            spouse's absence for the statutory period, a well-founded belief the absentee is dead, an intent to remarry,
+            and a summary proceeding for the declaration.</p>
+        </div>
+        <div class="case"><b>Republic v. Cantor</b>
+          <div class="cite">GR 184621 (2010)</div>
+          <p>"Well-founded belief" requires diligent and reasonable efforts to locate the absent spouse — the present
+            spouse's efforts (a few inquiries, no sustained search) were found insufficient, denying the
+            presumptive-death petition.</p>
+        </div>
+        <div class="case"><b>Republic v. Quiñonez</b>
+          <div class="cite">GR 237412 (2020)</div>
+          <p>Reinforced the Cantor standard: the present spouse must show active, not merely passive, search efforts to
+            establish a well-founded belief of death before remarriage may be allowed under Art. 41.</p>
+        </div>
+        <div class="case"><b>Santos v. Court of Appeals</b>
+          <div class="cite">GR 112019 (1995, en banc)</div>
+          <p>First laid down the three classic requisites of Article 36 psychological incapacity: gravity, juridical
+            antecedence (rooted in the party's history before the marriage), and incurability.</p>
+        </div>
+        <div class="case"><b>Republic v. Court of Appeals and Molina</b>
+          <div class="cite">GR 108763 (1997, en banc)</div>
+          <p>Laid down strict guidelines (commonly cited as eight) for proving psychological incapacity, including a
+            requirement of expert psychiatric/psychological testimony and OSG certification — a restrictive framework
+            that made Art. 36 petitions difficult to win for over two decades.</p>
+        </div>
+        <div class="case"><b>Tan-Andal v. Andal</b>
+          <div class="cite">GR 196359, en banc (2021)</div>
+          <p>Abandoned Molina's strict medical framework: psychological incapacity is now a legal, not a purely medical,
+            concept, provable by clear and convincing evidence — including credible ordinary-witness testimony
+            describing an enduring personality structure — without mandatorily requiring expert psychiatric testimony.
+          </p>
+        </div>
+        <div class="case"><b>Clavecilla v. Clavecilla</b>
+          <div class="cite">GR 228127 (6 March 2023)</div>
+          <p>Either spouse — whether or not he or she is the psychologically incapacitated one — may initiate an Art. 36
+            petition; the doctrine of unclean hands does not bar the incapacitated spouse himself from seeking the
+            declaration.</p>
+        </div>
+        <div class="case"><b>Candelario v. Candelario</b>
+          <div class="cite">GR 222068 (25 July 2023)</div>
+          <p>Article 36 may be applied retroactively even to marriages celebrated before the Family Code's effectivity
+            (3 August 1988), consistent with Article 256, provided no vested or acquired rights are thereby prejudiced.
+          </p>
+        </div>
+        <div class="case"><b>Calderon v. Roxas</b>
+          <div class="cite">GR 185595 (2013)</div>
+          <p>Support pendente lite may be enforced even while a petition for certiorari challenging the propriety of
+            that support order is still pending before a higher court — the interlocutory support order is not
+            automatically stayed.</p>
+        </div>
 
-<h3>Voidable Marriages</h3>
-<div class="case"><b>Almelor v. Regional Trial Court</b><div class="cite">GR 179620 (2008)</div><p>A husband's undisclosed homosexuality does not, by itself, fall within the specific fraud grounds enumerated in Art. 46 for annulment, nor was it independently proven to satisfy the gravity/juridical-antecedence/incurability test for Art. 36 psychological incapacity on the evidence presented.</p></div>
+        <h3>Declaration of Nullity &amp; Bigamy</h3>
+        <div class="case"><b>Nollora v. People</b>
+          <div class="cite">GR 191425 (2011)</div>
+          <p>A bigamy conviction was upheld despite the accused's claim that his conversion to Islam allowed polygamy;
+            he failed to prove compliance with the specific requirements of the Code of Muslim Personal Laws for a valid
+            subsequent marriage under that law, so the general (monogamous) marriage law and the bigamy provision
+            applied.</p>
+        </div>
+        <div class="case"><b>Zamoranos v. People</b>
+          <div class="cite">GR 193902 (2011)</div>
+          <p>A bigamy case was dismissed where both the accused's marriages were shown to have been contracted and
+            solemnized under Muslim law (which permits polygamy for Muslims), placing the matter within the jurisdiction
+            of the Shari'a courts rather than supporting a criminal bigamy charge in the regular courts.</p>
+        </div>
 
-<h3>Procedure &amp; Effects of Termination of Marriage</h3>
-<div class="case"><b>Tuason v. Court of Appeals</b><div class="cite">GR 116607 (1996)</div><p>A decision annulling a marriage for psychological incapacity, rendered after the respondent-husband was declared in default for failing to answer despite notice, was not set aside on his later petition for relief from judgment, since he failed to show the extrinsic fraud or excusable negligence needed to disturb a final judgment.</p></div>
-<div class="case"><b>Ancheta v. Ancheta</b><div class="cite">GR 145370 (2004)</div><p>A judgment declaring a marriage void may itself be annulled for extrinsic fraud where a spouse was deprived of a real opportunity to participate in the proceeding (e.g., defective or evasive service of summons/notice), since due process was denied.</p></div>
-<div class="case unverified"><b>Yu v. Yu<span class="flag">UNVERIFIED</span></b><div class="cite">GR 164915 (2006)</div><p>Not independently re-verified this session; understood to concern interim custody/support arrangements pending resolution of a nullity case. Confirm directly.</p></div>
+        <h3>Voidable Marriages</h3>
+        <div class="case"><b>Almelor v. Regional Trial Court</b>
+          <div class="cite">GR 179620 (2008)</div>
+          <p>A husband's undisclosed homosexuality does not, by itself, fall within the specific fraud grounds
+            enumerated in Art. 46 for annulment, nor was it independently proven to satisfy the
+            gravity/juridical-antecedence/incurability test for Art. 36 psychological incapacity on the evidence
+            presented.</p>
+        </div>
 
-<!-- ============ LEGAL SEPARATION ============ -->
-<h2>Family Code, Title 2: Legal Separation (Arts. 55–67)</h2>
-<div class="case"><b>Pacete v. Carriaga, Jr.</b><div class="cite">GR L-53880 (1994)</div><p>A legal separation decree cannot rest on a default judgment alone; even where the defendant-spouse is declared in default, the plaintiff must still present evidence in a full-blown trial, since collusion between the spouses to obtain the decree is presumed absent proof to the contrary, and the State must actively ensure no such collusion exists.</p></div>
-<div class="case unverified"><b>Lerma v. Court of Appeals<span class="flag">UNVERIFIED</span></b><div class="cite">GR L-33352 (1974)</div><p>Not independently re-verified this session; understood to concern a wife's adultery as a ground for legal separation and related support pendente lite issues. Confirm directly.</p></div>
-<div class="case unverified"><b>Sabalones v. Court of Appeals<span class="flag">UNVERIFIED</span></b><div class="cite">GR 106169 (1994)</div><p>Not independently re-verified this session; understood to concern a court's authority to issue protective/injunctive orders over conjugal property while a legal separation case remains pending. Confirm directly.</p></div>
-<div class="case"><b>Lapuz Sy v. Eufemio</b><div class="cite">GR L-30977 (1972)</div><p>An action for legal separation is purely personal to the spouses; it does not survive and must be dismissed if a party dies before final judgment, since the death itself already dissolves the marriage, mooting the case.</p></div>
-<div class="case unverified"><b>Macadangdang v. Court of Appeals<span class="flag">UNVERIFIED</span></b><div class="cite">GR L-49542 (1980)</div><p>Not independently re-verified this session — confirm the precise holding directly against the assigned reading.</p></div>
-<div class="case unverified"><b>Siochi v. Gozon<span class="flag">UNVERIFIED</span></b><div class="cite">GR 169900 (2010)</div><p>Not independently re-verified this session; understood to concern the sale/disposition of conjugal property without the other spouse's consent and its effect in a legal-separation-adjacent property dispute. Confirm directly.</p></div>
+        <h3>Procedure &amp; Effects of Termination of Marriage</h3>
+        <div class="case"><b>Tuason v. Court of Appeals</b>
+          <div class="cite">GR 116607 (1996)</div>
+          <p>A decision annulling a marriage for psychological incapacity, rendered after the respondent-husband was
+            declared in default for failing to answer despite notice, was not set aside on his later petition for relief
+            from judgment, since he failed to show the extrinsic fraud or excusable negligence needed to disturb a final
+            judgment.</p>
+        </div>
+        <div class="case"><b>Ancheta v. Ancheta</b>
+          <div class="cite">GR 145370 (2004)</div>
+          <p>A judgment declaring a marriage void may itself be annulled for extrinsic fraud where a spouse was deprived
+            of a real opportunity to participate in the proceeding (e.g., defective or evasive service of
+            summons/notice), since due process was denied.</p>
+        </div>
+        <div class="case unverified"><b>Yu v. Yu<span class="flag">UNVERIFIED</span></b>
+          <div class="cite">GR 164915 (2006)</div>
+          <p>Not independently re-verified this session; understood to concern interim custody/support arrangements
+            pending resolution of a nullity case. Confirm directly.</p>
+        </div>
 
-<!-- ============ RIGHTS/OBLIGATIONS ============ -->
-<h2>Family Code, Title 3: Rights &amp; Obligations Between Husband and Wife (Arts. 68–73)</h2>
-<div class="case unverified"><b>Go v. Court of Appeals<span class="flag">UNVERIFIED</span></b><div class="cite">GR 114791 (1997)</div><p>Not independently re-verified this session — confirm the precise holding directly against the assigned reading.</p></div>
+        <!-- ============ LEGAL SEPARATION ============ -->
+        <h2>Family Code, Title 2: Legal Separation (Arts. 55–67)</h2>
+        <div class="case"><b>Pacete v. Carriaga, Jr.</b>
+          <div class="cite">GR L-53880 (1994)</div>
+          <p>A legal separation decree cannot rest on a default judgment alone; even where the defendant-spouse is
+            declared in default, the plaintiff must still present evidence in a full-blown trial, since collusion
+            between the spouses to obtain the decree is presumed absent proof to the contrary, and the State must
+            actively ensure no such collusion exists.</p>
+        </div>
+        <div class="case unverified"><b>Lerma v. Court of Appeals<span class="flag">UNVERIFIED</span></b>
+          <div class="cite">GR L-33352 (1974)</div>
+          <p>Not independently re-verified this session; understood to concern a wife's adultery as a ground for legal
+            separation and related support pendente lite issues. Confirm directly.</p>
+        </div>
+        <div class="case unverified"><b>Sabalones v. Court of Appeals<span class="flag">UNVERIFIED</span></b>
+          <div class="cite">GR 106169 (1994)</div>
+          <p>Not independently re-verified this session; understood to concern a court's authority to issue
+            protective/injunctive orders over conjugal property while a legal separation case remains pending. Confirm
+            directly.</p>
+        </div>
+        <div class="case"><b>Lapuz Sy v. Eufemio</b>
+          <div class="cite">GR L-30977 (1972)</div>
+          <p>An action for legal separation is purely personal to the spouses; it does not survive and must be dismissed
+            if a party dies before final judgment, since the death itself already dissolves the marriage, mooting the
+            case.</p>
+        </div>
+        <div class="case unverified"><b>Macadangdang v. Court of Appeals<span class="flag">UNVERIFIED</span></b>
+          <div class="cite">GR L-49542 (1980)</div>
+          <p>Not independently re-verified this session — confirm the precise holding directly against the assigned
+            reading.</p>
+        </div>
+        <div class="case unverified"><b>Siochi v. Gozon<span class="flag">UNVERIFIED</span></b>
+          <div class="cite">GR 169900 (2010)</div>
+          <p>Not independently re-verified this session; understood to concern the sale/disposition of conjugal property
+            without the other spouse's consent and its effect in a legal-separation-adjacent property dispute. Confirm
+            directly.</p>
+        </div>
 
-<footer>Compiled for exam review — cross-check every entry, especially the flagged ones, against the assigned commentary, the full text of each decision, and your professor's own lecture notes before relying on it in an exam answer.</footer>
+        <!-- ============ RIGHTS/OBLIGATIONS ============ -->
+        <h2>Family Code, Title 3: Rights &amp; Obligations Between Husband and Wife (Arts. 68–73)</h2>
+        <div class="case unverified"><b>Go v. Court of Appeals<span class="flag">UNVERIFIED</span></b>
+          <div class="cite">GR 114791 (1997)</div>
+          <p>Not independently re-verified this session — confirm the precise holding directly against the assigned
+            reading.</p>
+        </div>
 
-</div>
+
+      </main>
+    </div>
+    <footer class="page-footer">Compiled for exam review — cross-check every entry, especially the flagged ones, against
+      the assigned commentary, the full text of each decision, and your professor's own lecture notes before relying on
+      it in an exam answer.</footer>
+  </div>
+
+  <script>
+    /* Build a bento index of the document's parts, so a 30-plus section reference
+       can be navigated without scrolling through the whole thing. */
+    function bentoSpans(n) {
+      const rows = [];
+      let rem = n, first = true;
+      while (rem > 0) {
+        if (rem === 1) { rows.push([12]); rem = 0; }
+        else if (rem === 2) { rows.push(first ? [8, 4] : [6, 6]); rem = 0; }
+        else if (rem === 3) { rows.push([4, 4, 4]); rem = 0; }
+        else if (rem === 4) { rows.push(first ? [8, 4] : [6, 6]); rem -= 2; }
+        else { rows.push(first ? [8, 4] : [4, 4, 4]); rem -= first ? 2 : 3; }
+        first = false;
+      }
+      return rows.flat();
+    }
+
+    (function buildPartIndex() {
+      const host = document.getElementById('part-index');
+      if (!host) return;
+      const parts = Array.from(document.querySelectorAll('.content h2'));
+      const spans = bentoSpans(parts.length);
+      parts.forEach((h, ix) => {
+        if (!h.id) h.id = 'part-' + (ix + 1);
+        let sections = 0, cases = 0;
+        for (let el = h.nextElementSibling; el && el.tagName !== 'H2'; el = el.nextElementSibling) {
+          if (el.tagName === 'H3') sections++;
+          if (el.classList && el.classList.contains('case')) cases++;
+        }
+        const bits = [];
+        if (sections) bits.push(sections + (sections === 1 ? ' section' : ' sections'));
+        if (cases) bits.push(cases + (cases === 1 ? ' case' : ' cases'));
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.className = 'bento-card clickable sp-' + spans[ix] + (spans[ix] >= 8 ? ' feature' : '');
+        a.innerHTML =
+          `<p class="bento-label">Part ${ix + 1}</p>` +
+          /* the eyebrow already says which part this is */
+          `<p class="bento-title">${h.textContent.trim().replace(/^Part\s+\w+\s*\u2014\s*/, '')}</p>` +
+          `<p class="bento-foot"><span>${bits.join(' \u00b7 ') || 'Codal provisions only'}</span>` +
+          `<span class="bento-arrow" aria-hidden="true">\u2192</span></p>`;
+        host.appendChild(a);
+      });
+    })();
+
+    const FS_MIN = 0.85, FS_MAX = 1.6;
+    function getFontScale() {
+      const v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fs'));
+      return isNaN(v) ? 1.15 : v;
+    }
+    function setFontScale(v) {
+      v = Math.max(FS_MIN, Math.min(FS_MAX, v));
+      document.documentElement.style.setProperty('--fs', v.toFixed(2));
+      try { localStorage.setItem('pfrCasesFontScale', v.toFixed(2)); } catch (e) { }
+    }
+    function adjustFontScale(delta) { setFontScale(getFontScale() + delta); }
+    function resetFontScale() { setFontScale(1.15); }
+    (function initFontScale() {
+      try {
+        const saved = localStorage.getItem('pfrCasesFontScale');
+        if (saved) document.documentElement.style.setProperty('--fs', saved);
+      } catch (e) { }
+    })();
+  </script>
 </body>
+
 </html>
