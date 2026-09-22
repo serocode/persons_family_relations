@@ -345,6 +345,33 @@
 
   /* ---- subject accent ---- */
   :root{ --accent:var(--red); --accent-tint:var(--red-tint); }
+
+  /* ---- midterm drills: identification & enumeration ---- */
+  .drill-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:0 0 8px;}
+  .drill-card{background:var(--card-elevated);border:1px solid var(--rule);padding:22px 24px;margin:0 0 16px;box-shadow:0 1px 0 var(--rule), 0 10px 22px -16px rgba(32,36,31,0.18);}
+  .drill-tag{display:inline-block;font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));font-weight:600;padding:3px 8px;border-radius:3px;background:var(--paper);border:1px solid var(--rule);color:var(--ink-soft);margin:0 6px 10px 0;}
+  .drill-tag.notes{background:var(--red-tint);border-color:transparent;color:var(--red);}
+  .drill-prompt{font-size:calc(18px * var(--fs));line-height:1.6;margin:0 0 16px;}
+  .drill-input{width:100%;font-family:'Source Serif 4',Georgia,serif;font-size:calc(16px * var(--fs));padding:11px 13px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:3px;line-height:1.5;}
+  .drill-input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  textarea.drill-input{min-height:140px;resize:vertical;}
+  .drill-verdict{font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));margin:14px 0 0;padding:11px 14px;border-left:3px solid var(--rule);background:var(--paper);line-height:1.55;}
+  .drill-verdict.ok{border-left-color:var(--green);background:var(--green-tint);}
+  .drill-verdict.no{border-left-color:var(--red);background:var(--red-tint);}
+  .drill-verdict strong{display:block;margin-bottom:2px;}
+  .enum-list{list-style:none;padding:0;margin:14px 0 0;counter-reset:en;}
+  .enum-list li{counter-increment:en;display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--rule-light);background:var(--card);margin-bottom:6px;font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));line-height:1.5;cursor:pointer;}
+  .enum-list li::before{content:counter(en) ".";font-weight:600;color:var(--ink-soft);min-width:20px;}
+  .enum-list li input{margin-top:3px;accent-color:var(--green);width:16px;height:16px;flex:none;order:2;margin-left:auto;}
+  .enum-list li.got{background:var(--green-tint);border-color:transparent;}
+  .enum-mnemonic{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));color:var(--ink-soft);margin:10px 0 0;}
+  .drill-browse .drill-card{padding:16px 20px;}
+  .drill-browse .drill-prompt{font-size:calc(15.5px * var(--fs));margin:0 0 8px;}
+  .drill-browse .ans{font-family:'Inter',sans-serif;font-weight:600;font-size:calc(14px * var(--fs));color:var(--green);}
+  .drill-browse ol{margin:6px 0 0;padding-left:22px;font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));line-height:1.55;}
+  .drill-missed{margin-top:18px;}
+  .drill-missed .drill-card{padding:14px 18px;border-left:3px solid var(--red);}
+  .sg-notes table.sg-table td.art{white-space:normal;min-width:130px;max-width:230px;}
 </style>
 </head>
 <body>
@@ -404,6 +431,31 @@
       <p class="topic-h">Essay-style bar problems</p>
       <p class="alac-intro">Work out your own Answer, Legal Basis, Application, and Conclusion for each problem, then reveal the model answer to check your reasoning against it.</p>
       <div id="alac-list"></div>
+    </div>
+
+
+    <!-- ===================== MIDTERM DRILLS ===================== -->
+    <div id="view-drill" class="hide">
+      <button class="backlink" onclick="backToPicker()">&larr; Back to topics</button>
+      <p class="topic-eyebrow" id="drill-eyebrow">MIDTERM DRILL</p>
+      <p class="topic-h" id="drill-heading">Identification</p>
+      <p class="alac-intro" id="drill-intro"></p>
+      <div id="drill-setup">
+        <p class="filter-label">Coverage</p>
+        <div class="filters" id="drill-filters"></div>
+        <p class="count-line" id="drill-count"></p>
+        <div class="btn-row">
+          <button class="btn" onclick="startDrill()">Start drill</button>
+          <button class="btn secondary" onclick="browseDrill()">Browse as reviewer</button>
+        </div>
+      </div>
+      <div id="drill-run" class="hide">
+        <div class="drill-meta"><span id="drill-pos"></span><span id="drill-score"></span></div>
+        <div class="track"><div class="fill" id="drill-fill" style="width:0%"></div></div>
+        <div class="drill-card" id="drill-card" style="margin-top:18px;"></div>
+      </div>
+      <div id="drill-done" class="hide"></div>
+      <div id="drill-browse" class="drill-browse hide"></div>
     </div>
 
     <!-- ===================== QUIZ VIEW ===================== -->
@@ -568,7 +620,12 @@ const BANK_BASICS = [
 {id:15,tag:"jurisprudence",cite:"Art. 4(2) — Intod v. Court of Appeals",prompt:"Intending to kill X, four men fire repeatedly at X's bedroom at night. Unknown to them, X was in another town. No one is hurt. The trial court convicts them of attempted murder. Which is the BEST answer?",options:["Attempted murder is correct, since the shooting was an overt act directly connected with the killing they intended.","Frustrated murder is correct, since they performed all the acts of execution and only X's absence prevented death.","They committed an impossible crime, since killing X was factually impossible because he was not in the room.","They committed no crime, since legal impossibility bars any conviction when the intended victim is absent."],correct:2,explain:"Intod v. CA: factual impossibility (victim not present) falls under Art. 4(2). The accused are liable for an impossible crime, not attempted murder.",hint:"Could the intended result ever have happened given the true facts?"},
 {id:16,tag:"jurisprudence",cite:"Art. 4(2) — Jacinto v. People",prompt:"An employee pockets a customer's check payable to her employer and deposits it in her relative's account. The check bounces because it was unfunded. She is charged with qualified theft. Which is the BEST answer?",options:["Qualified theft is consummated, since she took possession of the check and had full control over it.","Frustrated qualified theft is committed, since she did everything but failed to profit because of the dishonor.","Estafa is committed, since she misappropriated a check received in trust for her employer's benefit.","An impossible crime is committed, since the unfunded check made taking the money factually impossible."],correct:3,explain:"Jacinto v. People: the check was worthless, so the intended theft of money was factually impossible. The accused was held liable for an impossible crime.",hint:"What did she really intend to take — the paper or the money?"},
 {id:17,tag:"exceptions",cite:"Art. 4(2) — Limits of impossible crime",prompt:"Intending to kill Y, Z forces open Y's locked front door and enters, but Y had moved out a week earlier. Z leaves without taking anything. Which is the BEST answer?",options:["Z is liable for an impossible crime, since killing Y was factually impossible due to Y's absence from the house.","Z is liable for attempted murder, since forcing the door was an overt act directly connected with the killing.","Z is liable for the felony his acts actually constitute, such as trespass, not for an impossible crime.","Z is not liable at all, since preparatory acts toward an intended killing are never punishable under the RPC."],correct:2,explain:"An impossible crime requires that the act not constitute a violation of another RPC provision. If the acts performed are themselves a felony, the offender is liable for that felony instead.",hint:"One requisite of Art. 4(2) is negative — check it."},
-{id:18,tag:"effects",cite:"Art. 5, RPC",prompt:"A judge finds the accused guilty of qualified theft of a few coconuts, but believes the mandatory penalty is clearly excessive given the small value and the offender's circumstances. Which is the BEST answer?",options:["The judge should impose a lower penalty of his choosing, since courts may temper penalties in the interest of justice.","The judge should impose the penalty prescribed and recommend executive clemency, without suspending the sentence.","The judge should suspend execution of the sentence and refer the case to the President for possible pardon.","The judge should acquit and report to the Chief Executive why the act should be made subject of legislation."],correct:1,explain:"Art. 5, par. 2: when strict enforcement results in an excessive penalty, the court must still impose it and submit a statement to the Chief Executive recommending clemency, without suspending execution.",hint:"Courts apply the law; clemency belongs to another branch."}
+{id:18,tag:"effects",cite:"Art. 5, RPC",prompt:"A judge finds the accused guilty of qualified theft of a few coconuts, but believes the mandatory penalty is clearly excessive given the small value and the offender's circumstances. Which is the BEST answer?",options:["The judge should impose a lower penalty of his choosing, since courts may temper penalties in the interest of justice.","The judge should impose the penalty prescribed and recommend executive clemency, without suspending the sentence.","The judge should suspend execution of the sentence and refer the case to the President for possible pardon.","The judge should acquit and report to the Chief Executive why the act should be made subject of legislation."],correct:1,explain:"Art. 5, par. 2: when strict enforcement results in an excessive penalty, the court must still impose it and submit a statement to the Chief Executive recommending clemency, without suspending execution.",hint:"Courts apply the law; clemency belongs to another branch."},
+{id:19,tag:"memorization",cite:"Class notes — Bill of attainder vs. ex post facto law",prompt:"Congress passes a law declaring a named labor leader guilty of sabotage and ordering his assets forfeited, without any court proceeding. Which is the BEST answer?",options:["The law is an ex post facto law, since it punishes an act that was innocent when it was done.","The law is a bill of attainder, since it inflicts punishment by legislative act without a judicial trial.","The law is valid, since Congress may define crimes and fix penalties for acts against national security.","The law is a bill of attainder only if the act punished was innocent at the time it was committed."],correct:1,explain:"A bill of attainder is a legislative act that inflicts punishment without trial — a substitution of legislative act for judicial determination. An ex post facto law makes criminal an act that was innocent when done.",hint:"Who decided the guilt — a court or the legislature?"},
+{id:20,tag:"exceptions",cite:"Art. 22, RPC",prompt:"A new law lowers the penalty for theft. Two convicts serving final sentences for theft invoke it: Ana, a first offender, and Ben, who has been declared a habitual delinquent. Which is the BEST answer?",options:["Both may benefit, since a favorable penal law applies retroactively to all persons convicted.","Neither may benefit, since retroactivity does not apply once a sentence has become final.","Only Ana may benefit, since Art. 22 excludes habitual criminals from retroactive application.","Only Ben may benefit, since the law was intended mainly for repeat offenders of the same crime."],correct:2,explain:"Art. 22: penal laws have retroactive effect insofar as they favor the person guilty of a felony who is not a habitual criminal, even if a final sentence has been pronounced and the convict is serving it.",hint:"Art. 22 names one kind of offender who cannot benefit."},
+{id:21,tag:"effects",cite:"Class notes — Mala prohibita",prompt:"A motorist is charged with illegal parking under a traffic ordinance. He proves he did not intend to violate it and honestly thought the area was a parking zone. Which is the BEST answer?",options:["He is not liable, since the absence of criminal intent is a complete defense in all offenses.","He is not liable, since good faith negates the voluntariness required for any offense to exist.","He is liable, since in mala prohibita the only inquiry is whether the law has been violated.","He is liable, but his good faith converts the offense into one committed only through culpa."],correct:2,explain:"In mala prohibita, the basis of liability is voluntariness, not moral trait. The act is punished because it is prohibited, so intent and good faith are generally immaterial.",hint:"What is the basis of liability in acts wrong only because prohibited?"},
+{id:22,tag:"memorization",cite:"Class notes — When motive is relevant",prompt:"In which situation does proof of motive become MOST relevant in a murder case?",options:["When two credible eyewitnesses positively identified the accused as the one who stabbed the victim.","When the accused admits the killing but claims that he acted in complete self-defense.","When there are no eyewitnesses and the evidence against the accused is purely circumstantial.","When the prosecution proves the crime was qualified by treachery and evident premeditation."],correct:2,explain:"Motive is relevant when identity is doubtful — e.g., no eyewitnesses, circumstantial evidence, unreliable identification, or two antagonistic theories as to the assailant.",hint:"Motive helps answer 'who did it' when the evidence cannot."},
+{id:23,tag:"exceptions",cite:"Art. 4(2) — Past exam (Judge Merlas)",prompt:"Wanting to kill B, A sets fire to B's house while B is inside. B escapes unharmed. The prosecutor considers charging an impossible crime of murder by means of fire. Which is the BEST answer?",options:["An impossible crime is proper, since B's escape made his death by fire factually impossible.","Attempted murder is proper, since the fire was an overt act directly connected with killing B.","Arson is proper, since the act already constitutes another felony, defeating an impossible crime.","Frustrated murder is proper, since A did all the acts of execution and B survived by escaping."],correct:2,explain:"The fourth requisite of an impossible crime is that the act does not constitute another violation of the RPC. Burning the house is arson, so there is no impossible crime.",hint:"Check the fourth requisite of Art. 4(2)."}
 ];
 
 const BANK_STAGES = [
@@ -589,7 +646,10 @@ const BANK_STAGES = [
 {id:15,tag:"memorization",cite:"Art. 9, RPC, as amended by R.A. No. 10951",prompt:"A felony is punished only by a fine of P50,000. How is it classified under Article 9 as amended?",options:["A light felony, since the fine does not exceed P200,000 under the amended threshold.","A less grave felony, since the fine falls within P40,000 to P1,200,000.","A grave felony, since any fine above P40,000 is treated as afflictive.","A less grave felony, since the fine falls within P10,000 to P50,000."],correct:1,explain:"Art. 9 (R.A. 10951): grave — capital or afflictive penalties, or fine exceeding P1,200,000; less grave — correctional, or fine of P40,000 to P1,200,000; light — arresto menor or fine not exceeding P40,000.",hint:"R.A. 10951 set new peso thresholds — recall the two numbers."},
 {id:16,tag:"jurisprudence",cite:"Art. 10 — People v. Simon",prompt:"An accused is convicted under a special law that adopts the RPC's nomenclature of penalties (e.g., prision correccional). He asks the court to appreciate a mitigating circumstance. Which is the BEST answer?",options:["Denied, since mitigating circumstances under the RPC never apply to offenses punished by special laws.","Denied, since special laws are complete in themselves and exclude any supplementary application of the RPC.","Granted, since the special law adopted RPC penalties, so RPC rules on their application may be applied.","Granted, since all RPC provisions apply to special laws only when the accused is a first offender."],correct:2,explain:"People v. Simon: when a special law adopts the technical nomenclature of RPC penalties, the RPC rules on graduating penalties and appreciating modifying circumstances apply suppletorily under Art. 10.",hint:"Borrowing the RPC's penalties has consequences."},
 {id:17,tag:"effects",cite:"Art. 10, RPC",prompt:"A special law punishes an offense but is silent on the offender's civil liability and on subsidiary imprisonment. Which is the BEST answer?",options:["The RPC supplements the special law, unless the special law provides the contrary.","The RPC cannot apply, since special laws are governed exclusively by their own provisions.","The RPC applies only if the special law expressly adopts the RPC by reference.","The RPC applies only to provisions on penalties, never to civil liability."],correct:0,explain:"Art. 10: offenses punishable under special laws are not subject to the RPC; but the RPC is supplementary to those laws, unless the latter provide the contrary.",hint:"Art. 10 has two sentences — the second one matters here."},
-{id:18,tag:"requisites",cite:"Art. 6 — Overt acts vs. preparatory acts",prompt:"Q buys rat poison from a hardware store, telling the cashier he will use it to kill his neighbor. He is arrested at home before doing anything else. Which is the BEST answer?",options:["Attempted murder, since his statement to the cashier removes any doubt about his criminal intention.","No crime yet, since buying poison is a mere preparatory act without direct connection to killing.","Frustrated murder, since he had already done everything he needed before he was arrested at home.","Grave threats, since he disclosed his intent to kill the neighbor to a third person who heard it."],correct:1,explain:"Buying poison is preparatory; it is not an overt act directly connected with the killing. Preparatory acts are not punishable unless the law makes them independent crimes.",hint:"Has the commission of the felony commenced directly?"}
+{id:18,tag:"requisites",cite:"Art. 6 — Overt acts vs. preparatory acts",prompt:"Q buys rat poison from a hardware store, telling the cashier he will use it to kill his neighbor. He is arrested at home before doing anything else. Which is the BEST answer?",options:["Attempted murder, since his statement to the cashier removes any doubt about his criminal intention.","No crime yet, since buying poison is a mere preparatory act without direct connection to killing.","Frustrated murder, since he had already done everything he needed before he was arrested at home.","Grave threats, since he disclosed his intent to kill the neighbor to a third person who heard it."],correct:1,explain:"Buying poison is preparatory; it is not an overt act directly connected with the killing. Preparatory acts are not punishable unless the law makes them independent crimes.",hint:"Has the commission of the felony commenced directly?"},
+{id:19,tag:"effects",cite:"Art. 8 — Chain conspiracy (class notes)",prompt:"Group A imports shabu, Group B transports it to a safehouse, and Group C sells it to dealers. Group C never met Group A. Group C argues it cannot be in conspiracy with Group A. Which is the BEST answer?",options:["Group C is correct, since conspiracy requires that every conspirator know and agree with every other one.","Group C is correct, since each group committed a separate offense and is liable only for its own part.","Group C is wrong, since in a chain conspiracy each link knows it is part of a bigger common scheme.","Group C is wrong, but only because selling drugs is a more serious offense than importing them."],correct:2,explain:"In a chain conspiracy, there is one overall scheme with different groups performing necessary roles at different stages. A participant need not know all the others, as long as he knows he is part of the bigger scheme.",hint:"Think of links in one chain."},
+{id:20,tag:"effects",cite:"Art. 8 — Past exam (Judge Merlas)",prompt:"Pedro planned to kill Juan and asked Freddie for a knife, which Freddie gave. Pedro later changed his mind and did nothing. Which is the BEST answer as to Freddie?",options:["Freddie is liable as an accomplice, since he cooperated in the plan by a previous act.","Freddie is liable for conspiracy to commit murder, since he agreed to supply the weapon.","Freddie is not liable, since no crime was committed and conspiracy to murder is not punished.","Freddie is liable for an impossible crime, since the killing became impossible after Pedro desisted."],correct:2,explain:"An accomplice's liability is secondary; it requires that a crime be committed. Since Pedro desisted, there is no crime, and conspiracy or proposal to commit murder is not specially penalized under Art. 8.",hint:"Can one be an accomplice to a crime that never happened?"},
+{id:21,tag:"requisites",cite:"Art. 6 — Overt acts (class notes)",prompt:"R buys poison at a drugstore, goes home, and mixes it into the soup he is about to serve his uncle. The police arrive before the uncle eats. Which act is the overt act?",options:["Buying the poison, since it clearly revealed R's intention to kill his uncle with poison.","Going home with the poison, since it brought him closer to where the killing would occur.","Mixing the poison into the soup, since it has a direct connection with the killing intended.","None of them, since an overt act exists only when the victim actually takes the poison."],correct:2,explain:"Buying poison is only preparatory, since poison may be used for other purposes. Mixing it with the victim's food is an overt act directly connected with the intended killing.",hint:"Which act can only point to one crime?"}
 ];
 
 const BANK_JUSTEX = [
@@ -610,7 +670,13 @@ const BANK_JUSTEX = [
 {id:15,tag:"effects",cite:"Art. 12 as modified by R.A. No. 9344 (as amended by R.A. No. 10630)",prompt:"E, aged 17, commits homicide. The court finds he acted with discernment. Which is the BEST answer?",options:["E is exempt, since all persons under 18 are exempt from criminal liability under the juvenile justice law.","E is liable, and his minority is only an ordinary mitigating circumstance that may be offset by aggravating ones.","E is liable, but his minority is a privileged mitigating circumstance and he is entitled to its benefits.","E is exempt from criminal liability, but his parents become criminally liable in his place."],correct:2,explain:"R.A. 9344 (as amended): 15 and below are exempt; above 15 but below 18 are exempt unless they acted with discernment. If with discernment, minority is privileged mitigating, and the child is entitled to suspension of sentence and other protective measures.",hint:"Discernment removes the exemption — but not the special treatment."},
 {id:16,tag:"exceptions",cite:"Art. 12(4) — Accident",prompt:"F is lawfully hunting at dusk. Without checking what moved in the bushes, he fires and kills a farmer. He invokes accident. Which is the BEST answer?",options:["Accident applies, since hunting is a lawful act and he had no intention of killing any person.","Accident applies, since the farmer's presence in the bushes was an unforeseeable circumstance.","Accident does not apply, since he failed to exercise due care before firing into the bushes.","Accident does not apply, since hunting at dusk is itself an unlawful act under the Revised Penal Code."],correct:2,explain:"Art. 12(4) requires: a lawful act, performed with due care, causing injury by mere accident, without fault or intention. Firing without identifying the target lacks due care.",hint:"Accident presupposes one specific quality in how the act was done."},
 {id:17,tag:"requisites",cite:"Art. 12(6) — Uncontrollable fear",prompt:"G was ordered at gunpoint to help carry stolen goods. During the two-hour trip, the armed leader left for thirty minutes, and G could easily have left and reported to police nearby, but did not. Which is the BEST answer?",options:["Uncontrollable fear applies, since the initial threat at gunpoint excused all his later acts.","Uncontrollable fear applies, since fear of reprisal against his family presumably continued throughout.","Uncontrollable fear does not apply, since the fear was not continuing and he had a safe chance to escape.","Uncontrollable fear does not apply, since it is available only when the threat is directed at the actor himself."],correct:2,explain:"Uncontrollable fear requires a threat of an evil greater than or equal to that which he is required to commit, and the fear must be real, imminent, and leave no reasonable opportunity to escape or resist.",hint:"Did the compulsion continue during the whole time?"},
-{id:18,tag:"jurisprudence",cite:"Art. 12(7) — People v. Bandian",prompt:"A woman secretly gives birth alone in a thicket, faints from exhaustion and blood loss, and the newborn dies without care. She is charged with infanticide. Which is the BEST answer?",options:["She is liable for infanticide, since failing to care for a newborn is always a punishable omission.","She is liable for reckless imprudence, since she chose to give birth alone without any assistance.","She is exempt, since her failure to attend to the newborn was due to an insuperable cause.","She is exempt, but only because concealment of dishonor is an exempting circumstance for mothers."],correct:2,explain:"Bandian: the mother's failure to attend to the child was due to her own physical exhaustion and fainting — an insuperable cause under Art. 12(7).",hint:"Could she have done what the law required at that moment?"}
+{id:18,tag:"jurisprudence",cite:"Art. 12(7) — People v. Bandian",prompt:"A woman secretly gives birth alone in a thicket, faints from exhaustion and blood loss, and the newborn dies without care. She is charged with infanticide. Which is the BEST answer?",options:["She is liable for infanticide, since failing to care for a newborn is always a punishable omission.","She is liable for reckless imprudence, since she chose to give birth alone without any assistance.","She is exempt, since her failure to attend to the newborn was due to an insuperable cause.","She is exempt, but only because concealment of dishonor is an exempting circumstance for mothers."],correct:2,explain:"Bandian: the mother's failure to attend to the child was due to her own physical exhaustion and fainting — an insuperable cause under Art. 12(7).",hint:"Could she have done what the law required at that moment?"},
+{id:19,tag:"effects",cite:"Class notes — Instigation vs. entrapment",prompt:"A police officer repeatedly pleads with a vendor with no drug record to find him shabu, giving him money and a supplier's name. The vendor finally obtains a sachet and is arrested upon delivery. Which is the BEST answer?",options:["He is liable, since this is a valid entrapment in which police merely gave him an opportunity.","He is liable, but his lack of prior record is a privileged mitigating circumstance in his favor.","He is not liable, since this is instigation, an absolutory cause where the intent came from the police.","He is not liable, since any buy-bust operation conducted without a warrant is illegal and void."],correct:2,explain:"In instigation, the criminal intent originates from the police and the accused would not have committed the crime otherwise — an absolutory cause. In entrapment, the intent already existed.",hint:"Whose idea was the crime?"},
+{id:20,tag:"requisites",cite:"Art. 11(1) — Honest belief (class notes)",prompt:"At night, a man points a realistic toy gun at the accused's face and says he will kill him. The accused strikes him with a pipe, killing him. Which is the BEST answer?",options:["No self-defense, since a toy gun can never constitute an actual or imminent unlawful aggression.","No self-defense, since the accused had the duty to verify the weapon before using force.","Self-defense may apply, since unlawful aggression may rest on the accused's honest belief.","Self-defense may apply, but only as a mitigating circumstance because the gun was not real."],correct:2,explain:"The existence of unlawful aggression may depend on the honest and reasonable belief of the defender, as when the deceased pointed a toy gun at the accused.",hint:"Judge the danger as it appeared to the accused at that moment."},
+{id:21,tag:"exceptions",cite:"Art. 11(1) — Limitation on the defense (class notes)",prompt:"Attacked with an iron bar inside a crowded house, the accused fires his revolver wildly in all directions and hits a bystander. Which is the BEST answer as to the bystander's injury?",options:["Self-defense covers it, since the accused was defending himself from a real unlawful aggression.","Self-defense covers it, since the law does not expect a person under attack to aim carefully.","Self-defense does not cover it, since the defensive blow must be directed at the aggressor alone.","Self-defense does not cover it, since firearms are never a reasonable means against an iron bar."],correct:2,explain:"The defender must aim at his assailant and not fire indiscriminately; injuring innocent bystanders is outside the protection of self-defense.",hint:"Who is the defense directed against?"},
+{id:22,tag:"exceptions",cite:"RPC Art. 247 (class notes)",prompt:"A legally married man surprises his wife in the very act of sexual intercourse with another man and immediately kills the man. Which is the BEST answer?",options:["It is complete self-defense, since the act of adultery is unlawful aggression against his honor.","It is murder, since killing another in a fit of jealousy is never recognized by the law as special.","It falls under Art. 247, where the law imposes only destierro for this exceptional circumstance.","It is homicide with the ordinary mitigating circumstance of passion or obfuscation only."],correct:2,explain:"Art. 247 (death under exceptional circumstances) punishes the offended spouse who kills in these circumstances with destierro only. It is not self-defense, since the act is not unlawful aggression.",hint:"The notes call this the marital infidelity rule."},
+{id:23,tag:"effects",cite:"Arts. 12(1), 13(9) — Kleptomania (class notes)",prompt:"An accused charged with theft proves kleptomania. The psychiatrist testifies that it weakened her will to resist, but she remained fully conscious of what she was doing. Which is the BEST answer?",options:["She is exempt, since kleptomania is a recognized mental illness that excludes criminal intent.","She is exempt, since any mental condition that affects the will is treated as insanity.","She is liable, but her condition is mitigating as an illness diminishing her will-power.","She is liable, and her condition is irrelevant because theft is a crime that is inherently wrong."],correct:2,explain:"If kleptomania deprives the offender of consciousness of his acts, it is exempting; if it only diminishes will-power without depriving consciousness, it is mitigating (Art. 13[9]).",hint:"Was consciousness lost, or only diminished?"},
+{id:24,tag:"requisites",cite:"R.A. 9262 — Cycle of violence (class notes)",prompt:"A wife kills her husband after one complete cycle of tension, severe beating, and reconciliation. No other episode of abuse was proven. Which is the BEST answer?",options:["BWS applies, since one acute battering incident is enough to create the syndrome.","BWS applies, since the woman's own testimony alone establishes her state of mind.","BWS does not apply, since the battering cycle must be shown to have occurred at least twice.","BWS does not apply, since it can be invoked only if the husband was awake and armed."],correct:2,explain:"The cycle of violence must happen at least twice. One cycle may be an isolated event; two or more establish the pattern and its psychological effects.",hint:"One episode or a pattern?"}
 ];
 
 const BANK_MITAGG = [
@@ -633,7 +699,11 @@ const BANK_MITAGG = [
 {id:17,tag:"exceptions",cite:"Art. 14(1) — Taking advantage of public position",prompt:"A police officer shoots his neighbor during a drunken quarrel over a fence. He used his service pistol, but did not invoke his authority or position. Which is the BEST answer?",options:["The aggravating circumstance applies, since he used his government-issued service firearm.","The aggravating circumstance applies, since every crime committed by a public officer is aggravated.","The aggravating circumstance does not apply, since he did not use his office to commit it.","The aggravating circumstance does not apply, since it covers only elective officials, not appointive ones."],correct:2,explain:"The offender must have abused his public position by using its influence, prestige, or ascendancy to commit the crime. Mere status as a public officer is not enough.",hint:"Did the office help him commit the crime?"},
 {id:18,tag:"memorization",cite:"Art. 14(21) and (17) — Cruelty vs. ignominy",prompt:"After killing the victim, the offender cuts off the victim's ears to show to others. The prosecution alleges cruelty. Which is the BEST answer?",options:["Cruelty applies, since mutilating the victim's body deliberately increased the wrong done.","Cruelty applies, since cruelty covers acts done both before and after the death of the victim.","Cruelty does not apply, since the victim was already dead when his ears were cut off.","Cruelty does not apply, since it is absorbed in treachery whenever the victim is killed."],correct:2,explain:"Cruelty requires that the wrong be deliberately and inhumanly augmented by causing unnecessary physical pain to the victim while alive. Acts on a corpse are not cruelty.",hint:"Can a dead body suffer?"},
 {id:19,tag:"effects",cite:"Art. 15 — Intoxication",prompt:"A habitual drunkard, who is intoxicated almost daily, commits homicide while drunk. His lawyer invokes intoxication as mitigating. Which is the BEST answer?",options:["It is mitigating, since intoxication always diminishes the offender's exercise of will-power.","It is mitigating, since the offender did not plan the crime before becoming intoxicated.","It is aggravating, since habitual intoxication is treated as an aggravating circumstance.","It is neither, since intoxication is relevant only in crimes committed through reckless imprudence."],correct:2,explain:"Art. 15: intoxication is mitigating when not habitual or not subsequent to the plan to commit the felony; it is aggravating when habitual or intentional.",hint:"Art. 15 turns on whether the drinking was habitual or intentional."},
-{id:20,tag:"effects",cite:"Art. 15 — Degree of instruction",prompt:"An illiterate farmer is convicted of murder. His lawyer argues lack of instruction as mitigating. Which is the BEST answer?",options:["It is mitigating, since low instruction always lessens the offender's understanding of the act.","It is mitigating, but only if the offender also proves he lived in a remote area.","It is not mitigating, since murder is inherently wrong and known to be so even by the unschooled.","It is not mitigating, since lack of instruction applies only to offenses punished by special laws."],correct:2,explain:"Lack of instruction is not mitigating in crimes that are inherently evil and known to be wrong by everyone, such as murder, rape, and theft.",hint:"Does one need schooling to know that killing is wrong?"}
+{id:20,tag:"effects",cite:"Art. 15 — Degree of instruction",prompt:"An illiterate farmer is convicted of murder. His lawyer argues lack of instruction as mitigating. Which is the BEST answer?",options:["It is mitigating, since low instruction always lessens the offender's understanding of the act.","It is mitigating, but only if the offender also proves he lived in a remote area.","It is not mitigating, since murder is inherently wrong and known to be so even by the unschooled.","It is not mitigating, since lack of instruction applies only to offenses punished by special laws."],correct:2,explain:"Lack of instruction is not mitigating in crimes that are inherently evil and known to be wrong by everyone, such as murder, rape, and theft.",hint:"Does one need schooling to know that killing is wrong?"},
+{id:21,tag:"jurisprudence",cite:"Art. 14(5) — People v. Jaurigue (past exam)",prompt:"Inside a church, a man touches a woman's breasts, and she immediately stabs him to death. The prosecution alleges the aggravating circumstance of a place dedicated to religious worship. Which is the BEST answer?",options:["It applies, since the killing was committed inside a church while people were present there.","It applies, since the sanctity of a place of worship is violated whatever the offender's intent.","It does not apply, since she had no intention to commit the crime when she entered the church.","It does not apply, since the aggravating circumstance covers only crimes committed during mass."],correct:2,explain:"Jaurigue: the place of religious worship is aggravating only if the offender intended to commit the crime when she entered. A sudden reaction to aggression inside the church does not qualify.",hint:"When did she form the intent?"},
+{id:22,tag:"requisites",cite:"Art. 14(11) — Past exam (Judge Merlas)",prompt:"X kills Y. Afterward, Z gives X money as a reward, although there was no prior agreement or promise between them. Which is the BEST answer?",options:["Price or reward is aggravating, since X actually received money in connection with the killing.","Price or reward is aggravating, but only as to Z, who is the one who gave the reward.","Price or reward is not aggravating, since it was not offered before and did not induce the crime.","Price or reward is not aggravating, since it applies only when the amount given is substantial."],correct:2,explain:"Art. 14(11) requires that the price, reward, or promise be offered before the crime and be the inducement for it. A reward given afterward without prior agreement does not qualify.",hint:"Did the money cause the killing?"},
+{id:23,tag:"memorization",cite:"Arts. 64, 69 — Ordinary vs. privileged mitigating",prompt:"An accused has one aggravating circumstance, one ordinary mitigating circumstance, and a privileged mitigating circumstance. Which is the BEST answer?",options:["All three offset one another, so the penalty is imposed in its medium period only.","The aggravating offsets the privileged mitigating, leaving only one ordinary mitigating.","The aggravating offsets the ordinary mitigating; the privileged one still lowers the degree.","The privileged mitigating cancels the aggravating, and the ordinary one lowers the degree."],correct:2,explain:"Ordinary mitigating circumstances can be offset by aggravating ones. Privileged mitigating circumstances cannot be offset and reduce the penalty by one or two degrees.",hint:"Which kind of mitigating circumstance can never be offset?"},
+{id:24,tag:"effects",cite:"Art. 13(2) — Over 70 years of age",prompt:"A 72-year-old man is convicted of homicide. Which is the BEST answer as to his age?",options:["His age is exempting, since persons over 70 lack full discernment under the RPC.","His age is a privileged mitigating circumstance that lowers the penalty by one degree.","His age is an ordinary mitigating circumstance under Art. 13(2) of the RPC.","His age is irrelevant, since only minority is recognized as a modifying circumstance."],correct:2,explain:"Being over 70 years of age is an ordinary mitigating circumstance under Art. 13(2). Under the class notes, it also barred the imposition of the death penalty (now prohibited by R.A. 9346).",hint:"Look at Art. 13(2)."}
 ];
 
 const TOPICS = {
@@ -645,6 +715,356 @@ const TOPICS = {
 };
 const TOPIC_KEYS = ['basics','stages','justex','mitagg'];
 const TOPIC_SHORT = {basics:"Arts. 1–5", stages:"Arts. 6–10", justex:"Arts. 11–12", mitagg:"Arts. 13–15"};
+
+/* ======================================================================
+   MIDTERM DRILLS — IDENTIFICATION & ENUMERATION
+   Built around Judge Merlas's class discussion (notes:true marks items
+   taken directly from the discussion notes). g = topic group.
+   ====================================================================== */
+const DRILL_GROUPS = {
+  all:"All", notes:"From class notes", basics:"Arts. 1–5", stages:"Arts. 6–10", justex:"Arts. 11–12", mitagg:"Arts. 13–15"
+};
+
+const IDENT = [
+{g:"basics",notes:true,cite:"Art. 1",prompt:"The date the Revised Penal Code took effect.",answer:"January 1, 1932",accept:["january 1 1932","jan 1 1932","1 january 1932","first of january 1932","1932"]},
+{g:"basics",notes:true,cite:"Art. 3",prompt:"Acts or omissions punishable by law.",answer:"Felonies (delitos)",accept:["felony","felonies","delitos","delito"]},
+{g:"basics",notes:true,cite:"Art. 3",prompt:"There is this when the act is performed with deliberate intent.",answer:"Deceit (dolo)",accept:["dolo","deceit","dolus"]},
+{g:"basics",notes:true,cite:"Art. 3",prompt:"There is this when the wrongful act results from imprudence, negligence, lack of foresight, or lack of skill.",answer:"Fault (culpa)",accept:["culpa","fault"]},
+{g:"basics",notes:true,cite:"Constitutional limitation",prompt:"A legislative act which inflicts punishment without trial; the substitution of a legislative act for a judicial determination.",answer:"Bill of attainder",accept:["bill of attainder","attainder"]},
+{g:"basics",notes:true,cite:"Constitutional limitation",prompt:"A law that makes criminal an act done before the passage of the law, which was innocent when done, and punishes such act.",answer:"Ex post facto law",accept:["ex post facto","ex post facto law","expostfacto"]},
+{g:"basics",notes:true,cite:"Art. 22",prompt:"The article providing that penal laws have retroactive effect insofar as they favor the accused who is not a habitual criminal.",answer:"Article 22 (Retroactive effect of penal laws)",accept:["article 22","art 22","22","retroactive effect of penal laws"]},
+{g:"basics",notes:true,cite:"Art. 4",prompt:"That cause which, in natural and continuous sequence, unbroken by any efficient intervening cause, produces the injury, and without which the result would not have occurred.",answer:"Proximate cause",accept:["proximate cause","proximate","legal cause"]},
+{g:"basics",notes:true,cite:"Maxim",prompt:"The maxim meaning 'he who is the cause of the cause is the cause of the evil caused.'",answer:"El que es causa de la causa es causa del mal causado",accept:["el que es causa de la causa es causa del mal causado","el que es causa de la causa"]},
+{g:"basics",notes:true,cite:"Maxim",prompt:"The maxim meaning 'there is no crime where there is no law punishing it.'",answer:"Nullum crimen, nulla poena sine lege",accept:["nullum crimen nulla poena sine lege","nullum crimen sine lege","nullum crimen"]},
+{g:"basics",notes:true,cite:"Maxim",prompt:"The maxim meaning 'a crime is not committed if the mind of the person performing the act complained of is innocent.'",answer:"Actus non facit reum, nisi mens sit rea",accept:["actus non facit reum nisi mens sit rea","actus non facit reum"]},
+{g:"basics",notes:true,cite:"Maxim",prompt:"The maxim meaning 'ignorance or mistake of fact relieves the accused from criminal liability.'",answer:"Ignorantia facti excusat",accept:["ignorantia facti excusat","ignorantia facti"]},
+{g:"basics",notes:true,cite:"Nature of crimes",prompt:"Acts wrongful from their very nature, or inherently evil; generally punished under the RPC, where intent governs.",answer:"Mala in se",accept:["mala in se","malum in se"]},
+{g:"basics",notes:true,cite:"Nature of crimes",prompt:"Acts wrong merely because prohibited by statute; generally under special laws, where the only inquiry is whether the law has been violated.",answer:"Mala prohibita",accept:["mala prohibita","malum prohibitum"]},
+{g:"basics",notes:true,cite:"Art. 3",prompt:"The moving power which impels one to action for a definite result; the reason why a person commits a crime.",answer:"Motive",accept:["motive"]},
+{g:"basics",notes:true,cite:"Art. 3",prompt:"The purpose to use a particular means to effect a result; an element of intentional felonies.",answer:"Intent",accept:["intent","criminal intent"]},
+{g:"basics",notes:false,cite:"Art. 4(2)",prompt:"A person performs an act which would be an offense against persons or property, were it not for the inherent impossibility of its accomplishment or the use of inadequate or ineffectual means.",answer:"Impossible crime",accept:["impossible crime","impossible crimes"]},
+{g:"basics",notes:false,cite:"Art. 4(1)",prompt:"A mistake in the blow — the offender aims at one person but hits another.",answer:"Aberratio ictus",accept:["aberratio ictus"]},
+{g:"basics",notes:false,cite:"Art. 4(1)",prompt:"A mistake in the identity of the victim.",answer:"Error in personae",accept:["error in personae","error in persona"]},
+{g:"basics",notes:false,cite:"Art. 4(1)",prompt:"The injurious result is greater than that intended.",answer:"Praeter intentionem",accept:["praeter intentionem","praeter intentionam"]},
+{g:"stages",notes:true,cite:"Art. 8",prompt:"When two or more persons come to an agreement concerning the commission of a felony and decide to commit it.",answer:"Conspiracy",accept:["conspiracy"],reject:["chain","proposal"]},
+{g:"stages",notes:true,cite:"Art. 8",prompt:"A single overall scheme in which different groups or individuals participate at different stages, each performing a role necessary to the common criminal objective.",answer:"Chain conspiracy",accept:["chain conspiracy","chain of conspiracy","chain"]},
+{g:"stages",notes:true,cite:"Art. 8",prompt:"When the person who has decided to commit a felony proposes its execution to some other person or persons.",answer:"Proposal to commit a felony",accept:["proposal","proposal to commit a felony"]},
+{g:"stages",notes:true,cite:"Art. 6",prompt:"A felony where all the elements necessary for its execution and accomplishment are present.",answer:"Consummated felony",accept:["consummated","consummated felony"]},
+{g:"stages",notes:true,cite:"Art. 6",prompt:"The offender performs all the acts of execution which would produce the felony, but it is not produced by reason of causes independent of his will.",answer:"Frustrated felony",accept:["frustrated","frustrated felony"]},
+{g:"stages",notes:true,cite:"Art. 6",prompt:"The offender commences the commission of a felony directly by overt acts, but does not perform all the acts of execution by reason of some cause other than his own spontaneous desistance.",answer:"Attempted felony",accept:["attempted","attempted felony"]},
+{g:"stages",notes:true,cite:"Art. 6",prompt:"An act or deed indicating an intention to commit a crime — e.g., mixing poison with a person's food, as opposed to merely buying poison.",answer:"Overt act",accept:["overt act","overt acts"]},
+{g:"stages",notes:true,cite:"Art. 6",prompt:"An offense where the purpose of the offender is uncertain and his objective is ambiguous.",answer:"Indeterminate offense",accept:["indeterminate offense","indeterminate offence","indeterminate"]},
+{g:"stages",notes:true,cite:"Art. 6",prompt:"The portion of the acts constituting the crime from the commencement until the offender still has control over his acts and their natural course.",answer:"Subjective phase",accept:["subjective phase","subjective"]},
+{g:"stages",notes:true,cite:"Art. 6",prompt:"The point where the offender has already done everything necessary to bring about the intended result of the crime.",answer:"Objective phase",accept:["objective phase","objective"]},
+{g:"stages",notes:true,cite:"Arts. 7, 9",prompt:"Infractions of law punishable by arresto menor or a fine not exceeding P40,000, or both.",answer:"Light felonies",accept:["light felony","light felonies"]},
+{g:"stages",notes:true,cite:"Art. 9",prompt:"Felonies to which the law attaches the capital punishment or penalties which in any of their periods are afflictive.",answer:"Grave felonies",accept:["grave felony","grave felonies"],reject:["less"]},
+{g:"stages",notes:true,cite:"Art. 9",prompt:"Felonies which the law punishes with penalties which in their maximum period are correctional.",answer:"Less grave felonies",accept:["less grave felony","less grave felonies","less grave"]},
+{g:"justex",notes:true,cite:"Art. 11",prompt:"Acts of a person said to be in accordance with law, so that he incurs no criminal and no civil liability — 'no crime, no criminal.'",answer:"Justifying circumstances",accept:["justifying circumstances","justifying circumstance","justifying"]},
+{g:"justex",notes:true,cite:"Art. 12",prompt:"Grounds for exemption from punishment where there is a crime but no criminal, because of the absence of intelligence, freedom of action, intent, or negligence.",answer:"Exempting circumstances",accept:["exempting circumstances","exempting circumstance","exempting"]},
+{g:"justex",notes:false,cite:"Art. 11(1)",prompt:"An actual physical assault, or a threat to inflict real, imminent injury, upon a person — the indispensable requisite of self-defense.",answer:"Unlawful aggression",accept:["unlawful aggression"]},
+{g:"justex",notes:true,cite:"Art. 11(1)",prompt:"The doctrine that the law does not demand perfect equality of weapons between aggressor and defender, only that the defense be reasonable under the circumstances.",answer:"Rational equivalence",accept:["rational equivalence","rational necessity"]},
+{g:"justex",notes:true,cite:"Art. 11(1)",prompt:"The rule that a person unlawfully attacked in a place where he has the right to be is not required to retreat.",answer:"Stand your ground rule",accept:["stand your ground","stand your ground rule","no duty to retreat"]},
+{g:"justex",notes:true,cite:"R.A. 9262, Sec. 26",prompt:"A justifying defense for a woman who has gone through the battering cycle at least twice, whose state of mind is assessed with the help of expert psychiatrists or psychologists.",answer:"Battered woman syndrome",accept:["battered woman syndrome","bws","battered wife syndrome"]},
+{g:"justex",notes:true,cite:"R.A. 9262 — People v. Genosa",prompt:"The pattern consisting of the tension-building phase, the acute battering incident, and the tranquil, loving (non-violent) phase.",answer:"Cycle of violence",accept:["cycle of violence","battering cycle","cycle of abuse"]},
+{g:"justex",notes:true,cite:"RPC Art. 247",prompt:"A legally married person who surprises his or her spouse in the very act of sexual intercourse with another and kills either of them, and is punished only by destierro.",answer:"Death or physical injuries under exceptional circumstances (Art. 247)",accept:["exceptional circumstances","death under exceptional circumstances","article 247","art 247","marital infidelity rule"]},
+{g:"justex",notes:true,cite:"Absolutory cause",prompt:"Where the criminal intent originates from the police, and the accused would not have committed the crime if not induced by them — an absolutory cause.",answer:"Instigation",accept:["instigation"]},
+{g:"justex",notes:true,cite:"Absolutory cause",prompt:"Where the accused already has the criminal intent, and law enforcers merely provide the opportunity to catch him in the act — not an absolutory cause.",answer:"Entrapment",accept:["entrapment"]},
+{g:"justex",notes:false,cite:"Absolutory cause",prompt:"Causes where the act committed is a crime, but for reasons of public policy and sentiment no penalty is imposed (e.g., instigation, Art. 332 relatives).",answer:"Absolutory causes",accept:["absolutory cause","absolutory causes"]},
+{g:"justex",notes:true,cite:"Arts. 12(1), 13(9)",prompt:"A mental condition compelling one to steal: exempting if it deprives the offender of consciousness of his acts, mitigating if it only diminishes it.",answer:"Kleptomania",accept:["kleptomania"]},
+{g:"mitagg",notes:true,cite:"Arts. 13, 64",prompt:"Mitigating circumstances that can be offset by aggravating circumstances.",answer:"Ordinary mitigating circumstances",accept:["ordinary mitigating","ordinary mitigating circumstances","ordinary"]},
+{g:"mitagg",notes:true,cite:"Arts. 68, 69",prompt:"Mitigating circumstances that reduce the penalty by one or two degrees and cannot be offset by aggravating circumstances.",answer:"Privileged mitigating circumstances",accept:["privileged mitigating","privileged mitigating circumstances","privileged"]},
+{g:"mitagg",notes:false,cite:"Art. 15",prompt:"Circumstances which may be aggravating or mitigating according to the nature and effects of the crime — relationship, intoxication, and degree of instruction.",answer:"Alternative circumstances",accept:["alternative circumstances","alternative circumstance","alternative"]},
+{g:"mitagg",notes:false,cite:"Art. 14(16)",prompt:"The offender employs means, methods, or forms that tend directly and specially to insure the execution of the crime without risk to himself from the defense the offended party might make.",answer:"Treachery (alevosía)",accept:["treachery","alevosia","alevosía"]},
+{g:"mitagg",notes:false,cite:"Art. 14(6)",prompt:"More than three armed malefactors acting together in the commission of an offense.",answer:"Band (cuadrilla)",accept:["band","cuadrilla","by a band"]},
+{g:"mitagg",notes:false,cite:"Art. 14(9)",prompt:"One who, at the time of his trial for one crime, has been previously convicted by final judgment of another crime embraced in the same title of the RPC.",answer:"Recidivist",accept:["recidivist","recidivism"]},
+{g:"mitagg",notes:false,cite:"Art. 14(10)",prompt:"The offender has been previously punished for an offense with an equal or greater penalty, or for two or more crimes with lighter penalties.",answer:"Reiteracion (habituality)",accept:["reiteracion","habituality","reiteration"]},
+{g:"mitagg",notes:false,cite:"Art. 14(21)",prompt:"The wrong is deliberately and inhumanly augmented by causing other wrongs not necessary for its commission.",answer:"Cruelty",accept:["cruelty","ensanamiento"]},
+{g:"mitagg",notes:false,cite:"Art. 14(17)",prompt:"Means are employed which add ignominy — moral suffering, shame, or disgrace — to the natural effects of the act.",answer:"Ignominy",accept:["ignominy"]},
+{g:"mitagg",notes:false,cite:"Art. 14(13)",prompt:"The aggravating circumstance requiring the time of determination, an act showing the offender clung to it, and sufficient lapse of time for reflection.",answer:"Evident premeditation",accept:["evident premeditation","premeditation"]}
+];
+
+const ENUM = [
+{g:"basics",notes:true,cite:"Art. 3",prompt:"Enumerate the elements of felonies.",items:["There must be an act or omission","The act or omission must be punishable by the RPC","The act is performed or the omission incurred by means of dolo or culpa"]},
+{g:"basics",notes:false,cite:"Art. 3",prompt:"Enumerate the requisites of dolo (intentional felonies).",items:["Freedom","Intelligence","Intent"]},
+{g:"basics",notes:true,cite:"Art. 3",prompt:"Enumerate the ways by which fault (culpa) results.",items:["Imprudence","Negligence","Lack of foresight","Lack of skill"]},
+{g:"basics",notes:false,cite:"Criminal law",prompt:"Enumerate the characteristics of criminal law.",items:["Generality","Territoriality","Prospectivity"]},
+{g:"basics",notes:false,cite:"Generality",prompt:"Enumerate the exceptions to the general application of Philippine criminal law.",items:["Treaty stipulations","Laws of preferential application (e.g., R.A. 75 for diplomats)","Principles of public international law (e.g., heads of state, ambassadors)"]},
+{g:"basics",notes:false,cite:"Art. 2",prompt:"Enumerate the cases where the RPC applies outside Philippine jurisdiction (Art. 2).",items:["Offenses committed while on a Philippine ship or airship","Forging or counterfeiting Philippine coins or currency notes, or obligations and securities of the Philippines","Introducing such forged or counterfeited items into the Philippines","Offenses by public officers or employees in the exercise of their functions","Crimes against national security and the law of nations (Title One, Book Two)"]},
+{g:"basics",notes:true,cite:"Art. 4",prompt:"Enumerate the instances when the felony is NOT the proximate cause of the resulting injury.",items:["An active force intervened between the felony and the resulting injury, and that force is a distinct act or fact absolutely foreign to the felonious act","The resulting injury is due to the intentional act of the victim"]},
+{g:"basics",notes:true,cite:"Art. 4(2)",prompt:"Enumerate the requisites of an impossible crime.",items:["The act performed would be an offense against persons or property","The act was done with evil intent","Its accomplishment is inherently impossible, or the means employed is inadequate or ineffectual","The act does not constitute a violation of another provision of the RPC"]},
+{g:"basics",notes:true,cite:"Motive",prompt:"Enumerate the instances when motive is relevant.",items:["When it is difficult to ascertain the identity of the assailant","When the identification came from an unreliable source and the testimony is inconclusive","When there are two antagonistic theories as to the identity of the assailant","When there are no eyewitnesses and suspicion may fall on several persons","When the evidence is merely circumstantial"],mnemonic:"Do U Think No Clarity — Difficult · Unreliable · Two theories · No eyewitness · Circumstantial"},
+{g:"basics",notes:true,cite:"Maxims",prompt:"Enumerate the four criminal law maxims discussed in class, with their meaning.",items:["Nullum crimen, nulla poena sine lege — no crime where there is no law punishing it","Actus non facit reum, nisi mens sit rea — no crime if the mind is innocent","Ignorantia facti excusat — mistake of fact relieves from liability","El que es causa de la causa es causa del mal causado — the cause of the cause is the cause of the evil caused"]},
+{g:"basics",notes:true,cite:"Mala in se vs. mala prohibita",prompt:"Enumerate the basis of criminal liability in mala in se and in mala prohibita.",items:["Mala in se — the offender's moral trait; intent governs","Mala prohibita — the offender's voluntariness; the only inquiry is whether the law was violated"]},
+{g:"stages",notes:true,cite:"Arts. 3, 6, 9",prompt:"Enumerate how felonies are classified, with the governing article.",items:["According to the manner of commission — dolo or culpa (Art. 3)","According to the stages of execution — attempted, frustrated, consummated (Art. 6)","According to gravity — grave, less grave, light (Art. 9)"]},
+{g:"stages",notes:false,cite:"Art. 6",prompt:"Enumerate the elements of an attempted felony.",items:["The offender commences the commission of the felony directly by overt acts","He does not perform all the acts of execution which should produce the felony","His act is not stopped by his own spontaneous desistance","The non-performance of all acts of execution is due to a cause or accident other than his spontaneous desistance"]},
+{g:"stages",notes:false,cite:"Art. 6",prompt:"Enumerate the elements of a frustrated felony.",items:["The offender performs all the acts of execution","All the acts performed would produce the felony as a consequence","But the felony is not produced","By reason of causes independent of the will of the perpetrator"]},
+{g:"stages",notes:true,cite:"Art. 7",prompt:"When are light felonies punishable? State the rule and the exception.",items:["General rule — only when consummated","Exception — even if attempted or frustrated, when committed against persons or property"]},
+{g:"stages",notes:false,cite:"Art. 8",prompt:"Enumerate the felonies where conspiracy to commit is punishable under the RPC.",items:["Treason","Rebellion or insurrection","Coup d'état","Sedition"]},
+{g:"stages",notes:false,cite:"Art. 8",prompt:"Enumerate the felonies where proposal to commit is punishable under the RPC.",items:["Treason","Rebellion or insurrection","Coup d'état"]},
+{g:"stages",notes:false,cite:"Art. 9 (R.A. 10951)",prompt:"Enumerate the classes of felonies according to gravity, with their penalties.",items:["Grave — capital or afflictive penalties in any of their periods (fine over P1,200,000)","Less grave — penalties correctional in their maximum period (fine P40,000 to P1,200,000)","Light — arresto menor or fine not exceeding P40,000, or both"]},
+{g:"justex",notes:false,cite:"Art. 11",prompt:"Enumerate the justifying circumstances under Art. 11.",items:["Self-defense","Defense of relatives","Defense of a stranger","Avoidance of greater evil (state of necessity)","Fulfillment of duty or lawful exercise of a right or office","Obedience to an order issued for some lawful purpose"]},
+{g:"justex",notes:false,cite:"Art. 11(1)",prompt:"Enumerate the requisites of self-defense.",items:["Unlawful aggression","Reasonable necessity of the means employed to prevent or repel it","Lack of sufficient provocation on the part of the person defending himself"]},
+{g:"justex",notes:false,cite:"Art. 11(2)",prompt:"Enumerate the relatives covered by defense of relatives.",items:["Spouse","Ascendants","Descendants","Legitimate, natural, or adopted brothers or sisters","Relatives by affinity in the same degrees","Relatives by consanguinity within the fourth civil degree"]},
+{g:"justex",notes:false,cite:"Art. 11(4)",prompt:"Enumerate the requisites of avoidance of greater evil (state of necessity).",items:["The evil sought to be avoided actually exists","The injury feared is greater than that done to avoid it","There is no other practical and less harmful means of preventing it"]},
+{g:"justex",notes:false,cite:"Art. 11(5)–(6)",prompt:"Enumerate the requisites of (a) fulfillment of duty and (b) obedience to an order.",items:["(a) The accused acted in the performance of a duty or lawful exercise of a right or office","(a) The injury caused is the necessary consequence of such performance or exercise","(b) An order has been issued by a superior","(b) The order is for some lawful purpose","(b) The means used by the subordinate to carry it out are lawful"]},
+{g:"justex",notes:true,cite:"Art. 11(1) — class discussion",prompt:"Enumerate the circumstances discussed in class that belie or weaken a claim of self-defense.",items:["The type, location, and seriousness of wounds (e.g., many stab wounds vs. a small bruise on the accused)","The improbability of the deceased being the aggressor","The accused did not mention self-defense right away (e.g., not in his confession)","The aggressor had already run away","There was an agreement to fight"]},
+{g:"justex",notes:true,cite:"Art. 11(1) — class discussion",prompt:"Enumerate the tests of reasonableness of the means used in self-defense.",items:["Perfect equality of weapons is not required, since the defender lacks tranquility to choose his weapon","The physical condition, character, and size of the parties","Other circumstances (e.g., a shotgun was reasonable for a tiny woman cornered and punched by three large men)"]},
+{g:"justex",notes:true,cite:"Art. 11(1) — class discussion",prompt:"Enumerate the instances discussed in class when necessity of the means is no longer present.",items:["The attacker ran away","The danger or risk had disappeared","The victim was already disarmed but was still stabbed repeatedly","The aggressor refused to fight anymore","The aggressor was disarmed and already weakened"]},
+{g:"justex",notes:true,cite:"R.A. 9262 — People v. Genosa",prompt:"Enumerate the phases of the cycle of violence in battered woman syndrome.",items:["Tension-building phase — minor battering, verbal or slight physical abuse","Acute battering incident — brutality, destructiveness, sometimes death","Tranquil, loving (non-violent) phase — relief; the woman believes it will not happen again"]},
+{g:"justex",notes:false,cite:"Art. 12",prompt:"Enumerate the exempting circumstances under Art. 12.",items:["Imbecile or insane person (unless acting in a lucid interval)","Minor (now governed by R.A. 9344 as amended — 15 and below; above 15 but below 18 without discernment)","Accident — causing injury while performing a lawful act with due care, without fault or intention","Irresistible force","Uncontrollable fear of an equal or greater injury","Failure to perform an act required by law, when prevented by a lawful or insuperable cause"]},
+{g:"justex",notes:false,cite:"Art. 12(4)",prompt:"Enumerate the requisites of accident as an exempting circumstance.",items:["A person is performing a lawful act","With due care","He causes an injury to another by mere accident","Without fault or intention of causing it"]},
+{g:"justex",notes:true,cite:"Instigation vs. entrapment",prompt:"Distinguish instigation from entrapment by stating what each is and its effect.",items:["Instigation — intent originates from the police; the accused would not have committed the crime otherwise; absolutory (not punished)","Entrapment — the accused already had the intent; police only provide the opportunity; not absolutory (punished)"]},
+{g:"mitagg",notes:false,cite:"Art. 13",prompt:"Enumerate the mitigating circumstances under Art. 13.",items:["Incomplete justifying or exempting circumstances","Under 18 or over 70 years of age","No intention to commit so grave a wrong","Sufficient provocation or threat immediately preceding the act","Immediate vindication of a grave offense","Passion or obfuscation","Voluntary surrender or voluntary plea of guilt","Deaf-mute, blind, or other physical defect restricting means of action, defense, or communication","Illness diminishing the exercise of will-power","Similar and analogous circumstances"]},
+{g:"mitagg",notes:true,cite:"Arts. 13, 64, 68, 69",prompt:"Distinguish ordinary from privileged mitigating circumstances as to their effect.",items:["Ordinary — can be offset by aggravating circumstances","Ordinary — if not offset, the penalty is applied in its minimum period (Art. 64)","Privileged — reduces the penalty by one or two degrees","Privileged — cannot be offset by aggravating circumstances"]},
+{g:"mitagg",notes:false,cite:"Art. 13(7)",prompt:"Enumerate the requisites of voluntary surrender.",items:["The offender had not been actually arrested","He surrendered to a person in authority or his agent","The surrender was voluntary (spontaneous)"]},
+{g:"mitagg",notes:false,cite:"Art. 13(7)",prompt:"Enumerate the requisites of a voluntary plea of guilt as mitigating.",items:["The plea is spontaneous and unconditional","It is made in open court","It is made prior to the presentation of the prosecution's evidence"]},
+{g:"mitagg",notes:false,cite:"Art. 13(6)",prompt:"Enumerate the requisites of passion or obfuscation.",items:["There is an act, both unlawful and sufficient to produce such condition of mind","The crime was committed while the passion lasted, not after regaining equanimity"]},
+{g:"mitagg",notes:false,cite:"Art. 14(16)",prompt:"Enumerate the requisites of treachery.",items:["At the time of the attack, the victim was not in a position to defend himself","The offender consciously and deliberately adopted the particular means, method, or form of attack"]},
+{g:"mitagg",notes:false,cite:"Art. 14(13)",prompt:"Enumerate the requisites of evident premeditation.",items:["The time when the offender determined to commit the crime","An act manifestly indicating that he clung to his determination","A sufficient lapse of time between determination and execution to allow reflection"]},
+{g:"mitagg",notes:true,cite:"Art. 14(11)",prompt:"Enumerate the requisites for price, reward, or promise to be aggravating.",items:["The price, reward, or promise was offered or given before the commission of the crime","It was the reason (inducement) for committing the crime"]},
+{g:"mitagg",notes:false,cite:"Art. 14",prompt:"Enumerate the kinds of aggravating circumstances.",items:["Generic","Specific","Qualifying","Inherent","Special"]},
+{g:"mitagg",notes:false,cite:"Art. 15",prompt:"Enumerate the alternative circumstances.",items:["Relationship","Intoxication","Degree of instruction and education"]},
+{g:"mitagg",notes:false,cite:"Art. 15",prompt:"When is intoxication mitigating and when is it aggravating?",items:["Mitigating — when not habitual and not subsequent to the plan to commit the felony","Aggravating — when habitual or intentional (subsequent to the plan)"]},
+{g:"mitagg",notes:false,cite:"Art. 14",prompt:"Enumerate the aggravating circumstances under Art. 14 (21 paragraphs).",items:["Advantage taken of public position","In contempt of or with insult to public authorities","Disregard of rank, age, or sex, or in the dwelling of the offended party","Abuse of confidence or obvious ungratefulness","In the palace of the Chief Executive, in his presence, where public authorities are discharging duties, or in a place of religious worship","Nighttime, uninhabited place, or by a band","On the occasion of a conflagration, shipwreck, earthquake, epidemic, or other calamity","With the aid of armed men or persons who insure or afford impunity","Recidivism","Reiteracion (habituality)","In consideration of a price, reward, or promise","By means of inundation, fire, poison, explosion, stranding, derailment, or other great waste and ruin","Evident premeditation","Craft, fraud, or disguise","Abuse of superior strength or means to weaken the defense","Treachery","Ignominy","Unlawful entry","Breaking a wall, roof, floor, door, or window","With the aid of persons under 15, or by means of motor vehicles, airships, or similar means","Cruelty"]}
+];
+
+
+/* ======================================================================
+   MIDTERM DRILL ENGINE
+   ====================================================================== */
+let drillMode = 'ident';
+let drillFilter = 'all';
+let drillPool = [];
+let drillIdx = 0;
+let drillResults = [];
+let drillChecked = false;
+
+function drillSource(){ return drillMode === 'ident' ? IDENT : ENUM; }
+function drillFiltered(){
+  const src = drillSource();
+  if(drillFilter === 'all') return src;
+  if(drillFilter === 'notes') return src.filter(x => x.notes);
+  return src.filter(x => x.g === drillFilter);
+}
+function showDrill(mode){
+  drillMode = mode; drillFilter = 'all';
+  ['view-picker','view-quiz','view-alac','view-studyguide','view-issues'].forEach(id=>{
+    const el = document.getElementById(id); if(el) el.classList.add('hide');
+  });
+  document.getElementById('view-drill').classList.remove('hide');
+  const ident = mode === 'ident';
+  document.getElementById('mast-eyebrow').textContent = "MIDTERM DRILL";
+  document.getElementById('mast-title').textContent = ident ? "Identification" : "Enumeration";
+  document.getElementById('mast-sub').textContent = ident
+    ? "Read the definition, type the term, then check."
+    : "List every item from memory, then reveal and tick what you got.";
+  document.getElementById('drill-heading').textContent = ident ? "Identification" : "Enumeration";
+  document.getElementById('drill-intro').textContent = ident
+    ? "Each card gives a definition, description, or maxim. Type the term it describes. The checker accepts common variants; you can overrule it if your answer is right but worded differently."
+    : "Each card asks you to enumerate requisites, elements, or kinds. Write your list first, then reveal the answer key and tick each item you recalled. Your score counts items, not cards.";
+  document.getElementById('drill-setup').classList.remove('hide');
+  ['drill-run','drill-done','drill-browse'].forEach(id=>document.getElementById(id).classList.add('hide'));
+  renderDrillFilters();
+  window.scrollTo(0,0);
+}
+function renderDrillFilters(){
+  const wrap = document.getElementById('drill-filters');
+  wrap.innerHTML = '';
+  Object.keys(DRILL_GROUPS).forEach(k=>{
+    const n = k==='all' ? drillSource().length : k==='notes' ? drillSource().filter(x=>x.notes).length : drillSource().filter(x=>x.g===k).length;
+    const p = document.createElement('button');
+    p.type = 'button';
+    p.className = 'filter-pill' + (drillFilter===k ? ' active' : '');
+    p.textContent = DRILL_GROUPS[k] + ' (' + n + ')';
+    p.onclick = () => { drillFilter = k; renderDrillFilters(); };
+    wrap.appendChild(p);
+  });
+  const n = drillFiltered().length;
+  document.getElementById('drill-count').textContent = n + (drillMode==='ident' ? ' terms' : ' lists') + ' in this set. Order is shuffled every run.';
+}
+function startDrill(custom){
+  drillPool = custom ? custom.slice() : shuffle(drillFiltered());
+  if(!drillPool.length) return;
+  drillIdx = 0; drillResults = [];
+  document.getElementById('drill-setup').classList.add('hide');
+  document.getElementById('drill-done').classList.add('hide');
+  document.getElementById('drill-browse').classList.add('hide');
+  document.getElementById('drill-run').classList.remove('hide');
+  showDrillCard();
+}
+function drillScoreText(){
+  if(drillMode==='ident'){
+    const ok = drillResults.filter(r=>r && r.ok).length;
+    return 'Correct: ' + ok + ' / ' + drillResults.filter(Boolean).length;
+  }
+  const got = drillResults.reduce((s,r)=>s+(r?r.got:0),0), tot = drillResults.reduce((s,r)=>s+(r?r.total:0),0);
+  return 'Items recalled: ' + got + ' / ' + tot;
+}
+function tagsHtml(it){
+  return `<span class="drill-tag">${escapeHtml(it.cite)}</span>` + (it.notes ? '<span class="drill-tag notes">Class notes</span>' : '');
+}
+function showDrillCard(){
+  drillChecked = false;
+  const it = drillPool[drillIdx];
+  document.getElementById('drill-pos').textContent = (drillMode==='ident' ? 'Term ' : 'List ') + (drillIdx+1) + ' of ' + drillPool.length;
+  document.getElementById('drill-score').textContent = drillScoreText();
+  document.getElementById('drill-fill').style.width = (drillIdx / drillPool.length * 100) + '%';
+  const card = document.getElementById('drill-card');
+  if(drillMode==='ident'){
+    card.innerHTML = tagsHtml(it) +
+      `<p class="drill-prompt">${escapeHtml(it.prompt)}</p>
+       <label class="filter-label" for="drill-answer">Your answer</label>
+       <input class="drill-input" id="drill-answer" type="text" autocomplete="off" spellcheck="false">
+       <div id="drill-feedback"></div>
+       <div class="btn-row" id="drill-actions" style="margin-top:14px;">
+         <button class="btn" onclick="checkIdent()">Check</button>
+         <button class="btn secondary" onclick="revealIdent()">I don't know</button>
+       </div>`;
+    const inp = document.getElementById('drill-answer');
+    inp.addEventListener('keydown', e => { if(e.key==='Enter'){ e.preventDefault(); drillChecked ? nextDrill() : checkIdent(); } });
+    inp.focus();
+  } else {
+    card.innerHTML = tagsHtml(it) +
+      `<p class="drill-prompt">${escapeHtml(it.prompt)} <span style="color:var(--ink-soft);font-size:.85em;">(${it.items.length})</span></p>
+       <label class="filter-label" for="drill-answer">Your list</label>
+       <textarea class="drill-input" id="drill-answer" placeholder="1.&#10;2.&#10;3."></textarea>
+       <div id="drill-feedback"></div>
+       <div class="btn-row" id="drill-actions" style="margin-top:14px;">
+         <button class="btn" onclick="revealEnum()">Reveal answer key</button>
+       </div>`;
+    document.getElementById('drill-answer').focus();
+  }
+}
+function normAns(s){
+  return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\b(the|a|an|of|art|article)\b/g,' ').replace(/[^a-z0-9]+/g,' ').trim();
+}
+function identMatches(input, it){
+  const u = normAns(input);
+  if(!u) return false;
+  if((it.reject||[]).some(w => (' '+u+' ').includes(' '+w+' '))) return false;
+  return [it.answer, ...it.accept].some(a=>{
+    const n = normAns(a);
+    return u === n || (n.length >= 4 && u.includes(n)) || (u.length >= 6 && n.includes(u) && u.length >= n.length * 0.75);
+  });
+}
+function identFeedback(ok, typed, it){
+  const fb = document.getElementById('drill-feedback');
+  fb.innerHTML = `<div class="drill-verdict ${ok?'ok':'no'}"><strong>${ok?'Correct.':'Not quite.'}</strong>Answer: ${escapeHtml(it.answer)}</div>`;
+  document.getElementById('drill-actions').innerHTML =
+    `<button class="btn" onclick="nextDrill()">${drillIdx < drillPool.length-1 ? 'Next' : 'Finish'}</button>` +
+    (ok ? `<button class="btn secondary" onclick="overrideIdent(false)">Actually, mark me wrong</button>`
+        : (typed ? `<button class="btn secondary" onclick="overrideIdent(true)">My answer means the same — count it</button>` : ''));
+}
+function checkIdent(){
+  if(drillChecked) return;
+  const it = drillPool[drillIdx];
+  const typed = document.getElementById('drill-answer').value;
+  if(!typed.trim()){ revealIdent(); return; }
+  const ok = identMatches(typed, it);
+  drillResults[drillIdx] = {it, ok, typed};
+  drillChecked = true;
+  document.getElementById('drill-answer').readOnly = true;
+  identFeedback(ok, typed, it);
+  document.getElementById('drill-score').textContent = drillScoreText();
+}
+function revealIdent(){
+  if(drillChecked) return;
+  const it = drillPool[drillIdx];
+  drillResults[drillIdx] = {it, ok:false, typed:''};
+  drillChecked = true;
+  document.getElementById('drill-answer').readOnly = true;
+  identFeedback(false, '', it);
+  document.getElementById('drill-score').textContent = drillScoreText();
+}
+function overrideIdent(ok){
+  const r = drillResults[drillIdx]; r.ok = ok;
+  identFeedback(ok, r.typed, r.it);
+  document.getElementById('drill-score').textContent = drillScoreText();
+}
+function revealEnum(){
+  if(drillChecked) return;
+  drillChecked = true;
+  const it = drillPool[drillIdx];
+  drillResults[drillIdx] = {it, got:0, total:it.items.length, missed:it.items.slice()};
+  const fb = document.getElementById('drill-feedback');
+  fb.innerHTML = `<p class="filter-label" style="margin-top:16px;">Tick each item you got</p>
+    <ul class="enum-list">${it.items.map((x,i)=>`<li onclick="toggleEnumItem(${i}, event)"><span>${escapeHtml(x)}</span><input type="checkbox" id="en-${i}" aria-label="I got item ${i+1}"></li>`).join('')}</ul>` +
+    (it.mnemonic ? `<p class="enum-mnemonic">Mnemonic: ${escapeHtml(it.mnemonic)}</p>` : '');
+  document.getElementById('drill-actions').innerHTML =
+    `<button class="btn" onclick="nextDrill()">${drillIdx < drillPool.length-1 ? 'Next' : 'Finish'}</button>
+     <button class="btn secondary" onclick="tickAllEnum()">I got them all</button>`;
+}
+function toggleEnumItem(i, e){
+  const box = document.getElementById('en-'+i);
+  if(e.target !== box) box.checked = !box.checked;
+  box.closest('li').classList.toggle('got', box.checked);
+  tallyEnum();
+}
+function tickAllEnum(){
+  drillPool[drillIdx].items.forEach((_,i)=>{ const b=document.getElementById('en-'+i); b.checked=true; b.closest('li').classList.add('got'); });
+  tallyEnum();
+}
+function tallyEnum(){
+  const it = drillPool[drillIdx], r = drillResults[drillIdx];
+  r.missed = it.items.filter((_,i)=>!document.getElementById('en-'+i).checked);
+  r.got = it.items.length - r.missed.length;
+  document.getElementById('drill-score').textContent = drillScoreText();
+}
+function nextDrill(){
+  if(!drillChecked){ drillMode==='ident' ? checkIdent() : revealEnum(); return; }
+  if(drillIdx < drillPool.length-1){ drillIdx++; showDrillCard(); window.scrollTo({top:0}); }
+  else finishDrill();
+}
+function finishDrill(){
+  document.getElementById('drill-run').classList.add('hide');
+  const done = document.getElementById('drill-done');
+  done.classList.remove('hide');
+  let missedItems, head;
+  if(drillMode==='ident'){
+    const ok = drillResults.filter(r=>r.ok).length, tot = drillResults.length;
+    head = `<div class="score-row"><span class="score-big">${ok}/${tot}</span><span class="score-label">terms identified</span></div><p class="hero-cap">${Math.round(ok/tot*100)}%</p>`;
+    missedItems = drillResults.filter(r=>!r.ok);
+    done.innerHTML = head +
+      `<div class="btn-row">
+         <button class="btn" onclick="startDrill()">Run again</button>
+         ${missedItems.length ? '<button class="btn secondary" onclick="retryMissedDrill()">Retry missed only</button>' : ''}
+         <button class="btn secondary" onclick="showDrill(drillMode)">Change coverage</button>
+       </div>` +
+      (missedItems.length ? `<div class="drill-missed"><p class="filter-label">Review these</p>${missedItems.map(r=>
+        `<div class="drill-card"><p class="drill-prompt" style="font-size:calc(15px * var(--fs));margin-bottom:6px;">${escapeHtml(r.it.prompt)}</p>
+         <p style="font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));margin:0;"><strong>${escapeHtml(r.it.answer)}</strong>${r.typed ? ' &nbsp;·&nbsp; you wrote: ' + escapeHtml(r.typed) : ''}</p></div>`).join('')}</div>` : '');
+  } else {
+    const got = drillResults.reduce((s,r)=>s+r.got,0), tot = drillResults.reduce((s,r)=>s+r.total,0);
+    head = `<div class="score-row"><span class="score-big">${got}/${tot}</span><span class="score-label">items recalled</span></div><p class="hero-cap">${Math.round(got/tot*100)}% across ${drillResults.length} lists</p>`;
+    missedItems = drillResults.filter(r=>r.got < r.total);
+    done.innerHTML = head +
+      `<div class="btn-row">
+         <button class="btn" onclick="startDrill()">Run again</button>
+         ${missedItems.length ? '<button class="btn secondary" onclick="retryMissedDrill()">Retry incomplete lists</button>' : ''}
+         <button class="btn secondary" onclick="showDrill(drillMode)">Change coverage</button>
+       </div>` +
+      (missedItems.length ? `<div class="drill-missed"><p class="filter-label">Items you missed</p>${missedItems.map(r=>
+        `<div class="drill-card"><p class="drill-prompt" style="font-size:calc(15px * var(--fs));margin-bottom:6px;">${escapeHtml(r.it.prompt)}</p>
+         <ul style="margin:0;padding-left:20px;font-family:'Inter',sans-serif;font-size:calc(13.5px * var(--fs));line-height:1.55;">${r.missed.map(m=>'<li>'+escapeHtml(m)+'</li>').join('')}</ul></div>`).join('')}</div>` : '');
+  }
+  window.scrollTo(0,0);
+}
+function retryMissedDrill(){
+  const missed = drillMode==='ident' ? drillResults.filter(r=>!r.ok) : drillResults.filter(r=>r.got < r.total);
+  startDrill(shuffle(missed.map(r=>r.it)));
+}
+function browseDrill(){
+  document.getElementById('drill-setup').classList.add('hide');
+  const wrap = document.getElementById('drill-browse');
+  wrap.classList.remove('hide');
+  const list = drillFiltered();
+  wrap.innerHTML = `<div class="btn-row" style="margin-bottom:16px;"><button class="btn secondary" onclick="showDrill(drillMode)">&larr; Back to drill setup</button><button class="btn secondary" onclick="window.print()">Print</button></div>` +
+    list.map(it => drillMode==='ident'
+      ? `<div class="drill-card">${tagsHtml(it)}<p class="drill-prompt">${escapeHtml(it.prompt)}</p><details><summary>Show answer</summary><p class="ans">${escapeHtml(it.answer)}</p></details></div>`
+      : `<div class="drill-card">${tagsHtml(it)}<p class="drill-prompt">${escapeHtml(it.prompt)}</p><details><summary>Show list (${it.items.length})</summary><ol>${it.items.map(x=>'<li>'+escapeHtml(x)+'</li>').join('')}</ol>${it.mnemonic?'<p class="enum-mnemonic">Mnemonic: '+escapeHtml(it.mnemonic)+'</p>':''}</details></div>`
+    ).join('');
+}
 
 const TAG_LABELS = {memorization:"Memorization", requisites:"Requisites", exceptions:"Exceptions", effects:"Effects / consequences", jurisprudence:"Jurisprudence"};
 const TAG_ORDER = ["memorization","requisites","exceptions","effects","jurisprudence"];
@@ -723,8 +1143,14 @@ function buildTopicCards(){
       count + ' questions', () => chooseTopic('all')));
   }
 
-  wrap.appendChild(bentoCard('sp-6', 'Essay practice', 'ALAC Essay Problems',
-    'Work out your own Answer, Legal Basis, Application and Conclusion, then reveal the model answer.',
+  wrap.appendChild(bentoCard('sp-6', 'Midterm drill', 'Identification',
+    'Definitions, maxims and doctrines from the class discussion. Type the term, then check.',
+    IDENT.length + ' terms', () => showDrill('ident')));
+  wrap.appendChild(bentoCard('sp-6', 'Midterm drill', 'Enumeration',
+    'Requisites, elements, kinds and lists. Write them from memory, then tick what you got.',
+    ENUM.length + ' lists', () => showDrill('enum')));
+  wrap.appendChild(bentoCard('sp-6', 'Scenario problems', 'Past Exam & ALAC Problems',
+    'Judge Merlas\u2019s past exam problems, class discussion scenarios, and more \u2014 answer in ALAC, then reveal the model answer.',
     'Open essays', showAlac));
   wrap.appendChild(bentoCard('sp-6', 'Quick reference', 'Color-Coded Study Guide',
     'Provisions, requisites, exceptions and doctrine, laid out for a fast pass before recitation.',
@@ -732,6 +1158,65 @@ function buildTopicCards(){
 }
 
 const ALAC = {
+  "Judge Merlas — Past Exam Problems": [
+    {
+      fact:"A wanted to kill B. To accomplish this, A set fire to B's house while B was inside. Fortunately, B was able to escape unharmed.",
+      question:"Is A liable for an impossible crime of murder by means of fire? Explain.",
+      answer:"<p><b>Answer:</b> No. A is not liable for an impossible crime; he is liable for arson.</p><p><b>Legal Basis:</b> Article 4, paragraph 2 of the RPC imposes liability for an impossible crime only when the following requisites concur: (1) the act would be an offense against persons or property; (2) it was done with evil intent; (3) its accomplishment is inherently impossible, or the means employed is inadequate or ineffectual; and (4) the act does not constitute a violation of another provision of the RPC.</p><p><b>Application:</b> The fourth requisite is missing. By setting fire to B's house, A already committed a distinct felony punished by law — arson. Moreover, killing B by fire was not inherently impossible; B simply escaped. Since A's act is itself punishable as another offense, there is no room for an impossible crime.</p><p><b>Conclusion:</b> A is liable for arson, not for an impossible crime of murder by means of fire.</p>"
+    },
+    {
+      fact:"Pedro planned to kill Juan. Before doing so, he asked Freddie to give him a knife, which Freddie did. However, Pedro later changed his mind and did not carry out the plan.",
+      question:"Is Freddie liable for any crime? Explain.",
+      answer:"<p><b>Answer:</b> No, Freddie is not liable for any crime.</p><p><b>Legal Basis:</b> The liability of an accomplice is secondary to that of the principal; it requires that a crime actually be committed, in which the accomplice cooperated by previous or simultaneous acts. Article 8 of the RPC further provides that conspiracy and proposal to commit a felony are punishable only in the cases in which the law specially provides a penalty therefor.</p><p><b>Application:</b> Freddie's act of supplying the knife would have been cooperation by a previous act had the killing taken place. But Pedro desisted, so no crime — not even an attempted one — was committed for Freddie to be an accomplice to. Any agreement or proposal to kill Juan is also not punishable, because the law does not specially penalize conspiracy or proposal to commit homicide or murder.</p><p><b>Conclusion:</b> Freddie incurs no criminal liability.</p>"
+    },
+    {
+      fact:"Inside a church, Mr. B touched the breasts of Miss A. In response, Miss A stabbed and killed him.",
+      question:"Is Miss A criminally liable? If so, is she entitled to any mitigating circumstance? Does the aggravating circumstance of disrespect of religious worship apply? Explain.",
+      answer:"<p><b>Answer:</b> Yes, Miss A is liable for the death of Mr. B, but she is entitled to the privileged mitigating circumstance of incomplete self-defense, and the aggravating circumstance of committing the crime in a place dedicated to religious worship does not apply.</p><p><b>Legal Basis:</b> Article 11(1) of the RPC requires unlawful aggression, reasonable necessity of the means employed, and lack of sufficient provocation. Under Articles 13(1) and 69, where unlawful aggression and a majority of the requisites are present, the penalty is lowered by one or two degrees. In <i>People v. Jaurigue</i>, the Court held that the place of religious worship is aggravating only if the offender had the intention to commit the crime when she entered the place.</p><p><b>Application:</b> Mr. B's act of touching Miss A's breasts was an attack on her honor and constituted unlawful aggression, and she gave no provocation. However, stabbing him to death was not a reasonably necessary means, considering that there were other people inside the church who could have come to her aid. As to the aggravating circumstance, Miss A had no intent to kill when she entered the church; her act was a sudden reaction to the aggression.</p><p><b>Conclusion:</b> Miss A is liable, with the privileged mitigating circumstance of incomplete self-defense, and without the aggravating circumstance of place of religious worship. <i>(In Jaurigue itself, the Court also credited immediate vindication of a grave offense, voluntary surrender, and lack of intent to commit so grave a wrong.)</i></p>"
+    },
+    {
+      fact:"After Pedro inflicted slight physical injuries upon Juan, Jinky helped him by hiding the weapon used, to prevent its discovery.",
+      question:"What crime, if any, did Jinky commit? Explain.",
+      answer:"<p><b>Answer:</b> None. Jinky is not criminally liable.</p><p><b>Legal Basis:</b> Slight physical injuries is a light felony under Articles 7 and 9. Under Article 16 of the RPC, only principals and accomplices are liable for light felonies; accessories are not.</p><p><b>Application:</b> Concealing the instrument of the crime to prevent its discovery is an act of an accessory (Art. 19). Since the crime concealed is only a light felony, the law does not punish accessories to it, and Jinky's act does not make her a principal or an accomplice.</p><p><b>Conclusion:</b> Jinky incurs no criminal liability.</p>"
+    },
+    {
+      fact:"X killed Y. After the crime, Z gave X a monetary reward for what he had done, even though there was no prior agreement or promise between them.",
+      question:"Is the aggravating circumstance of committing a crime in consideration of a price, reward, or promise attendant? Explain.",
+      answer:"<p><b>Answer:</b> No, the aggravating circumstance is not attendant.</p><p><b>Legal Basis:</b> Article 14, paragraph 11 of the RPC aggravates a crime committed in consideration of a price, reward, or promise. This requires that the price, reward, or promise be offered or given before the commission of the crime, and that it be the reason or inducement for committing it.</p><p><b>Application:</b> Z gave the money only after the killing, with no prior agreement or promise. The reward could not have induced X to kill Y, because X did not know of it and did not act for it.</p><p><b>Conclusion:</b> The killing is not aggravated by price, reward, or promise.</p>"
+    }
+  ],
+  "Class Discussion Scenarios": [
+    {
+      fact:"Police officers learned that Ramon, a jeepney driver with no record, had never sold drugs. An officer posing as a buyer repeatedly begged Ramon for a week to find him shabu, even giving him money and the name of a supplier. Ramon finally bought a sachet from the supplier and handed it over, and was arrested.",
+      question:"May Ramon validly raise a defense based on how he was caught? Explain.",
+      answer:"<p><b>Answer:</b> Yes. Ramon was instigated, which is an absolutory cause.</p><p><b>Legal Basis:</b> In instigation, the criminal intent originates from the law enforcers, and the accused would not have committed the crime were it not for their inducement; it is an absolutory cause. In entrapment, the accused already has the criminal intent, and the officers merely provide the opportunity to catch him in the act; it is not a defense.</p><p><b>Application:</b> Ramon had never sold drugs. The officer conceived the transaction, repeatedly induced him, and even supplied the money and the source. The idea and design of the crime came from the police, not from Ramon.</p><p><b>Conclusion:</b> Ramon should be acquitted, because the act was the product of instigation, not entrapment.</p>"
+    },
+    {
+      fact:"At night, Lito, a known troublemaker, pointed what looked like a pistol at Dado's face and said, 'This is your last day.' Dado struck Lito's head with a steel pipe, killing him. The 'pistol' turned out to be a realistic toy gun.",
+      question:"May Dado invoke self-defense? Explain.",
+      answer:"<p><b>Answer:</b> Yes, Dado may invoke self-defense.</p><p><b>Legal Basis:</b> Article 11(1) of the RPC requires unlawful aggression, reasonable necessity of the means employed, and lack of sufficient provocation. Jurisprudence holds that the existence of unlawful aggression may depend on the honest and reasonable belief of the person defending himself, as when the deceased pointed a toy gun at the accused.</p><p><b>Application:</b> Under the circumstances — at night, with a realistic-looking gun aimed at his face and an explicit threat to kill — Dado honestly and reasonably believed his life was in imminent danger. Faced with a gun, a steel pipe was a reasonable means of defense; he did not have the tranquility to verify whether the gun was real. He gave no provocation.</p><p><b>Conclusion:</b> Dado acted in self-defense and is not criminally liable.</p>"
+    },
+    {
+      fact:"Carlo, a legally married man, came home unexpectedly and surprised his wife in the very act of sexual intercourse with Ben. In a fit of rage, Carlo immediately stabbed and killed Ben.",
+      question:"What is Carlo's liability? Is this self-defense? Explain.",
+      answer:"<p><b>Answer:</b> Carlo is liable only under Article 247 of the RPC and is punished with destierro; this is not self-defense.</p><p><b>Legal Basis:</b> Article 247 of the RPC provides that any legally married person who, having surprised his spouse in the act of committing sexual intercourse with another person, kills either or both of them in the act or immediately thereafter, suffers only the penalty of destierro. The rule also applies to parents with respect to their daughters under 18 years of age and their seducers, while the daughters are living with their parents.</p><p><b>Application:</b> Carlo is legally married, surprised his wife in the very act of intercourse, and killed Ben immediately. The sexual act is not an unlawful aggression against Carlo, so self-defense does not apply. The law instead recognizes the extreme passion or obfuscation of the offended spouse as an exceptional circumstance that drastically lowers the penalty.</p><p><b>Conclusion:</b> Carlo suffers only destierro under Article 247 — an exceptional circumstance, not a justifying one.</p>"
+    },
+    {
+      fact:"Group A smuggled shabu into the country. Group B, which never met Group A, transported it to a safehouse. Group C, which knew only Group B, sold it to street dealers. Members of Group C argue they cannot be conspirators with Group A, since they never communicated with them.",
+      question:"Is the argument of Group C correct? Explain.",
+      answer:"<p><b>Answer:</b> No, the argument is not correct. All three groups are part of a chain conspiracy.</p><p><b>Legal Basis:</b> Under Article 8 of the RPC, a conspiracy exists when two or more persons come to an agreement concerning the commission of a felony and decide to commit it. In a chain conspiracy, there is a single overall scheme in which different groups participate at different stages, each performing a role necessary to achieve the common objective.</p><p><b>Application:</b> The importation, transport, and distribution of the drugs are successive links in one scheme; the success of each link depends on the others. Each participant need not know all the other conspirators, as long as he knows he is part of a bigger scheme.</p><p><b>Conclusion:</b> Group C, as well as Groups A and B, may be held liable as conspirators for the entire scheme.</p>"
+    },
+    {
+      fact:"Mila shot her husband while he slept. The defense proved that, one month earlier, he had beaten her severely for the first time after a period of tension, and then apologized tenderly. No other incident of abuse was shown. A psychologist testified for the defense.",
+      question:"May Mila successfully invoke battered woman syndrome? Explain.",
+      answer:"<p><b>Answer:</b> No, battered woman syndrome cannot be successfully invoked on these facts.</p><p><b>Legal Basis:</b> Section 26 of R.A. 9262 makes battered woman syndrome a justifying circumstance even without the elements of self-defense. In <i>People v. Genosa</i>, the Court held that the couple must have gone through the cycle of violence — tension-building, acute battering, and tranquil loving phases — at least twice, and that expert psychiatric or psychological testimony assists the court in determining the woman's state of mind.</p><p><b>Application:</b> Only one complete cycle was shown. A single cycle may be an isolated incident; at least two are needed to establish a pattern of battering and the resulting psychological effects that justify the act.</p><p><b>Conclusion:</b> Mila cannot be justified under battered woman syndrome, although other mitigating circumstances may still be considered.</p>"
+    },
+    {
+      fact:"Nena, diagnosed with kleptomania, took a necklace from a store. A psychiatrist testified that her condition diminished her will-power to resist the urge but did not deprive her of consciousness of her acts.",
+      question:"What is the effect of her kleptomania on her criminal liability? Explain.",
+      answer:"<p><b>Answer:</b> Nena is liable for theft, but her kleptomania is a mitigating circumstance.</p><p><b>Legal Basis:</b> Under Article 12(1), a person is exempt if a mental condition completely deprives him of intelligence or consciousness of his acts. Under Article 13(9), an illness which diminishes the exercise of will-power without depriving the offender of consciousness of his acts is mitigating.</p><p><b>Application:</b> The psychiatrist testified that Nena remained conscious of her acts; her condition merely weakened her ability to resist the impulse to steal. This falls under Article 13(9), not Article 12(1).</p><p><b>Conclusion:</b> Nena is liable for theft, with the mitigating circumstance of illness diminishing the exercise of will-power.</p>"
+    }
+  ],
   "Fundamentals (Arts. 1–5)": [
     {
       fact:"While a Philippine-registered vessel is sailing on the high seas, Ramon, a Filipino crewman, stabs and kills Dexter, a Vietnamese crewman, over a gambling debt. When the vessel docks in Manila, Ramon is charged with homicide before a Philippine court. He moves to dismiss, arguing that the crime was committed outside Philippine territory against a foreigner.",
@@ -803,6 +1288,131 @@ const ALAC = {
 };
 
 const STUDY_GUIDE_HTML = `
+<div class="sg-notes">
+<p class="sg-h2">Class Discussion — Judge Merlas</p>
+<p class="sg-intro" style="margin-top:-6px;">Everything below tracks the class discussion notes and past exam, arranged for a midterm that tests identification, enumeration, and scenario problems. The Past Exam Holdings at the end of this section come straight from the past exam.</p>
+
+<p class="sg-h3">Crim Law Maxims</p>
+<table class="sg-table">
+  <tr><th>Maxim</th><th>Meaning</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Nullum crimen, nulla poena sine lege</td><td>There is no crime where there is no law punishing it.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Actus non facit reum, nisi mens sit rea</td><td>A crime is not committed if the mind of the person performing the act is innocent.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Ignorantia facti excusat</td><td>Ignorance or mistake of fact relieves the accused from criminal liability; an honest mistake of fact destroys the presumption of criminal intent.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>El que es causa de la causa es causa del mal causado</td><td>He who is the cause of the cause is the cause of the evil caused.</td></tr>
+</table>
+
+<p class="sg-h3">Definitions to Know Cold</p>
+<table class="sg-table">
+  <tr><th>Term</th><th>Definition</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Felony (Art. 3)</td><td>Acts or omissions punishable by law. Committed by <strong>dolo</strong> (deliberate intent) or <strong>culpa</strong> (imprudence, negligence, lack of foresight, or lack of skill).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Elements of felony</td><td>(1) An act or omission; (2) punishable by the RPC; (3) performed or incurred by means of dolo or culpa.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Bill of attainder</td><td>A legislative act which inflicts punishment without trial — a substitution of legislative act for judicial determination.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Ex post facto law</td><td>Makes criminal an act done before the passage of the law, which was innocent when done, and punishes it.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Art. 22</td><td>Penal laws are retroactive insofar as they favor the accused who is <strong>not a habitual criminal</strong>, even if final sentence has been pronounced and the convict is serving it.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Proximate cause</td><td>That cause which, in natural and continuous sequence, unbroken by any efficient intervening cause, produces the injury, and without which the result would not have occurred.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Felony NOT the proximate cause</td><td>(a) An active force intervened that is a distinct act or fact absolutely foreign to the felonious act; or (b) the resulting injury is due to the intentional act of the victim.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Conspiracy</td><td>Two or more persons come to an agreement concerning the commission of a felony and decide to commit it.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Chain conspiracy</td><td>A single overall scheme where different groups participate at different stages, each performing a necessary role. Participants need not know all the others, as long as they know they are part of a bigger scheme (e.g., drug importer → transporter → distributor).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Proposal</td><td>The person who has decided to commit a felony proposes its execution to some other person or persons.</td></tr>
+</table>
+
+<p class="sg-h3">Mala in Se vs. Mala Prohibita</p>
+<table class="sg-table">
+  <tr><th></th><th>Mala in se</th><th>Mala prohibita</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Nature</td><td>Wrongful by nature; inherently evil (e.g., murder)</td><td>Wrong only because prohibited by statute (e.g., illegal parking)</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Law</td><td>Generally the RPC</td><td>Generally special laws</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Basis of liability</td><td>The offender's moral trait; intent governs</td><td>The offender's voluntariness; the only inquiry is whether the law was violated</td></tr>
+</table>
+
+<p class="sg-h3">Motive vs. Intent</p>
+<table class="sg-table">
+  <tr><th></th><th>Motive</th><th>Intent</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Definition</td><td>The moving power which impels one to action for a definite result</td><td>The purpose to use a particular means to effect such result</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Answers</td><td>Why did he do it?</td><td>Did he really mean to do it?</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Element?</td><td>Not an element; lack of motive may aid in showing innocence</td><td>An element, except in culpable felonies</td></tr>
+</table>
+<div class="exoex-box">
+  <span class="exoex-label">When motive is relevant — "Do U Think No Clarity"</span>
+  <strong>D</strong>ifficult to ascertain the identity of the assailant · <strong>U</strong>nreliable source of identification and inconclusive testimony · <strong>T</strong>wo antagonistic theories as to the assailant's identity · <strong>N</strong>o eyewitnesses, and suspicion may fall on several people · <strong>C</strong>ircumstantial evidence only.
+</div>
+
+<p class="sg-h3">How Felonies Are Classified</p>
+<table class="sg-table">
+  <tr><th>Basis</th><th>Classes</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Manner (Art. 3)</td><td>Intentional (dolo) and culpable (culpa)</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Stages (Art. 6)</td><td>Attempted, frustrated, consummated</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Gravity (Art. 9)</td><td>Grave, less grave, light</td></tr>
+</table>
+
+<p class="sg-h3">Stages and Phases</p>
+<table class="sg-table">
+  <tr><th>Term</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Overt act</td><td>An act or deed indicating an intention to commit a crime. Buying poison is only preparatory (it may be used for something else); mixing poison with a person's food is an overt act.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Indeterminate offense</td><td>The purpose of the offender is uncertain and his objective is ambiguous (People v. Lamahang).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Subjective phase</td><td>From the commencement of the acts until the offender still has control over them and their natural course. An attempted felony never passes this phase.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Objective phase</td><td>The offender has done everything necessary to bring about the intended result. A frustrated felony has reached this phase.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Light felonies (Art. 7)</td><td>Punishable only when consummated — <strong>except</strong> when committed against persons or property, which are punishable even if attempted or frustrated.</td></tr>
+</table>
+
+<p class="sg-h3">Justifying vs. Exempting</p>
+<table class="sg-table">
+  <tr><th></th><th>Justifying</th><th>Exempting</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Nature</td><td>The act is in accordance with law; the person did not transgress it</td><td>The act is criminal, but the agent lacks a condition that makes it voluntary or negligent</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Crime / criminal</td><td>No crime and no criminal</td><td>There is a crime but no criminal</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Basis</td><td>Lawfulness of the act</td><td>Complete absence of intelligence, freedom of action, or intent, or absence of negligence</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Liability</td><td>No criminal and no civil liability</td><td>No criminal liability; civil liability generally remains</td></tr>
+</table>
+
+<p class="sg-h3">Self-Defense — Class Points</p>
+<div class="case-card"><div class="cname">Burden of proof</div><div class="cdoc">The accused must prove the justifying circumstance to the satisfaction of the court by clear and convincing evidence, relying on the strength of his own evidence and not on the weakness of the prosecution's.</div></div>
+<div class="case-card"><div class="cname">Ultra vires as aggression</div><div class="cdoc">An officer acting beyond his authority may be considered as committing unlawful aggression.</div></div>
+<div class="case-card"><div class="cname">What makes self-defense doubtful</div><div class="cdoc">The type, location, and seriousness of the wounds (ten stab wounds vs. a small bruise on the accused); the improbability of the deceased being the aggressor (a sick 55-year-old who had lost his right hand; a man in his 60s attacking an armed 24-year-old over a pig); and failure to mention self-defense right away, as in a confession.</div></div>
+<div class="case-card"><div class="cname">Honest belief</div><div class="cdoc">Unlawful aggression may rest on the accused's honest belief — e.g., when the deceased pointed a toy gun at him.</div></div>
+<div class="case-card"><div class="cname">Aggressor runs away</div><div class="cdoc">Unlawful aggression no longer exists — <strong>except</strong> when the aggressor retreats to take a more advantageous position.</div></div>
+<div class="case-card"><div class="cname">Agreement to fight</div><div class="cdoc">There is no unlawful aggression when the parties agreed to fight.</div></div>
+<div class="case-card"><div class="cname">Stand your ground</div><div class="cdoc">If you are where you have the right to be — home, workplace, or a public place you lawfully occupy — you need not retreat, since retreating may expose you to being stabbed or shot in the back.</div></div>
+<div class="case-card"><div class="cname">Who is the aggressor?</div><div class="cdoc">There is a presumption that the person deeply offended by an insult is the one who struck first.</div></div>
+<div class="case-card"><div class="cname">Rational equivalence and its tests</div><div class="cdoc">(1) Perfect equality of weapons is not required, since the defender lacks the tranquility to choose; (2) physical condition, character, and size; (3) other circumstances — e.g., a shotgun was reasonable for a tiny woman cornered and punched non-stop by three large men. The law allows room for human instinct.</div></div>
+<div class="case-card"><div class="cname">Necessity ends when</div><div class="cdoc">The attacker ran away; the danger disappeared; the victim was disarmed of a piece of wood yet stabbed repeatedly; the aggressor refused to fight anymore; the wife was disarmed and the husband already weakened.</div></div>
+<div class="case-card"><div class="cname">Limitation</div><div class="cdoc">The defensive blow must be directed at the aggressor, not at innocent bystanders.</div></div>
+
+<p class="sg-h3">Battered Woman Syndrome</p>
+<table class="sg-table">
+  <tr><th>Phase</th><th>What happens</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>1. Tension-building</td><td>Minor battering — verbal or slight physical abuse, or other hostile behavior.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>2. Acute battering</td><td>Brutality, destructiveness, sometimes death. Only the batterer can end the violence.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>3. Tranquil, loving</td><td>Profound relief; the woman convinces herself it will not happen again and that her partner will change.</td></tr>
+</table>
+<div class="exoex-box">
+  <span class="exoex-label">Why the cycle must happen at least twice</span>
+  One cycle could be an isolated event; two or more establish a pattern of battering, confirming the psychological effects that justify the act. The court is assisted by expert psychiatrists or psychologists in determining the woman's state of mind.
+</div>
+
+<p class="sg-h3">Other Class Topics</p>
+<table class="sg-table">
+  <tr><th>Topic</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Art. 247 — exceptional circumstances</td><td>A legally married person who surprises the spouse in the very act of sexual intercourse with another and kills either or both, in the act or immediately after, suffers only <strong>destierro</strong>. Also applies to parents as to their daughters under 18 living with them and their seducers. Not unlawful aggression; the law recognizes the extreme passion or obfuscation.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Kleptomania</td><td>Deprives consciousness of his acts → insane, exempting. Only diminishes it → mitigating.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Instigation</td><td>Intent originates from the police; the accused would not have committed the crime if not induced. <strong>Absolutory</strong> — the act is not truly voluntary.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Entrapment</td><td>The accused already has the criminal intent; officers only provide the opportunity. <strong>Not absolutory</strong>.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Ordinary mitigating</td><td>Can be offset by aggravating circumstances. If unoffset, the penalty is applied in its minimum period (Art. 64).</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Privileged mitigating</td><td>Automatically reduces the penalty by one or two degrees; cannot be offset by aggravating circumstances.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Over 70 years old</td><td>Mitigating (Art. 13[2]). Under the old rules, the death penalty could not be imposed and was commuted; the death penalty itself is now prohibited (R.A. 9346).</td></tr>
+</table>
+
+<p class="sg-h3">Past Exam Holdings</p>
+<div class="case-card"><div class="cname">Setting fire to B's house to kill B</div><div class="cdoc">Not an impossible crime — the fourth requisite fails because the act constitutes another felony, arson.</div></div>
+<div class="case-card"><div class="cname">Supplying a knife; the principal desists</div><div class="cdoc">No liability. An accomplice's liability is secondary and requires a crime actually committed; conspiracy or proposal to kill is not specially punished (Art. 8).</div></div>
+<div class="case-card"><div class="cname">Stabbing inside a church after being molested (People v. Jaurigue)</div><div class="cdoc">Liable, with incomplete self-defense (privileged mitigating, Art. 69): there was unlawful aggression and no provocation, but the means were unreasonable since other people were present. Place of worship is not aggravating because she had no intent to kill when she entered.</div></div>
+<div class="case-card"><div class="cname">Hiding the weapon after slight physical injuries</div><div class="cdoc">No crime. Only principals and accomplices are liable for light felonies (Art. 16); accessories are not.</div></div>
+<div class="case-card"><div class="cname">Reward given after the killing, without prior promise</div><div class="cdoc">Not aggravating. The price, reward, or promise must be offered before the crime and be its inducement (Art. 14[11]).</div></div>
+
+<div class="exoex-box">
+  <span class="exoex-label">Heads-up — where the notes differ from current law</span>
+  Keep these in mind so a typo in the notes does not cost you points. (1) The marital infidelity rule is <strong>Art. 247</strong>, not Art. 248 (Art. 248 is murder). (2) The notes' age brackets for minors (under 9; over 9 and under 15 without discernment) are the <em>original</em> Art. 12 text. Under R.A. 9344 as amended by R.A. 10630, the thresholds are <strong>15 and below</strong> (exempt) and <strong>above 15 but below 18</strong> (exempt unless with discernment; if with discernment, privileged mitigating and suspended sentence). If the exam asks for the RPC text, give the original; if it asks for the rule today, give R.A. 9344. (3) An ordinary mitigating circumstance does not lower the penalty by a degree; it places the penalty in its minimum period. Only privileged mitigating circumstances lower it by degrees. (4) Art. 6 defines frustrated as acts of execution which <em>would</em> produce the felony — the notes' "do not produce" is a typo.
+</div>
+
+</div>
 <p class="sg-h2">Cross-Cutting Principles</p>
 <p class="sg-intro" style="margin-top:-6px;">These principles are not tied to a single article but run through every problem in Book One. Check them first when a fact pattern looks strange.</p>
 <div class="case-card"><div class="cname">Nullum crimen, nulla poena sine lege</div><div class="cdoc">There is no crime when there is no law punishing it. The Philippines has no common-law crimes; an act, however immoral, is not criminal unless a law defines it and fixes a penalty. This is why Art. 5 tells the court to acquit and merely <strong>report</strong> to the Chief Executive when an act deserves punishment but no law covers it.</div></div>
@@ -1779,6 +2389,7 @@ buildTopicCards = function(){ const r = baseBuildTopicCards.apply(this, argument
 const baseBackToPicker = backToPicker;
 backToPicker = function(){
   document.getElementById("view-issues").classList.add("hide");
+  document.getElementById("view-drill").classList.add("hide");
   return baseBackToPicker.apply(this, arguments);
 };
 
