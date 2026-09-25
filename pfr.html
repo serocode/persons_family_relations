@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="system">
 
 <head>
   <meta charset="UTF-8">
@@ -19,7 +19,8 @@
      module page. Per-subject identity comes from --accent alone,
      declared in the accent block directly beneath this stylesheet.
      ================================================================== */
-    :root {
+    :root,
+    [data-theme="light"] {
       color-scheme: light;
       --paper: #EDE8DC;
       --card: #F8F5EC;
@@ -1602,7 +1603,215 @@
       --accent: var(--green);
       --accent-tint: var(--green-tint);
     }
+
+    /* ==================================================================
+       DARK THEME
+       Warm dark palette preserving the editorial character.
+       Applied via data-theme="dark" on <html>, or via system preference
+       when data-theme="system".
+       ================================================================== */
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #1A1D1B;
+      --card: #222622;
+      --card-elevated: #2C302C;
+      --ink: #E4E1D8;
+      --ink-soft: #A8A59A;
+      --rule: #3D3F39;
+      --rule-light: #33352F;
+      --charcoal: #E4E1D8;
+      --charcoal-hi: #F0EDE4;
+      --yellow: #D4AE3A;
+      --yellow-tint: #3A3320;
+      --green: #5AAE7E;
+      --green-tint: #1E3328;
+      --blue: #5A9AC5;
+      --blue-tint: #1E2D3A;
+      --purple: #9A7ED4;
+      --purple-tint: #2D2540;
+      --red: #D06B5E;
+      --red-tint: #3A2220;
+      --timerok: #5AAE7E;
+      --timerwarn: #D06B5E;
+      --orange: #E08542;
+      --orange-tint: #3A2A1A;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        color-scheme: dark;
+        --paper: #1A1D1B;
+        --card: #222622;
+        --card-elevated: #2C302C;
+        --ink: #E4E1D8;
+        --ink-soft: #A8A59A;
+        --rule: #3D3F39;
+        --rule-light: #33352F;
+        --charcoal: #E4E1D8;
+        --charcoal-hi: #F0EDE4;
+        --yellow: #D4AE3A;
+        --yellow-tint: #3A3320;
+        --green: #5AAE7E;
+        --green-tint: #1E3328;
+        --blue: #5A9AC5;
+        --blue-tint: #1E2D3A;
+        --purple: #9A7ED4;
+        --purple-tint: #2D2540;
+        --red: #D06B5E;
+        --red-tint: #3A2220;
+        --timerok: #5AAE7E;
+        --timerwarn: #D06B5E;
+        --orange: #E08542;
+        --orange-tint: #3A2A1A;
+      }
+    }
+
+    /* dark-mode overrides for elements that used hard-coded colors */
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .masthead {
+        background: linear-gradient(175deg, #242824 0%, #1E211E 100%);
+      }
+    }
+    [data-theme="dark"] .masthead {
+      background: linear-gradient(175deg, #242824 0%, #1E211E 100%);
+    }
+
+    [data-theme="dark"] body,
+    [data-theme="dark"] .body-bg {
+      background-image: radial-gradient(circle at 15% 8%, rgba(220, 215, 200, 0.02), transparent 40%),
+                        radial-gradient(circle at 85% 92%, rgba(220, 215, 200, 0.02), transparent 40%);
+    }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] body,
+      [data-theme="system"] .body-bg {
+        background-image: radial-gradient(circle at 15% 8%, rgba(220, 215, 200, 0.02), transparent 40%),
+                          radial-gradient(circle at 85% 92%, rgba(220, 215, 200, 0.02), transparent 40%);
+      }
+      [data-theme="system"] .masthead {
+        background: linear-gradient(175deg, #242824 0%, #1E211E 100%);
+      }
+    }
+
+    /* .bento-card.dark hero tile — invert for dark mode so it contrasts */
+    [data-theme="dark"] .bento-card.dark {
+      background: linear-gradient(175deg, #F5F1E5 0%, #EDE8DC 100%);
+      border-color: #CBC2AA;
+    }
+    [data-theme="dark"] .bento-card.dark .bento-stat,
+    [data-theme="dark"] .bento-card.dark .bento-title { color: #20241F; }
+    [data-theme="dark"] .bento-card.dark .bento-label { color: #4A5148; }
+    [data-theme="dark"] .bento-card.dark .bento-desc { color: #4A5148; }
+    [data-theme="dark"] .bento-card.dark .bento-foot { color: #4A5148; border-top-color: #DFD8C6; }
+    [data-theme="dark"] .bento-card.dark .bento-arrow { border-color: #CBC2AA; color: #4A5148; }
+    [data-theme="dark"] .bento-card.dark.clickable:hover .bento-arrow { background: #23282A; color: #EDE8DC; border-color: #23282A; }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .bento-card.dark {
+        background: linear-gradient(175deg, #F5F1E5 0%, #EDE8DC 100%);
+        border-color: #CBC2AA;
+      }
+      [data-theme="system"] .bento-card.dark .bento-stat,
+      [data-theme="system"] .bento-card.dark .bento-title { color: #20241F; }
+      [data-theme="system"] .bento-card.dark .bento-label { color: #4A5148; }
+      [data-theme="system"] .bento-card.dark .bento-desc { color: #4A5148; }
+      [data-theme="system"] .bento-card.dark .bento-foot { color: #4A5148; border-top-color: #DFD8C6; }
+      [data-theme="system"] .bento-card.dark .bento-arrow { border-color: #CBC2AA; color: #4A5148; }
+      [data-theme="system"] .bento-card.dark.clickable:hover .bento-arrow { background: #23282A; color: #EDE8DC; border-color: #23282A; }
+    }
+
+    /* watchfor callout — needs readable colors in dark mode */
+    [data-theme="dark"] .watchfor,
+    [data-theme="dark"] .bento-card.tile-note .watchfor { color: #D4AE3A; }
+    [data-theme="dark"] .watchfor strong { color: #D4AE3A; }
+    [data-theme="dark"] .bento-card.tile-note { border-color: #5A4D24; }
+    [data-theme="dark"] .bento-card.tile-note .bento-label { color: #D4AE3A; }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .watchfor,
+      [data-theme="system"] .bento-card.tile-note .watchfor { color: #D4AE3A; }
+      [data-theme="system"] .watchfor strong { color: #D4AE3A; }
+      [data-theme="system"] .bento-card.tile-note { border-color: #5A4D24; }
+      [data-theme="system"] .bento-card.tile-note .bento-label { color: #D4AE3A; }
+    }
+
+    /* tag chip colors in dark mode */
+    [data-theme="dark"] .tag.memorization { color: #D4AE3A; }
+    [data-theme="dark"] .tag.requisites { color: #5AAE7E; }
+    [data-theme="dark"] .tag.exceptions { color: #5A9AC5; }
+    [data-theme="dark"] .tag.effects { color: #9A7ED4; }
+    [data-theme="dark"] .tag.jurisprudence { color: #D06B5E; }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .tag.memorization { color: #D4AE3A; }
+      [data-theme="system"] .tag.requisites { color: #5AAE7E; }
+      [data-theme="system"] .tag.exceptions { color: #5A9AC5; }
+      [data-theme="system"] .tag.effects { color: #9A7ED4; }
+      [data-theme="system"] .tag.jurisprudence { color: #D06B5E; }
+    }
+
+    /* exoex box in dark mode */
+    [data-theme="dark"] .exoex-box { color: #E08542; }
+    [data-theme="dark"] .exoex-box .exoex-label { color: #E08542; }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .exoex-box { color: #E08542; }
+      [data-theme="system"] .exoex-box .exoex-label { color: #E08542; }
+    }
+
+    /* ---- theme toggle ---- */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      flex: none;
+    }
+
+    .theme-toggle button {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 5px 10px;
+      border: none;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .theme-toggle button:hover {
+      background: var(--card-elevated);
+      color: var(--ink);
+    }
+
+    .theme-toggle button.active {
+      background: var(--charcoal);
+      color: var(--paper);
+    }
+
+    .theme-toggle button + button {
+      border-left: 1px solid var(--rule);
+    }
+
+    .theme-toggle .theme-icon {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+    }
   </style>
+  <script>
+    // Apply saved theme before paint to prevent flash of wrong theme
+    try {
+      var t = localStorage.getItem('pfrTheme');
+      if (t && (t === 'light' || t === 'dark' || t === 'system')) {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) { }
+  </script>
 </head>
 
 <body>
@@ -1611,7 +1820,20 @@
     <div class="sheet">
       <div class="masthead-strip">
         <a href="index.html" class="edition">← All Subjects</a>
-        <span>Civil Law</span>
+        <span style="display:flex;align-items:center;gap:12px;">
+          <span>Civil Law</span>
+          <span class="theme-toggle" id="theme-toggle" role="radiogroup" aria-label="Color theme">
+            <button type="button" data-theme-value="light" title="Light theme" aria-label="Light theme">
+              <svg class="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+            </button>
+            <button type="button" data-theme-value="system" title="System theme" aria-label="System theme">
+              <svg class="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="9" rx="1.5"/><path d="M6 14h4"/></svg>
+            </button>
+            <button type="button" data-theme-value="dark" title="Dark theme" aria-label="Dark theme">
+              <svg class="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 9.5A5.5 5.5 0 016.5 3 5.5 5.5 0 1013 9.5z"/></svg>
+            </button>
+          </span>
+        </span>
       </div>
       <div class="masthead">
         <div class="masthead-top">
@@ -3199,6 +3421,40 @@
     };
 
     buildTopicCards();
+
+    /* ==================================================================
+       THEME TOGGLE — Light / System / Dark
+       Persists to localStorage; 'system' defers to prefers-color-scheme.
+       ================================================================== */
+    (function initTheme() {
+      const STORAGE_KEY = 'pfrTheme';
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
+      function applyTheme(value) {
+        root.setAttribute('data-theme', value);
+        toggle.querySelectorAll('button').forEach(btn => {
+          const isActive = btn.getAttribute('data-theme-value') === value;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-checked', isActive);
+        });
+      }
+
+      // Restore saved preference
+      let saved = 'system';
+      try { saved = localStorage.getItem(STORAGE_KEY) || 'system'; } catch (e) { }
+      applyTheme(saved);
+
+      // Click handler
+      toggle.addEventListener('click', function (e) {
+        const btn = e.target.closest('button[data-theme-value]');
+        if (!btn) return;
+        const value = btn.getAttribute('data-theme-value');
+        applyTheme(value);
+        try { localStorage.setItem(STORAGE_KEY, value); } catch (e) { }
+      });
+    })();
 </script>
 </body>
 

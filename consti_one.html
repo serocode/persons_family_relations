@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="system">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,8 @@
      module page. Per-subject identity comes from --accent alone,
      declared in the accent block directly beneath this stylesheet.
      ================================================================== */
-  :root{
+  :root,
+  [data-theme="light"] {
     color-scheme: light;
     --paper:#EDE8DC; --card:#F8F5EC; --card-elevated:#FFFFFF; --ink:#20241F; --ink-soft:#4A5148; --rule:#CBC2AA; --rule-light:#DFD8C6;
     --charcoal:#23282A; --charcoal-hi:#33393B;
@@ -274,6 +275,9 @@
   .case-card .cdoc{font-size:calc(13px * var(--fs));line-height:1.5;font-family:'Inter',sans-serif;color:var(--ink-soft);}
   .exoex-box{border-left:4px solid var(--orange);background:var(--orange-tint);padding:12px 16px;margin:10px 0 18px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.55;color:#5c3418;}
   .exoex-box .exoex-label{display:block;font-weight:700;font-size:calc(11px * var(--fs));text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;color:#8a4a1f;}
+  .keypoint-box{border-left:4px solid var(--blue);background:var(--blue-tint);padding:12px 16px;margin:10px 0 4px;font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.55;color:#1c3a4d;}
+  .keypoint-box .kp-label{display:block;font-weight:700;font-size:calc(11px * var(--fs));text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;color:#245073;}
+  .bar-tag{display:inline-block;font-family:'Inter',sans-serif;font-weight:700;font-size:calc(10.5px * var(--fs));text-transform:uppercase;letter-spacing:.04em;background:var(--charcoal);color:var(--paper);padding:2px 9px;border-radius:20px;margin-bottom:8px;}
   .cmp-table{width:100%;border-collapse:collapse;margin:14px 0 8px;font-size:calc(13.5px * var(--fs));table-layout:fixed;}
   .cmp-table th{font-family:'Inter',sans-serif;font-size:calc(11px * var(--fs));color:var(--ink-soft);text-align:left;padding:8px 10px;border-bottom:2px solid var(--rule);vertical-align:bottom;}
   .cmp-table td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5;}
@@ -285,7 +289,8 @@
 
   /* ---- responsive ---- */
   @media (max-width:640px){
-    :root{--gutter:20px;}
+    :root,
+  [data-theme="light"] {--gutter:20px;}
     body{padding:18px 12px 48px;}
     .masthead{padding:22px var(--gutter) 18px;}
     .masthead-top{flex-direction:column;gap:14px;}
@@ -344,8 +349,216 @@
   .issue-note{font-family:'Inter',sans-serif;font-size:calc(12.5px * var(--fs));line-height:1.5;color:var(--ink-soft);background:var(--paper);border-left:2px solid var(--rule);padding:8px 11px;margin:10px 0 0;}
 
   /* ---- subject accent ---- */
-  :root{ --accent:var(--blue); --accent-tint:var(--blue-tint); }
+  :root,
+  [data-theme="light"] { --accent:var(--blue); --accent-tint:var(--blue-tint); }
+/* ==================================================================
+       DARK THEME
+       Warm dark palette preserving the editorial character.
+       Applied via data-theme="dark" on <html>, or via system preference
+       when data-theme="system".
+       ================================================================== */
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #1A1D1B;
+      --card: #222622;
+      --card-elevated: #2C302C;
+      --ink: #E4E1D8;
+      --ink-soft: #A8A59A;
+      --rule: #3D3F39;
+      --rule-light: #33352F;
+      --charcoal: #E4E1D8;
+      --charcoal-hi: #F0EDE4;
+      --yellow: #D4AE3A;
+      --yellow-tint: #3A3320;
+      --green: #5AAE7E;
+      --green-tint: #1E3328;
+      --blue: #5A9AC5;
+      --blue-tint: #1E2D3A;
+      --purple: #9A7ED4;
+      --purple-tint: #2D2540;
+      --red: #D06B5E;
+      --red-tint: #3A2220;
+      --timerok: #5AAE7E;
+      --timerwarn: #D06B5E;
+      --orange: #E08542;
+      --orange-tint: #3A2A1A;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        color-scheme: dark;
+        --paper: #1A1D1B;
+        --card: #222622;
+        --card-elevated: #2C302C;
+        --ink: #E4E1D8;
+        --ink-soft: #A8A59A;
+        --rule: #3D3F39;
+        --rule-light: #33352F;
+        --charcoal: #E4E1D8;
+        --charcoal-hi: #F0EDE4;
+        --yellow: #D4AE3A;
+        --yellow-tint: #3A3320;
+        --green: #5AAE7E;
+        --green-tint: #1E3328;
+        --blue: #5A9AC5;
+        --blue-tint: #1E2D3A;
+        --purple: #9A7ED4;
+        --purple-tint: #2D2540;
+        --red: #D06B5E;
+        --red-tint: #3A2220;
+        --timerok: #5AAE7E;
+        --timerwarn: #D06B5E;
+        --orange: #E08542;
+        --orange-tint: #3A2A1A;
+      }
+    }
+
+    /* dark-mode overrides for elements that used hard-coded colors */
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .masthead {
+        background: linear-gradient(175deg, #242824 0%, #1E211E 100%);
+      }
+    }
+    [data-theme="dark"] .masthead {
+      background: linear-gradient(175deg, #242824 0%, #1E211E 100%);
+    }
+
+    [data-theme="dark"] body,
+    [data-theme="dark"] .body-bg {
+      background-image: radial-gradient(circle at 15% 8%, rgba(220, 215, 200, 0.02), transparent 40%),
+                        radial-gradient(circle at 85% 92%, rgba(220, 215, 200, 0.02), transparent 40%);
+    }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] body,
+      [data-theme="system"] .body-bg {
+        background-image: radial-gradient(circle at 15% 8%, rgba(220, 215, 200, 0.02), transparent 40%),
+                          radial-gradient(circle at 85% 92%, rgba(220, 215, 200, 0.02), transparent 40%);
+      }
+      [data-theme="system"] .masthead {
+        background: linear-gradient(175deg, #242824 0%, #1E211E 100%);
+      }
+    }
+
+    /* .bento-card.dark hero tile — invert for dark mode so it contrasts */
+    [data-theme="dark"] .bento-card.dark {
+      background: linear-gradient(175deg, #F5F1E5 0%, #EDE8DC 100%);
+      border-color: #CBC2AA;
+    }
+    [data-theme="dark"] .bento-card.dark .bento-stat,
+    [data-theme="dark"] .bento-card.dark .bento-title { color: #20241F; }
+    [data-theme="dark"] .bento-card.dark .bento-label { color: #4A5148; }
+    [data-theme="dark"] .bento-card.dark .bento-desc { color: #4A5148; }
+    [data-theme="dark"] .bento-card.dark .bento-foot { color: #4A5148; border-top-color: #DFD8C6; }
+    [data-theme="dark"] .bento-card.dark .bento-arrow { border-color: #CBC2AA; color: #4A5148; }
+    [data-theme="dark"] .bento-card.dark.clickable:hover .bento-arrow { background: #23282A; color: #EDE8DC; border-color: #23282A; }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .bento-card.dark {
+        background: linear-gradient(175deg, #F5F1E5 0%, #EDE8DC 100%);
+        border-color: #CBC2AA;
+      }
+      [data-theme="system"] .bento-card.dark .bento-stat,
+      [data-theme="system"] .bento-card.dark .bento-title { color: #20241F; }
+      [data-theme="system"] .bento-card.dark .bento-label { color: #4A5148; }
+      [data-theme="system"] .bento-card.dark .bento-desc { color: #4A5148; }
+      [data-theme="system"] .bento-card.dark .bento-foot { color: #4A5148; border-top-color: #DFD8C6; }
+      [data-theme="system"] .bento-card.dark .bento-arrow { border-color: #CBC2AA; color: #4A5148; }
+      [data-theme="system"] .bento-card.dark.clickable:hover .bento-arrow { background: #23282A; color: #EDE8DC; border-color: #23282A; }
+    }
+
+    /* watchfor callout — needs readable colors in dark mode */
+    [data-theme="dark"] .watchfor,
+    [data-theme="dark"] .bento-card.tile-note .watchfor { color: #D4AE3A; }
+    [data-theme="dark"] .watchfor strong { color: #D4AE3A; }
+    [data-theme="dark"] .bento-card.tile-note { border-color: #5A4D24; }
+    [data-theme="dark"] .bento-card.tile-note .bento-label { color: #D4AE3A; }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .watchfor,
+      [data-theme="system"] .bento-card.tile-note .watchfor { color: #D4AE3A; }
+      [data-theme="system"] .watchfor strong { color: #D4AE3A; }
+      [data-theme="system"] .bento-card.tile-note { border-color: #5A4D24; }
+      [data-theme="system"] .bento-card.tile-note .bento-label { color: #D4AE3A; }
+    }
+
+    /* tag chip colors in dark mode */
+    [data-theme="dark"] .tag.memorization { color: #D4AE3A; }
+    [data-theme="dark"] .tag.requisites { color: #5AAE7E; }
+    [data-theme="dark"] .tag.exceptions { color: #5A9AC5; }
+    [data-theme="dark"] .tag.effects { color: #9A7ED4; }
+    [data-theme="dark"] .tag.jurisprudence { color: #D06B5E; }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .tag.memorization { color: #D4AE3A; }
+      [data-theme="system"] .tag.requisites { color: #5AAE7E; }
+      [data-theme="system"] .tag.exceptions { color: #5A9AC5; }
+      [data-theme="system"] .tag.effects { color: #9A7ED4; }
+      [data-theme="system"] .tag.jurisprudence { color: #D06B5E; }
+    }
+
+    /* exoex box in dark mode */
+    [data-theme="dark"] .exoex-box { color: #E08542; }
+    [data-theme="dark"] .exoex-box .exoex-label { color: #E08542; }
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .exoex-box { color: #E08542; }
+      [data-theme="system"] .exoex-box .exoex-label { color: #E08542; }
+    }
+
+    /* ---- theme toggle ---- */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      flex: none;
+    }
+
+    .theme-toggle button {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 5px 10px;
+      border: none;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .theme-toggle button:hover {
+      background: var(--card-elevated);
+      color: var(--ink);
+    }
+
+    .theme-toggle button.active {
+      background: var(--charcoal);
+      color: var(--paper);
+    }
+
+    .theme-toggle button + button {
+      border-left: 1px solid var(--rule);
+    }
+
+    .theme-toggle .theme-icon {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+    }
 </style>
+  <script>
+    // Apply saved theme before paint to prevent flash of wrong theme
+    try {
+      var t = localStorage.getItem('constiTheme');
+      if (t && (t === 'light' || t === 'dark' || t === 'system')) {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) { }
+  </script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -353,7 +566,20 @@
 <div class="sheet">
   <div class="masthead-strip">
     <a href="index.html" class="edition">← All Subjects</a>
-    <span>Political Law</span>
+    <span style="display:flex;align-items:center;gap:12px;">
+          <span>Political Law</span>
+          <span class="theme-toggle" id="theme-toggle" role="radiogroup" aria-label="Color theme">
+            <button type="button" data-theme-value="light" title="Light theme" aria-label="Light theme">
+              <svg class="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+            </button>
+            <button type="button" data-theme-value="system" title="System theme" aria-label="System theme">
+              <svg class="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="9" rx="1.5"/><path d="M6 14h4"/></svg>
+            </button>
+            <button type="button" data-theme-value="dark" title="Dark theme" aria-label="Dark theme">
+              <svg class="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 9.5A5.5 5.5 0 016.5 3 5.5 5.5 0 1013 9.5z"/></svg>
+            </button>
+          </span>
+        </span>
   </div>
   <div class="masthead">
     <div class="masthead-top">
@@ -809,6 +1035,58 @@ const ALAC = {
       fact:"A five-member Division of the Supreme Court hears a case squarely challenging the constitutionality of a revenue law. Three of the five Justices vote to declare the law unconstitutional, two dissent, and the ponente prepares to promulgate the Division's 3-2 decision as final.",
       question:"May the Division validly promulgate this decision? Discuss, using the ALAC method.",
       answer:"<p><b>Answer:</b> No, the Division may not validly promulgate such a decision.</p><p><b>Legal Basis:</b> Art. VIII, Sec. 4(2) requires cases involving the constitutionality of a law to be heard and decided en banc, not by a Division, regardless of the Division's internal vote.</p><p><b>Application:</b> The case squarely involves a revenue law's constitutionality — precisely the category Sec. 4(2) reserves for the en banc. A Division, however decisive its vote, cannot promulgate a final ruling on this category of case.</p><p><b>Conclusion:</b> The case must instead be referred to, heard, and decided by the Supreme Court en banc.</p>"
+    }
+  ],
+  "2026 Bar Exam — 1L-Applicable Questions": [
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.1</span> A group called the Sha Group gathers signatures for a people's initiative petition to change the 1987 Constitution. The petition seeks to amend Sections 1 to 7 of Article VI (Legislative Department) and Sections 1 to 4 of Article VII (Executive Department), changing the government from a Bicameral-Presidential system to a Unicameral-Parliamentary system. Sha Group claims more than 6.3 million signatures, equal to at least 12% of all registered voters, with at least 3% coming from every legislative district. Sha Group files a petition with the COMELEC asking for a plebiscite to ratify these proposed changes.",
+      question:"Should the COMELEC grant the petition for a plebiscite? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the petition should not be granted.</p><p><b>Legal Basis:</b> The law provides two ways to change the Constitution: (1) proposal by Congress acting as a Constituent Assembly, or by a Constitutional Convention — both may propose either amendments or revisions; and (2) a people's initiative under Art. XVII, Sec. 2 — but this second mode may only be used for amendments. Jurisprudence provides two tests to tell an amendment apart from a revision (Lambino v. COMELEC): the quantitative test asks how many provisions are affected, and the qualitative test asks whether the change alters the basic structure or fundamental plan of government. Jurisprudence also provides that a people's initiative can never be used to propose a revision (Santiago v. COMELEC; Lambino v. COMELEC).</p><p><b>Application:</b> The proposed change touches nearly all the main provisions on the Legislative Department (Secs. 1–7, Art. VI) and the Executive Department (Secs. 1–4, Art. VII), and completely replaces the two-chamber, separately-elected-President system with a one-chamber, parliamentary system. This fails both tests: it changes many provisions across two entire branches of government (quantitative test), and it changes the fundamental structure of government itself, including how the legislative and executive branches check each other (qualitative test). This is a revision, not a mere amendment.</p><p><b>Conclusion:</b> Because the proposal is a revision and not a mere amendment, it cannot be validly proposed through a people's initiative. The COMELEC should deny the petition for a plebiscite.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Do not be misled by the fact that the signature requirement (12% of all registered voters, at least 3% per legislative district) was fully met. Meeting the signature requirement only satisfies the PROCEDURE for a people's initiative. It does not answer the separate question of whether the SUBJECT MATTER of the petition — here, a revision — is even allowed to be initiated this way. A people's initiative can never be used for a revision, no matter how many signatures are gathered.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.2</span> PAGCOR, using its power under its own charter (P.D. 1869), decides to expand its casino operations by leasing and renovating part of a hotel in San Fernando City. Conservative groups in the city oppose this. The Sangguniang Panlungsod then passes two ordinances: (1) one refusing to issue business permits to any establishment used even partly for casino operations, and (2) another completely banning casino operations within the city, with fines, closure, and imprisonment for violators. PAGCOR and the hotel owner ask the court to strike down both ordinances as ultra vires and as violating local autonomy.",
+      question:"Are the two ordinances valid? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, both ordinances are invalid.</p><p><b>Legal Basis:</b> The law provides that local government units exercise only DELEGATED police power, mainly through the general welfare clause of the Local Government Code. This delegated power must be used consistently with national law and policy; an LGU cannot use it to defeat what a national statute allows. Jurisprudence provides (Magtajas v. Pryce Properties Corp.) that a city cannot use an ordinance to prohibit an activity that PAGCOR's own charter, a national law, expressly authorizes PAGCOR to engage in. Local autonomy is not a license for LGUs to set themselves against national policy validly declared by Congress.</p><p><b>Application:</b> PAGCOR's charter is a national law that gives PAGCOR the power to operate casinos, including through lease arrangements like the one with Surfer Hotel. San Fernando City's ordinances directly forbid what this national law allows, and even criminalize it. This is the same situation as Magtajas, where the Court struck down a similarly worded city ordinance aimed at PAGCOR's casino operations.</p><p><b>Conclusion:</b> Both ordinances are invalid for being ultra vires — they contradict the national law creating and empowering PAGCOR, which the city's merely delegated police power cannot override.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Local autonomy does not mean local supremacy. Even a full ban dressed up as an exercise of the general welfare clause cannot stand against a specific national law authorizing the very activity being banned. The test is not whether the city has good intentions (protecting public morals) — it is whether Congress has already spoken on the matter through a valid national law.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.3</span> Congress passes an appropriation law. Following requests from DPWH officials, this law lets individual legislators decide, after the law is already enacted, exactly how much money goes to specific flood control projects, and who the beneficiaries or contractors will be. The DBM later releases funds based on these individual legislators' instructions. A Senate investigation reveals that many flood control contracts went to companies owned by the legislators' relatives or endorsed by them, that large kickbacks were paid to legislators who 'inserted' these projects, and that many of the projects turned out to be ghost, unfinished, abandoned, or substandard.",
+      question:"Is the appropriation law unconstitutional? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, the appropriation law is unconstitutional, insofar as it lets individual legislators decide, after enactment, which specific projects or beneficiaries will receive funding.</p><p><b>Legal Basis:</b> The law provides that the power of the purse belongs to Congress as a body, exercised through the passage of an appropriation law BEFORE it takes effect — a purely legislative act. Jurisprudence provides (Belgica v. Ochoa) that any provision allowing individual members of Congress to identify, after the appropriation law is enacted, the specific projects, activities, and beneficiaries to be funded is unconstitutional. This 'post-enactment identification' power lets individual legislators intrude into the EXECUTION of the budget, an executive function, and this violates the separation of powers. It also defeats the President's power to veto specific items, since the actual projects are not yet known when the President signs the law.</p><p><b>Application:</b> Here, individual legislators were given exactly this kind of post-enactment discretion — to pick specific flood control projects and beneficiaries after the appropriation law took effect. This is the same 'pork barrel' defect condemned in Belgica. The resulting corruption (kickbacks, ghost projects, contracts to relatives) shows in real terms the accountability problem the separation-of-powers rule is meant to prevent, but the constitutional defect exists independently of whether corruption is later proven.</p><p><b>Conclusion:</b> The provisions giving individual legislators post-enactment authority over project and beneficiary identification are unconstitutional under Belgica v. Ochoa, for violating the separation of powers between the legislative and executive branches.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>The constitutional problem is not that money was stolen — corruption is a separate criminal law issue. The constitutional defect is structural: it exists the moment Congress hands an INDIVIDUAL member a power that should belong to the executive branch (implementation) or that must be fixed BEFORE enactment (appropriation). Even if every project had been honestly completed, the provision would still be unconstitutional.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.4</span> To address concerns about executive privilege in Senate investigations of corruption, the President issues Executive Order No. 111 (E.O. 111). E.O. 111 sets rules for question hour and legislative inquiries, defines the scope of executive privilege, and lists specific executive officials covered. It also provides that none of the named officials may appear before any congressional investigation without the President's prior approval. The Senate, through the Senate President, asks the Supreme Court to declare E.O. 111 unconstitutional.",
+      question:"Is E.O. 111 unconstitutional? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Yes, E.O. 111 is unconstitutional, at least as to the rule requiring prior presidential approval before the named officials may appear in aid-of-legislation inquiries.</p><p><b>Legal Basis:</b> The law provides Congress the power to conduct inquiries in aid of legislation (Art. VI, Sec. 21), which executive officials must generally attend and answer, subject only to a valid, specific claim of executive privilege. Jurisprudence provides (Senate v. Ermita) that a claim of executive privilege must be express and detailed enough for Congress and the courts to judge whether it is truly covered by privilege. An executive issuance requiring officials to get the President's prior consent before testifying, and effectively barring them from appearing until that consent is given, amounts to an IMPLIED, BLANKET claim of privilege — which the Court struck down as invalid in Senate v. Ermita when a similar rule appeared in E.O. 464.</p><p><b>Application:</b> E.O. 111 does exactly what the invalidated part of E.O. 464 did: it makes the named officials' appearance before Congress depend on the President's prior approval, without requiring the President to state, case by case, which specific piece of information is privileged and why. This effectively gives the Executive a blanket veto over Sec. 21 inquiries into its own affairs.</p><p><b>Conclusion:</b> E.O. 111 is unconstitutional to the extent it conditions the appearance of covered officials before Sec. 21 inquiries on prior presidential approval. An official may decline to testify, or decline to answer a specific question, only by expressly and specifically invoking executive privilege, subject to the three-part test in Neri v. Senate Committees.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Do not confuse Sec. 21 (inquiries in aid of legislation, where attendance is generally compulsory) with Sec. 22 (question hour, where department heads may decline appearance when the security of the State or public interest so requires). A rule that is valid for question hour may still be invalid if applied wholesale to Sec. 21 inquiries, because the constitutional standard for each is different.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.5</span> The House Committee on Good Government investigates how a provincial government used its share of excise taxes on cigarettes. Some provincial officials give evasive answers, so the Committee cites them in contempt and has them detained. The officials file a petition for habeas corpus with the Court of Appeals. After hearings, the CA issues the writ and orders the officials' provisional release. Displeased with the CA's ruling, the House issues a show-cause order against the three CA Justices who signed it, directing them to explain why they should not be cited in contempt by the House.",
+      question:"May the House of Representatives validly cite the CA Justices in contempt? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the House of Representatives may not validly cite the CA Justices in contempt.</p><p><b>Legal Basis:</b> The law provides that the power to punish for contempt is only an INCIDENT of a branch's own proper functions — Congress may use it to compel testimony or the production of documents needed for its own inquiries. Jurisprudence provides that, under the separation of powers, one branch cannot use its contempt power to punish members of another, co-equal, independent branch for that branch's own official acts. Judicial rulings may be corrected only through the ordinary modes of judicial review (appeal, certiorari), and judges may be disciplined only through the Supreme Court's power of administrative supervision over all courts (Art. VIII, Sec. 6), or through impeachment where the Constitution requires it.</p><p><b>Application:</b> The CA Justices issued the writ of habeas corpus and ordered provisional release while exercising their JUDICIAL function — deciding whether the officials' detention was lawful. Even if the House believes this ruling was wrong, the remedy is to question the ruling through the proper judicial channels, not to threaten the judges themselves with legislative contempt for how they decided the case.</p><p><b>Conclusion:</b> The House cannot validly cite the CA Justices in contempt for performing their judicial function. Doing so would violate the separation of powers and threaten the independence of the Judiciary.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Contempt power protects a branch's own proceedings — it is not a weapon against another branch's decisions that the first branch simply dislikes. If Congress could threaten judges with contempt whenever a ruling frustrates a congressional inquiry, courts could never rule against Congress without fear, and judicial independence would collapse.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.11</span> Mayor Laureta served two consecutive terms as Mayor of Manila. She then ran for a third term but LOST to Mayor Hermosura. Later, Hermosura was recalled through a recall election, and Laureta won that recall election, becoming Mayor again and completing what is described as her 'third term.' Laureta now wants to run again for what would be her fourth term. Separately, Mayor Ruiz served three consecutive terms as Mayor of the Municipality of Santa Adelwiza. During her third term, the municipality was converted into a city, becoming a new corporate entity, legally separate and distinct from the old municipality. Mayor Ruiz wants to run as the first mayor of the newly-created City of Santa Adelwiza.",
+      question:"Rule on whether Mayor Laureta and Mayor Ruiz are each eligible to run again. Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> Mayor Laureta is eligible to run again. Mayor Ruiz is NOT eligible to run as mayor of the new city.</p><p><b>Legal Basis:</b> The law provides that no local elective official may serve more than three CONSECUTIVE terms in the same position; voluntary renunciation of office does not interrupt the continuity of service. Jurisprudence provides (Socrates v. COMELEC; Adormeo v. COMELEC) that when an official LOSES an election and someone else actually holds the office for a period, that period breaks the chain of consecutive terms — a term later won through a recall election, after such a break, does not tack onto the official's earlier terms for three-term-limit purposes. Jurisprudence also provides (Latasa v. COMELEC) that when a municipality is converted into a city, the territory and inhabitants remain substantially the same; an incumbent municipal mayor who has already served three consecutive terms cannot evade the three-term limit simply by running as mayor of the newly-created city, since this would still mean continuing to govern the same constituents beyond what the Constitution allows.</p><p><b>Application:</b> For Laureta — her two consecutive terms were followed by an actual LOSS to Hermosura, meaning Hermosura, not Laureta, held the office for that period. This break means Laureta's later term, won through the recall election, is not consecutive with her earlier two terms. She has not served three CONSECUTIVE terms leading into her next candidacy, so the bar does not apply to her. For Ruiz — she already completed three full consecutive terms as municipal mayor of the very same locality, over substantially the same people and territory. The city's new corporate personality does not change the fact that she would simply be continuing to govern the same constituents; allowing her to run as the city's first mayor would let her evade the three-term limit through the technical device of a conversion.</p><p><b>Conclusion:</b> Laureta may validly run again because her chain of consecutive terms was broken by her earlier election loss. Ruiz may not validly run as the new city's first mayor because she has already served the maximum three consecutive terms over the same locality, and conversion into a city does not reset that count.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>The three-term limit is about who is ACTUALLY governing the same constituents, not about the formal LABEL of the position. A change in title (municipal mayor to city mayor) does not reset the clock, but an actual break in incumbency (losing an election to someone else) does. Learn to tell these two kinds of 'gap' apart.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.12</span> The COMELEC allows voter registration and voting inside Kulungan City Jail for the 2028 elections. Three persons deprived of liberty (PDLs) want to register and vote: (1) Cheska, convicted of estafa by FINAL judgment and sentenced to 8 months' imprisonment, which she is currently serving; (2) JK, convicted of rebellion (a crime involving disloyalty to the government) and sentenced to 6 years, but his conviction is on APPEAL and not yet final; and (3) Mats, detained for illegal sale of dangerous drugs punishable by life imprisonment, but he has NOT yet been arraigned and has entered no plea.",
+      question:"Rule on whether Cheska, JK, and Mats are eligible to register and vote in the 2028 elections. Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> All three — Cheska, JK, and Mats — remain eligible to register and vote, assuming they meet the ordinary voter qualifications under Art. V.</p><p><b>Legal Basis:</b> The law provides that a person is disqualified from voting if he or she has been sentenced by FINAL judgment to imprisonment for not less than one year (unless later given plenary pardon or amnesty), or has been convicted by FINAL judgment of a crime involving disloyalty to the duly constituted government, such as rebellion. Jurisprudence provides, consistent with the presumption of innocence, that a conviction still on appeal is not yet final, and that a person merely detained with no conviction at all is not disqualified from voting on that basis alone.</p><p><b>Application:</b> Cheska's conviction is final, but her sentence is only 8 months — less than the one-year threshold the law requires for this ground of disqualification, so this ground does not apply to her. JK's crime (rebellion) would normally disqualify him, but his conviction is not yet final while his appeal remains pending before the Court of Appeals — so he is not yet disqualified. Mats has not even been arraigned and has no conviction at all, so no disqualification based on conviction can possibly apply to him.</p><p><b>Conclusion:</b> Cheska, JK, and Mats are each still qualified to vote, because none of them has a FINAL conviction that meets the disqualification thresholds set by law — Cheska's sentence is too short, JK's conviction is not yet final, and Mats has no conviction at all.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Do not get distracted by how SERIOUS a crime sounds (rebellion, drug trafficking punishable by life imprisonment). The controlling questions are always: (1) is the conviction FINAL, and (2) does the sentence meet the specific threshold the law sets (at least one year, unless it is a crime of disloyalty, which disqualifies regardless of sentence length once final). Mere detention, or a non-final conviction, never disqualifies a voter by itself.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.13</span> During the campaign period for the May 2025 elections, COMELEC issues a resolution limiting the size of campaign materials posted outside common poster areas to 2 feet by 3 feet, and authorizing COMELEC to remove and destroy oversized materials under 'Oplan Baklas.' St. Raphael Academy, a private school, allows its own grounds to be used for large tarpaulins and murals — 10 feet by 15 feet each — funded entirely by private volunteer supporters of one mayoral candidate. The materials show only that candidate's photo, name, and slogan, and are not tied to any general social advocacy. COMELEC field officers enter the school compound, remove the tarpaulins, and confiscate the murals. The school challenges COMELEC's actions before the Supreme Court.",
+      question:"Will the school's petition prosper? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the school's petition should not prosper — COMELEC's action was a valid exercise of its regulatory power over election propaganda.</p><p><b>Legal Basis:</b> The law provides COMELEC with the power to enforce and administer laws relative to the conduct of elections, including reasonable regulation of the size of campaign materials to keep the campaign orderly and fair. Jurisprudence provides (Diocese of Bacolod v. COMELEC) that COMELEC has NO authority to regulate the size of materials that amount to purely independent political speech or social advocacy — that is, materials not made for or coordinated with any candidate, and not promoting a specific candidacy. But that same case makes clear this protection is only for GENUINE independent advocacy, not for materials that are, in substance, campaign propaganda for a specific candidate.</p><p><b>Application:</b> Unlike the tarpaulin in Diocese of Bacolod (which expressed the Church's own advocacy and named no candidate for votes), the materials here bear only Attorney Alfonso's photo, name, and slogan, and were made specifically to promote his candidacy — they are candidate-specific campaign propaganda, not independent social advocacy. Since these materials fall squarely within what COMELEC may regulate as election propaganda, the size limitation may validly be enforced against them even though they are privately funded and posted on private property.</p><p><b>Conclusion:</b> The school's petition should not prosper. Because the materials are genuine, candidate-specific campaign propaganda and not independent advocacy, COMELEC's size limitation and its enforcement through Oplan Baklas validly apply to them, unlike in Diocese of Bacolod.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Diocese of Bacolod v. COMELEC is often over-read as saying 'COMELEC can never touch anything on private property.' That is wrong. The real dividing line in that case was the CONTENT and PURPOSE of the material — genuine issue advocacy naming no candidate is beyond COMELEC's reach, but material promoting a specific candidate's election is still regulable campaign propaganda, wherever it is posted.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.15</span> On March 6, 2025, the President appoints Deanna as Ombudsman and Lec as Chair of the Commission on Audit (COA). Deanna replaces the former Ombudsman, who resigned after serving exactly two years of his seven-year term. Lec replaces the former COA Chair, who also resigned after serving exactly two years of his seven-year term.",
+      question:"Will Deanna and Lec each serve the full seven years, that is, until 2032? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, neither Deanna nor Lec will serve a fresh seven years. Each will serve only for the UNEXPIRED portion of the term of the officer they replaced — that is, until around 2030, not 2032.</p><p><b>Legal Basis:</b> The law provides, as a common rule for all Constitutional Commissions (Art. IX-A, applicable directly to Lec as COA Chair), that appointment to a vacancy shall be only for the unexpired portion of the predecessor's term, and that no member may be reappointed. Jurisprudence provides (Funa v. Villar) that this unexpired-term rule exists to protect the fixed, staggered terms the Constitution designed for these offices, and to prevent an appointing President from using a mid-term vacancy to give an appointee what amounts to a brand-new full term — letting a single 'seat' run far longer than intended. This same reasoning extends to the Ombudsman under Art. XI, whose office is likewise given a single, fixed, non-renewable seven-year term for the very same reason: to keep the office independent of the appointing power.</p><p><b>Application:</b> Both predecessors resigned after only two years of their seven-year terms, meaning five years of each term remained unexpired when Deanna and Lec were appointed. Giving either of them a fresh seven years, running until 2032, would let each office's current term stretch years beyond what was originally intended for that seat — exactly the kind of circumvention the unexpired-term rule and the single-term, no-reappointment policy exist to prevent.</p><p><b>Conclusion:</b> Deanna and Lec will each serve only until the unexpired portion of their predecessor's term ends — approximately 2030 — not a fresh seven-year term ending in 2032.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Do not assume every new appointee automatically gets a full constitutional term. Always check WHY the previous officer left. If the FULL term simply expired, the new appointee gets a fresh full term. But if the previous officer left EARLY (resignation, removal, death), the new appointee normally receives only what is left of that same term.</div>"
+    },
+    {
+      fact:"<span class='bar-tag'>2026 BAR EXAM — Q.18</span> The Philippines takes part in negotiating a multilateral treaty that requires both signature and ratification before a state becomes a party. The Philippine ambassador signs the treaty on behalf of the Philippines, but the Office of the President deliberately does not transmit the treaty's text to the Senate for concurrence.",
+      question:"May the Office of the President be compelled, through mandamus, to transmit the treaty to the Senate for concurrence? Discuss, using the ALAC method.",
+      answer:"<p><b>Answer:</b> No, the Office of the President cannot be compelled by mandamus to transmit the treaty to the Senate.</p><p><b>Legal Basis:</b> The law provides that the President negotiates treaties, and that a treaty becomes valid and effective only with the concurrence of at least two-thirds of all the Members of the Senate (Art. VII, Sec. 21). Jurisprudence provides (Pimentel v. Executive Secretary) that the power to decide WHETHER and WHEN to submit a signed treaty to the Senate for concurrence belongs solely to the President, as part of the President's role as the sole organ of the nation in its foreign relations. Since the Senate's role is only to concur (or not) in a treaty already submitted to it, there is nothing for the Senate to act on until the President chooses to transmit it — and mandamus lies only to compel a purely ministerial duty, not a discretionary one.</p><p><b>Application:</b> Signing a treaty is only the first step; the Philippines does not become bound until ratification, and the Senate cannot even begin its own role of concurrence until the President transmits the treaty to it. Whether and when to make that transmittal is a matter of executive discretion tied to the President's foreign-relations power, not a ministerial act a court can compel through mandamus.</p><p><b>Conclusion:</b> Mandamus will not lie. The decision whether to transmit the signed treaty to the Senate for concurrence rests solely within the President's discretion.</p><div class='keypoint-box'><span class='kp-label'>Key Point</span>Signing a treaty is not the same as ratifying it, and neither step forces the President's hand on the next one. Track the full sequence: negotiation, then signature, then transmittal to the Senate, then Senate concurrence, then ratification. Each step depends on a deliberate decision by the relevant actor; courts will not force the President's discretionary choices in foreign affairs.</div>"
     }
   ]
 };
@@ -1752,6 +2030,40 @@ backToPicker = function(){
 };
 
 buildTopicCards();
+
+    /* ==================================================================
+       THEME TOGGLE — Light / System / Dark
+       Persists to localStorage; 'system' defers to prefers-color-scheme.
+       ================================================================== */
+    (function initTheme() {
+      const STORAGE_KEY = 'constiTheme';
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
+      function applyTheme(value) {
+        root.setAttribute('data-theme', value);
+        toggle.querySelectorAll('button').forEach(btn => {
+          const isActive = btn.getAttribute('data-theme-value') === value;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-checked', isActive);
+        });
+      }
+
+      // Restore saved preference
+      let saved = 'system';
+      try { saved = localStorage.getItem(STORAGE_KEY) || 'system'; } catch (e) { }
+      applyTheme(saved);
+
+      // Click handler
+      toggle.addEventListener('click', function (e) {
+        const btn = e.target.closest('button[data-theme-value]');
+        if (!btn) return;
+        const value = btn.getAttribute('data-theme-value');
+        applyTheme(value);
+        try { localStorage.setItem(STORAGE_KEY, value); } catch (e) { }
+      });
+    })();
 </script>
 </body>
 </html>
