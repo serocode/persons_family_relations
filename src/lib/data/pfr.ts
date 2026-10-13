@@ -11,10 +11,10 @@ export const pfr: LawModule = {
 	topics: [
 		{"id":"prelim","name":"Preliminary Title","eyebrow":"CIVIL CODE · ARTS. 1–18","desc":"Effectivity & publication, ignorance of law, retroactivity, repeal & waiver, stare decisis, conflict of laws, human relations."},
 		{"id":"persons","name":"Persons & Personality","eyebrow":"CIVIL CODE · ARTS. 37–51","desc":"Juridical capacity vs. capacity to act, restrictions, natural persons, juridical persons."},
-		{"id":"marriage","name":"Marriage","eyebrow":"FAMILY CODE · ARTS. 1–162","desc":"Requisites, license & exemptions, void/voidable grounds, Art. 36 doctrine, termination, property relations & family home."},
+		{"id":"marriage","name":"Marriage","eyebrow":"FAMILY CODE · ARTS. 1–54, 147–162","desc":"Requisites, license & exemptions, void/voidable grounds, Art. 36 doctrine, termination, unions without marriage (Arts. 147–148) & family home."},
 		{"id":"proprel","name":"Property Relations Between Husband & Wife","eyebrow":"FAMILY CODE · ARTS. 74–104","desc":"Marriage settlements, donations propter nuptias, and the absolute community of property — from general provisions through liquidation."},
 	],
-	studyGuideIntro: "Preliminary Title (Civil Code, Arts. 1–18) · Persons & Personality (Civil Code, Arts. 37–51) · Marriage, including Property Relations & Family Home (Family Code, Arts. 1–162). Not a substitute for the full text — use it to review before recitation.",
+	studyGuideIntro: "Preliminary Title (Civil Code, Arts. 1–18) · Persons & Personality (Civil Code, Arts. 37–51) · Marriage, including Unions Without Marriage & Family Home (Family Code, Arts. 1–54, 147–162) · Property Relations Between Husband & Wife (Family Code, Arts. 74–104). Not a substitute for the full text — use it to review before recitation.",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exemption / exception"},{"color":"orange","label":"Exemption of the exemption"},{"color":"red","label":"Jurisprudence / doctrine"}],
 	studyGuideHtml: `<h2 class="sg-h2" id="cross-cutting-doctrines">Cross-Cutting Doctrines</h2>
 <p class="sg-intro" style="margin-top:-6px;">These equity and constitutional-law doctrines aren't tied to a single article, but recur across topics and are easy to mix up under exam pressure.</p>
@@ -132,60 +132,6 @@ export const pfr: LawModule = {
 <div class="case-card"><div class="cname">"Well-founded belief" requires diligent, active search</div><div class="cdoc">A consistent line of decisions rejects passive or token efforts to locate an absent spouse as insufficient for a presumptive-death petition.</div></div>
 <div class="case-card"><div class="cname">Psychological incapacity is now a legal, not purely medical, concept</div><div class="cdoc">Expert psychiatric testimony is no longer mandatory; the incapacitated spouse himself may even file the petition, and retroactive application to pre-Family-Code marriages is allowed absent prejudice to vested rights.</div></div>
 
-<h2 class="sg-h2" id="part-iii-continued-property-relations-donations-the-family-h">Part III, continued — Property Relations, Donations &amp; the Family Home (Family Code, Arts. 74–162)</h2>
-
-<h3 class="sg-h3" id="marriage-settlements-donations-propter-nuptias">Marriage Settlements &amp; Donations Propter Nuptias</h3>
-<div class="table-scroll"><table class="sg-table">
-  <tr><th>Art.</th><th>Rule</th></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>74–77</td><td>A marriage settlement must be executed before the marriage, in writing, signed by the parties. It binds the spouses from execution but needs registration to bind third persons without notice. Stipulations not dependent on the marriage's celebration survive even if the wedding does not happen.</td></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>82–85</td><td>A donation propter nuptias requires express acceptance and cannot include future property; it must not impair the legitimes of compulsory heirs, and — if given before the marriage by way of present property — cannot exceed one-fifth of the donor's present property.</td></tr>
-  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>86</td><td>Grounds for revocation of donation propter nuptias generally track the general Civil Code grounds for revoking donations (e.g., a subsequent voidable-marriage ground concerning the donee, offenses against the donor) — this is an "exception" borrowed wholesale from ordinary donation law and grafted onto marriage law.</td></tr>
-  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>87</td><td>Donations between spouses during the marriage are generally void (to prevent one spouse unduly influencing the other) — <strong>except</strong> moderate gifts on family occasions. The same article voids donations propter nuptias made in favor of a party to a subsequent marriage that is void because both parties acted in bad faith.</td></tr>
-</table></div>
-
-<div class="exoex-box">
-  <span class="exoex-label">Exemption of the exemption — Donations Propter Nuptias</span>
-  The same underlying fact pattern can land in three very different buckets depending on fault: an <strong>innocent</strong> donee (e.g., suffering a spouse's post-marriage drug addiction through no fault of her own) keeps an <strong>irrevocable</strong> gift; a donee whose <strong>own act</strong> defeated the marriage (e.g., knowingly contracting a subsequent void marriage, being convicted of adultery) loses the gift by <strong>operation of law</strong>; and a donation made in favor of a party to a subsequent marriage where <strong>both</strong> parties acted in bad faith is <strong>void</strong> outright, never even reaching the revocable/irrevocable analysis.
-</div>
-
-<h3 class="sg-h3" id="absolute-community-of-property-acp-vs-conjugal-partnership-o">Absolute Community of Property (ACP) vs. Conjugal Partnership of Gains (CPG)</h3>
-<div class="table-scroll"><table class="cmp-table">
-  <tr><th>Aspect</th><th>ACP</th><th>CPG</th></tr>
-  <tr><td class="aspect">Default composition</td><td>Almost all property owned before and acquired during the marriage becomes community property, subject to specific exclusions (Art. 92)</td><td>Only property acquired <em>during</em> the marriage through onerous title, or through the spouses' efforts, becomes conjugal; property each owned before marriage stays exclusive</td></tr>
-  <tr><td class="aspect">Jewelry</td><td>Community property, even though "for personal use" would otherwise be excluded</td><td>Exclusive property if owned before marriage or acquired by gratuitous title</td></tr>
-  <tr><td class="aspect">Antenuptial debts</td><td>Chargeable to ACP only if they redounded to the family's benefit</td><td>Generally the debtor-spouse's exclusive liability unless for family benefit</td></tr>
-  <tr><td class="aspect">Deficiency liability</td><td>Community answers first; personal debts not benefiting the family are the debtor-spouse's own responsibility</td><td>Separate property answers for the deficiency, and liability is solidary</td></tr>
-  <tr><td class="aspect">Liquidation order</td><td>Similar liquidation logic to CPG, adapted to a single community mass</td><td>Three inventories first (conjugal + each spouse's exclusive list); debts paid; exclusive property delivered with reimbursement; net profits divided; dwelling goes to spouse with majority of common children</td></tr>
-</table></div>
-
-<h3 class="sg-h3" id="arts-147-148-property-of-couples-without-a-valid-marriage">Arts. 147 &amp; 148 — Property of Couples Without a Valid Marriage</h3>
-<div class="table-scroll"><table class="sg-table">
-  <tr><th>Art.</th><th>Rule</th></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>147</td><td>"Special co-ownership" — for a man and woman both capacitated to marry each other who cohabit without marriage (or under a void marriage). Wages/salaries are owned in equal shares; property acquired through their work or industry is presumed obtained by joint effort and owned in common, in equal shares.</td></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>148</td><td>"Limited co-ownership" — for couples with an impediment to marry each other (e.g., one is validly married to someone else). Only property actually proven to have been acquired by the parties' <strong>actual joint contribution</strong> is co-owned, in proportion to their respective contributions; no contribution is presumed.</td></tr>
-</table></div>
-
-<h3 class="sg-h3" id="the-family-home">The Family Home</h3>
-<div class="table-scroll"><table class="sg-table">
-  <tr><th>Art.</th><th>Rule</th></tr>
-  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>153</td><td>Under the Family Code, a family home is constituted <strong>automatically</strong> from the time the family begins actual occupation as a residence — no judicial or extrajudicial act required. This is a reversal of the old Civil Code rule requiring formal (judicial, or later extrajudicial-by-public-instrument) constitution — but the Family Code's retroactive-effect rule does <strong>not</strong> automatically deem every pre-existing residence a family home from before the Code's effectivity in every respect.</td></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>155</td><td>Exempt from execution, forced sale, or attachment — except for: debts incurred before the home's constitution, non-payment of taxes on it, debts to laborers/materialmen who built or repaired it, and debts secured by a mortgage on it.</td></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>158</td><td>Sale, alienation, donation, or assignment of the family home needs the written consent of the person who constituted it, the spouse, and a majority of the beneficiaries of legal age — a mere lease does not require this same consent.</td></tr>
-  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>159</td><td>The family home continues despite the constitutor's death for 10 years, or for as long as there is a minor beneficiary — <strong>unless the court, for compelling reasons, rules otherwise</strong>. A property under a conditional sale where the seller retains title cannot yet become a family home.</td></tr>
-</table></div>
-
-<h3 class="sg-h3" id="judicial-separation-of-property-modification-of-marriage-set">Judicial Separation of Property &amp; Modification of Marriage Settlement</h3>
-<div class="table-scroll"><table class="sg-table">
-  <tr><th>Art.</th><th>Rule</th></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>135</td><td>Grounds include: civil interdiction; a judicial declaration that a spouse is an absentee; loss of parental authority by court decree; abandonment or failure to comply with family obligations; abuse of administration powers under the settlement; and separation in fact for at least one year with reconciliation highly improbable. Mere unexplained absence, without the judicial absentee declaration, is not enough.</td></tr>
-  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>66/76</td><td>A marriage settlement generally cannot be modified after the wedding — the recognized exception is reconciliation following a decree of legal separation, which allows the spouses to revive their former regime or adopt separation of property.</td></tr>
-</table></div>
-
-<h3 class="sg-h3" id="jurisprudence-doctrine-quick-reference">Jurisprudence &amp; Doctrine Quick-Reference</h3>
-<div class="case-card"><div class="cname">Family relations under Art. 150 exclude one common relationship</div><div class="cdoc">Husband and wife, parents and (legitimate) children, ascendants and descendants, and siblings are covered — but parents and illegitimate children are notably left out of this specific enumeration.</div></div>
-<div class="case-card"><div class="cname">Family-member exemption from theft/swindling/malicious mischief (Art. 332, RPC)</div><div class="cdoc">Spouses, ascendants, descendants, and relatives by affinity in the same line are exempt outright; siblings and siblings-in-law are exempt only if actually living together.</div></div>
-<div class="case-card"><div class="cname">Hierarchy of filiation evidence (Art. 172)</div><div class="cdoc">The record of birth, a final judgment, or an admission of filiation in a public document or signed private handwritten instrument are primary evidence; open and continuous possession of status, and other Rules of Court/special-law evidence, are only secondary, used absent the primary evidence.</div></div>
-
 <h2 class="sg-h2" id="part-iv-property-relations-between-husband-wife-family-code-">Part IV — Property Relations Between Husband &amp; Wife (Family Code, Arts. 74–104)</h2>
 <div class="table-scroll"><table class="sg-table">
   <tr><th>Art.</th><th>Rule</th></tr>
@@ -247,7 +193,36 @@ export const pfr: LawModule = {
 <div class="case-card"><div class="cname">Alexander v. Spouses Escalona (2022, En Banc)</div><div class="cdoc">A spouse's share in the community is inchoate until liquidation — he cannot sell "his half" the way an ordinary co-owner could. The date of the alienation (not the marriage) decides whether the old voidable rule or the current void rule applies.</div></div>
 <div class="case-card"><div class="cname">Ayala Investment &amp; Dev't Corp. v. CA (1998)</div><div class="cdoc">Where a spouse is a mere surety/guarantor for another's debt, benefit to the family must be proved, not presumed; where the spouse is the principal obligor in his own business, benefit to the family is presumed.</div></div>
 <div class="case-card"><div class="cname">Matabuena v. Cervantes; Arcaba v. Tabancura (1971, 2001)</div><div class="cdoc">The Art. 87 ban on donations between spouses extends with equal (or greater) force to common-law partners living together as husband and wife without a valid marriage.</div></div>
-<div class="case-card"><div class="cname">Heirs of Go, Sr. v. Servacio (2011)</div><div class="cdoc">A surviving spouse's pre-liquidation disposition of the unliquidated community is "not necessarily void" as to his own ideal share under the implied co-ownership with the heirs — a nuance layered on top of Art. 103's general void rule.</div></div>`,
+<div class="case-card"><div class="cname">Heirs of Go, Sr. v. Servacio (2011)</div><div class="cdoc">A surviving spouse's pre-liquidation disposition of the unliquidated community is "not necessarily void" as to his own ideal share under the implied co-ownership with the heirs — a nuance layered on top of Art. 103's general void rule.</div></div>
+
+<h2 class="sg-h2" id="part-v-unions-without-marriage-family-home-family-relations">Part V — Unions Without Marriage, Family Home &amp; Family Relations (Family Code, Arts. 66, 135, 147–162)</h2>
+
+<h3 class="sg-h3" id="arts-147-148-property-of-couples-without-a-valid-marriage">Arts. 147 &amp; 148 — Property of Couples Without a Valid Marriage</h3>
+<div class="table-scroll"><table class="sg-table">
+  <tr><th>Art.</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>147</td><td>"Special co-ownership" — for a man and woman both capacitated to marry each other who cohabit without marriage (or under a void marriage). Wages/salaries are owned in equal shares; property acquired through their work or industry is presumed obtained by joint effort and owned in common, in equal shares.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>148</td><td>"Limited co-ownership" — for couples with an impediment to marry each other (e.g., one is validly married to someone else). Only property actually proven to have been acquired by the parties' <strong>actual joint contribution</strong> is co-owned, in proportion to their respective contributions; no contribution is presumed.</td></tr>
+</table></div>
+
+<h3 class="sg-h3" id="the-family-home">The Family Home</h3>
+<div class="table-scroll"><table class="sg-table">
+  <tr><th>Art.</th><th>Rule</th></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>153</td><td>Under the Family Code, a family home is constituted <strong>automatically</strong> from the time the family begins actual occupation as a residence — no judicial or extrajudicial act required. This is a reversal of the old Civil Code rule requiring formal (judicial, or later extrajudicial-by-public-instrument) constitution — but the Family Code's retroactive-effect rule does <strong>not</strong> automatically deem every pre-existing residence a family home from before the Code's effectivity in every respect.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>155</td><td>Exempt from execution, forced sale, or attachment — except for: debts incurred before the home's constitution, non-payment of taxes on it, debts to laborers/materialmen who built or repaired it, and debts secured by a mortgage on it.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>158</td><td>Sale, alienation, donation, or assignment of the family home needs the written consent of the person who constituted it, the spouse, and a majority of the beneficiaries of legal age — a mere lease does not require this same consent.</td></tr>
+  <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>159</td><td>The family home continues despite the constitutor's death for 10 years, or for as long as there is a minor beneficiary — <strong>unless the court, for compelling reasons, rules otherwise</strong>. A property under a conditional sale where the seller retains title cannot yet become a family home.</td></tr>
+</table></div>
+<h3 class="sg-h3" id="judicial-separation-of-property-modification-of-marriage-set">Judicial Separation of Property (Art. 135) &amp; Post-Reconciliation Modification (Art. 66)</h3>
+<div class="table-scroll"><table class="sg-table">
+  <tr><th>Art.</th><th>Rule</th></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>135</td><td>Grounds include: civil interdiction; a judicial declaration that a spouse is an absentee; loss of parental authority by court decree; abandonment or failure to comply with family obligations; abuse of administration powers under the settlement; and separation in fact for at least one year with reconciliation highly improbable. Mere unexplained absence, without the judicial absentee declaration, is not enough.</td></tr>
+  <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>66</td><td>A marriage settlement generally cannot be modified after the wedding — the recognized exception is reconciliation following a decree of legal separation, which allows the spouses to revive their former regime or adopt separation of property.</td></tr>
+</table></div>
+
+<h3 class="sg-h3" id="jurisprudence-doctrine-quick-reference">Jurisprudence &amp; Doctrine Quick-Reference</h3>
+<div class="case-card"><div class="cname">Family relations under Art. 150 exclude one common relationship</div><div class="cdoc">Husband and wife, parents and (legitimate) children, ascendants and descendants, and siblings are covered — but parents and illegitimate children are notably left out of this specific enumeration.</div></div>
+<div class="case-card"><div class="cname">Family-member exemption from theft/swindling/malicious mischief (Art. 332, RPC)</div><div class="cdoc">Spouses, ascendants, descendants, and relatives by affinity in the same line are exempt outright; siblings and siblings-in-law are exempt only if actually living together.</div></div>
+<div class="case-card"><div class="cname">Hierarchy of filiation evidence (Art. 172)</div><div class="cdoc">The record of birth, a final judgment, or an admission of filiation in a public document or signed private handwritten instrument are primary evidence; open and continuous possession of status, and other Rules of Court/special-law evidence, are only secondary, used absent the primary evidence.</div></div>`,
 	watchFor: {
 		"proprel": `<strong>Watch for: the exemption OF the exemption.</strong>
     <ul>
