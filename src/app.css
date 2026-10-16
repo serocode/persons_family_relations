@@ -593,6 +593,20 @@
 .study-guide .rv-alac-l { --c: var(--purple); }
 .study-guide .rv-alac-p { --c: var(--green); }
 .study-guide .rv-alac-c { --c: var(--orange); }
+/* Criminal Procedure answer key: Issue and Explanation rows around the ALAC rows. */
+.study-guide .rv-alac-i { --c: var(--red); }
+.study-guide .rv-alac-e { --c: var(--muted-foreground); }
+.study-guide .rv-jump {
+	font-family: var(--font-sans);
+	font-size: 0.78rem;
+	margin: 0.5rem 0 0;
+	text-align: right;
+}
+@media print {
+	.study-guide .rv-jump {
+		display: none;
+	}
+}
 .study-guide .rv-flash {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));

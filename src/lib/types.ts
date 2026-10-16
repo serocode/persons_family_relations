@@ -53,6 +53,7 @@ export type SubjectCategory =
 	| 'Civil Law — Supplement'
 	| 'Political Law'
 	| 'Criminal Law'
+	| 'Remedial Law'
 	| 'Legal Method';
 
 export interface ModuleTopic {
@@ -69,7 +70,7 @@ export interface LegendItem {
 }
 
 export interface LawModule {
-	id: string; // 'pfr' | 'pfr_cases' | 'consti1' | 'crim1' | 'statcon' | 'statcon2'
+	id: string; // 'pfr' | 'pfr_cases' | 'consti1' | 'crim1' | 'statcon' | 'statcon2' | 'crimpro'
 	title: string;
 	subjectCategory: SubjectCategory;
 	eyebrow?: string;
