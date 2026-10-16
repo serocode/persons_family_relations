@@ -152,6 +152,8 @@
 		untrack(() => {
 			clearMarks(el);
 			if (needle) applyMarks(el, needle);
+			// A hit inside a collapsed flashcard/answer would be invisible — open it.
+			el.querySelectorAll('mark.sg-hit').forEach((m) => m.closest('details')?.setAttribute('open', ''));
 			hitCount = allHits().length;
 			activeHit = 0;
 			paintActive(false);
@@ -225,7 +227,7 @@
 	const rest = (c: CaseDigest) => (c.summary.startsWith(c.keyRule) ? c.summary.slice(c.keyRule.length).trim() : c.summary);
 </script>
 
-<svelte:window onkeydown={onWindowKey} />
+<svelte:window onkeydown={onWindowKey} onbeforeprint={() => proseEl?.querySelectorAll('details').forEach((d) => (d.open = true))} />
 
 <div bind:this={root} class="grid gap-8 lg:grid-cols-[16rem_minmax(0,1fr)]">
 	<!-- Sticky outline (desktop) -->

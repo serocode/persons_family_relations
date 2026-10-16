@@ -4,9 +4,10 @@ import { pfrCases } from './pfr_cases';
 import { consti1 } from './consti1';
 import { crim1 } from './crim1';
 import { statcon } from './statcon';
+import { statcon2 } from './statcon2';
 
 /** Master index, in the order shown on the dashboard. A module's `id` is also its URL slug. */
-export const modules: LawModule[] = [pfr, pfrCases, consti1, crim1, statcon];
+export const modules: LawModule[] = [pfr, pfrCases, consti1, crim1, statcon, statcon2];
 
 export function getModule(slug: string): LawModule | undefined {
 	return modules.find((m) => m.id === slug);

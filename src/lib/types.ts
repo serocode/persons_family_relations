@@ -69,7 +69,7 @@ export interface LegendItem {
 }
 
 export interface LawModule {
-	id: string; // 'pfr' | 'pfr_cases' | 'consti1' | 'crim1' | 'statcon'
+	id: string; // 'pfr' | 'pfr_cases' | 'consti1' | 'crim1' | 'statcon' | 'statcon2'
 	title: string;
 	subjectCategory: SubjectCategory;
 	eyebrow?: string;

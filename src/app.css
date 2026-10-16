@@ -372,6 +372,318 @@
 	min-width: 7.5rem;
 }
 
+/* ------------------------------------------------------------------ *
+ * Reviewer blocks (Statutory Construction II): cards, colored boxes,
+ * practice questions and answer keys, ALAC rows, flashcards.
+ * Colors come from the legend tokens via a local --c.
+ * ------------------------------------------------------------------ */
+.study-guide .rv-yellow { --c: var(--yellow); }
+.study-guide .rv-green { --c: var(--green); }
+.study-guide .rv-blue { --c: var(--blue); }
+.study-guide .rv-orange { --c: var(--orange); }
+.study-guide .rv-red { --c: var(--red); }
+.study-guide .rv-purple { --c: var(--purple); }
+.study-guide .rv-neutral { --c: var(--muted-foreground); }
+
+.study-guide .rv-h4 {
+	font-family: var(--font-sans);
+	font-weight: 650;
+	font-size: 0.95rem;
+	margin: 1.4rem 0 0.45rem;
+}
+.study-guide .rv-card,
+.study-guide .rv-q,
+.study-guide .rv-ans {
+	border: 1px solid var(--border);
+	background: var(--card);
+	border-radius: var(--radius-lg);
+	padding: 0.85rem 1.05rem;
+	margin: 0.8rem 0 1rem;
+}
+.study-guide .rv-card > :first-child,
+.study-guide .rv-q > :first-child,
+.study-guide .rv-ans > :first-child {
+	margin-top: 0;
+}
+.study-guide .rv-card-title {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 1rem;
+	line-height: 1.4;
+	margin: 0 0 0.35rem;
+}
+.study-guide .rv-num {
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.75rem;
+	font-weight: 600;
+	padding: 0.08rem 0.42rem;
+	border-radius: 0.3rem;
+	background: var(--secondary);
+	color: var(--secondary-foreground);
+	margin-right: 0.3rem;
+	white-space: nowrap;
+}
+.study-guide .rv-meta,
+.study-guide .rv-qhead {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.35rem;
+	margin: 0.2rem 0 0.5rem;
+}
+.study-guide .rv-badge {
+	font-family: var(--font-sans);
+	font-size: 0.7rem;
+	font-weight: 600;
+	line-height: 1.5;
+	padding: 0.05rem 0.5rem;
+	border-radius: 9999px;
+	border: 1px solid color-mix(in oklab, var(--c) 45%, transparent);
+	background: color-mix(in oklab, var(--c) 11%, transparent);
+	color: var(--c);
+}
+.study-guide .rv-source,
+.study-guide .rv-echo {
+	font-family: var(--font-sans);
+	font-size: 0.85rem;
+	color: var(--muted-foreground);
+	margin: 0.2rem 0 0.5rem;
+}
+.study-guide .rv-box {
+	border-left: 4px solid var(--c);
+	background: color-mix(in oklab, var(--c) 9%, transparent);
+	padding: 0.65rem 0.95rem;
+	margin: 0.7rem 0 0.9rem;
+	border-radius: 0 var(--radius-md) var(--radius-md) 0;
+	font-family: var(--font-sans);
+	font-size: 0.9rem;
+	line-height: 1.6;
+}
+.study-guide .rv-box p,
+.study-guide .rv-box ul,
+.study-guide .rv-box ol {
+	margin: 0.3rem 0;
+}
+.study-guide .rv-label {
+	display: block;
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 0.68rem;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	color: var(--c, var(--muted-foreground));
+	margin-bottom: 0.2rem;
+}
+.study-guide .rv-dl {
+	display: grid;
+	grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+	gap: 0.4rem 1rem;
+	margin: 0.5rem 0;
+	font-size: 0.96rem;
+}
+.study-guide .rv-dl dt {
+	font-family: var(--font-sans);
+	font-weight: 650;
+	font-size: 0.78rem;
+	color: var(--muted-foreground);
+	padding-top: 0.2rem;
+	margin: 0;
+}
+.study-guide .rv-dl dd {
+	margin: 0;
+	padding: 0;
+}
+.study-guide .rv-dl dd > ul,
+.study-guide .rv-dl dd > ol {
+	margin: 0;
+}
+@media (max-width: 640px) {
+	.study-guide .rv-dl {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.1rem;
+	}
+	.study-guide .rv-dl dd {
+		margin-bottom: 0.5rem;
+	}
+}
+.study-guide .rv-question {
+	font-weight: 600;
+	margin: 0.3rem 0;
+}
+.study-guide .rv-ex,
+.study-guide .rv-cite {
+	color: var(--muted-foreground);
+}
+.study-guide .rv-cite {
+	font-family: var(--font-sans);
+	font-size: 0.78rem;
+}
+.study-guide .rv-skeleton {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 0.92rem;
+}
+.study-guide .rv-facts {
+	border-left: 3px solid var(--border);
+	padding-left: 0.85rem;
+	margin: 0.3rem 0 0.5rem;
+}
+.study-guide .rv-prop {
+	border-left: 3px solid var(--purple);
+	padding-left: 0.85rem;
+	margin: 0.4rem 0;
+	font-style: normal;
+	font-weight: 500;
+	quotes: none;
+}
+.study-guide .rv-verdict {
+	font-family: var(--font-sans);
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	margin: 0.2rem 0;
+}
+.study-guide .rv-true {
+	color: var(--correct);
+}
+.study-guide .rv-false {
+	color: var(--incorrect);
+}
+.study-guide .rv-expanded {
+	margin: 0.6rem 0;
+}
+.study-guide .rv-keys {
+	font-family: var(--font-sans);
+	font-size: 0.82rem;
+	color: var(--muted-foreground);
+	border-top: 1px dashed var(--border);
+	padding-top: 0.45rem;
+	margin: 0.6rem 0 0;
+}
+.study-guide .rv-verify {
+	font-family: var(--font-sans);
+	font-size: 0.82rem;
+	color: var(--orange);
+	margin: 0.3rem 0 0;
+}
+.study-guide .rv-alac {
+	display: grid;
+	gap: 0.5rem;
+	margin: 0.5rem 0;
+}
+.study-guide .rv-alac-row {
+	display: grid;
+	grid-template-columns: 1.8rem minmax(0, 1fr);
+	gap: 0.65rem;
+	align-items: start;
+}
+.study-guide .rv-alac-k {
+	display: grid;
+	place-items: center;
+	width: 1.8rem;
+	height: 1.8rem;
+	border-radius: 0.45rem;
+	font-family: var(--font-sans);
+	font-weight: 800;
+	font-size: 0.85rem;
+	color: var(--c);
+	background: color-mix(in oklab, var(--c) 14%, transparent);
+	border: 1px solid color-mix(in oklab, var(--c) 40%, transparent);
+}
+.study-guide .rv-alac-a { --c: var(--blue); }
+.study-guide .rv-alac-l { --c: var(--purple); }
+.study-guide .rv-alac-p { --c: var(--green); }
+.study-guide .rv-alac-c { --c: var(--orange); }
+.study-guide .rv-flash {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: 0.6rem;
+	margin: 0.6rem 0 1rem;
+}
+.study-guide details.rv-flip,
+.study-guide details.rv-reveal {
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	background: var(--card);
+	padding: 0.6rem 0.85rem;
+	font-family: var(--font-sans);
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+.study-guide details.rv-reveal {
+	margin: 0.5rem 0 0.8rem;
+	background: color-mix(in oklab, var(--green) 5%, var(--card));
+}
+.study-guide details.rv-flip > summary,
+.study-guide details.rv-reveal > summary {
+	cursor: pointer;
+	font-weight: 600;
+	list-style: none;
+}
+.study-guide details.rv-flip > summary::-webkit-details-marker,
+.study-guide details.rv-reveal > summary::-webkit-details-marker {
+	display: none;
+}
+.study-guide details.rv-flip:not([open]) > summary::after {
+	content: 'Tap to reveal';
+	display: block;
+	margin-top: 0.3rem;
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+.study-guide details.rv-reveal > summary {
+	color: var(--green);
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.study-guide details.rv-flip > div,
+.study-guide details.rv-reveal > div {
+	margin-top: 0.5rem;
+	padding-top: 0.5rem;
+	border-top: 1px dashed var(--border);
+}
+.study-guide details > div > p:first-child {
+	margin-top: 0;
+}
+.study-guide .rv-check {
+	list-style: none;
+	padding-left: 0;
+}
+.study-guide .rv-check > li {
+	position: relative;
+	padding-left: 1.7rem;
+}
+.study-guide .rv-check > li::before {
+	content: '☐';
+	position: absolute;
+	left: 0.1rem;
+	color: var(--muted-foreground);
+}
+.study-guide .rv-recall > li {
+	margin: 0.4rem 0;
+}
+.study-guide .rv-cmp {
+	margin: 1rem 0 1.6rem;
+}
+.study-guide td > ol,
+.study-guide td > ul,
+.study-guide td > p:first-child {
+	margin-top: 0;
+}
+.study-guide td > ol:last-child,
+.study-guide td > ul:last-child {
+	margin-bottom: 0;
+}
+.study-guide .cmp-table .aspect {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 0.82rem;
+	color: var(--muted-foreground);
+}
+
 mark.sg-hit,
 mark.search-hit {
 	background: color-mix(in oklab, var(--yellow) 38%, transparent);
