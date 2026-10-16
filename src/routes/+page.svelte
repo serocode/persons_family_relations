@@ -18,6 +18,7 @@
 		blue: { bar: 'bg-blue', text: 'text-blue', fill: '[&>div]:bg-blue' },
 		purple: { bar: 'bg-purple', text: 'text-purple', fill: '[&>div]:bg-purple' },
 		red: { bar: 'bg-red', text: 'text-red', fill: '[&>div]:bg-red' },
+		orange: { bar: 'bg-orange', text: 'text-orange', fill: '[&>div]:bg-orange' },
 		green: { bar: 'bg-green', text: 'text-green', fill: '[&>div]:bg-green' }
 	} as const;
 
