@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import * as Dialog from '$lib/components/ui/dialog';
+	import TextSizeControl from './TextSizeControl.svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { totals } from '$lib/data/modules';
@@ -55,16 +56,17 @@
 	});
 </script>
 
-<header class="sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70 no-print">
+<!-- The header is a size container. Its breakpoints are in rem, which grow with the text size (viewport media queries do not), so items drop out as the text gets larger instead of pushing the settings button off-screen. -->
+<header class="@container/header sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70 no-print">
 	<div class="mx-auto flex h-14 max-w-7xl items-center gap-3 px-4 sm:px-6">
 		<a href="/" class="group flex items-center gap-2.5 rounded-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none" aria-current={page.url.pathname === '/' ? 'page' : undefined}>
 			<span class="grid size-8 place-items-center rounded-md bg-primary text-primary-foreground">
 				<Scale class="size-4" />
 			</span>
-			<span class="font-heading text-[0.95rem] leading-none font-semibold tracking-wide sm:text-base">Subpoena Colada</span>
+			<span class="font-heading text-[0.95rem] leading-none font-semibold tracking-wide sm:text-base @max-[14rem]/header:sr-only">Subpoena Colada</span>
 		</a>
 
-		<div class="ml-auto hidden items-center gap-2 md:flex" aria-label="Your progress">
+		<div class="ml-auto hidden items-center gap-2 @3xl/header:flex" aria-label="Your progress">
 			<span class="inline-flex items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-xs text-muted-foreground" title="Questions answered / accuracy">
 				<Target class="size-3.5 text-blue" />
 				<span class="font-medium text-foreground tabular-nums">{stats.attempted}</span>/{totals.mcqs}
@@ -79,23 +81,38 @@
 			</span>
 		</div>
 
-		<div class="ml-auto flex items-center gap-2 md:ml-0">
+		<div class="ml-auto flex shrink-0 items-center gap-2 @3xl/header:ml-0">
+			<!-- Where the header has no room, the control is in the settings dialog instead. -->
+			<TextSizeControl class="hidden @min-[30rem]/header:inline-flex" />
 			<ThemeToggle />
 			<Dialog.Root bind:open={settingsOpen}>
 				<Dialog.Trigger>
 					{#snippet child({ props })}
-						<Button {...props} variant="ghost" size="icon" aria-label="Progress and data settings">
+						<Button {...props} variant="ghost" size="icon" aria-label="Settings — text size and your progress" title="Settings">
 							<Settings />
 						</Button>
 					{/snippet}
 				</Dialog.Trigger>
-				<Dialog.Content class="sm:max-w-md">
+				<Dialog.Content class="max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-md">
 					<Dialog.Header>
-						<Dialog.Title>Your progress</Dialog.Title>
-						<Dialog.Description>
-							Everything is stored only in this browser — there is no account or server. Export a backup before clearing site data or switching devices.
-						</Dialog.Description>
+						<Dialog.Title>Settings</Dialog.Title>
+						<Dialog.Description>Text size and your saved progress.</Dialog.Description>
 					</Dialog.Header>
+
+					<div class="flex items-center justify-between gap-3 rounded-lg border bg-muted/50 p-3">
+						<div>
+							<p class="text-sm font-medium">Text size</p>
+							<p class="text-xs text-muted-foreground">Scales all text in the app. Saved in this browser.</p>
+						</div>
+						<TextSizeControl class="shrink-0" />
+					</div>
+
+					<div>
+						<h3 class="text-sm font-medium">Your progress</h3>
+						<p class="mt-1 text-sm text-muted-foreground">
+							Everything is stored only in this browser — there is no account or server. Export a backup before clearing site data or switching devices.
+						</p>
+					</div>
 
 					<dl class="grid grid-cols-2 gap-2 text-sm">
 						<div class="rounded-lg border bg-muted/50 p-3">

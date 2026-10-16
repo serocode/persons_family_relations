@@ -7,13 +7,16 @@
 		<meta name="theme-color" content="#efebdf" media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content="#121518" media="(prefers-color-scheme: dark)" />
 		<script>
-			// Apply the saved theme (or the system preference) before first paint to avoid a flash.
+			// Apply the saved theme (or the system preference) and text size before first paint to avoid a flash.
 			(function () {
 				try {
 					var m = localStorage.getItem('law_theme');
 					var dark = m === 'dark' || ((m === null || m === 'system') && matchMedia('(prefers-color-scheme: dark)').matches);
 					document.documentElement.classList.toggle('dark', dark);
 					document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+					// Same list as TEXT_SIZES in src/lib/stores/textSize.svelte.ts (100 is the default and is not stored).
+					var size = Number(localStorage.getItem('law_text_size'));
+					if ([87.5, 112.5, 125, 137.5, 150].indexOf(size) > -1) document.documentElement.style.fontSize = size + '%';
 				} catch (e) {}
 			})();
 		</script>

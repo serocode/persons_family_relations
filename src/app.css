@@ -208,6 +208,9 @@
  * legend, tables, and callouts.
  * ------------------------------------------------------------------ */
 .study-guide {
+	/* A size container, so narrow-column rules follow the column's width in rem — which shrinks as the text size grows. */
+	container: study-guide / inline-size;
+	overflow-wrap: break-word;
 	font-family: var(--font-serif);
 	font-size: 1.0625rem;
 	line-height: 1.7;
@@ -497,7 +500,7 @@
 .study-guide .rv-dl dd > ol {
 	margin: 0;
 }
-@media (max-width: 640px) {
+@container study-guide (width < 37.5rem) {
 	.study-guide .rv-dl {
 		grid-template-columns: minmax(0, 1fr);
 		gap: 0.1rem;

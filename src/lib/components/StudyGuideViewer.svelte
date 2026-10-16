@@ -229,9 +229,10 @@
 
 <svelte:window onkeydown={onWindowKey} onbeforeprint={() => proseEl?.querySelectorAll('details').forEach((d) => (d.open = true))} />
 
-<div bind:this={root} class="grid gap-8 lg:grid-cols-[16rem_minmax(0,1fr)]">
+<!-- Breakpoints use the `main` size container (in rem), so the sidebar gives way to the toggle when the text size is raised. At 100% this matches the old lg breakpoint. -->
+<div bind:this={root} class="grid gap-8 @min-[61rem]/main:grid-cols-[16rem_minmax(0,1fr)]">
 	<!-- Sticky outline (desktop) -->
-	<aside class="hidden lg:block">
+	<aside class="hidden @min-[61rem]/main:block">
 		<nav aria-label="Study guide outline" class="sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto pr-2 text-sm">
 			<p class="mb-2 flex items-center gap-1.5 text-[0.7rem] font-semibold tracking-wider text-muted-foreground uppercase"><ListTree class="size-3.5" /> Outline</p>
 			{#if outline.length === 0}
@@ -292,7 +293,7 @@
 						</button>
 					{/if}
 				</div>
-				<Button variant="outline" size="icon" class="lg:hidden" aria-expanded={mobileOutline} aria-label="Toggle outline" onclick={() => (mobileOutline = !mobileOutline)}>
+				<Button variant="outline" size="icon" class="@min-[61rem]/main:hidden" aria-expanded={mobileOutline} aria-label="Toggle outline" onclick={() => (mobileOutline = !mobileOutline)}>
 					<ListTree />
 				</Button>
 			</div>
@@ -309,7 +310,7 @@
 			{/if}
 
 			{#if mobileOutline}
-				<nav aria-label="Study guide outline" class="mt-2 max-h-72 overflow-y-auto rounded-lg border bg-card p-2 text-sm lg:hidden">
+				<nav aria-label="Study guide outline" class="mt-2 max-h-72 overflow-y-auto rounded-lg border bg-card p-2 text-sm @min-[61rem]/main:hidden">
 					<ul class="space-y-0.5">
 						{#each outline as item (item.id)}
 							<li>
