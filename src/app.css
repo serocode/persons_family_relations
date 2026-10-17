@@ -86,6 +86,14 @@
 	--orange: #a9531f;
 	--correct: #2f6b4b;
 	--incorrect: #9a3e30;
+
+	/* Reader highlights: marker hues, laid over text at --hl-alpha. */
+	--hl-yellow: #f7d23e;
+	--hl-green: #7fd18b;
+	--hl-blue: #7fb8f0;
+	--hl-pink: #f59ac0;
+	--hl-purple: #b9a0ef;
+	--hl-alpha: 50%;
 }
 
 .dark {
@@ -116,6 +124,13 @@
 	--orange: #ea9a60;
 	--correct: #72c298;
 	--incorrect: #e58c7b;
+
+	--hl-yellow: #e3c04a;
+	--hl-green: #6cc488;
+	--hl-blue: #6fa8e6;
+	--hl-pink: #e889b3;
+	--hl-purple: #a98fe6;
+	--hl-alpha: 32%;
 }
 
 @theme inline {

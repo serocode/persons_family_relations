@@ -1,15 +1,44 @@
-import type { UserEssayDraft, UserMcqAttempt } from '$lib/types';
+import type { HighlightColor, UserEssayDraft, UserHighlight, UserMcqAttempt } from '$lib/types';
+import { COLOR_NAMES, DEFAULT_HIGHLIGHT_LABELS, HIGHLIGHT_COLORS } from '$lib/highlights.svelte';
 
 const KEYS = {
 	mcq: 'law_mcq_attempts',
 	essay: 'law_essay_drafts',
-	bookmarks: 'law_bookmarks'
+	bookmarks: 'law_bookmarks',
+	highlights: 'law_highlights',
+	highlightLabels: 'law_highlight_labels'
 } as const;
 
 const PERSIST_DELAY_MS = 300;
 
 function isRecord(v: unknown): v is Record<string, unknown> {
 	return typeof v === 'object' && v !== null && !Array.isArray(v);
+}
+
+function isHighlight(v: unknown): v is UserHighlight {
+	return (
+		isRecord(v) &&
+		typeof v.id === 'string' &&
+		typeof v.moduleId === 'string' &&
+		typeof v.scope === 'string' &&
+		typeof v.quote === 'string' &&
+		v.quote.length > 0 &&
+		typeof v.prefix === 'string' &&
+		typeof v.suffix === 'string' &&
+		typeof v.start === 'number' &&
+		HIGHLIGHT_COLORS.includes(v.color as HighlightColor) &&
+		(v.note === undefined || typeof v.note === 'string')
+	);
+}
+
+/** Drops malformed entries one by one, so a single bad highlight doesn't cost the reader all the others. */
+function cleanHighlights(v: Record<string, unknown>): Record<string, UserHighlight> {
+	return Object.fromEntries(Object.entries(v).filter((e): e is [string, UserHighlight] => isHighlight(e[1])));
+}
+
+/** Missing or blank-typed labels fall back to the defaults. */
+function cleanLabels(v: Record<string, unknown>): Record<HighlightColor, string> {
+	return Object.fromEntries(HIGHLIGHT_COLORS.map((c) => [c, typeof v[c] === 'string' ? v[c] : DEFAULT_HIGHLIGHT_LABELS[c]])) as Record<HighlightColor, string>;
 }
 
 /** Parses a stored JSON blob, returning `fallback` if it is missing or the wrong shape. */
@@ -38,6 +67,8 @@ class StorageStore {
 	mcqAttempts = $state<Record<string, UserMcqAttempt>>({});
 	essayDrafts = $state<Record<string, UserEssayDraft>>({});
 	bookmarks = $state<string[]>([]);
+	highlights = $state<Record<string, UserHighlight>>({});
+	highlightLabels = $state<Record<HighlightColor, string>>({ ...DEFAULT_HIGHLIGHT_LABELS });
 	isLoaded = $state(false);
 	/** Set when the browser refuses a write (private mode, quota). Progress then lives only in memory. */
 	persistError = $state(false);
@@ -58,6 +89,8 @@ class StorageStore {
 				this.pending[KEYS.mcq] = JSON.stringify(this.mcqAttempts);
 				this.pending[KEYS.essay] = JSON.stringify(this.essayDrafts);
 				this.pending[KEYS.bookmarks] = JSON.stringify(this.bookmarks);
+				this.pending[KEYS.highlights] = JSON.stringify(this.highlights);
+				this.pending[KEYS.highlightLabels] = JSON.stringify(this.highlightLabels);
 				if (this.skipPersist) {
 					this.skipPersist = false;
 					this.pending = {};
@@ -88,6 +121,8 @@ class StorageStore {
 		this.mcqAttempts = readJson(KEYS.mcq, isRecord as (v: unknown) => v is Record<string, UserMcqAttempt>, {});
 		this.essayDrafts = readJson(KEYS.essay, isRecord as (v: unknown) => v is Record<string, UserEssayDraft>, {});
 		this.bookmarks = readJson(KEYS.bookmarks, (v): v is string[] => Array.isArray(v) && v.every((x) => typeof x === 'string'), []);
+		this.highlights = cleanHighlights(readJson(KEYS.highlights, isRecord, {}));
+		this.highlightLabels = cleanLabels(readJson(KEYS.highlightLabels, isRecord, {}));
 		this.isLoaded = true;
 	}
 
@@ -138,6 +173,33 @@ class StorageStore {
 		this.bookmarks = this.bookmarks.includes(id) ? this.bookmarks.filter((b) => b !== id) : [...this.bookmarks, id];
 	}
 
+	highlightsFor(moduleId: string) {
+		return Object.values(this.highlights).filter((h) => h.moduleId === moduleId);
+	}
+
+	addHighlight(h: Omit<UserHighlight, 'createdAt' | 'updatedAt'>) {
+		const now = Date.now();
+		this.highlights[h.id] = { ...h, createdAt: now, updatedAt: now };
+	}
+
+	updateHighlight(id: string, patch: Partial<Pick<UserHighlight, 'color' | 'note'>>) {
+		const h = this.highlights[id];
+		if (h) this.highlights[id] = { ...h, ...patch, updatedAt: Date.now() };
+	}
+
+	removeHighlight(id: string) {
+		delete this.highlights[id];
+	}
+
+	/** The reader's name for a color, or the color itself if they cleared it. */
+	highlightLabel(color: HighlightColor) {
+		return this.highlightLabels[color]?.trim() || COLOR_NAMES[color];
+	}
+
+	setHighlightLabel(color: HighlightColor, label: string) {
+		this.highlightLabels[color] = label;
+	}
+
 	/** Totals for one module, or for everything when `moduleId` is omitted. IDs are `<moduleId>:…`. */
 	stats(moduleId?: string): ProgressStats {
 		const prefix = moduleId ? `${moduleId}:` : '';
@@ -164,11 +226,13 @@ class StorageStore {
 		return JSON.stringify(
 			{
 				app: 'subpoena-colada',
-				version: 1,
+				version: 2,
 				exportedAt: new Date().toISOString(),
 				mcqAttempts: this.mcqAttempts,
 				essayDrafts: this.essayDrafts,
-				bookmarks: this.bookmarks
+				bookmarks: this.bookmarks,
+				highlights: this.highlights,
+				highlightLabels: this.highlightLabels
 			},
 			null,
 			2
@@ -184,18 +248,25 @@ class StorageStore {
 		this.mcqAttempts = data.mcqAttempts as Record<string, UserMcqAttempt>;
 		this.essayDrafts = data.essayDrafts as Record<string, UserEssayDraft>;
 		this.bookmarks = data.bookmarks.filter((b): b is string => typeof b === 'string');
+		// Version 1 exports predate highlights; importing one leaves the reader's highlights alone.
+		if (isRecord(data.highlights)) this.highlights = cleanHighlights(data.highlights);
+		if (isRecord(data.highlightLabels)) this.highlightLabels = cleanLabels(data.highlightLabels);
 	}
 
 	resetAllProgress() {
 		this.mcqAttempts = {};
 		this.essayDrafts = {};
 		this.bookmarks = [];
+		this.highlights = {};
 		if (typeof window !== 'undefined') {
 			// Only our own keys — localStorage.clear() would also wipe the theme and any other app on this origin.
+			// Highlight labels are a preference, like the theme, so they stay.
 			clearTimeout(this.timer);
 			this.pending = {};
 			try {
-				Object.values(KEYS).forEach((k) => localStorage.removeItem(k));
+				Object.values(KEYS)
+					.filter((k) => k !== KEYS.highlightLabels)
+					.forEach((k) => localStorage.removeItem(k));
 			} catch (e) {
 				console.error('Failed to clear localStorage', e);
 			}

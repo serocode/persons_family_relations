@@ -106,6 +106,31 @@ export interface UserEssayDraft {
 	updatedAt: number;
 }
 
+export type HighlightColor = 'yellow' | 'green' | 'blue' | 'pink' | 'purple';
+
+/**
+ * A reader's highlight in the study guide or a case digest. It is anchored by its text rather than by DOM position,
+ * so it survives re-renders and small edits to the guide elsewhere in the section.
+ */
+export interface UserHighlight {
+	/** `<moduleId>:<random>`. */
+	id: string;
+	moduleId: string;
+	/** The element the quote is looked up in: `guide:<h2 id>` or `case:<case id>`. */
+	scope: string;
+	/** The highlighted text, whitespace-collapsed. */
+	quote: string;
+	/** Up to 32 characters either side, to tell repeated phrases apart. */
+	prefix: string;
+	suffix: string;
+	/** Offset of the quote in the scope's collapsed text when it was made — a tie-breaker, not a position. */
+	start: number;
+	color: HighlightColor;
+	note?: string;
+	createdAt: number;
+	updatedAt: number;
+}
+
 export interface UserModuleProgress {
 	mcqAttempts: Record<string, UserMcqAttempt>; // questionId -> attempt
 	essayDrafts: Record<string, UserEssayDraft>; // essayId -> draft

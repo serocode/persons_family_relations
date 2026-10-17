@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { ChevronDown, ChevronUp, ListTree, Search, X, TriangleAlert } from '@lucide/svelte';
-	import { untrack } from 'svelte';
+	import { ChevronDown, ChevronUp, Highlighter, ListTree, Search, X, TriangleAlert } from '@lucide/svelte';
+	import { tick, untrack } from 'svelte';
 	import { Input } from '$lib/components/ui/input';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import Highlight from './Highlight.svelte';
+	import HighlightMenu from './HighlightMenu.svelte';
+	import HighlightsPanel from './HighlightsPanel.svelte';
+	import { GuideHighlighter, paintKey } from '$lib/highlights.svelte';
+	import { userStorage } from '$lib/stores/storage.svelte';
 	import { cn } from '$lib/utils';
 	import type { CaseDigest, LawModule } from '$lib/types';
 
@@ -220,10 +224,54 @@
 		e.preventDefault();
 		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		history.replaceState(null, '', `#${id}`);
-		mobileOutline = false;
+		mobilePanel = null;
 	}
 
-	let mobileOutline = $state(false);
+	// ---- reader highlights ----
+	/** Every element a highlight can live in (`data-hl-scope`), in reading order. */
+	const scopes = $derived([
+		...guide.intro.map((s) => ({ id: `guide:${s.id}`, title: 'Overview' })),
+		...guide.sections.map((s) => ({ id: `guide:${s.id}`, title: s.title })),
+		...caseSections.flatMap((p) => p.groups.flatMap((g) => g.cases.map((c) => ({ id: `case:${c.id}`, title: c.title }))))
+	]);
+	const scopeIds = $derived(new Set(scopes.map((s) => s.id)));
+	const moduleHighlights = $derived(userStorage.highlightsFor(lawModule.id));
+	const highlighter = new GuideHighlighter(
+		() => moduleHighlights,
+		() => scopeIds
+	);
+	const highlightsKey = $derived(paintKey(moduleHighlights));
+
+	$effect(() => {
+		const el = guideEl;
+		if (el) return highlighter.attach(el);
+	});
+	$effect(() => {
+		void highlightsKey;
+		highlighter.schedule();
+	});
+
+	async function jumpToHighlight(id: string) {
+		const h = userStorage.highlights[id];
+		if (!h) return;
+		mobilePanel = null;
+		let range = highlighter.locate(h);
+		if (!range && query) {
+			// The search may be hiding its section.
+			rawQuery = '';
+			query = '';
+			await tick();
+			range = highlighter.locate(h);
+		}
+		if (!range) return;
+		for (let d = range.startContainer.parentElement?.closest('details'); d; d = d.parentElement?.closest('details')) d.open = true;
+		const r = range.getBoundingClientRect();
+		scrollTo({ top: scrollY + r.top - innerHeight * 0.4, behavior: 'smooth' });
+		highlighter.flash(range);
+	}
+
+	let sidebar = $state<'outline' | 'highlights'>('outline');
+	let mobilePanel = $state<'outline' | 'highlights' | null>(null);
 	const rest = (c: CaseDigest) => (c.summary.startsWith(c.keyRule) ? c.summary.slice(c.keyRule.length).trim() : c.summary);
 </script>
 
@@ -232,44 +280,68 @@
 <!-- Breakpoints use the `main` size container (in rem), so the sidebar gives way to the toggle when the text size is raised. At 100% this matches the old lg breakpoint. -->
 <div bind:this={root} class="grid gap-8 @min-[61rem]/main:grid-cols-[16rem_minmax(0,1fr)]">
 	<!-- Sticky outline (desktop) -->
-	<aside class="hidden @min-[61rem]/main:block">
-		<nav aria-label="Study guide outline" class="sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto pr-2 text-sm">
-			<p class="mb-2 flex items-center gap-1.5 text-[0.7rem] font-semibold tracking-wider text-muted-foreground uppercase"><ListTree class="size-3.5" /> Outline</p>
-			{#if outline.length === 0}
-				<p class="text-muted-foreground">Nothing to show.</p>
-			{/if}
-			<ul class="space-y-0.5">
-				{#each outline as item (item.id)}
-					{@const open = item.id === activeTopId}
-					<li>
-						<a
-							href="#{item.id}"
-							onclick={(e) => jump(item.id, e)}
-							aria-current={open ? 'true' : undefined}
-							class={cn('block rounded-md px-2 py-1.5 leading-snug transition-colors hover:bg-accent', open ? 'bg-accent font-semibold' : 'text-muted-foreground hover:text-foreground')}
-						>
-							{item.title}
-						</a>
-						{#if open && item.subs.length}
-							<ul class="my-1 ml-2.5 space-y-0.5 border-l pl-2.5">
-								{#each item.subs as s (s.id)}
-									<li>
-										<a
-											href="#{s.id}"
-											onclick={(e) => jump(s.id, e)}
-											aria-current={s.id === activeId ? 'true' : undefined}
-											class={cn('block rounded px-1.5 py-1 text-[0.8rem] leading-snug hover:text-foreground', s.id === activeId ? 'font-medium text-foreground' : 'text-muted-foreground')}
-										>
-											{s.title}
-										</a>
-									</li>
-								{/each}
-							</ul>
+	<aside class="no-print hidden @min-[61rem]/main:block">
+		<div class="sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto pr-2 text-sm">
+			<div class="mb-2 flex items-center gap-3" role="group" aria-label="Sidebar">
+				{#each [{ id: 'outline', label: 'Outline', Icon: ListTree }, { id: 'highlights', label: 'Highlights', Icon: Highlighter }] as const as view (view.id)}
+					<button
+						type="button"
+						aria-pressed={sidebar === view.id}
+						onclick={() => (sidebar = view.id)}
+						class={cn(
+							'flex items-center gap-1.5 rounded text-[0.7rem] font-semibold tracking-wider uppercase transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+							sidebar === view.id ? 'text-foreground' : 'text-muted-foreground'
+						)}
+					>
+						<view.Icon class="size-3.5" />
+						{view.label}
+						{#if view.id === 'highlights' && moduleHighlights.length}
+							<span class="rounded-full bg-secondary px-1.5 text-[0.65rem] tracking-normal tabular-nums">{moduleHighlights.length}</span>
 						{/if}
-					</li>
+					</button>
 				{/each}
-			</ul>
-		</nav>
+			</div>
+			{#if sidebar === 'highlights'}
+				<HighlightsPanel moduleId={lawModule.id} {scopes} missing={highlighter.missing} onjump={jumpToHighlight} />
+			{:else}
+				<nav aria-label="Study guide outline">
+					{#if outline.length === 0}
+						<p class="text-muted-foreground">Nothing to show.</p>
+					{/if}
+					<ul class="space-y-0.5">
+						{#each outline as item (item.id)}
+							{@const open = item.id === activeTopId}
+							<li>
+								<a
+									href="#{item.id}"
+									onclick={(e) => jump(item.id, e)}
+									aria-current={open ? 'true' : undefined}
+									class={cn('block rounded-md px-2 py-1.5 leading-snug transition-colors hover:bg-accent', open ? 'bg-accent font-semibold' : 'text-muted-foreground hover:text-foreground')}
+								>
+									{item.title}
+								</a>
+								{#if open && item.subs.length}
+									<ul class="my-1 ml-2.5 space-y-0.5 border-l pl-2.5">
+										{#each item.subs as s (s.id)}
+											<li>
+												<a
+													href="#{s.id}"
+													onclick={(e) => jump(s.id, e)}
+													aria-current={s.id === activeId ? 'true' : undefined}
+													class={cn('block rounded px-1.5 py-1 text-[0.8rem] leading-snug hover:text-foreground', s.id === activeId ? 'font-medium text-foreground' : 'text-muted-foreground')}
+												>
+													{s.title}
+												</a>
+											</li>
+										{/each}
+									</ul>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				</nav>
+			{/if}
+		</div>
 	</aside>
 
 	<div class="min-w-0">
@@ -293,7 +365,20 @@
 						</button>
 					{/if}
 				</div>
-				<Button variant="outline" size="icon" class="@min-[61rem]/main:hidden" aria-expanded={mobileOutline} aria-label="Toggle outline" onclick={() => (mobileOutline = !mobileOutline)}>
+				<Button
+					variant="outline"
+					size="icon"
+					class="relative @min-[61rem]/main:hidden"
+					aria-expanded={mobilePanel === 'highlights'}
+					aria-label="Toggle highlights"
+					onclick={() => (mobilePanel = mobilePanel === 'highlights' ? null : 'highlights')}
+				>
+					<Highlighter />
+					{#if moduleHighlights.length}
+						<span class="absolute -top-1.5 -right-1.5 min-w-4 rounded-full bg-primary px-1 text-[0.6rem] leading-4 text-primary-foreground tabular-nums">{moduleHighlights.length}</span>
+					{/if}
+				</Button>
+				<Button variant="outline" size="icon" class="@min-[61rem]/main:hidden" aria-expanded={mobilePanel === 'outline'} aria-label="Toggle outline" onclick={() => (mobilePanel = mobilePanel === 'outline' ? null : 'outline')}>
 					<ListTree />
 				</Button>
 			</div>
@@ -309,7 +394,11 @@
 				</div>
 			{/if}
 
-			{#if mobileOutline}
+			{#if mobilePanel === 'highlights'}
+				<div class="mt-2 max-h-[60dvh] overflow-y-auto rounded-lg border bg-card p-2.5 @min-[61rem]/main:hidden">
+					<HighlightsPanel moduleId={lawModule.id} {scopes} missing={highlighter.missing} onjump={jumpToHighlight} />
+				</div>
+			{:else if mobilePanel === 'outline'}
 				<nav aria-label="Study guide outline" class="mt-2 max-h-72 overflow-y-auto rounded-lg border bg-card p-2 text-sm @min-[61rem]/main:hidden">
 					<ul class="space-y-0.5">
 						{#each outline as item (item.id)}
@@ -342,10 +431,10 @@
 
 			<div bind:this={proseEl} class="study-guide prose prose-slate max-w-none dark:prose-invert">
 				{#each shownIntro as s (s.id + 'intro')}
-					<div>{@html s.html}</div>
+					<div data-hl-scope="guide:{s.id}">{@html s.html}</div>
 				{/each}
 				{#each shownSections as s (s.id)}
-					<section aria-label={s.title}>{@html s.html}</section>
+					<section aria-label={s.title} data-hl-scope="guide:{s.id}">{@html s.html}</section>
 				{/each}
 			</div>
 
@@ -358,7 +447,7 @@
 								<h3 id={group.id} class="mt-6 mb-2.5 scroll-mt-28 text-base font-semibold">{group.title}</h3>
 								<ul class="space-y-3">
 									{#each group.cases as c (c.id)}
-										<li class={cn('rounded-xl border bg-card p-4', c.unverified && 'border-orange/50')}>
+										<li data-hl-scope="case:{c.id}" class={cn('rounded-xl border bg-card p-4', c.unverified && 'border-orange/50')}>
 											<div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
 												<h4 class="font-semibold"><Highlight text={c.title} query={query} /></h4>
 												<div class="flex items-center gap-1.5">
@@ -392,3 +481,5 @@
 		</div>
 	</div>
 </div>
+
+<HighlightMenu container={guideEl} {highlighter} moduleId={lawModule.id} />

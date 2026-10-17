@@ -153,7 +153,7 @@
 
 					<Dialog.Footer class="sm:justify-between">
 						{#if confirmReset}
-							<span class="self-center text-sm text-destructive">Erase all answers, drafts and bookmarks?</span>
+							<span class="self-center text-sm text-destructive">Erase all answers, drafts, bookmarks and highlights?</span>
 							<div class="flex gap-2">
 								<Button variant="ghost" onclick={() => (confirmReset = false)}>Cancel</Button>
 								<Button variant="destructive" onclick={doReset}>Yes, erase</Button>
