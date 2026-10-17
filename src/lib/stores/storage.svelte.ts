@@ -182,13 +182,18 @@ class StorageStore {
 		this.highlights[h.id] = { ...h, createdAt: now, updatedAt: now };
 	}
 
-	updateHighlight(id: string, patch: Partial<Pick<UserHighlight, 'color' | 'note'>>) {
+	/** Recolors, re-notes, or (with a new scope and anchor) moves a highlight to different text. */
+	updateHighlight(id: string, patch: Partial<Omit<UserHighlight, 'id' | 'moduleId' | 'createdAt' | 'updatedAt'>>) {
 		const h = this.highlights[id];
 		if (h) this.highlights[id] = { ...h, ...patch, updatedAt: Date.now() };
 	}
 
 	removeHighlight(id: string) {
 		delete this.highlights[id];
+	}
+
+	removeHighlightsFor(moduleId: string) {
+		this.highlights = Object.fromEntries(Object.entries(this.highlights).filter(([, h]) => h.moduleId !== moduleId));
 	}
 
 	/** The reader's name for a color, or the color itself if they cleared it. */

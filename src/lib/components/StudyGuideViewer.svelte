@@ -241,6 +241,7 @@
 		() => scopeIds
 	);
 	const highlightsKey = $derived(paintKey(moduleHighlights));
+	let highlightMenu: ReturnType<typeof HighlightMenu> | undefined = $state();
 
 	$effect(() => {
 		const el = guideEl;
@@ -251,10 +252,14 @@
 		highlighter.schedule();
 	});
 
-	async function jumpToHighlight(id: string) {
+	async function jumpToHighlight(id: string, flash = true) {
 		const h = userStorage.highlights[id];
 		if (!h) return;
-		mobilePanel = null;
+		if (mobilePanel) {
+			// Closing it shortens the sticky bar above the guide, which moves the text up: measure after that.
+			mobilePanel = null;
+			await tick();
+		}
 		let range = highlighter.locate(h);
 		if (!range && query) {
 			// The search may be hiding its section.
@@ -267,7 +272,14 @@
 		for (let d = range.startContainer.parentElement?.closest('details'); d; d = d.parentElement?.closest('details')) d.open = true;
 		const r = range.getBoundingClientRect();
 		scrollTo({ top: scrollY + r.top - innerHeight * 0.4, behavior: 'smooth' });
-		highlighter.flash(range);
+		if (flash) highlighter.flash(range);
+	}
+
+	/** From the panel: brings the highlight's text into view, if it's still there, and lets the reader re-select it. */
+	async function adjustHighlight(id: string) {
+		if (highlighter.missing.has(id)) mobilePanel = null;
+		else await jumpToHighlight(id, false);
+		highlightMenu?.adjust(id);
 	}
 
 	let sidebar = $state<'outline' | 'highlights'>('outline');
@@ -302,7 +314,7 @@
 				{/each}
 			</div>
 			{#if sidebar === 'highlights'}
-				<HighlightsPanel moduleId={lawModule.id} {scopes} missing={highlighter.missing} onjump={jumpToHighlight} />
+				<HighlightsPanel moduleId={lawModule.id} {scopes} missing={highlighter.missing} onjump={jumpToHighlight} onadjust={adjustHighlight} />
 			{:else}
 				<nav aria-label="Study guide outline">
 					{#if outline.length === 0}
@@ -396,7 +408,7 @@
 
 			{#if mobilePanel === 'highlights'}
 				<div class="mt-2 max-h-[60dvh] overflow-y-auto rounded-lg border bg-card p-2.5 @min-[61rem]/main:hidden">
-					<HighlightsPanel moduleId={lawModule.id} {scopes} missing={highlighter.missing} onjump={jumpToHighlight} />
+					<HighlightsPanel moduleId={lawModule.id} {scopes} missing={highlighter.missing} onjump={jumpToHighlight} onadjust={adjustHighlight} />
 				</div>
 			{:else if mobilePanel === 'outline'}
 				<nav aria-label="Study guide outline" class="mt-2 max-h-72 overflow-y-auto rounded-lg border bg-card p-2 text-sm @min-[61rem]/main:hidden">
@@ -482,4 +494,4 @@
 	</div>
 </div>
 
-<HighlightMenu container={guideEl} {highlighter} moduleId={lawModule.id} />
+<HighlightMenu bind:this={highlightMenu} container={guideEl} {highlighter} moduleId={lawModule.id} />

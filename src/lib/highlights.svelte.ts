@@ -28,7 +28,8 @@ export const newHighlightId = (moduleId: string) =>
 	`${moduleId}:${crypto.randomUUID?.() ?? `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`}`;
 
 /** What painting depends on. Notes count only as present or absent, so typing one doesn't repaint the guide. */
-export const paintKey = (hs: UserHighlight[]) => hs.map((h) => `${h.id}:${h.color}:${h.note?.trim() ? 1 : 0}`).join('\n');
+export const paintKey = (hs: UserHighlight[]) =>
+	hs.map((h) => `${h.id}:${h.color}:${h.note?.trim() ? 1 : 0}:${h.scope}:${h.start}:${h.quote}`).join('\n');
 
 type Anchor = Pick<UserHighlight, 'quote' | 'prefix' | 'suffix' | 'start'>;
 
